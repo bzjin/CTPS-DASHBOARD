@@ -1,0 +1,2459 @@
+[
+  {
+    "TOWN_ID": 1,
+    "TOWN": "ABINGTON",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 2,
+    "TOWN": "ACTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 3,
+    "TOWN": "ACUSHNET",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 4,
+    "TOWN": "ADAMS",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 5,
+    "TOWN": "AGAWAM",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 6,
+    "TOWN": "ALFORD",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 7,
+    "TOWN": "AMESBURY",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 8,
+    "TOWN": "AMHERST",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 9,
+    "TOWN": "ANDOVER",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 10,
+    "TOWN": "ARLINGTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 11,
+    "TOWN": "ASHBURNHAM",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 12,
+    "TOWN": "ASHBY",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 13,
+    "TOWN": "ASHFIELD",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 14,
+    "TOWN": "ASHLAND",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "METROWEST"
+  },
+  {
+    "TOWN_ID": 15,
+    "TOWN": "ATHOL",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 16,
+    "TOWN": "ATTLEBORO",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 17,
+    "TOWN": "AUBURN",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 18,
+    "TOWN": "AVON",
+    "COUNTY": "NORFOLK",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 19,
+    "TOWN": "AYER",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 20,
+    "TOWN": "BARNSTABLE",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 21,
+    "TOWN": "BARRE",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 22,
+    "TOWN": "BECKET",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 23,
+    "TOWN": "BEDFORD",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 24,
+    "TOWN": "BELCHERTOWN",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 25,
+    "TOWN": "BELLINGHAM",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SWAP"
+  },
+  {
+    "TOWN_ID": 26,
+    "TOWN": "BELMONT",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 27,
+    "TOWN": "BERKLEY",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 28,
+    "TOWN": "BERLIN",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 29,
+    "TOWN": "BERNARDSTON",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 30,
+    "TOWN": "BEVERLY",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 31,
+    "TOWN": "BILLERICA",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "NMCOG",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 32,
+    "TOWN": "BLACKSTONE",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 33,
+    "TOWN": "BLANDFORD",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 34,
+    "TOWN": "BOLTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 35,
+    "TOWN": "BOSTON",
+    "COUNTY": "SUFFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 36,
+    "TOWN": "BOURNE",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 37,
+    "TOWN": "BOXBOROUGH",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 38,
+    "TOWN": "BOXFORD",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 39,
+    "TOWN": "BOYLSTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 40,
+    "TOWN": "BRAINTREE",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 41,
+    "TOWN": "BREWSTER",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 42,
+    "TOWN": "BRIDGEWATER",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 43,
+    "TOWN": "BRIMFIELD",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 44,
+    "TOWN": "BROCKTON",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 45,
+    "TOWN": "BROOKFIELD",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 46,
+    "TOWN": "BROOKLINE",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 47,
+    "TOWN": "BUCKLAND",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 48,
+    "TOWN": "BURLINGTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSPC"
+  },
+  {
+    "TOWN_ID": 49,
+    "TOWN": "CAMBRIDGE",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 50,
+    "TOWN": "CANTON",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 51,
+    "TOWN": "CARLISLE",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 52,
+    "TOWN": "CARVER",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 53,
+    "TOWN": "CHARLEMONT",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 54,
+    "TOWN": "CHARLTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 55,
+    "TOWN": "CHATHAM",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 56,
+    "TOWN": "CHELMSFORD",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "NMCOG",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 57,
+    "TOWN": "CHELSEA",
+    "COUNTY": "SUFFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 58,
+    "TOWN": "CHESHIRE",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 59,
+    "TOWN": "CHESTER",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 60,
+    "TOWN": "CHESTERFIELD",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 61,
+    "TOWN": "CHICOPEE",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 62,
+    "TOWN": "CHILMARK",
+    "COUNTY": "DUKES",
+    "RPA": "MVC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 63,
+    "TOWN": "CLARKSBURG",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 64,
+    "TOWN": "CLINTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 65,
+    "TOWN": "COHASSET",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 66,
+    "TOWN": "COLRAIN",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 67,
+    "TOWN": "CONCORD",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 68,
+    "TOWN": "CONWAY",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 69,
+    "TOWN": "CUMMINGTON",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 70,
+    "TOWN": "DALTON",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 71,
+    "TOWN": "DANVERS",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 72,
+    "TOWN": "DARTMOUTH",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 73,
+    "TOWN": "DEDHAM",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 74,
+    "TOWN": "DEERFIELD",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 75,
+    "TOWN": "DENNIS",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 76,
+    "TOWN": "DIGHTON",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 77,
+    "TOWN": "DOUGLAS",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 78,
+    "TOWN": "DOVER",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC/SWAP"
+  },
+  {
+    "TOWN_ID": 79,
+    "TOWN": "DRACUT",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "NMCOG",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 80,
+    "TOWN": "DUDLEY",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 81,
+    "TOWN": "DUNSTABLE",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "NMCOG",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 82,
+    "TOWN": "DUXBURY",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 83,
+    "TOWN": "EAST BRIDGEWATER",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 84,
+    "TOWN": "EAST BROOKFIELD",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 85,
+    "TOWN": "EAST LONGMEADOW",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 86,
+    "TOWN": "EASTHAM",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 87,
+    "TOWN": "EASTHAMPTON",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 88,
+    "TOWN": "EASTON",
+    "COUNTY": "BRISTOL",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 89,
+    "TOWN": "EDGARTOWN",
+    "COUNTY": "DUKES",
+    "RPA": "MVC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 90,
+    "TOWN": "EGREMONT",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 91,
+    "TOWN": "ERVING",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 92,
+    "TOWN": "ESSEX",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 93,
+    "TOWN": "EVERETT",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 94,
+    "TOWN": "FAIRHAVEN",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 95,
+    "TOWN": "FALL RIVER",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 96,
+    "TOWN": "FALMOUTH",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 97,
+    "TOWN": "FITCHBURG",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 98,
+    "TOWN": "FLORIDA",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 99,
+    "TOWN": "FOXBOROUGH",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 100,
+    "TOWN": "FRAMINGHAM",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "METROWEST"
+  },
+  {
+    "TOWN_ID": 101,
+    "TOWN": "FRANKLIN",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SWAP"
+  },
+  {
+    "TOWN_ID": 102,
+    "TOWN": "FREETOWN",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 103,
+    "TOWN": "GARDNER",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 104,
+    "TOWN": "AQUINNAH",
+    "COUNTY": "DUKES",
+    "RPA": "MVC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 105,
+    "TOWN": "GEORGETOWN",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 106,
+    "TOWN": "GILL",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 107,
+    "TOWN": "GLOUCESTER",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 108,
+    "TOWN": "GOSHEN",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 109,
+    "TOWN": "GOSNOLD",
+    "COUNTY": "DUKES",
+    "RPA": "MVC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 110,
+    "TOWN": "GRAFTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 111,
+    "TOWN": "GRANBY",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 112,
+    "TOWN": "GRANVILLE",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 113,
+    "TOWN": "GREAT BARRINGTON",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 114,
+    "TOWN": "GREENFIELD",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 115,
+    "TOWN": "GROTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 116,
+    "TOWN": "GROVELAND",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 117,
+    "TOWN": "HADLEY",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 118,
+    "TOWN": "HALIFAX",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 119,
+    "TOWN": "HAMILTON",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 120,
+    "TOWN": "HAMPDEN",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 121,
+    "TOWN": "HANCOCK",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 122,
+    "TOWN": "HANOVER",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 123,
+    "TOWN": "HANSON",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 124,
+    "TOWN": "HARDWICK",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 125,
+    "TOWN": "HARVARD",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 126,
+    "TOWN": "HARWICH",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 127,
+    "TOWN": "HATFIELD",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 128,
+    "TOWN": "HAVERHILL",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 129,
+    "TOWN": "HAWLEY",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 130,
+    "TOWN": "HEATH",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 131,
+    "TOWN": "HINGHAM",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 132,
+    "TOWN": "HINSDALE",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 133,
+    "TOWN": "HOLBROOK",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 134,
+    "TOWN": "HOLDEN",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 135,
+    "TOWN": "HOLLAND",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 136,
+    "TOWN": "HOLLISTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "METROWEST"
+  },
+  {
+    "TOWN_ID": 137,
+    "TOWN": "HOLYOKE",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 138,
+    "TOWN": "HOPEDALE",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 139,
+    "TOWN": "HOPKINTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SWAP"
+  },
+  {
+    "TOWN_ID": 140,
+    "TOWN": "HUBBARDSTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 141,
+    "TOWN": "HUDSON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 142,
+    "TOWN": "HULL",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 143,
+    "TOWN": "HUNTINGTON",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 144,
+    "TOWN": "IPSWICH",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 145,
+    "TOWN": "KINGSTON",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 146,
+    "TOWN": "LAKEVILLE",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 147,
+    "TOWN": "LANCASTER",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 148,
+    "TOWN": "LANESBOROUGH",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 149,
+    "TOWN": "LAWRENCE",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 150,
+    "TOWN": "LEE",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 151,
+    "TOWN": "LEICESTER",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 152,
+    "TOWN": "LENOX",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 153,
+    "TOWN": "LEOMINSTER",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 154,
+    "TOWN": "LEVERETT",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 155,
+    "TOWN": "LEXINGTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 156,
+    "TOWN": "LEYDEN",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 157,
+    "TOWN": "LINCOLN",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 158,
+    "TOWN": "LITTLETON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 159,
+    "TOWN": "LONGMEADOW",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 160,
+    "TOWN": "LOWELL",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "NMCOG",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 161,
+    "TOWN": "LUDLOW",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 162,
+    "TOWN": "LUNENBURG",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 163,
+    "TOWN": "LYNN",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 164,
+    "TOWN": "LYNNFIELD",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSPC"
+  },
+  {
+    "TOWN_ID": 165,
+    "TOWN": "MALDEN",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 166,
+    "TOWN": "MANCHESTER",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 167,
+    "TOWN": "MANSFIELD",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 168,
+    "TOWN": "MARBLEHEAD",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 169,
+    "TOWN": "MARION",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 170,
+    "TOWN": "MARLBOROUGH",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "METROWEST"
+  },
+  {
+    "TOWN_ID": 171,
+    "TOWN": "MARSHFIELD",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 172,
+    "TOWN": "MASHPEE",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 173,
+    "TOWN": "MATTAPOISETT",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 174,
+    "TOWN": "MAYNARD",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 175,
+    "TOWN": "MEDFIELD",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 176,
+    "TOWN": "MEDFORD",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 177,
+    "TOWN": "MEDWAY",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SWAP"
+  },
+  {
+    "TOWN_ID": 178,
+    "TOWN": "MELROSE",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 179,
+    "TOWN": "MENDON",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 180,
+    "TOWN": "MERRIMAC",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 181,
+    "TOWN": "METHUEN",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 182,
+    "TOWN": "MIDDLEBOROUGH",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 183,
+    "TOWN": "MIDDLEFIELD",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 184,
+    "TOWN": "MIDDLETON",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 185,
+    "TOWN": "MILFORD",
+    "COUNTY": "WORCESTER",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SWAP"
+  },
+  {
+    "TOWN_ID": 186,
+    "TOWN": "MILLBURY",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 187,
+    "TOWN": "MILLIS",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SWAP"
+  },
+  {
+    "TOWN_ID": 188,
+    "TOWN": "MILLVILLE",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 189,
+    "TOWN": "MILTON",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE/TRIC"
+  },
+  {
+    "TOWN_ID": 190,
+    "TOWN": "MONROE",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 191,
+    "TOWN": "MONSON",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 192,
+    "TOWN": "MONTAGUE",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 193,
+    "TOWN": "MONTEREY",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 194,
+    "TOWN": "MONTGOMERY",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 195,
+    "TOWN": "MOUNT WASHINGTON",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 196,
+    "TOWN": "NAHANT",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 197,
+    "TOWN": "NANTUCKET",
+    "COUNTY": "NANTUCKET",
+    "RPA": "NPEDC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 198,
+    "TOWN": "NATICK",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "METROWEST"
+  },
+  {
+    "TOWN_ID": 199,
+    "TOWN": "NEEDHAM",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE/TRIC"
+  },
+  {
+    "TOWN_ID": 200,
+    "TOWN": "NEW ASHFORD",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 201,
+    "TOWN": "NEW BEDFORD",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 202,
+    "TOWN": "NEW BRAINTREE",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 203,
+    "TOWN": "NEW MARLBOROUGH",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 204,
+    "TOWN": "NEW SALEM",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 205,
+    "TOWN": "NEWBURY",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 206,
+    "TOWN": "NEWBURYPORT",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 207,
+    "TOWN": "NEWTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 208,
+    "TOWN": "NORFOLK",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SWAP"
+  },
+  {
+    "TOWN_ID": 209,
+    "TOWN": "NORTH ADAMS",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 210,
+    "TOWN": "NORTH ANDOVER",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 211,
+    "TOWN": "NORTH ATTLEBOROUGH",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 212,
+    "TOWN": "NORTH BROOKFIELD",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 213,
+    "TOWN": "NORTH READING",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSPC"
+  },
+  {
+    "TOWN_ID": 214,
+    "TOWN": "NORTHAMPTON",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 215,
+    "TOWN": "NORTHBOROUGH",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 216,
+    "TOWN": "NORTHBRIDGE",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 217,
+    "TOWN": "NORTHFIELD",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 218,
+    "TOWN": "NORTON",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 219,
+    "TOWN": "NORWELL",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 220,
+    "TOWN": "NORWOOD",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 221,
+    "TOWN": "OAK BLUFFS",
+    "COUNTY": "DUKES",
+    "RPA": "MVC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 222,
+    "TOWN": "OAKHAM",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 223,
+    "TOWN": "ORANGE",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 224,
+    "TOWN": "ORLEANS",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 225,
+    "TOWN": "OTIS",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 226,
+    "TOWN": "OXFORD",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 227,
+    "TOWN": "PALMER",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 228,
+    "TOWN": "PAXTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 229,
+    "TOWN": "PEABODY",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 230,
+    "TOWN": "PELHAM",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 231,
+    "TOWN": "PEMBROKE",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "MAPC/OCPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 232,
+    "TOWN": "PEPPERELL",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "NMCOG",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 233,
+    "TOWN": "PERU",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 234,
+    "TOWN": "PETERSHAM",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 235,
+    "TOWN": "PHILLIPSTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 236,
+    "TOWN": "PITTSFIELD",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 237,
+    "TOWN": "PLAINFIELD",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 238,
+    "TOWN": "PLAINVILLE",
+    "COUNTY": "NORFOLK",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 239,
+    "TOWN": "PLYMOUTH",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 240,
+    "TOWN": "PLYMPTON",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 241,
+    "TOWN": "PRINCETON",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 242,
+    "TOWN": "PROVINCETOWN",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 243,
+    "TOWN": "QUINCY",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 244,
+    "TOWN": "RANDOLPH",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 245,
+    "TOWN": "RAYNHAM",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 246,
+    "TOWN": "READING",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSPC"
+  },
+  {
+    "TOWN_ID": 247,
+    "TOWN": "REHOBOTH",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 248,
+    "TOWN": "REVERE",
+    "COUNTY": "SUFFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 249,
+    "TOWN": "RICHMOND",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 250,
+    "TOWN": "ROCHESTER",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 251,
+    "TOWN": "ROCKLAND",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 252,
+    "TOWN": "ROCKPORT",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 253,
+    "TOWN": "ROWE",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 254,
+    "TOWN": "ROWLEY",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 255,
+    "TOWN": "ROYALSTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 256,
+    "TOWN": "RUSSELL",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 257,
+    "TOWN": "RUTLAND",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 258,
+    "TOWN": "SALEM",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 259,
+    "TOWN": "SALISBURY",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 260,
+    "TOWN": "SANDISFIELD",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 261,
+    "TOWN": "SANDWICH",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 262,
+    "TOWN": "SAUGUS",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 263,
+    "TOWN": "SAVOY",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 264,
+    "TOWN": "SCITUATE",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 265,
+    "TOWN": "SEEKONK",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 266,
+    "TOWN": "SHARON",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 267,
+    "TOWN": "SHEFFIELD",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 268,
+    "TOWN": "SHELBURNE",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 269,
+    "TOWN": "SHERBORN",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SWAP"
+  },
+  {
+    "TOWN_ID": 270,
+    "TOWN": "SHIRLEY",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 271,
+    "TOWN": "SHREWSBURY",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 272,
+    "TOWN": "SHUTESBURY",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 273,
+    "TOWN": "SOMERSET",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 274,
+    "TOWN": "SOMERVILLE",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 275,
+    "TOWN": "SOUTH HADLEY",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 276,
+    "TOWN": "SOUTHAMPTON",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 277,
+    "TOWN": "SOUTHBOROUGH",
+    "COUNTY": "WORCESTER",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "METROWEST"
+  },
+  {
+    "TOWN_ID": 278,
+    "TOWN": "SOUTHBRIDGE",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 279,
+    "TOWN": "SOUTHWICK",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 280,
+    "TOWN": "SPENCER",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 281,
+    "TOWN": "SPRINGFIELD",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 282,
+    "TOWN": "STERLING",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 283,
+    "TOWN": "STOCKBRIDGE",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 284,
+    "TOWN": "STONEHAM",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSPC"
+  },
+  {
+    "TOWN_ID": 285,
+    "TOWN": "STOUGHTON",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC/OCPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 286,
+    "TOWN": "STOW",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 287,
+    "TOWN": "STURBRIDGE",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 288,
+    "TOWN": "SUDBURY",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "MAGIC"
+  },
+  {
+    "TOWN_ID": 289,
+    "TOWN": "SUNDERLAND",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 290,
+    "TOWN": "SUTTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 291,
+    "TOWN": "SWAMPSCOTT",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 292,
+    "TOWN": "SWANSEA",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 293,
+    "TOWN": "TAUNTON",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 294,
+    "TOWN": "TEMPLETON",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 295,
+    "TOWN": "TEWKSBURY",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "NMCOG",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 296,
+    "TOWN": "TISBURY",
+    "COUNTY": "DUKES",
+    "RPA": "MVC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 297,
+    "TOWN": "TOLLAND",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 298,
+    "TOWN": "TOPSFIELD",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 299,
+    "TOWN": "TOWNSEND",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 300,
+    "TOWN": "TRURO",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 301,
+    "TOWN": "TYNGSBOROUGH",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "NMCOG",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 302,
+    "TOWN": "TYRINGHAM",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 303,
+    "TOWN": "UPTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 304,
+    "TOWN": "UXBRIDGE",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 305,
+    "TOWN": "WAKEFIELD",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSPC"
+  },
+  {
+    "TOWN_ID": 306,
+    "TOWN": "WALES",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 307,
+    "TOWN": "WALPOLE",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 308,
+    "TOWN": "WALTHAM",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 309,
+    "TOWN": "WARE",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 310,
+    "TOWN": "WAREHAM",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 311,
+    "TOWN": "WARREN",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 312,
+    "TOWN": "WARWICK",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 313,
+    "TOWN": "WASHINGTON",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 314,
+    "TOWN": "WATERTOWN",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 315,
+    "TOWN": "WAYLAND",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "METROWEST"
+  },
+  {
+    "TOWN_ID": 316,
+    "TOWN": "WEBSTER",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 317,
+    "TOWN": "WELLESLEY",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "METROWEST"
+  },
+  {
+    "TOWN_ID": 318,
+    "TOWN": "WELLFLEET",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 319,
+    "TOWN": "WENDELL",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 320,
+    "TOWN": "WENHAM",
+    "COUNTY": "ESSEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSTF"
+  },
+  {
+    "TOWN_ID": 321,
+    "TOWN": "WEST BOYLSTON",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 322,
+    "TOWN": "WEST BRIDGEWATER",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 323,
+    "TOWN": "WEST BROOKFIELD",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 324,
+    "TOWN": "WEST NEWBURY",
+    "COUNTY": "ESSEX",
+    "RPA": "MVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 325,
+    "TOWN": "WEST SPRINGFIELD",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 326,
+    "TOWN": "WEST STOCKBRIDGE",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 327,
+    "TOWN": "WEST TISBURY",
+    "COUNTY": "DUKES",
+    "RPA": "MVC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 328,
+    "TOWN": "WESTBOROUGH",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 329,
+    "TOWN": "WESTFIELD",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 330,
+    "TOWN": "WESTFORD",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "NMCOG",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 331,
+    "TOWN": "WESTHAMPTON",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 332,
+    "TOWN": "WESTMINSTER",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 333,
+    "TOWN": "WESTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "METROWEST"
+  },
+  {
+    "TOWN_ID": 334,
+    "TOWN": "WESTPORT",
+    "COUNTY": "BRISTOL",
+    "RPA": "SRPEDD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 335,
+    "TOWN": "WESTWOOD",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "TRIC"
+  },
+  {
+    "TOWN_ID": 336,
+    "TOWN": "WEYMOUTH",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SSC"
+  },
+  {
+    "TOWN_ID": 337,
+    "TOWN": "WHATELY",
+    "COUNTY": "FRANKLIN",
+    "RPA": "FCPD",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 338,
+    "TOWN": "WHITMAN",
+    "COUNTY": "PLYMOUTH",
+    "RPA": "OCPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 339,
+    "TOWN": "WILBRAHAM",
+    "COUNTY": "HAMPDEN",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 340,
+    "TOWN": "WILLIAMSBURG",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 341,
+    "TOWN": "WILLIAMSTOWN",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 342,
+    "TOWN": "WILMINGTON",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSPC"
+  },
+  {
+    "TOWN_ID": 343,
+    "TOWN": "WINCHENDON",
+    "COUNTY": "WORCESTER",
+    "RPA": "MRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 344,
+    "TOWN": "WINCHESTER",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSPC"
+  },
+  {
+    "TOWN_ID": 345,
+    "TOWN": "WINDSOR",
+    "COUNTY": "BERKSHIRE",
+    "RPA": "BCRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 346,
+    "TOWN": "WINTHROP",
+    "COUNTY": "SUFFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "CORE"
+  },
+  {
+    "TOWN_ID": 347,
+    "TOWN": "WOBURN",
+    "COUNTY": "MIDDLESEX",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "NSPC"
+  },
+  {
+    "TOWN_ID": 348,
+    "TOWN": "WORCESTER",
+    "COUNTY": "WORCESTER",
+    "RPA": "CMRPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 349,
+    "TOWN": "WORTHINGTON",
+    "COUNTY": "HAMPSHIRE",
+    "RPA": "PVPC",
+    "MAPC_SUBREGION": 0
+  },
+  {
+    "TOWN_ID": 350,
+    "TOWN": "WRENTHAM",
+    "COUNTY": "NORFOLK",
+    "RPA": "MAPC",
+    "MAPC_SUBREGION": "SWAP"
+  },
+  {
+    "TOWN_ID": 351,
+    "TOWN": "YARMOUTH",
+    "COUNTY": "BARNSTABLE",
+    "RPA": "CCC",
+    "MAPC_SUBREGION": 0
+  }
+]

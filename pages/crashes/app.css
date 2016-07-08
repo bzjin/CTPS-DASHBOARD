@@ -1,0 +1,66 @@
+#div {
+  position: relative;
+}
+
+div h3 {
+  font-weight: 700;
+  font-family: "Raleway";
+}
+
+#header h1 {
+  font-size: 72px;
+  font-weight: 700;
+  font-family: "Raleway";
+  text-transform: uppercase;
+}
+
+#header h3 {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Raleway";
+  padding-bottom: -20px;
+}
+
+#map { 
+  position: relative;
+}
+
+#chart { 
+  position: relative;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-weight: 100;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+.subregion { 
+  fill: #e0e0e0;
+    stroke: #fff;
+    stroke-width: 1px;
+}
+
+.subregion:hover {
+    fill: #666;
+}
+
+.hidden {
+    display: none;
+}
+
+#key i { 
+  padding: 20px 5px 30px 20px;
+ }
+
+.bicycle { 
+  color: #f1a9a0;
+}
+
+.pedes{ 
+    color: #1ba39c;
+}

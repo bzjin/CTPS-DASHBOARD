@@ -1,0 +1,3705 @@
+[
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 16,
+    "MEASURE": 44.903,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 18,
+    "MEASURE": 45.182,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 20,
+    "MEASURE": 45.422,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 9,
+    "MEASURE": 17.519,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 10,
+    "MEASURE": 19.374,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 11,
+    "MEASURE": 22.261,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 12,
+    "MEASURE": 26.55,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 31.591,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 34.249,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 15,
+    "MEASURE": 35.747,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 16,
+    "MEASURE": 38.088,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 17,
+    "MEASURE": 40.518,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 19,
+    "MEASURE": 41.731,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 15,
+    "MEASURE": 56.304,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 10,
+    "MEASURE": 72.663,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 11,
+    "MEASURE": 69.774,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 12,
+    "MEASURE": 65.49,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 14,
+    "MEASURE": 57.796,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": "16A",
+    "MEASURE": 53.975,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": "16B",
+    "MEASURE": 53.967,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 17,
+    "MEASURE": 51.529,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 13,
+    "MEASURE": 60.486,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 16,
+    "MEASURE": 50.1916,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 9,
+    "MEASURE": 44.5308,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 8,
+    "MEASURE": 43.5512,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 15,
+    "MEASURE": 49.7133,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 48.0997,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 11,
+    "MEASURE": 46.1931,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 47.8265,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 23,
+    "MEASURE": 52.62924,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 26,
+    "MEASURE": 53.18149,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 20,
+    "MEASURE": 50.7104,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": 18,
+    "MEASURE": 50.4709,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 15,
+    "MEASURE": 42.17622,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 12,
+    "MEASURE": 44.9456,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": "11B",
+    "MEASURE": 45.6778,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 10,
+    "MEASURE": 46.3845,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": "11A",
+    "MEASURE": 45.6906,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 9,
+    "MEASURE": 47.1092,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 7,
+    "MEASURE": 48.984,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 8,
+    "MEASURE": 48.3426,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 20,
+    "MEASURE": 39.27601,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 18,
+    "MEASURE": 40.592135,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": "24A-B",
+    "MEASURE": 38.67733,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": 23,
+    "MEASURE": 39.06431,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US3 SB",
+    "EXITNUMBER": "25A",
+    "MEASURE": 21.516,
+    "ROUTE_NUM": "US3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US3 SB",
+    "EXITNUMBER": "25B",
+    "MEASURE": 20.303,
+    "ROUTE_NUM": "US3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US3 SB",
+    "EXITNUMBER": 26,
+    "MEASURE": 18.461,
+    "ROUTE_NUM": "US3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US3 NB",
+    "EXITNUMBER": 26,
+    "MEASURE": 72.676,
+    "ROUTE_NUM": "US3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US3 NB",
+    "EXITNUMBER": 27,
+    "MEASURE": 76.192,
+    "ROUTE_NUM": "US3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US3 SB",
+    "EXITNUMBER": 27,
+    "MEASURE": 14.968,
+    "ROUTE_NUM": "US3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": "5B",
+    "MEASURE": 60.477,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 26,
+    "MEASURE": 49.2017,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 25,
+    "MEASURE": 46.808,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 7,
+    "MEASURE": 57.352,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": "15A",
+    "MEASURE": 27.8019,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 28.398,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 29.537,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 8,
+    "MEASURE": 56.71,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 12,
+    "MEASURE": 30.066,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 18,
+    "MEASURE": 48.959,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 25,
+    "MEASURE": 47.203,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 20,
+    "MEASURE": 48.5889992371,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": "24A-B",
+    "MEASURE": 47.203,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 3,
+    "MEASURE": 62.0889999523,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 26,
+    "MEASURE": 45.4851,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": "2A",
+    "MEASURE": 63.2711,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": "15A",
+    "MEASURE": 66.817,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": "2B",
+    "MEASURE": 63.2612,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 1,
+    "MEASURE": 64.423,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 4,
+    "MEASURE": 61.227,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": "5A",
+    "MEASURE": 60.49,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 9,
+    "MEASURE": 55.475,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 10,
+    "MEASURE": 54.751,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": "11A",
+    "MEASURE": 54.057,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 6,
+    "MEASURE": 58.2648,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": "11B",
+    "MEASURE": 54.0455,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 12,
+    "MEASURE": 53.313,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 15,
+    "MEASURE": 50.542,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 14,
+    "MEASURE": 66.335,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR1A SB",
+    "EXITNUMBER": 13,
+    "MEASURE": 65.054,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 SB",
+    "EXITNUMBER": "19-18",
+    "MEASURE": 49.512,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3 NB",
+    "EXITNUMBER": "20A-B",
+    "MEASURE": 42.260002,
+    "ROUTE_NUM": "SR3",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 7,
+    "MEASURE": 38.698,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 7,
+    "MEASURE": 49.934,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 7,
+    "MEASURE": 34.873,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 7,
+    "MEASURE": 6.782,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 27,
+    "MEASURE": 69.935,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 31,
+    "MEASURE": 80.112,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 32,
+    "MEASURE": 83.184,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 28,
+    "MEASURE": 74.573,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 30,
+    "MEASURE": 79.097,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 26,
+    "MEASURE": 67.252,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 3,
+    "MEASURE": 32.6620000954,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": "2A",
+    "MEASURE": 31.468,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": "2B",
+    "MEASURE": 31.478,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 4,
+    "MEASURE": 33.527,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": "5A",
+    "MEASURE": 34.277,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": "5B",
+    "MEASURE": 34.291,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 6,
+    "MEASURE": 36.497,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 7,
+    "MEASURE": 36.85,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 8,
+    "MEASURE": 38.263,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 9,
+    "MEASURE": 39.242,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 11,
+    "MEASURE": 40.905,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 42.535,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 42.808,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR1A NB",
+    "EXITNUMBER": 15,
+    "MEASURE": 44.425,
+    "ROUTE_NUM": "SR1A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 24,
+    "MEASURE": 40.216,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": "23S",
+    "MEASURE": 41.041,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": "23N",
+    "MEASURE": 40.887,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": "22W",
+    "MEASURE": 41.669,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 21,
+    "MEASURE": 42.278,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 16,
+    "MEASURE": 48.765,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": "20A",
+    "MEASURE": 43.293,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 19,
+    "MEASURE": 43.969,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 17,
+    "MEASURE": 47.223,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 15,
+    "MEASURE": 50.207,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 53.277,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 54,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 12,
+    "MEASURE": 54.749,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 11,
+    "MEASURE": 55.826,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 10,
+    "MEASURE": 56.605,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": "22E",
+    "MEASURE": 41.439,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 18,
+    "MEASURE": 45.155,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 28,
+    "MEASURE": 19.377,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 11,
+    "MEASURE": 1.773,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 12,
+    "MEASURE": 2.831,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 13,
+    "MEASURE": 3.583,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 14,
+    "MEASURE": 4.313,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 15,
+    "MEASURE": 7.373,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 29,
+    "MEASURE": 19.893,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 26,
+    "MEASURE": 18.823,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": "25B",
+    "MEASURE": 18.026,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": "25A",
+    "MEASURE": 18.033,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 24,
+    "MEASURE": 17.37,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": "23S",
+    "MEASURE": 16.526,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 17,
+    "MEASURE": 10.357,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": "23N",
+    "MEASURE": 16.652,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 19,
+    "MEASURE": 13.611,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 18,
+    "MEASURE": 12.411,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 16,
+    "MEASURE": 8.835,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 10,
+    "MEASURE": 0.974,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": "20A",
+    "MEASURE": 14.163,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": "20B",
+    "MEASURE": 14.328,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 21,
+    "MEASURE": 15.256,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 SB",
+    "EXITNUMBER": 22,
+    "MEASURE": 15.899,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 45,
+    "MEASURE": 64.415,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 49,
+    "MEASURE": 68.76,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 5,
+    "MEASURE": 6.91728,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 50,
+    "MEASURE": 69.64835,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 51,
+    "MEASURE": 72.06,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 8,
+    "MEASURE": 16.626,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 9,
+    "MEASURE": 19.21526,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 12,
+    "MEASURE": 63.3935,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR24 NB",
+    "EXITNUMBER": "20A",
+    "MEASURE": 37.494,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR24 NB",
+    "EXITNUMBER": "20B",
+    "MEASURE": 37.505,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR24 NB",
+    "EXITNUMBER": 21,
+    "MEASURE": 40.394,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR24 NB",
+    "EXITNUMBER": "19B",
+    "MEASURE": 35.28,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR24 NB",
+    "EXITNUMBER": "19A",
+    "MEASURE": 35.269,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR24 NB",
+    "EXITNUMBER": "18A",
+    "MEASURE": 33.073,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR24 NB",
+    "EXITNUMBER": "18B",
+    "MEASURE": 33.087,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR24 SB",
+    "EXITNUMBER": "20A",
+    "MEASURE": 3.545,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR24 SB",
+    "EXITNUMBER": "20B",
+    "MEASURE": 3.533,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR24 SB",
+    "EXITNUMBER": "19A",
+    "MEASURE": 5.762,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR24 SB",
+    "EXITNUMBER": "18B",
+    "MEASURE": 7.94,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "23C",
+    "MEASURE": 61.714,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "14A",
+    "MEASURE": 35.554,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "21B",
+    "MEASURE": 54.163,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "21A",
+    "MEASURE": 54.125,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 20,
+    "MEASURE": 50.245,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 19,
+    "MEASURE": 48.318,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 18,
+    "MEASURE": 45.82,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "14B",
+    "MEASURE": 35.605,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 17,
+    "MEASURE": 43.183,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "13B",
+    "MEASURE": 32.935,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 12,
+    "MEASURE": 29.913,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "24B",
+    "MEASURE": 63.131,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 16,
+    "MEASURE": 40.954,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": 15,
+    "MEASURE": 37.565,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "23A",
+    "MEASURE": 59.385,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "29B",
+    "MEASURE": 77.573,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "25B",
+    "MEASURE": 64.89,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "25A",
+    "MEASURE": 64.834,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "24A",
+    "MEASURE": 63.088,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "23B",
+    "MEASURE": 59.443,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 NB",
+    "EXITNUMBER": "29A",
+    "MEASURE": 77.543,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "25A",
+    "MEASURE": 55.686,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "24B",
+    "MEASURE": 57.373,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 28,
+    "MEASURE": 45.919,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "25B",
+    "MEASURE": 55.63,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "24A",
+    "MEASURE": 57.417,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "23C",
+    "MEASURE": 58.795,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 26,
+    "MEASURE": 53.284,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 27,
+    "MEASURE": 50.56,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "29A",
+    "MEASURE": 42.929,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "29B",
+    "MEASURE": 42.898,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 30,
+    "MEASURE": 41.392,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 39,
+    "MEASURE": 112.954,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 41,
+    "MEASURE": 115.409,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 42,
+    "MEASURE": 117.516,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 53,
+    "MEASURE": 128.938,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 55,
+    "MEASURE": 130.821,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 56,
+    "MEASURE": 131.361,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 57,
+    "MEASURE": 131.918,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 58,
+    "MEASURE": 132.639,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 59,
+    "MEASURE": 133.618,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": 60,
+    "MEASURE": 134.057,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": "38A",
+    "MEASURE": 32.786,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": "38B",
+    "MEASURE": 32.777,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": 39,
+    "MEASURE": 29.089,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": "40A",
+    "MEASURE": 28.8458,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": "40B",
+    "MEASURE": 28.814,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": 41,
+    "MEASURE": 26.629,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": 42,
+    "MEASURE": 24.517,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": 43,
+    "MEASURE": 24.127,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": "52A",
+    "MEASURE": 13.611,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": "52B",
+    "MEASURE": 13.587,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": "54A",
+    "MEASURE": 12.106,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": "54B",
+    "MEASURE": 12.0968,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": 56,
+    "MEASURE": 10.679,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": 57,
+    "MEASURE": 10.112,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": 58,
+    "MEASURE": 9.397,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": 59,
+    "MEASURE": 8.408,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR2 WB",
+    "EXITNUMBER": 60,
+    "MEASURE": 7.959,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 9,
+    "MEASURE": 57.557,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 27.5605,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 12,
+    "MEASURE": 28.0901,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 1,
+    "MEASURE": 57.007,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3A NB",
+    "EXITNUMBER": 15,
+    "MEASURE": 55.6777,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3A NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 54.064,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3A NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 53.791,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3A SB",
+    "EXITNUMBER": 12,
+    "MEASURE": 44.2315,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3A NB",
+    "EXITNUMBER": 16,
+    "MEASURE": 56.156,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3A SB",
+    "EXITNUMBER": 15,
+    "MEASURE": 41.46211,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 25,
+    "MEASURE": 2.42,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 26,
+    "MEASURE": 0.702,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": 25,
+    "MEASURE": 134.718,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": 26,
+    "MEASURE": 137.183,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 15,
+    "MEASURE": 31.8906,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 16,
+    "MEASURE": 14.8355,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 27.362,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 28.642,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 17,
+    "MEASURE": 32.312,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 18,
+    "MEASURE": 32.771,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 21,
+    "MEASURE": 37.98,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 22,
+    "MEASURE": 38.324,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 23,
+    "MEASURE": 38.782,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 24,
+    "MEASURE": 39.046,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 25,
+    "MEASURE": 39.21,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 26,
+    "MEASURE": 41.211,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "30A-B",
+    "MEASURE": 46.2879,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 34,
+    "MEASURE": 52.42897,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 35,
+    "MEASURE": 53.5251,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 36,
+    "MEASURE": 54.91913,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 39,
+    "MEASURE": 57.5695,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 4,
+    "MEASURE": 5.86004,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 40,
+    "MEASURE": 58.32172,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 10,
+    "MEASURE": 36.099,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "11A",
+    "MEASURE": 35.405,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "11B",
+    "MEASURE": 35.392,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 12,
+    "MEASURE": 34.66,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "2A",
+    "MEASURE": 44.6185,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "2B",
+    "MEASURE": 44.6085,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 3,
+    "MEASURE": 43.4366,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 32,
+    "MEASURE": 23.715,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 33,
+    "MEASURE": 23.041,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 35,
+    "MEASURE": 20.179,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 36,
+    "MEASURE": 19.345,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "37A",
+    "MEASURE": 17.793,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "37B",
+    "MEASURE": 17.768,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "37C",
+    "MEASURE": 16.314,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 38,
+    "MEASURE": 15.125,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 39,
+    "MEASURE": 13.63,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 4,
+    "MEASURE": 42.574,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 40,
+    "MEASURE": 12.219,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 41,
+    "MEASURE": 11.665,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 42,
+    "MEASURE": 8.585,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "5A",
+    "MEASURE": 41.837,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "5B",
+    "MEASURE": 41.824,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 6,
+    "MEASURE": 39.612,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 8,
+    "MEASURE": 38.057,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 9,
+    "MEASURE": 36.8235,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "11A",
+    "MEASURE": 23.2682,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "11B",
+    "MEASURE": 23.2833,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "15A",
+    "MEASURE": 29.316,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "15B",
+    "MEASURE": 29.332,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "16A",
+    "MEASURE": 30.825,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "16B",
+    "MEASURE": 30.835,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 41,
+    "MEASURE": 59.086,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 42,
+    "MEASURE": 60.649,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 43,
+    "MEASURE": 61.3,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR24 SB",
+    "EXITNUMBER": "18A",
+    "MEASURE": 7.952,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR24 SB",
+    "EXITNUMBER": "19B",
+    "MEASURE": 5.75,
+    "ROUTE_NUM": "SR24",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": "20B",
+    "MEASURE": 43.159,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 28,
+    "MEASURE": 38.197,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": 26,
+    "MEASURE": 38.758,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": "25B",
+    "MEASURE": 39.55,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR128 NB",
+    "EXITNUMBER": "25A",
+    "MEASURE": 39.543,
+    "ROUTE_NUM": "SR128",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 11,
+    "MEASURE": 10.837,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 12.4707,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 12.7435,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 15,
+    "MEASURE": 14.3572,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": "2A",
+    "MEASURE": 1.401,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": "2B",
+    "MEASURE": 1.411,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 3,
+    "MEASURE": 2.5946,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 32,
+    "MEASURE": 22.488,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 33,
+    "MEASURE": 23.163,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 34,
+    "MEASURE": 25.21,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 36,
+    "MEASURE": 26.863,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": "37A",
+    "MEASURE": 28.408,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": "37B",
+    "MEASURE": 28.434,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": "37C",
+    "MEASURE": 29.9,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 38,
+    "MEASURE": 31.071,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 39,
+    "MEASURE": 32.57,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 4,
+    "MEASURE": 3.46,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 40,
+    "MEASURE": 33.999,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 41,
+    "MEASURE": 34.564,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 42,
+    "MEASURE": 37.618,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": "5A",
+    "MEASURE": 4.21,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": "5B",
+    "MEASURE": 4.224,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 6,
+    "MEASURE": 6.43,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 8,
+    "MEASURE": 8.19515,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 9,
+    "MEASURE": 9.1747,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 1,
+    "MEASURE": 45.77,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": 12,
+    "MEASURE": 25.86,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "19A",
+    "MEASURE": 35.536,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "19B",
+    "MEASURE": 35.546,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "20A",
+    "MEASURE": 36.602,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "20B",
+    "MEASURE": 36.615,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "27A",
+    "MEASURE": 43.074,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "27B",
+    "MEASURE": 43.079,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "28A",
+    "MEASURE": 44.34,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "28B",
+    "MEASURE": 44.346,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "29A",
+    "MEASURE": 45.213,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "29B",
+    "MEASURE": 45.245,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "31A",
+    "MEASURE": 48.498,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "31B",
+    "MEASURE": 48.51,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "32A",
+    "MEASURE": 49.869,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "32B",
+    "MEASURE": 50.1312,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "33A",
+    "MEASURE": 51.557,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "33B",
+    "MEASURE": 51.568,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "37A",
+    "MEASURE": 55.496,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "37B",
+    "MEASURE": 55.5191,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "38A",
+    "MEASURE": 56.355,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "38B",
+    "MEASURE": 56.3643,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "44A",
+    "MEASURE": 62.686,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "44B",
+    "MEASURE": 62.702,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "47A",
+    "MEASURE": 67.102,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "47B",
+    "MEASURE": 67.115,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "7A",
+    "MEASURE": 12.947,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 NB",
+    "EXITNUMBER": "7B",
+    "MEASURE": 12.96,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 10,
+    "MEASURE": 68.757,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "11A",
+    "MEASURE": 66.5566,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "11B",
+    "MEASURE": 66.541,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 13,
+    "MEASURE": 62.864,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 14,
+    "MEASURE": 61.724,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "15A",
+    "MEASURE": 61.061,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "15B",
+    "MEASURE": 61.0455,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "16A",
+    "MEASURE": 59.452,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "16B",
+    "MEASURE": 59.442,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 17,
+    "MEASURE": 57.835,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 18,
+    "MEASURE": 57.375,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "19A",
+    "MEASURE": 54.5965,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "19B",
+    "MEASURE": 54.586,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "20A",
+    "MEASURE": 53.517,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "20B",
+    "MEASURE": 53.5045,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "21A",
+    "MEASURE": 52.153,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "22-21B",
+    "MEASURE": 51.743,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 24,
+    "MEASURE": 51.076,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 32,
+    "MEASURE": 37.278,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "23B",
+    "MEASURE": 61.082,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 11,
+    "MEASURE": 90.686,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 31,
+    "MEASURE": 40.366,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 16,
+    "MEASURE": 79.615,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 12,
+    "MEASURE": 89.871,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "13B",
+    "MEASURE": 87.634,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "14A",
+    "MEASURE": 85.02,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 15,
+    "MEASURE": 83.005,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "23A",
+    "MEASURE": 61.142,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 17,
+    "MEASURE": 77.369,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 18,
+    "MEASURE": 74.713,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 19,
+    "MEASURE": 72.217,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 20,
+    "MEASURE": 70.349,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "21A",
+    "MEASURE": 66.438,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "21B",
+    "MEASURE": 66.403,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": 22,
+    "MEASURE": 62.641,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I495 SB",
+    "EXITNUMBER": "14B",
+    "MEASURE": 84.977,
+    "ROUTE_NUM": "I495",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 18,
+    "MEASURE": 43.2052,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 20,
+    "MEASURE": 43.4447,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 23,
+    "MEASURE": 45.36354,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 26,
+    "MEASURE": 45.9158,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 27,
+    "MEASURE": 46.626408,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 18,
+    "MEASURE": 41.543445,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 20,
+    "MEASURE": 40.2273,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": "24A-B",
+    "MEASURE": 39.62863,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 23,
+    "MEASURE": 40.01565,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3A NB",
+    "EXITNUMBER": 18,
+    "MEASURE": 56.4353,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 18,
+    "MEASURE": 15.1148,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 20,
+    "MEASURE": 15.3543,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 23,
+    "MEASURE": 17.2732,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 26,
+    "MEASURE": 17.82542,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 27,
+    "MEASURE": 18.53601,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 29,
+    "MEASURE": 20.1934,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 31,
+    "MEASURE": 21.6785,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3A NB",
+    "EXITNUMBER": 20,
+    "MEASURE": 56.6748,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3A NB",
+    "EXITNUMBER": 26,
+    "MEASURE": 59.14589,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3A NB",
+    "EXITNUMBER": 23,
+    "MEASURE": 58.59368,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "SR3A SB",
+    "EXITNUMBER": 23,
+    "MEASURE": 38.3502,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3A SB",
+    "EXITNUMBER": "24A-B",
+    "MEASURE": 37.9632,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3A SB",
+    "EXITNUMBER": 20,
+    "MEASURE": 38.5619,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR3A SB",
+    "EXITNUMBER": 18,
+    "MEASURE": 39.87801,
+    "ROUTE_NUM": "SR3A",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 NB",
+    "EXITNUMBER": 28,
+    "MEASURE": 19.163,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 18,
+    "MEASURE": 30.3065,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 20,
+    "MEASURE": 28.9904,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": "24A-B",
+    "MEASURE": 28.3917,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 23,
+    "MEASURE": 28.7787,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 26,
+    "MEASURE": 26.6803,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 28,
+    "MEASURE": 25.8515,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 30,
+    "MEASURE": 24.943,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I93 SB",
+    "EXITNUMBER": 31,
+    "MEASURE": 24.4067,
+    "ROUTE_NUM": "I93",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 11,
+    "MEASURE": 38.9274,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 13,
+    "MEASURE": 40.561,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 40.8339,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 15,
+    "MEASURE": 42.4476,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": "2A",
+    "MEASURE": 29.4914,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": "2B",
+    "MEASURE": 29.5013,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 3,
+    "MEASURE": 30.685,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 4,
+    "MEASURE": 31.5505,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": "5A",
+    "MEASURE": 32.3005,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": "5B",
+    "MEASURE": 32.3143,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 6,
+    "MEASURE": 34.5204,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 8,
+    "MEASURE": 36.2855,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 9,
+    "MEASURE": 37.265,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 10,
+    "MEASURE": 47.336,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": "11A",
+    "MEASURE": 46.642,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": "11B",
+    "MEASURE": 46.629,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 12,
+    "MEASURE": 45.897,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": "38A",
+    "MEASURE": 109.251,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": "38B",
+    "MEASURE": 109.26,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": "40A",
+    "MEASURE": 113.189,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": "40B",
+    "MEASURE": 113.2208,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": "52A",
+    "MEASURE": 128.431,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "SR2 EB",
+    "EXITNUMBER": "52B",
+    "MEASURE": 128.454,
+    "ROUTE_NUM": "SR2",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I290 EB",
+    "EXITNUMBER": "25A",
+    "MEASURE": 17.914,
+    "ROUTE_NUM": "I290",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I290 EB",
+    "EXITNUMBER": "25B",
+    "MEASURE": 17.923,
+    "ROUTE_NUM": "I290",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I290 EB",
+    "EXITNUMBER": "26A",
+    "MEASURE": 20.001,
+    "ROUTE_NUM": "I290",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I290 WB",
+    "EXITNUMBER": "25A",
+    "MEASURE": 2.098,
+    "ROUTE_NUM": "I290",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I290 WB",
+    "EXITNUMBER": "25B",
+    "MEASURE": 2.089,
+    "ROUTE_NUM": "I290",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I290 WB",
+    "EXITNUMBER": "26A",
+    "MEASURE": 0.034,
+    "ROUTE_NUM": "I290",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I295 NB",
+    "EXITNUMBER": "2A",
+    "MEASURE": 4.025,
+    "ROUTE_NUM": "I295",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I295 NB",
+    "EXITNUMBER": "2B",
+    "MEASURE": 4.064,
+    "ROUTE_NUM": "I295",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": "11A",
+    "MEASURE": 106.216,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": 12,
+    "MEASURE": 111.159,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": 13,
+    "MEASURE": 116.578,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": 14,
+    "MEASURE": 123.434,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": 17,
+    "MEASURE": 127.532,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": "18-20",
+    "MEASURE": 130.954,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": 22,
+    "MEASURE": 133.288,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I90 EB",
+    "EXITNUMBER": "24A-C",
+    "MEASURE": 134.261,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "EB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": "11A",
+    "MEASURE": 31.662,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 12,
+    "MEASURE": 26.721,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 13,
+    "MEASURE": 21.289,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 15,
+    "MEASURE": 14.448,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 16,
+    "MEASURE": 12.699,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 17,
+    "MEASURE": 10.349,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 20,
+    "MEASURE": 6.914,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 21,
+    "MEASURE": 5.043,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 22,
+    "MEASURE": 4.57,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": 23,
+    "MEASURE": 4.03,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "I90 WB",
+    "EXITNUMBER": "24A-B",
+    "MEASURE": 3.601,
+    "ROUTE_NUM": "I90",
+    "ROUTE_DIR": "WB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 15,
+    "MEASURE": 43.12752,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 16,
+    "MEASURE": 42.926,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": "2A",
+    "MEASURE": 55.8554,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": "2B",
+    "MEASURE": 55.8454,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 3,
+    "MEASURE": 54.6735,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 4,
+    "MEASURE": 53.811,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": "5A",
+    "MEASURE": 53.074,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": "5B",
+    "MEASURE": 53.061,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 6,
+    "MEASURE": 50.8489,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 8,
+    "MEASURE": 49.294,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 9,
+    "MEASURE": 48.0605,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": 14,
+    "MEASURE": 26.4205,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": "15A",
+    "MEASURE": 25.731,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 NB",
+    "EXITNUMBER": "15B",
+    "MEASURE": 25.732,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "NB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 13,
+    "MEASURE": 57.6385,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": 14,
+    "MEASURE": 58.9186,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": "15A",
+    "MEASURE": 59.401,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "US1 SB",
+    "EXITNUMBER": "15B",
+    "MEASURE": 59.653,
+    "ROUTE_NUM": "US1",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 25,
+    "MEASURE": 50.91,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 26,
+    "MEASURE": 48.912,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "27A",
+    "MEASURE": 47.0435,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "27B",
+    "MEASURE": 47.0385,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 28,
+    "MEASURE": 45.773,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "29A",
+    "MEASURE": 44.8965,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "29B",
+    "MEASURE": 44.8635,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "30A",
+    "MEASURE": 43.833,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "30B",
+    "MEASURE": 43.821,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "31A",
+    "MEASURE": 41.6075,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "31B",
+    "MEASURE": 41.596,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "32A",
+    "MEASURE": 40.236,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "32B",
+    "MEASURE": 39.9733,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "33A",
+    "MEASURE": 38.545,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "33B",
+    "MEASURE": 38.534,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 34,
+    "MEASURE": 37.677,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 35,
+    "MEASURE": 36.576,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 36,
+    "MEASURE": 35.18,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "37A",
+    "MEASURE": 34.605,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "37B",
+    "MEASURE": 34.582,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "38A",
+    "MEASURE": 33.7464,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "38B",
+    "MEASURE": 33.737,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 39,
+    "MEASURE": 32.542,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 4,
+    "MEASURE": 84.02,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 40,
+    "MEASURE": 31.789,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 41,
+    "MEASURE": 31.017,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 42,
+    "MEASURE": 29.452,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 43,
+    "MEASURE": 28.8054,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 44,
+    "MEASURE": 27.399,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 45,
+    "MEASURE": 25.968,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 46,
+    "MEASURE": 24.519,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 48,
+    "MEASURE": 22.602,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 5,
+    "MEASURE": 82.958,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 50,
+    "MEASURE": 20.977,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 51,
+    "MEASURE": 18.578,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "6A",
+    "MEASURE": 78.3,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "6B",
+    "MEASURE": 78.26,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "7A",
+    "MEASURE": 76.907,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": "7B",
+    "MEASURE": 76.893,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 8,
+    "MEASURE": 73.279,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  },
+  {
+    "ROUTEKEY": "I95 SB",
+    "EXITNUMBER": 9,
+    "MEASURE": 70.632,
+    "ROUTE_NUM": "I95",
+    "ROUTE_DIR": "SB"
+  }
+]
