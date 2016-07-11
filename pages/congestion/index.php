@@ -2,8 +2,8 @@
 <head lang="en">
 <meta charset="utf-8">
 <title>Congestion in the Boston MPO Region</title>
-<link rel="stylesheet" href="../../css/master.css"/>
 <link rel="stylesheet" href="app.css"/>
+<link rel="stylesheet" href="../../css/master.css"/>
 
 
 <!-- Font Awesome -->
@@ -38,10 +38,12 @@
 </div>
 	<div class="col-md-12">
 		<h1>Congestion</h1>
-		<h3><a href="#">Interstate Roads</a> &nbsp &nbsp &nbsp &nbsp<a href="index2.html">Non-Interstate Roads</a></h3>
+			<h3 class="inner-nav col-md-12"><a href="#"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+	Interstate Roads</a><a href="index2.php"><i class="fa fa-circle-o" aria-hidden="true"></i>Non-Interstate Roads</a></h3>	
 		<p>[Attention Getter] Blurb on Congestion. Why is it important? Why do we care?</p>
 		<p> Define Speed Index and Congestion Minutes</p>
 	</div>
+
 
 	<div class="col-md-12">
 		<h3> Interstate Speed Index by Route Coordinates </h3>
@@ -63,9 +65,12 @@
 
 	<div class="col-md-12">
 		<h3> Free Flow v. Congested Travel Time </h3> 
+		<button class="col-md-4" id="congAnim"> Start Animation </button>
+		<div class="col-md-12">
 		<div class="col-md-4" id="freeFlow"> Driving at Speed Limit </div>
 		<div class="col-md-4" id="amCong"> Driving in AM Congestion</div>
 		<div class="col-md-4" id="pmCong"> Driving in PM Congestion </div>
+		</div>
 	</div>
 <div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>

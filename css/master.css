@@ -69,6 +69,7 @@ button:active, button:hover, button:focus,  {
 }
 
 .footer { 
+  clear: both;
   position: absolute;
   bottom: 20px;
   text-align: center;

@@ -742,8 +742,8 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 		if (nameA < nameB) { return -1}
 		if (nameA > nameB) { return 1}
 		else { 
-			var nameC = a.properties.TO_MEAS;
-			var nameD = b.properties.TO_MEAS;
+			var nameC = a.properties.FROM_MEAS;
+			var nameD = b.properties.FROM_MEAS;
 			if (nameC < nameD) { return -1}
 			if (nameC > nameD) { return 1}
 			return 0;
@@ -762,6 +762,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 		.attr("width", "100%")
 		.attr("height", 600);
 
+	//Free Flow Map
 	var mapcSVG = freeFlow.selectAll(".freeFlow")
 		.data(towns.features)
 		.enter()
@@ -785,23 +786,6 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 			.style("stroke-linejoin", "round")
 			.style("stroke", "#ddd")
 			.style("opacity", 0)
-
-    var timecounter = 0;
-    var minutes = 0; 
-    d3.selectAll(".freeFlowRoad").transition()
-		.delay(function(d) { 
-			timecounter += d.properties.SPD_LIMIT;
-			return timecounter;
-		})
-		.duration(1200)
-		.style("stroke-width", 3)
-		.style("opacity", 1)
-		.text(function(d){
-			if (!isNaN(d.properties.AM_CONG_MN)){
-				minutes += d.properties.AM_CONG_MN;
-			}
-			return "Time spent in congestion: " + minutes + " min";
-		})
 
 	//AM Congestion Road
 	var amCong = d3.select("#amCong").append("svg")
@@ -834,16 +818,6 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 			})
 			.style("opacity", 0)
 
-    var timecounteram = 0;
-    d3.selectAll(".amCongRoad").transition()
-		.delay(function(d) { 
-			timecounteram += (1/d.properties.AM_SPD_IX) * d.properties.SPD_LIMIT;
-			return timecounteram;
-		})
-		.duration(function(d) { return (1/d.properties.AM_SPD_IX) * 1200; })
-		.style("stroke-width", function(d) { return 1/d.properties.AM_SPD_IX * 5; })
-		.style("opacity", 1)
-
 	//PM Congestion Road
 	var pmCong = d3.select("#pmCong").append("svg")
 		.attr("width", "100%")
@@ -875,24 +849,52 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 			})
 			.style("opacity", 0)
 
-    var timecounterpm = 0;
-    d3.selectAll(".pmCongRoad").transition()
-		.delay(function(d) { 
-			timecounterpm += (1/d.properties.PM_SPD_IX) * d.properties.SPD_LIMIT;
-			return timecounterpm;
-		})
-		.duration(function(d) { return (1/d.properties.PM_SPD_IX) * 1200; })
-		.style("stroke-width", function(d) { return 1/d.properties.PM_SPD_IX * 5; })
-		.style("opacity", 1)
-
 	//Minute counters
-	freeFlow.append("text")
+	/*freeFlow.append("text")
 		.attr("class", "freeFlow")
 		.attr("x", 0)
 		.attr("y", 30)
 		.style("font-weight", 300)
-		.text("Time spent in congestion:" + minutes + " min")
+		.text("Time spent in congestion:" + minutes + " min")*/
 
+	//Click button to start animation
+	d3.selectAll("#congAnim").on("click", function() { 
+	//Freeflow Animation
+		var timecounter = 0;
+	    var minutes = 0; 
 
+	    d3.selectAll(".freeFlowRoad")
+			.transition()
+			.delay(function(d) { 
+				timecounter += d.properties.SPD_LIMIT ;
+				return timecounter;
+			})
+			.duration(2400)
+			.style("stroke-width", 3)
+			.style("opacity", 1)
+			
+
+		//AM Animation
+		var timecounteram = 0;
+	    d3.selectAll(".amCongRoad").transition()
+			.delay(function(d) { 
+				timecounteram += (1/d.properties.AM_SPD_IX) * d.properties.SPD_LIMIT ;
+				return timecounteram;
+			})
+			.duration(function(d) { return (1/d.properties.AM_SPD_IX) * 2400; })
+			.style("stroke-width", function(d) { return 1/d.properties.AM_SPD_IX * 5; })
+			.style("opacity", 1)
+
+		//PM Animation
+		var timecounterpm = 0;
+	    d3.selectAll(".pmCongRoad").transition()
+			.delay(function(d) { 
+				timecounterpm += (1/d.properties.PM_SPD_IX) * d.properties.SPD_LIMIT ;
+				return timecounterpm;
+			})
+			.duration(function(d) { return (1/d.properties.PM_SPD_IX) * 2400; })
+			.style("stroke-width", function(d) { return 1/d.properties.PM_SPD_IX * 5; })
+			.style("opacity", 1)
+	})
 
 }

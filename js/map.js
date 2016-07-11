@@ -1,6 +1,21 @@
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+$(function() {
+    function count($this){
+        var current = parseInt($this.html(), 10);
+        current = current + 1 ; /* Where 5 is increment */
+
+	    $this.html(++current);
+	    if(current > $this.data('count')){
+	        $this.html($this.data('count'));
+	    } else {    
+	        setTimeout(function(){count($this)}, 5);
+	    }
+	}         
+  $(".countUp").each(function() {
+      $(this).data('count', parseInt($(this).html(), 10));
+      $(this).html('0');
+      count($(this));
+  });
+});
 
 var yolo = d3.select("#progress-test").append("svg")
 	.attr("width", 135)
