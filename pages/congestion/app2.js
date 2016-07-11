@@ -11,8 +11,7 @@ queue()
 	//.defer(d3.json, "JSON/road_inv_mpo_nhs_noninterstate_2015.geojson")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
-		CTPS.demoApp.generateChart(results[1]);
-		//CTPS.demoApp.generateTimes(results[1]);
+		//CTPS.demoApp.generateChart(results[1]);
 		CTPS.demoApp.generateTraveller(results[0], results[1]);
 	}); 
 	//CTPS.demoApp.generateViz);
@@ -21,13 +20,31 @@ queue()
 CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {	
 	// Show name of MAPC Sub Region
 	// Define Zoom Behavior
+	var projScale = 45000,
+		projXPos = 100,
+		projYPos = 1720;
+
 	var projection = d3.geo.conicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
-	.scale([22000]) // N.B. The scale and translation vector were determined empirically.
-	.translate([120, 950]);
+	.scale([projScale]) // N.B. The scale and translation vector were determined empirically.
+	.translate([projXPos, projYPos]);
+
+	var projectionS = d3.geo.conicConformal()
+	.parallels([41 + 43 / 60, 42 + 41 / 60])
+    .rotate([71 + 30 / 60, -41 ])
+	.scale([projScale]) // N.B. The scale and translation vector were determined empirically.
+	.translate([projXPos + 3, projYPos]);
+
+	var projectionW = d3.geo.conicConformal()
+	.parallels([41 + 43 / 60, 42 + 41 / 60])
+    .rotate([71 + 30 / 60, -41 ])
+	.scale([projScale]) // N.B. The scale and translation vector were determined empirically.
+	.translate([projXPos, projYPos - 3]);
 	
 	var geoPath = d3.geo.path().projection(projection);
+	var geoPathS = d3.geo.path().projection(projectionS);
+	var geoPathW = d3.geo.path().projection(projectionW);
 
 	var maxmin = []; 
 	interstateRoads.features.forEach(function(i) { 
@@ -35,15 +52,15 @@ CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {
 	})
 
 	// SVG Viewport
-	var svgContainer = d3.select("#map").append("svg")
+	var svgContainer = d3.select("#mapNonInterstate").append("svg")
 		.attr("width", "100%")
-		.attr("height", 600);
+		.attr("height", 800);
 
 	var tip = d3.tip()
 	  .attr('class', 'd3-tip')
-	  .offset([0, 10])
+	  .offset([0, 150])
 	  .html(function(d) {
-	    return d.properties.ROAD_NAME + "<br>Speed Limit: " + d.properties.SPD_LIMIT + "<br>Speed Index: " + d.properties.AM_SPD_IX;
+	    return d.properties.RTE_NAME + ": <p>" + d.properties.ROAD_NAME + "</p>Speed Limit: " + d.properties.SPD_LIMIT + "<br>Speed Index: " + d3.round(d.properties.AM_SPD_IX, 3);
 	  })
 
 	svgContainer.call(tip); 
@@ -65,21 +82,172 @@ CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {
 		.data(interstateRoads.features)
 		.enter()
 		.append("path")
-			.attr("class", function(d) { return "interstate mapsegment" + d.id;})
-			.attr("d", function(d, i) { return geoPath(d); })
+			.attr("class", function(d) { return "interstate mapsegment" + d.id + " " + d.properties.RTE_NAME.replace(/\//g, '-').replace(' ', '-') + "-" + d.properties.ROAD_NAME.replace('/', 'or').split(' ').join('-');})
+			.attr("d", function(d, i) { 
+				if (d.properties.DIRECTION == "Northbound" || d.properties.DIRECTION == "Eastbound") { 
+					return geoPath(d); 
+				} else if (d.properties.DIRECTION == "Southbound") {
+					return geoPathS(d);
+				} else if (d.properties.DIRECTION == "Westbound") {
+					return geoPathW(d);
+				}})
 			.style("fill", "none")
-			.style("stroke-width", function(d) { return (1/(d.properties.AM_SPD_IX*d.properties.AM_SPD_IX)*2); })
+			.style("stroke-width", 1)
 			.style("stroke-linejoin", "round")
 			.style("stroke", function(d) { 
 				return colorScale(d.properties.AM_SPD_IX);
 			})
-			.style("opacity", 1)//function(d) { return (d.properties.AM_SPD_IX-.5);})
+			.style("opacity", .2)//function(d) { return (d.properties.AM_SPD_IX-.5);})
 		.on("mouseenter", function(d) {
-            	tip.show(d);
-            })
-        .on("mouseleave", function(d) {
-            	tip.hide(d);
-	     })
+            	var mystring = this.getAttribute("class");
+				var arr = mystring.split(" ");
+				var thirdWord = arr[2]; 
+				console.log(thirdWord)
+				
+				d3.selectAll(".interstate")
+					.style("stroke-width", 1)
+					.style("opacity", .2);
+
+				d3.selectAll("." + thirdWord)
+					.style("stroke-width", 2.5)
+					.style("opacity", 1)
+				tip.show(d); 
+			})
+		.on("mouseleave", function (d) {
+				tip.hide(d);
+			})
+		.on("click", function(d) {
+			crossSection(d);
+
+			var mystring = this.getAttribute("class");
+				var arr = mystring.split(" ");
+				var thirdWord = arr[2]; 
+				console.log(thirdWord)
+				
+				d3.selectAll(".interstate")
+					.style("stroke-width", 1)
+					.style("opacity", .2);
+
+				d3.selectAll("." + thirdWord)
+					.style("stroke-width", 2.5)
+					.style("opacity", 1)
+		})
+	
+	function findFlipFrom(d) { 
+		var storage = []; 
+		var shift = [];
+		interstateRoads.features.forEach(function(j){ 
+			if (j.properties.ROAD_NAME == d.properties.ROAD_NAME && j.properties.RTE_NAME == d.properties.RTE_NAME && j.properties.DIRECTION == d.properties.DIRECTION) { 
+				storage.push(j.properties.TO_MEAS); 
+				shift.push(j.properties.FROM_MEAS);
+			}
+		})
+		return [d3.max(storage), d3.min(shift), d3.min(storage)]; 
+	}
+
+	//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
+	interstateRoads.features.forEach(function(i){ 
+		if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
+			i.properties.NORMALIZEDSTART = Math.abs(Math.abs(-(i.properties.FROM_MEAS - findFlipFrom(i)[0]))) ;
+		} else {
+			i.properties.NORMALIZEDSTART = Math.abs(i.properties.TO_MEAS - findFlipFrom(i)[1]);
+		}
+	}); 
+
+	var roadWindow = d3.select("#crossSection").append("svg")
+		.attr("width", "100%")
+		.attr("height", 800)
+		.style("overflow", "visible")
+
+	function crossSection(d) { 
+		var crossGraph = [];
+		interstateRoads.features.forEach(function(i){
+			if (i.properties.ROAD_NAME == d.properties.ROAD_NAME && i.properties.RTE_NAME == d.properties.RTE_NAME) {
+				crossGraph.push(i);
+			}
+		})
+
+		var maxmins = []; 
+		var directions = 0; 
+		crossGraph.forEach(function(j){
+			maxmins.push(j.properties.NORMALIZEDSTART + Math.abs(d.properties.TO_MEAS - d.properties.FROM_MEAS))
+			maxmins.push(j.properties.NORMALIZEDSTART);
+			if (j.properties.DIRECTION == "Northbound" || j.properties.DIRECTION == "Southbound") { directions++; }
+		})
+
+		var yScale = d3.scale.linear().domain([0, d3.max(maxmins)]).range([600, 150]);
+		var ySegment = d3.scale.linear().domain([0, d3.max(maxmins)]).range([0, 450]);
+
+		roadWindow.selectAll("rect, text").remove();
+
+		//Append labels
+		roadWindow.append("text")
+			.text(function(){
+				if (directions > 0) { 
+					return "NB SB";
+				} else {
+					return "EB WB";
+				}
+			})
+			.attr("x", 97)
+			.attr("y", 615)
+			.style("font-weight", 300)
+			.style("text-anchor", "middle")
+
+		roadWindow.append("text")
+			.html(crossGraph[0].properties.RTE_NAME)
+			.attr("x", 100)
+			.attr("y", 120)
+			.style("text-anchor", "middle")
+		
+		roadWindow.append("text")
+			.html(crossGraph[0].properties.ROAD_NAME)
+			.attr("x", 100)
+			.attr("y", 140)
+			.style("text-anchor", "middle")
+
+		roadWindow.selectAll(".crossSectionAM")
+			.data(crossGraph)
+			.enter()
+			.append("rect")
+				.attr("class", "crossSectionAM")
+				.attr("width", 15)
+				.attr("height", function(d) { return ySegment(Math.abs(d.properties.TO_MEAS - d.properties.FROM_MEAS)); })
+				.attr("x", function(d) { 
+					if (d.properties.DIRECTION == "Northbound" || d.properties.DIRECTION == "Eastbound") {
+						return 80;
+					} else {
+						return 100;
+					}})
+				.attr("y", function(d) { return yScale(d.properties.NORMALIZEDSTART); })
+				.style("fill", function(d) { return colorScale(d.properties.AM_SPD_IX)})
+
+		roadWindow.selectAll(".textlabels")
+			.data(crossGraph)
+			.enter()
+			.append("text")
+				.attr("class", "textlabels")
+				.text(function(d) { return d.properties.SEG_END;})
+				.attr("x", function(d) { 
+					if (d.properties.DIRECTION == "Northbound" || d.properties.DIRECTION == "Eastbound") {
+						return 75;
+					} else {
+						return 120;
+					}})
+				.attr("y", function(d) { return yScale(d.properties.NORMALIZEDSTART); })
+				.style("fill", "#fff")
+				.style("font-size", 10)
+				.style("font-weight", 300)
+				.style("text-anchor", function(d){
+					if (d.properties.DIRECTION == "Northbound" || d.properties.DIRECTION == "Eastbound") {
+						return "end";
+					} else {
+						return "start";
+					}})
+			
+	} 
+
+	
 } // CTPS.demoApp.generateViz()
 
 
@@ -180,8 +348,6 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 	interstateRoads.features.forEach(function(i){ 
 		if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
 			i.properties.NORMALIZEDSTART = -(i.properties.FROM_MEAS - amfindFlipFrom(i)[0]) + amfindFlipFrom(i)[1];
-		} else if (i.properties.ROAD_NAME == "MA-2" && i.properties.DIRECTION == "Eastbound") {
-			i.properties.NORMALIZEDSTART = i.properties.TO_MEAS - 5751.4697;
 		} else {
 			i.properties.NORMALIZEDSTART = i.properties.TO_MEAS;
 		}
@@ -192,7 +358,7 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 		.enter()
 		.append("rect")
 			.attr("class", function(d) { return "segment" + d.id + " ambars";})
-			.attr("height", 15)
+			.attr("height", 5)
 			.attr("width", function(d) {
 				if (isNaN(parseInt(d.properties.TO_MEAS))) { 
 					return 0;
@@ -209,7 +375,7 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 				if (d.properties.DIRECTION == "Eastbound" || d.properties.DIRECTION == "Northbound") { 
 					return yScale(d.properties.ROAD_NAME) - 2 ;
 				} else {
-					return yScale(d.properties.ROAD_NAME) - 20;
+					return yScale(d.properties.ROAD_NAME) - 12;
 
 				}
 			})
@@ -285,27 +451,27 @@ pmchartContainer.selectAll(".labels")
 			.style("text-anchor", "middle")
 			.text(function(d) { return d.key;});
 
-	function pmfindFlipFrom(d) { 
-			var storage = []; 
-			interstateRoads.features.forEach(function(j){ 
-				if (j.properties.ROAD_NAME == d.properties.ROAD_NAME && j.properties.DIRECTION == d.properties.DIRECTION) { 
-					storage.push(j.properties.TO_MEAS); 
-				}
-			})
-			var max = d3.max(storage); 
-			return max; 
-		}
-
-		//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
-		interstateRoads.features.forEach(function(i){ 
-			if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
-				i.properties.NORMALIZEDSTART = -(i.properties.TO_MEAS - pmfindFlipFrom(i));
-			} else if (i.properties.ROAD_NAME == "MA-2" && i.properties.DIRECTION == "Eastbound") {
-				i.properties.NORMALIZEDSTART = i.properties.FROM_MEAS - 5751.4697;
-			} else {
-				i.properties.NORMALIZEDSTART = i.properties.FROM_MEAS;
+function pmfindFlipFrom(d) { 
+		var storage = []; 
+		interstateRoads.features.forEach(function(j){ 
+			if (j.properties.ROAD_NAME == d.properties.ROAD_NAME && j.properties.DIRECTION == d.properties.DIRECTION) { 
+				storage.push(j.properties.TO_MEAS); 
 			}
-		}); 
+		})
+		var max = d3.max(storage); 
+		return max; 
+	}
+
+	//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
+	interstateRoads.features.forEach(function(i){ 
+		if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
+			i.properties.NORMALIZEDSTART = -(i.properties.TO_MEAS - pmfindFlipFrom(i));
+		} else if (i.properties.ROAD_NAME == "MA-2" && i.properties.DIRECTION == "Eastbound") {
+			i.properties.NORMALIZEDSTART = i.properties.FROM_MEAS - 5751.4697;
+		} else {
+			i.properties.NORMALIZEDSTART = i.properties.FROM_MEAS;
+		}
+	}); 
 	//Assign scales and axes 
 	xScaleRoad = d3.scale.linear().domain([0,d3.max(maxmins)]).range([75, 370]);
 	xScaleSegment = d3.scale.linear().domain([0,d3.max(maxmins)]).range([0, 295]);
@@ -335,7 +501,7 @@ pmchartContainer.selectAll(".labels")
 		.enter()
 		.append("rect")
 			.attr("class", function(d) { return "segment" + d.id + " pmbars" ;})
-			.attr("height", 15)
+			.attr("height", 5)
 			.attr("width", function(d) {
 				if (isNaN(parseInt(d.properties.TO_MEAS))) { 
 					return 0;
@@ -352,7 +518,7 @@ pmchartContainer.selectAll(".labels")
 				if (d.properties.DIRECTION == "Eastbound" || d.properties.DIRECTION == "Northbound") { 
 					return yScale(d.properties.ROAD_NAME) - 2 ;
 				} else {
-					return yScale(d.properties.ROAD_NAME) - 20;
+					return yScale(d.properties.ROAD_NAME) - 12;
 
 				}
 			})
@@ -402,342 +568,12 @@ pmchartContainer.selectAll(".labels")
 
 }
 
-CTPS.demoApp.generateTimes = function(interstateRoads) {	
-
-	var cumulativeTime = d3.select("#cumulativetime").append("svg")
-		.attr("width", "100%")
-		.attr("height", 600);
-
-	var nested_roads = d3.nest()
-	.key(function(d) { return d.properties.ROAD_NAME + " " + d.properties.DIRECTION; })
-	.entries(interstateRoads.features);
-
-		//mouseover function	
-	var tip2 = d3.tip()
-	  .attr('class', 'd3-tip')
-	  .attr("background", "black")
-	  .attr("color", "white")
-	  .offset([-10, 0])
-	  .html(function(d) {
-			return d.properties.ROAD_NAME + " " + d.properties.DIRECTION;
-	  });
-
-	cumulativeTime.call(tip2); 
-
-	var routes = []; 
-	var maxmins = [];
-
-	interstateRoads.features.forEach(function(i){ 
-		routes.push(i.properties.ROAD_NAME)
-		maxmins.push(i.properties.TO_MEAS)
-	})
-	routes.sort(); 
-
-	//Assign scales and axes 
-	/*xScaleRoad = d3.scale.linear().domain([0, d3.max(maxmins)]).range([50, 1050]);
-	xScaleSegment = d3.scale.linear().domain([0, d3.max(maxmins)]).range([0, 1000]);
-	yScale = d3.scale.linear().domain([0, 50]).range([550, 60]);
-
-	var xAxis = d3.svg.axis().scale(xScaleRoad).orient("bottom").ticks(7);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
-
-	cumulativeTime.append("g").attr("class", "axis")
-		.attr("transform", "translate(0, 550)").style("stroke-width", "1px")
-		.style("font-size", "10px")
-		.call(xAxis);
-	
-	cumulativeTime.append("g").attr("class", "axis")
-		.attr("transform", "translate(50, 0)")
-		.style("font-size", "10px")
-		.call(yAxis); 
-
-	function findFlipFrom(d) { 
-		var storage = []; 
-		interstateRoads.features.forEach(function(j){ 
-			if (j.properties.ROAD_NAME == d.properties.ROAD_NAME && j.properties.DIRECTION == d.properties.DIRECTION) { 
-				storage.push(j.properties.TO_MEAS); 
-			}
-		})
-		var max = d3.max(storage); 
-		return max; 
-	}
-
-		//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
-	interstateRoads.features.forEach(function(i){ 
-		if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
-			i.properties.NORMALIZEDSTART = -(i.properties.TO_MEAS - findFlipFrom(i));
-			i.properties.NORMALIZEDEND = -(i.properties.FROM_MEAS - findFlipFrom(i));
-		} else if (i.properties.ROAD_NAME == "MA-2" && i.properties.DIRECTION == "Eastbound") {
-			i.properties.NORMALIZEDSTART = i.properties.FROM_MEAS - 5751.4697;
-			i.properties.NORMALIZEDEND = i.properties.TO_MEAS - 5751.4697; 
-		} else {
-			i.properties.NORMALIZEDSTART = i.properties.FROM_MEAS;
-			i.properties.NORMALIZEDEND = i.properties.TO_MEAS;
-		}
-	}); 
-
-	nested_roads.forEach(function(i) { 
-		var amcumulative = 0; 
-		var pmcumulative = 0; 
-
-		i.values.sort(function(a,b) { 
-			var nameA = a.properties.NORMALIZEDSTART; // ignore upper and lowercase
-			var nameB = b.properties.NORMALIZEDSTART;
-			  if (nameA < nameB) {return -1; }
-			  if (nameA > nameB) {return 1;}
-			  return 0; 
-		});
-
-		i.values.forEach(function(j){ 
-			cumulativeTime.append("line")
-					.attr("class", j.properties.ROAD_NAME + j.properties.DIRECTION + " lines")
-					.attr("x1", xScaleRoad(j.properties.NORMALIZEDSTART))
-					.attr("x2", xScaleRoad(j.properties.NORMALIZEDEND))
-					.attr("y1", yScale(amcumulative))
-					.attr("y2", function() { 
-						if (isNaN(j.properties.AM_DEL_MI)) { 
-							return yScale(amcumulative); 
-						} else {
-							return yScale(amcumulative + j.properties.AM_DEL_MI)
-						}
-					})
-					.style("stroke", "#FFd056")
-					.style("stroke-width", 2)
-					.on("mouseenter", function () { 
-						var mystring = this.getAttribute("class");
-						var arr = mystring.split(" ", 2);
-						var firstWord = arr[0]; 
-
-						d3.selectAll(".lines").transition()
-							.attr("opacity", 0.2)
-							.attr("stroke-width", 2);
-
-						d3.selectAll("." + firstWord).transition()
-							.style("stroke-width", 2)
-							.style("opacity", 1)
-							.attr("r", 3);
-
-						tip2.show(j); 
-					})
-					.on("mouseleave", function () {
-						d3.selectAll(".lines").transition()
-							.attr("opacity", 1)
-							.style("stroke-width", 2);
-
-						d3.selectAll(".circles").transition()
-							.attr("r", 0);
-
-						tip2.hide(j);
-					});
-
-			cumulativeTime.append("circle")
-					.attr("class", j.properties.ROAD_NAME + j.properties.DIRECTION + " circles")
-					.attr("cx", xScaleRoad(j.properties.NORMALIZEDEND))
-					.attr("cy", function() { 
-						if (isNaN(j.properties.AM_DEL_MI)) { 
-							return yScale(amcumulative); 
-						} else {
-							return yScale(amcumulative + j.properties.AM_DEL_MI)
-						}
-					})
-					.attr("r", 0)
-					.style("fill", "#FFd056");
-
-			cumulativeTime.append("line")
-					.attr("class", j.properties.ROAD_NAME + j.properties.DIRECTION + " lines")
-					.attr("x1", xScaleRoad(j.properties.NORMALIZEDSTART))
-					.attr("x2", xScaleRoad(j.properties.NORMALIZEDEND))
-					.attr("y1", yScale(pmcumulative))
-					.attr("y2", function() { 
-						if (isNaN(j.properties.PM_DEL_MI)) { 
-							return yScale(pmcumulative); 
-						} else {
-							return yScale(pmcumulative + j.properties.PM_DEL_MI)
-						}
-					})
-					.style("stroke", "#408DFF")
-					.style("stroke-width", 2)
-					.on("mouseenter", function () { 
-						var mystring = this.getAttribute("class");
-						var arr = mystring.split(" ", 2);
-						var firstWord = arr[0]; 
-
-						d3.selectAll(".lines").transition()
-							.attr("opacity", 0.2)
-							.attr("stroke-width", 2);
-
-						d3.selectAll("." + firstWord).transition()
-							.style("stroke-width", 2)
-							.style("opacity", 1)
-							.attr("r", 3);
-
-						tip2.show(j); 
-					})
-					.on("mouseleave", function () {
-						d3.selectAll(".lines").transition()
-							.attr("opacity", 1)
-							.style("stroke-width", 2);
-
-						d3.selectAll(".circles").transition()
-							.attr("r", 0);
-
-						tip2.hide(j);
-					});
-
-			cumulativeTime.append("circle")
-					.attr("class", j.properties.ROAD_NAME + j.properties.DIRECTION + " circles")
-					.attr("cx", xScaleRoad(j.properties.NORMALIZEDEND))
-					.attr("cy", function() { 
-						if (isNaN(j.properties.PM_DEL_MI)) { 
-							return yScale(pmcumulative); 
-						} else {
-							return yScale(pmcumulative + j.properties.PM_DEL_MI)
-						}
-					})
-					.attr("r", 0)
-					.style("fill", "#408DFF");
-
-			if (!isNaN(j.properties.AM_DEL_MI)) { 
-				amcumulative += j.properties.AM_DEL_MI; 
-			} 
-
-			if (!isNaN(j.properties.PM_DEL_MI)) { 
-				pmcumulative += j.properties.PM_DEL_MI; 
-			}
-		})
-	})*/
-
-	//Assign scales and axes 
-	xScale = d3.scale.linear().domain([0, 3.5]).range([50, 1050]);
-	yScale = d3.scale.linear().domain([0, 6]).range([550, 60]);
-
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(7);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
-
-	cumulativeTime.append("g").attr("class", "axis")
-		.attr("transform", "translate(0, 550)").style("stroke-width", "1px")
-		.style("font-size", "14px")
-		.call(xAxis);
-	
-	cumulativeTime.append("g").attr("class", "axis")
-		.attr("transform", "translate(50, 0)")
-		.style("font-size", "14px")
-		.call(yAxis); 
-
-	cumulativeTime.append("line")
-		.attr("x1", xScale(1))
-		.attr("x2", xScale(1))
-		.attr("y1", yScale(0))
-		.attr("y2", yScale(6))
-		.attr("stroke-width", .5)
-		.attr("stroke", "#ddd")
-
-	cumulativeTime.append("line")
-		.attr("x1", xScale(0))
-		.attr("x2", xScale(3.5))
-		.attr("y1", yScale(1))
-		.attr("y2", yScale(1))
-		.attr("stroke-width", .5)
-		.attr("stroke", "#ddd")
-
-	nested_roads.forEach(function(i) { 
-		var amcumulative = 0; 
-		var pmcumulative = 0; 
-
-		i.values.sort(function(a,b) { 
-			var nameA = a.properties.NORMALIZEDSTART; // ignore upper and lowercase
-			var nameB = b.properties.NORMALIZEDSTART;
-			  if (nameA < nameB) {return -1; }
-			  if (nameA > nameB) {return 1;}
-			  return 0; 
-		});
-
-		i.values.forEach(function(j){ 
-
-			cumulativeTime.append("circle")
-					.attr("class", j.properties.ROAD_NAME + j.properties.DIRECTION + " circles")
-					.attr("cx", xScale(j.properties.AM_SPD_IX))
-					.attr("cy", yScale(j.properties.AM_AVTT_IX))
-					.attr("r", j.properties.LANES * j.properties.LANES)
-					.style("stroke", "#FFd056")
-					.style("fill", "#191b1d")
-					.style("stroke-width", 1)
-					.style("opacity", .5)
-					.on("mouseenter", function () { 
-						var mystring = this.getAttribute("class");
-						var arr = mystring.split(" ", 2);
-						var firstWord = arr[0]; 
-
-						d3.selectAll(".circles")
-							.style("opacity", .1);
-
-						d3.selectAll("." + firstWord)
-							.style("stroke-width", 2)
-							.style("opacity", 1)
-
-						tip2.show(j); 
-					})
-					.on("mouseleave", function () {
-						d3.selectAll(".circles")
-							.style("stroke-width", 1)
-							.style("opacity", .5);
-
-						tip2.hide(j);
-					});
-
-			cumulativeTime.append("circle")
-					.attr("class", j.properties.ROAD_NAME + j.properties.DIRECTION + " circles")
-					.attr("cx", xScale(j.properties.PM_SPD_IX))
-					.attr("cy", yScale(j.properties.PM_AVTT_IX))
-					.attr("r", j.properties.LANES * j.properties.LANES)
-					.style("stroke", "#408DFF")
-					.style("fill", "#191b1d")
-					.style("opacity", .5)
-					.on("mouseenter", function () { 
-						var mystring = this.getAttribute("class");
-						var arr = mystring.split(" ", 2);
-						var firstWord = arr[0]; 
-
-						d3.selectAll(".circles")
-							.style("opacity", .1);
-
-						d3.selectAll("." + firstWord)
-							.style("stroke-width", 2)
-							.style("opacity", 1)
-
-						tip2.show(j); 
-					})
-					.on("mouseleave", function () {
-						d3.selectAll(".circles")
-							.style("stroke-width", 1)
-							.style("opacity", .5);
-
-						tip2.hide(j);
-					});
-		})
-	})
-
-	cumulativeTime.append("text")
-		.attr("x", xScale(2))
-		.attr("y", yScale(1.05))
-		.text("Congested Travel Time = Free Flow Travel Time")
-
-	cumulativeTime.append("text")
-		.attr("x", xScale(-1.2))
-		.attr("y", yScale(2.7))
-		.attr("transform", "rotate(-90)")
-		.attr("text-anchor", "start")
-		.text("Travelling at Speed Limit")
-
-
-}
-
 CTPS.demoApp.generateTraveller = function(towns, congestion) { 
 	//Map of free flow
 	// SVG Viewport
 	congestion.features.sort(function(a,b){
-		var nameA = a.properties.COMMUNITY;
-		var nameB = b.properties.COMMUNITY;
+		var nameA = a.properties.ROAD_NAME;
+		var nameB = b.properties.ROAD_NAME;
 		if (nameA < nameB) { return -1}
 		if (nameA > nameB) { return 1}
 	
@@ -753,7 +589,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 	
 	var geoPath = d3.geo.path().projection(projection);
 
-	var freeFlow = d3.select("#freeFlow").append("svg")
+	var freeFlow = d3.select("#freeFlow2").append("svg")
 		.attr("width", "100%")
 		.attr("height", 600);
 
@@ -783,7 +619,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 			.style("opacity", 0)
 
 	//AM Congestion Road
-	var amCong = d3.select("#amCong").append("svg")
+	var amCong = d3.select("#amCong2").append("svg")
 		.attr("width", "100%")
 		.attr("height", 600);
 
@@ -814,7 +650,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 			.style("opacity", 0)
 
 	//PM Congestion Road
-	var pmCong = d3.select("#pmCong").append("svg")
+	var pmCong = d3.select("#pmCong2").append("svg")
 		.attr("width", "100%")
 		.attr("height", 600);
 
@@ -853,7 +689,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 		.text("Time spent in congestion:" + minutes + " min")*/
 
 	//Click button to start animation
-	d3.selectAll("#congAnim").on("click", function() { 
+	d3.selectAll("#congAnim2").on("click", function() { 
 	//Freeflow Animation
 		var timecounter = 0;
 	    var minutes = 0; 

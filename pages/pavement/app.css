@@ -69,9 +69,8 @@ div h3 {
 }
 
 .bigbutton:hover, .bigbutton:active, .bigbutton:focus {
-    color: #e26a6a;
     font-weight: 700;
-      outline:none;
+    outline:none;
 }
 
 .timeline { 
@@ -86,6 +85,11 @@ div h3 {
     font-size: 14px;
     -webkit-transition: background-color 1s;
     transition: background-color 1s;
+}
+
+.timeline:hover, .timeline:active, .timeline:focus {
+    font-weight: 700;
+    outline:none;
 }
 
 .inner-nav { 

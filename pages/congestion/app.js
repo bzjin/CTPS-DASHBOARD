@@ -12,7 +12,7 @@ queue()
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
 		CTPS.demoApp.generateChart(results[1]);
-		CTPS.demoApp.generateTimes(results[1]);
+		//CTPS.demoApp.generateTimes(results[1]);
 		CTPS.demoApp.generateTraveller(results[0], results[1]);
 	}); 
 	//CTPS.demoApp.generateViz);

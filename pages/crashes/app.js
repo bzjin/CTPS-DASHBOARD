@@ -39,11 +39,6 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.attr("width", "100%")
 		.attr("height", 500)
 
-	svgContainer.append("text")
-		.attr("x", 0)
-		.attr("y", 40)
-		.text("Click on each region to see its stats")
-
 	svgContainer.call(tip); 
 
 	var findIndex = function(town, statistic) { 
@@ -75,22 +70,6 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 				chartContainer.selectAll("circle").transition()
 					.attr("r", 0);
-
-				chartContainer.append("circle")
-					.attr("cx", 230)
-					.attr("cy", 445)
-					.attr("r", 5)
-					.attr("fill", "#191b1d")
-					.attr("stroke", "#f1a9a0")
-					.attr("stroke-width", 3);
-
-				chartContainer.append("circle")
-					.attr("cx", 380)
-					.attr("cy", 445)
-					.attr("r", 5)
-					.attr("fill", "#191b1d")
-					.attr("stroke", "#2eccb0")
-					.attr("stroke-width", 3);
 
 				d3.selectAll(".line").transition()
 					.attr("stroke-width", 0);
@@ -134,35 +113,8 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.attr("y", 10)
 		.text("Number of Injuries")
 
-//Label key
-	chartContainer.append("text")
-		.attr("x", 250)
-		.attr("y", 450)
-		.text("Bike Injuries")
-
-	chartContainer.append("text")
-		.attr("x", 400)
-		.attr("y", 450)
-		.text("Pedestrian Injuries")
-
-	chartContainer.append("circle")
-		.attr("cx", 230)
-		.attr("cy", 445)
-		.attr("r", 5)
-		.attr("fill", "#191b1d")
-		.attr("stroke", "#f1a9a0")
-		.attr("stroke-width", 3);
-
-	chartContainer.append("circle")
-		.attr("cx", 380)
-		.attr("cy", 445)
-		.attr("r", 5)
-		.attr("fill", "#191b1d")
-		.attr("stroke", "#2eccb0")
-		.attr("stroke-width", 3);
-
 //Assign scales and axes 
-	var xScale = d3.scale.linear().domain([2004, 2013]).range([50, 550]);
+	var xScale = d3.scale.linear().domain([2003.5, 2013.5]).range([50, 550]);
 	var yScale = d3.scale.linear().domain([0, findTownMax("Total")]).range([400, 50]);
 
 	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")); 
@@ -196,7 +148,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 				      .attr("d", linemaker)
 				      .attr("fill", "none")
 				      .attr("stroke-width", 2)
-				      .attr("stroke", "#f1a9a0");
+				      .attr("stroke", "#7570b3");
 
 				    var linemaker = d3.svg.line() //Ped injuries
 					    .x(function(d) { return xScale(d.year); })
@@ -207,7 +159,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 				      .attr("d", linemaker)
 				      .attr("fill", "none")
 				      .attr("stroke-width", 2)
-				      .attr("stroke", "#2eccb0");
+				      .attr("stroke", "#e7298a");
 				}
 			})
 		})
@@ -222,7 +174,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 						.attr("cy", yScale(j.bike_inj))
 						.attr("r", 5)
 						.attr("fill", "#191b1d")
-						.attr("stroke", "#f1a9a0")
+						.attr("stroke", "#7570b3")
 						.attr("stroke-width", 2)
 					chartContainer.append("circle")
 						.attr("class", j.town)
@@ -230,7 +182,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 						.attr("cy", yScale(j.ped_inj))
 						.attr("r", 5)
 						.attr("fill", "#191b1d")
-						.attr("stroke", "#2eccb0")
+						.attr("stroke", "#e7298a")
 						.attr("stroke-width", 2)
 				}
 			})
@@ -289,7 +241,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 						.attr("cy", yScale(y))
 						.attr("r", 3)
 						.attr("stroke-width", .5)
-						.attr("stroke", "#f1a9a0")
+						.attr("stroke", "#7570b3")
 						.attr("fill", "none")
 					if (x == 16) { x = 1; y--; } else { x++; }
 				}
@@ -298,7 +250,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
 						.attr("r", 3)
-						.attr("fill", "#f1a9a0")
+						.attr("fill", "#7570b3")
 					if (x == 16) { x = 1; y--; } else { x++; }
 				}
 				for(var i = 1; i < d.ped_inj+1; i++) { 
@@ -307,7 +259,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 						.attr("cy", yScale(y))
 						.attr("r", 3)
 						.attr("stroke-width", .5)
-						.attr("stroke", "#2eccb0")
+						.attr("stroke", "#e7298a")
 						.attr("fill", "none")
 					if (x == 16) { x = 1; y--; } else { x++; }
 				}
@@ -316,7 +268,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
 						.attr("r", 3)
-						.style("fill", "#2eccb0")
+						.style("fill", "#e7298a")
 					if (x == 16) { x = 1; y--; } else { x++; }
 				}
 			}

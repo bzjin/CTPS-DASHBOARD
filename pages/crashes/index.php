@@ -49,18 +49,23 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 
 	<div class="col-md-12"> 
 	<h3>Bike and Pedestrian Injuries Over Time </h3>
-		<div id="map" class="col-md-5"></div>
-		<div id="chart" class="col-md-7"></div>
+		<div id="map" class="col-md-5">
+			<p> Click on each city or town to see its individual injury counts. </p> 
+		</div>
+		<div id="chart" class="col-md-7 key">
+			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Bicycle Injuries
+			<i class="fa fa-circle-o pedes" aria-hidden="true"></i>  Pedestrian Injuries</p>
+		</div>
 	</div>
 
 	<div class="col-md-12" >
 	<h3> Bike and Pedestrian Injuries and Fatalities in 2013 </h3>
 	<p> Boston Region saw <b>576</b> total bicycle crash injuries and <b>892</b> pedestrian crash injuries in 2013. Each dot represents one crash. <b>36</b> faded dots represent fatalities.</p>
-		<div class="col-md-12" id="key">
-			<i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Bicycle Injuries
+		<div class="col-md-12 key">
+			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Bicycle Injuries
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Bicycle Fatalities
 			<i class="fa fa-circle-o pedes" aria-hidden="true"></i>  Pedestrian Injuries
-			<i class="fa fa-circle pedes" aria-hidden="true"></i> Pedestrian Fatalities
+			<i class="fa fa-circle pedes" aria-hidden="true"></i> Pedestrian Fatalities</p>
 		</div>
 	</div>
 

@@ -226,7 +226,6 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 				var arr = mystring.split(" ", 3);
 				var firstWord = arr[0]; 
 				var secondWord = arr[1];
-				console.log(secondWord)
 
 				d3.selectAll("." + firstWord).transition()
 					.style("opacity", 0);
@@ -266,7 +265,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	//individual points
 	cleanedbridges.forEach(function(i){
 		timeline2.append("circle")
-			.attr("class", "yr" + i.year + " bin" + d3.round(d3.round(i.healthIndex/5, 2)*100) + " individuals")
+			.attr("class", "yr" + i.year + " bin" + d3.round(d3.round(i.healthIndex/5, 2)*100) + " individuals " + i.bridgeId)
 			.attr("cx", xScale(i.year) + 8 + 5 * Math.floor(Math.random() * 10))
 			//.attr("cy", yScale(d3.round(i.healthIndex/2, 2)*2))
 			.attr("cy", yScale(i.healthIndex))
@@ -285,12 +284,12 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 				var mystring = this.getAttribute("class");
 				var arr = mystring.split(" ", 2);
 				var firstWord = arr[0]; 
+				console.log(mystring)
+				//d3.selectAll("." + firstWord).transition()
+					//.style("opacity", 0);
 
-				d3.selectAll("." + firstWord).transition()
-					.style("opacity", 0);
-
-				d3.selectAll("." + firstWord).filter(".aggregates").transition()
-					.style("opacity", 1);
+				//d3.selectAll("." + firstWord).filter(".aggregates").transition()
+					//.style("opacity", 1);
 			})	
 	})
 	

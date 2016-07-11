@@ -53,14 +53,14 @@ div h3 {
     display: none;
 }
 
-#key i { 
+.key i { 
   padding: 20px 5px 30px 20px;
  }
 
 .bicycle { 
-  color: #f1a9a0;
+  color: #e7298a;
 }
 
 .pedes{ 
-    color: #1ba39c;
+    color: #7570b3;
 }

@@ -25,7 +25,7 @@
 
 .axis line, .axis path, .axis text { fill: none; stroke-width: 0; stroke: #ddd; shape-rendering: crispEdges;} 
 .yaxis line, .yaxis path { fill: none; stroke-width: 0px; shape-rendering: crispEdges;} text {fill: #ddd; font-size: 14px;} 
-.xaxis {fill: none; stroke-width: .5; stroke: #ddd;} 
+.xaxis {fill: none; stroke-width: .5; stroke: #ddd;} path { shape-rendering: optimizeQuality;}
 
 </style> 
 </head>
@@ -49,26 +49,23 @@
 		<p> One of the main ways congestion is measured is by speed index, which is a ratio giving the average, observed speed of travel during congestion hours to the posted speed limit.</p>
 		<p> Speed Index = (Observed speed during congested hours) / (Posted speed limit) </p>
 		<p> Mouse over the interstate roads to see its speed index during morning and afternoon congestion hours. The selected road segment will appear on the map to the right. </p>
-		<div class="col-md-6 col-md-offset-6" id="map"></div>
+		<div class="col-md-9" id="mapNonInterstate"></div>
+		<div class="col-md-3" id="crossSection"></div>
 
+		<!--
 		<div class="row col-md-10" id="speedindex"> 
 			<div id="amchart" class="col-md-5"></div>
 			<div id="pmchart" class="col-md-5"></div>
-		</div>
-	</div>
-	
-	<div class="col-md-12" id="timeVsSpeed">
-		<h3> Travel Time Index vs. Speed Index </h3> 
-		<div id="cumulativetime"> </div>
+		</div>-->
 	</div>
 
 	<div class="col-md-12">
 		<h3> Free Flow v. Congested Travel Time </h3> 
-		<button class="col-md-4" id="congAnim"> Start Animation </button>
+		<button class="col-md-4" id="congAnim2"> Start Animation </button>
 		<div class="col-md-12">
-		<div class="col-md-4" id="freeFlow"> Driving at Speed Limit </div>
-		<div class="col-md-4" id="amCong"> Driving in AM Congestion</div>
-		<div class="col-md-4" id="pmCong"> Driving in PM Congestion </div>
+		<div class="col-md-4" id="freeFlow2"> Driving at Speed Limit </div>
+		<div class="col-md-4" id="amCong2"> Driving in AM Congestion</div>
+		<div class="col-md-4" id="pmCong2"> Driving in PM Congestion </div>
 		</div>
 	</div>
 <div class="footer col-md-12">
