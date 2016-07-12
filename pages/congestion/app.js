@@ -6,9 +6,8 @@ var colorScale = d3.scale.linear().domain([.5, 1, 1.25]).range(["#D73027", "#fee
 
 //Using the queue.js library
 queue()
-	.defer(d3.json, "../../JSON/boston_region_mpo_towns.geo.json")
-	.defer(d3.json, "../../JSON/CMP_2014_EXP_ROUTES_MPO_ONLY.geojson")
-	//.defer(d3.json, "JSON/road_inv_mpo_nhs_noninterstate_2015.geojson")
+	.defer(d3.json, "../../JSON/boston_region_mpo_towns.topo.json")
+	.defer(d3.json, "../../JSON/CMP_2014_EXP_ROUTES.topojson")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
 		CTPS.demoApp.generateChart(results[1]);
@@ -18,7 +17,7 @@ queue()
 	//CTPS.demoApp.generateViz);
 
 ////////////////* GENERATE MAP *////////////////////
-CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {	
+CTPS.demoApp.generateMap = function(cities, congestion) {	
 	// Show name of MAPC Sub Region
 	// Define Zoom Behavior
 	var projection = d3.geo.conicConformal()
@@ -30,7 +29,10 @@ CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {
 	var geoPath = d3.geo.path().projection(projection);
 
 	var maxmin = []; 
-	interstateRoads.features.forEach(function(i) { 
+
+	var interstateRoads = topojson.feature(congestion, congestion.objects.collection).features;
+
+	interstateRoads.forEach(function(i) { 
 		maxmin.push(i.properties.AM_SPD_IX);
 	})
 
@@ -50,7 +52,7 @@ CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {
 
 	// Create Boston Region MPO map with SVG paths for individual towns.
 	var mapcSVG = svgContainer.selectAll(".subregion")
-		.data(mapcSubregions.features)
+		.data(topojson.feature(cities, cities.objects.collection).features)
 		.enter()
 		.append("path")
 			.attr("class", "subregion")
@@ -62,7 +64,7 @@ CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {
 			.style("opacity", .1);
 
 	var interstateSVG = svgContainer.selectAll(".interstate")
-		.data(interstateRoads.features)
+		.data(interstateRoads)
 		.enter()
 		.append("path")
 			.attr("class", function(d) { return "interstate mapsegment" + d.id;})
@@ -83,11 +85,13 @@ CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {
 } // CTPS.demoApp.generateViz()
 
 
-CTPS.demoApp.generateChart = function(interstateRoads) {	
+CTPS.demoApp.generateChart = function(congestion) {	
 //Create chart comparing interstate roads by coordinates
 	//Create AM chart
+	var interstateRoads = topojson.feature(congestion, congestion.objects.collection).features;
+
 	var amchartContainer = d3.select("#amchart").append("svg")
-		.attr("width", "100%")
+		.attr("width", 310)
 		.attr("height", 600);
 
 	//axis label
@@ -119,7 +123,7 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 		if (d.properties.DIRECTION == "Westbound") { directionKey = "WB"};
 		if (d.properties.DIRECTION == "Southbound") { directionKey = "SB"};
 		return d.properties.ROUTE_NUM + " " + directionKey;})
-	.entries(interstateRoads.features)
+	.entries(interstateRoads)
 
 	console.log(nested_directions)
 
@@ -128,7 +132,7 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 	var routes = []; 
 	var maxmins = [];
 
-	interstateRoads.features.forEach(function(i){ 
+	interstateRoads.forEach(function(i){ 
 		routes.push(i.properties.ROUTE_NUM)
 		maxmins.push(i.properties.TO_MEAS)
 	})
@@ -154,7 +158,7 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 
 	function amfindFlipFrom(d) { 
 		var fromstorage = []; 
-		interstateRoads.features.forEach(function(j){ 
+		interstateRoads.forEach(function(j){ 
 			if (j.properties.ROUTE_NUM == d.properties.ROUTE_NUM && j.properties.DIRECTION == d.properties.DIRECTION) { 
 				fromstorage.push(j.properties.FROM_MEAS); 
 			}
@@ -162,7 +166,7 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 		var frommax = d3.max(fromstorage);
 
 		var tostorage = []; 
-		interstateRoads.features.forEach(function(j){ 
+		interstateRoads.forEach(function(j){ 
 			if (j.properties.ROUTE_NUM == d.properties.ROUTE_NUM && j.properties.DIRECTION == d.properties.DIRECTION) { 
 				tostorage.push(j.properties.TO_MEAS); 
 			}
@@ -178,7 +182,7 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 	}
 
 	//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
-	interstateRoads.features.forEach(function(i){ 
+	interstateRoads.forEach(function(i){ 
 		if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
 			i.properties.NORMALIZEDSTART = -(i.properties.FROM_MEAS - amfindFlipFrom(i)[0]) + amfindFlipFrom(i)[1];
 		} else if (i.properties.ROUTE_NUM == "MA-2" && i.properties.DIRECTION == "Eastbound") {
@@ -189,7 +193,7 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 	}); 
 
 	amchartContainer.selectAll(".ambars")
-		.data(interstateRoads.features)
+		.data(interstateRoads)
 		.enter()
 		.append("rect")
 			.attr("class", function(d) { return "segment" + d.id + " ambars";})
@@ -261,7 +265,7 @@ CTPS.demoApp.generateChart = function(interstateRoads) {
 	//Create PM Charts
 
 var pmchartContainer = d3.select("#pmchart").append("svg")
-		.attr("width", "100%")
+		.attr("width", 380)
 		.attr("height", 600);
 
 
@@ -288,7 +292,7 @@ pmchartContainer.selectAll(".labels")
 
 	function pmfindFlipFrom(d) { 
 			var storage = []; 
-			interstateRoads.features.forEach(function(j){ 
+			interstateRoads.forEach(function(j){ 
 				if (j.properties.ROUTE_NUM == d.properties.ROUTE_NUM && j.properties.DIRECTION == d.properties.DIRECTION) { 
 					storage.push(j.properties.TO_MEAS); 
 				}
@@ -298,7 +302,7 @@ pmchartContainer.selectAll(".labels")
 		}
 
 		//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
-		interstateRoads.features.forEach(function(i){ 
+		interstateRoads.forEach(function(i){ 
 			if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
 				i.properties.NORMALIZEDSTART = -(i.properties.TO_MEAS - pmfindFlipFrom(i));
 			} else if (i.properties.ROUTE_NUM == "MA-2" && i.properties.DIRECTION == "Eastbound") {
@@ -332,7 +336,7 @@ pmchartContainer.selectAll(".labels")
 		.call(yAxis).selectAll("text").remove();
 
 	pmchartContainer.selectAll(".pmbars")
-		.data(interstateRoads.features)
+		.data(interstateRoads)
 		.enter()
 		.append("rect")
 			.attr("class", function(d) { return "segment" + d.id + " pmbars" ;})
@@ -411,7 +415,7 @@ CTPS.demoApp.generateTimes = function(interstateRoads) {
 
 	var nested_roads = d3.nest()
 	.key(function(d) { return d.properties.ROUTE_NUM + " " + d.properties.DIRECTION; })
-	.entries(interstateRoads.features);
+	.entries(interstateRoads);
 
 		//mouseover function	
 	var tip2 = d3.tip()
@@ -428,7 +432,7 @@ CTPS.demoApp.generateTimes = function(interstateRoads) {
 	var routes = []; 
 	var maxmins = [];
 
-	interstateRoads.features.forEach(function(i){ 
+	interstateRoads.forEach(function(i){ 
 		routes.push(i.properties.ROUTE_NUM)
 		maxmins.push(i.properties.TO_MEAS)
 	})
@@ -454,7 +458,7 @@ CTPS.demoApp.generateTimes = function(interstateRoads) {
 
 	function findFlipFrom(d) { 
 		var storage = []; 
-		interstateRoads.features.forEach(function(j){ 
+		interstateRoads.forEach(function(j){ 
 			if (j.properties.ROUTE_NUM == d.properties.ROUTE_NUM && j.properties.DIRECTION == d.properties.DIRECTION) { 
 				storage.push(j.properties.TO_MEAS); 
 			}
@@ -464,7 +468,7 @@ CTPS.demoApp.generateTimes = function(interstateRoads) {
 	}
 
 		//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
-	interstateRoads.features.forEach(function(i){ 
+	interstateRoads.forEach(function(i){ 
 		if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
 			i.properties.NORMALIZEDSTART = -(i.properties.TO_MEAS - findFlipFrom(i));
 			i.properties.NORMALIZEDEND = -(i.properties.FROM_MEAS - findFlipFrom(i));
@@ -733,10 +737,13 @@ CTPS.demoApp.generateTimes = function(interstateRoads) {
 
 }
 
-CTPS.demoApp.generateTraveller = function(towns, congestion) { 
+CTPS.demoApp.generateTraveller = function(cities, congestion) { 
 	//Map of free flow
 	// SVG Viewport
-	congestion.features.sort(function(a,b){
+	var interstateRoads = topojson.feature(congestion, congestion.objects.collection).features;
+	console.log(interstateRoads);
+
+	interstateRoads.sort(function(a,b){
 		var nameA = a.properties.ROUTE_NUM;
 		var nameB = b.properties.ROUTE_NUM;
 		if (nameA < nameB) { return -1}
@@ -764,7 +771,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 
 	//Free Flow Map
 	var mapcSVG = freeFlow.selectAll(".freeFlow")
-		.data(towns.features)
+		.data(topojson.feature(cities, cities.objects.collection).features)
 		.enter()
 		.append("path")
 			.attr("class", "freeFlow")
@@ -776,7 +783,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 			.style("opacity", .1);
 
 	var interstateSVG = freeFlow.selectAll(".freeFlowRoad")
-		.data(congestion.features)
+		.data(interstateRoads)
 		.enter()
 		.append("path")
 			.attr("class", function(d) { return "freeFlowRoad mapsegment" + d.id;})
@@ -793,7 +800,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 		.attr("height", 600);
 
 	var mapcSVGam = amCong.selectAll(".amCong")
-		.data(towns.features)
+		.data(topojson.feature(cities, cities.objects.collection).features)
 		.enter()
 		.append("path")
 			.attr("class", "amCong")
@@ -805,7 +812,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 			.style("opacity", .1);
 
 	var interstateSVGam = amCong.selectAll(".amCongRoad")
-		.data(congestion.features)
+		.data(interstateRoads)
 		.enter()
 		.append("path")
 			.attr("class", function(d) { return "amCongRoad mapsegment" + d.id;})
@@ -824,7 +831,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 		.attr("height", 600);
 
 	var mapcSVGpm = pmCong.selectAll(".pmCong")
-		.data(towns.features)
+		.data(topojson.feature(cities, cities.objects.collection).features)
 		.enter()
 		.append("path")
 			.attr("class", "pmCong")
@@ -836,7 +843,7 @@ CTPS.demoApp.generateTraveller = function(towns, congestion) {
 			.style("opacity", .1);
 
 	var interstateSVGpm = pmCong.selectAll(".pmCongRoad")
-		.data(congestion.features)
+		.data(interstateRoads)
 		.enter()
 		.append("path")
 			.attr("class", function(d) { return "pmCongRoad mapsegment" + d.id;})

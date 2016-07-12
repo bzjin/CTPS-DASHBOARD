@@ -13,6 +13,9 @@
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <!-- Tooltip -->
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<!-- TopoJSON -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
+
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700" rel="stylesheet">
 <!-- Jquery -->

@@ -13,6 +13,9 @@
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <!-- Tooltip -->
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<!-- TopoJSON -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
+
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700" rel="stylesheet">
 <!-- Jquery -->
@@ -52,9 +55,9 @@
 		<p> Mouse over the interstate roads to see its speed index during morning and afternoon congestion hours. The selected road segment will appear on the map to the right. </p>
 		<div class="col-md-6 col-md-offset-6" id="map"></div>
 
-		<div class="row col-md-11" id="speedindex"> 
-			<div id="amchart" class="col-md-5"></div>
-			<div id="pmchart" class="col-md-6"></div>
+		<div class="row col-md-12" id="speedindex"> 
+			<div id="amchart"></div>
+			<div id="pmchart"></div>
 		</div>
 	</div>
 	

@@ -45,20 +45,16 @@ var geoPath = d3.geo.path().projection(projection);
 
 //Using the queue.js library
 queue()
-	.defer(d3.json, "json/boston_region_mpo_towns.geo.json")
-	.defer(d3.json, "json/CMP_2014_EXP_ROUTES_MPO_ONLY.geojson")
+	.defer(d3.json, "json/boston_region_mpo_towns.topo.json")
+	.defer(d3.json, "json/CMP_2014_EXP_ROUTES.topojson")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
 	}); 
 
 ////////////////* GENERATE MAP *////////////////////
-CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {	
+CTPS.demoApp.generateMap = function(cities, congestion) {	
 	// Show name of MAPC Sub Region
 	// Define Zoom Behavior
-	var maxmin = []; 
-	interstateRoads.features.forEach(function(i) { 
-		maxmin.push(i.properties.AM_SPD_IX);
-	})
 
 	// SVG Viewport
 	var svgContainer = d3.select("#map").append("svg")
@@ -67,7 +63,7 @@ CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {
 
 	// Create Boston Region MPO map with SVG paths for individual towns.
 	var mapcSVG = svgContainer.selectAll(".subregion")
-		.data(mapcSubregions.features)
+		.data(topojson.feature(cities, cities.objects.collection).features)
 		.enter()
 		.append("path")
 			.attr("class", "subregion")
@@ -80,7 +76,7 @@ CTPS.demoApp.generateMap = function(mapcSubregions, interstateRoads) {
 
 
 	var interstateSVG = svgContainer.selectAll(".interstate")
-		.data(interstateRoads.features)
+		.data(topojson.feature(congestion, congestion.objects.collection).features)
 		.enter()
 		.append("path")
 			.attr("class", "interstate")

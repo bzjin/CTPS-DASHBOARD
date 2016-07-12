@@ -12,6 +12,9 @@
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700" rel="stylesheet">
+<!-- TopoJSON -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
+
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -50,8 +53,8 @@
 		<li><a href="pages/pavement/index.php">Pavement</a></li>
 		<li><a href="pages/bridges/index.php">Bridges</a></li>
 		<li><a href="pages/congestion/index.php">Congestion</a></li>
+		<li><a href="pages/rapid_transit/index.php">Rapid Transit</a></li>
 		<li><a href="#">Air Quality</a></li>
-		<li><a href="#">Accessibility</a></li>
 		<li><a href="#">Inequality</a></li>
 		<li><a href="#">Compactness</a></li>
       </ul>
@@ -66,8 +69,8 @@
 		<button><a href="pages/pavement/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</a><p><b class="good">78%</b><br>in good condition</p></button>
 		<button><a href="pages/congestion/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Congestion </a><p><b>12 sec.</b> <br>average delay per mile</p></button>
 		<button><a href="pages/bridges/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</a><p><b class="good">88%</b><br>in good condition</p></button>
-		<button><a href="pages/pavement/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Air Quality </a><p><b class="good">-12%</b> <br>CO2 emissions since 2012</p></button>
-		<button><a href="#"><i class="fa fa-circle-o" aria-hidden="true"></i> Mobility </a><p class="unavailable"><b>N/A</b></br>Data coming soon!</p></button>
+		<button><a href="pages/rapid_transit/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Rapid Transit</a><p><b>78</b> <br>average seconds late</p></button>
+		<button><a href="#"><i class="fa fa-circle-o" aria-hidden="true"></i> Air Quality </a><p class="unavailable"><b>N/A</b></br>Data coming soon!</p></button>
 		<button><a href="#"><i class="fa fa-circle-o" aria-hidden="true"></i> Equity </a><p class="unavailable"><b>N/A</b><br>Data coming soon!</p></button>
 		<button><a href="#"><i class="fa fa-circle-o" aria-hidden="true"></i> Capacity </a><p class="unavailable"><b>N/A</b><br>Data coming soon!</p></button>
 		
