@@ -35,7 +35,7 @@
 	{	"station"  	: "Andrew",
 		"boardings"	: [ 3351, 2180, 2217, 3087, 3745, 4545, 5372, 5063, 5260, 5586, 6425 ] 
 	},
-	{	"station"  	: "JFK/UMASS",
+	{	"station"  	: "JFK/UMass",
 		"boardings"	: [ 6255, 6638, 6288, 7576, 6154, 7464, 8163, 7018, 7379, 7834, 8920 ] 
 	},
 	{	"station"	: "Savin Hill",

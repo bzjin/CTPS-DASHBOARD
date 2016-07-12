@@ -23,9 +23,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
 
-.axis line, .axis path, .axis text { fill: none; stroke-width: 0; stroke: #ddd; shape-rendering: crispEdges;} 
-.yaxis line, .yaxis path { fill: none; stroke-width: 0px; shape-rendering: crispEdges;} text {fill: #ddd; font-size: 14px;} 
-.xaxis {fill: none; stroke-width: .5; stroke: #ddd;} 
+.axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; shape-rendering: crispEdges;} 
+text {fill: #ddd; font-size: 14px;} 
 
 </style> 
 </head>
@@ -40,15 +39,17 @@
 		<h1>Rapid Transit</h1>
 	</div>
 
+	<div class="col-md-12">
+		<h3> MBTA Boarding loads </h3>
+		<p> Down with the Big Dig!!! </p>
+		<div class="col-md-6" id="mapMBTA"></div>
+	</div>
 
 	<div class="col-md-12">
-		<h3> Interstate Speed Index by Route Coordinates </h3>
-		<p> One of the main ways congestion is measured is by speed index, which is a ratio giving the average, observed speed of travel during congestion hours to the posted speed limit.</p>
-		<p> Speed Index = (Observed speed during congested hours) / (Posted speed limit) </p>
-		<p> Mouse over the interstate roads to see its speed index during morning and afternoon congestion hours. The selected road segment will appear on the map to the right. </p>
-		<div class="col-md-9" id="mapMBTA"></div>
-		<div class="col-md-3" id="crossSection"></div>
-	
+		<h3> Bus Routes </h3>
+		<div class="col-md-12" id="busses"></div>
+	</div>
+
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>

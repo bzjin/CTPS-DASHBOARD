@@ -117,8 +117,8 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	var xScale = d3.scale.linear().domain([2003.5, 2013.5]).range([50, 550]);
 	var yScale = d3.scale.linear().domain([0, findTownMax("Total")]).range([400, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")); 
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(-500, 0, 0).tickFormat(d3.format("d"));
+	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10); 
+	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
 
 	chartContainer.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 400)").style("stroke-width", "1px")
