@@ -91,15 +91,15 @@ CTPS.demoApp.generateMap = function(cities, congestion) {
 					return "black";
 				}
 			})
-			.style("opacity", function(d) { return (1 - d.properties.AM_SPD_IX);})//function(d) { return (d.properties.AM_SPD_IX-.5);})
+			.style("opacity", function(d) { return (1 - d.properties.AM_SPD_IX/1.1);})//function(d) { return (d.properties.AM_SPD_IX-.5);})
 
 	d3.selectAll(".subregion").transition()
 		.duration(3000)
 		.style("opacity", .2)
 
 	d3.selectAll(".interstate").transition()
-		.delay(1000)
-		.duration(3000)
-		.style("stroke-width", function(d) { return 1/d.properties.AM_SPD_IX}); 
+		.delay(function(d) { return 1000/(d.properties.AM_SPD_IX)})
+		.duration(function(d) { return 1000/(d.properties.AM_SPD_IX*d.properties.AM_SPD_IX)})
+		.style("stroke-width", function(d) { return 1/(d.properties.AM_SPD_IX*d.properties.AM_SPD_IX)}); 
 } // CTPS.demoApp.generateViz()
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
-<title>Rapid Transit in the Boston MPO Region</title>
+<title>Sidewalks and Trails in the Boston MPO Region</title>
 <link rel="stylesheet" href="app.css"/>
 <link rel="stylesheet" href="../../css/master.css"/>
 
@@ -33,6 +33,20 @@ text {fill: #ddd; font-size: 14px;} .radar-chart .area {
   fill-opacity: 0.7;
 }
 
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.node {
+  border: none;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
 </style> 
 </head>
 
@@ -43,23 +57,21 @@ text {fill: #ddd; font-size: 14px;} .radar-chart .area {
 	<?php include '../../components/top-nav.php';?>
 </div>
 	<div class="col-md-12">
-		<h1>Rapid Transit</h1>
+		<h1>Sidewalks and Bike Trails</h1>
 	</div>
 
 	<div class="col-md-12">
-		<h3> Bus Routes </h3>
-		<p> Route 1 bus arrivals in May 2016 </p>
+		<h3> Sidewalks </h3>
+		<p> Doctors recommend 30 minutes of moderately paced walking a day.</p>
 		<!--<div class="col-md-3" id="mapRoute1"></div>-->
-		<div class="col-md-12" id="busses"></div>
-		<div class="col-md-12" id="stops"></div>
+		<div class="col-md-12" id="sidewalks"></div>
 	</div>
-<!--
+
 	<div class="col-md-12">
-		<h3> MBTA Boarding loads </h3>
-		<p> Down with the Big Dig!!! </p>
-		<div class="col-md-6" id="mapMBTA"></div>
-		<div class="col-md-6" id="graphMBTA"></div>
-	</div>-->
+		<h3> Trails </h3>
+		<p> Wear your helmet, kids. </p>
+		<div class="col-md-12" id="bikeTrails"></div>
+	</div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>

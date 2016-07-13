@@ -187,8 +187,8 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 			if (j.properties.DIRECTION == "Northbound" || j.properties.DIRECTION == "Southbound") { directions++; }
 		})
 
-		var yScale = d3.scale.linear().domain([0, d3.max(maxmins)]).range([600, 150]);
-		var ySegment = d3.scale.linear().domain([0, d3.max(maxmins)]).range([0, 450]);
+		var yScale = d3.scale.linear().domain([0, d3.max(maxmins)]).range([685, 80]);
+		var ySegment = d3.scale.linear().domain([0, d3.max(maxmins)]).range([0, 605]);
 
 		roadWindow.selectAll("rect, text").remove();
 
@@ -202,14 +202,15 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 				}
 			})
 			.attr("x", 97)
-			.attr("y", 615)
+			.attr("y", 700)
 			.style("font-weight", 300)
+			.style("font-size", 10)
 			.style("text-anchor", "middle")
 
 		roadWindow.append("text")
 			.html(crossGraph[0].properties.RTE_NAME_ID.substring(0, d.properties.RTE_NAME_ID.lastIndexOf(" ")))
 			.attr("x", 100)
-			.attr("y", 120)
+			.attr("y", 50)
 			.style("text-anchor", "middle")
 
 		roadWindow.selectAll(".crossSectionAM")
@@ -280,7 +281,7 @@ CTPS.demoApp.generateTraveller = function(towns, arterials) {
 
 	var freeFlow = d3.select("#freeFlow2").append("svg")
 		.attr("width", "100%")
-		.attr("height", 600);
+		.attr("height", 400);
 
 	//Free Flow Map
 	var mapcSVG = freeFlow.selectAll(".freeFlow")
@@ -310,7 +311,7 @@ CTPS.demoApp.generateTraveller = function(towns, arterials) {
 	//AM Congestion Road
 	var amCong = d3.select("#amCong2").append("svg")
 		.attr("width", "100%")
-		.attr("height", 600);
+		.attr("height", 400);
 
 	var mapcSVGam = amCong.selectAll(".amCong")
 		.data(topojson.feature(towns, towns.objects.collection).features)
@@ -341,7 +342,7 @@ CTPS.demoApp.generateTraveller = function(towns, arterials) {
 	//PM Congestion Road
 	var pmCong = d3.select("#pmCong2").append("svg")
 		.attr("width", "100%")
-		.attr("height", 600);
+		.attr("height", 400);
 
 	var mapcSVGpm = pmCong.selectAll(".pmCong")
 		.data(topojson.feature(towns, towns.objects.collection).features)

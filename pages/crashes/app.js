@@ -11,7 +11,7 @@ var geoPath = d3.geo.path().projection(projection);
 
 //Using the queue.js library
 queue()
-	.defer(d3.json, "../../json/boston_region_mpo_towns.geo.json")
+	.defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
 	.defer(d3.json, "../../json/nonmotorized_crashes.json")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
@@ -51,7 +51,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 	// Create Boston Region MPO map with SVG paths for individual towns.
 	var mapcSVG = svgContainer.selectAll(".mpo")
-		.data(mpoTowns.features)
+		.data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
 		.enter()
 		.append("path")
 			.attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})

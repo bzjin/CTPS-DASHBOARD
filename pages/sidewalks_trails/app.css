@@ -107,12 +107,12 @@ button {
   clear: both;
   float:left;
 }
-#congAnim, #congAnim2 { 
+#congAnim { 
   clear: both;
   margin: 10px 0px;
 }
 
-#congAnim:hover, #congAnim:active, #congAnim:focus, #congAnim2:hover, #congAnim2:active, #congAnim2:focus {
+#congAnim:hover, #congAnim:active, #congAnim:focus {
     color: #e26a6a;
     font-weight: 700;
       outline:none;

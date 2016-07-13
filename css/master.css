@@ -61,6 +61,7 @@ button {
 }
 
 button:active, button:hover, button:focus,  { 
+  
   outline:none;
   font-weight: 700;
   letter-spacing: 5px;

@@ -56,8 +56,8 @@
 		<div class="col-md-6 col-md-offset-6" id="map"></div>
 
 		<div class="row col-md-12" id="speedindex"> 
-			<div id="amchart"></div>
-			<div id="pmchart"></div>
+			<!-- <div id="amchart"></div>
+			<div id="pmchart"></div>-->
 		</div>
 	</div>
 	
@@ -68,11 +68,11 @@
 
 	<div class="col-md-12">
 		<h3> Free Flow v. Congested Travel Time </h3> 
-		<button class="col-md-4" id="congAnim"> Start Animation </button>
+		<button id="congAnim"> Start Animation </button>
 		<div class="col-md-12">
-		<div class="col-md-4" id="freeFlow"> Driving at Speed Limit </div>
-		<div class="col-md-4" id="amCong"> Driving in AM Congestion</div>
-		<div class="col-md-4" id="pmCong"> Driving in PM Congestion </div>
+			<div class="col-md-4" id="freeFlow"> Driving at Speed Limit </div>
+			<div class="col-md-4" id="amCong"> Driving in AM Congestion</div>
+			<div class="col-md-4" id="pmCong"> Driving in PM Congestion </div>
 		</div>
 	</div>
 <div class="footer col-md-12">

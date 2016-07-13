@@ -90,9 +90,16 @@ CTPS.demoApp.generateChart = function(congestion) {
 	//Create AM chart
 	var interstateRoads = topojson.feature(congestion, congestion.objects.collection).features;
 
-	var amchartContainer = d3.select("#amchart").append("svg")
+	var twoCharts = d3.select("#speedindex").append("svg")
+		.attr("id", "twoCharts")
+		.attr("width", 800)
+		.attr("height", 600)
+
+	var amchartContainer = d3.select("#twoCharts").append("svg")
 		.attr("width", 310)
-		.attr("height", 600);
+		.attr("height", 600)
+		.attr("x", 0)
+		.attr("y", 0);
 
 	//axis label
 	amchartContainer.append("text")
@@ -264,9 +271,11 @@ CTPS.demoApp.generateChart = function(congestion) {
 	
 	//Create PM Charts
 
-var pmchartContainer = d3.select("#pmchart").append("svg")
+var pmchartContainer = d3.select("#twoCharts").append("svg")
 		.attr("width", 380)
-		.attr("height", 600);
+		.attr("height", 600)
+		.attr("x", 305)
+		.attr("y", 0);
 
 
 	pmchartContainer.call(tip2); 
@@ -767,7 +776,7 @@ CTPS.demoApp.generateTraveller = function(cities, congestion) {
 
 	var freeFlow = d3.select("#freeFlow").append("svg")
 		.attr("width", "100%")
-		.attr("height", 600);
+		.attr("height", 400);
 
 	//Free Flow Map
 	var mapcSVG = freeFlow.selectAll(".freeFlow")
@@ -797,7 +806,7 @@ CTPS.demoApp.generateTraveller = function(cities, congestion) {
 	//AM Congestion Road
 	var amCong = d3.select("#amCong").append("svg")
 		.attr("width", "100%")
-		.attr("height", 600);
+		.attr("height", 400);
 
 	var mapcSVGam = amCong.selectAll(".amCong")
 		.data(topojson.feature(cities, cities.objects.collection).features)
@@ -828,7 +837,7 @@ CTPS.demoApp.generateTraveller = function(cities, congestion) {
 	//PM Congestion Road
 	var pmCong = d3.select("#pmCong").append("svg")
 		.attr("width", "100%")
-		.attr("height", 600);
+		.attr("height", 400);
 
 	var mapcSVGpm = pmCong.selectAll(".pmCong")
 		.data(topojson.feature(cities, cities.objects.collection).features)

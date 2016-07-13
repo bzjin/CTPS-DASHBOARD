@@ -64,11 +64,11 @@
 
 	<div class="col-md-12">
 		<h3> Free Flow v. Congested Travel Time </h3> 
-		<button class="col-md-4" id="congAnim2"> Start Animation </button>
+		<button id="congAnim2"> Start Animation </button>
 		<div class="col-md-12">
-		<div class="col-md-4" id="freeFlow2"> Driving at Speed Limit </div>
-		<div class="col-md-4" id="amCong2"> Driving in AM Congestion</div>
-		<div class="col-md-4" id="pmCong2"> Driving in PM Congestion </div>
+			<div class="col-md-4" id="freeFlow2"> Driving at Speed Limit </div>
+			<div class="col-md-4" id="amCong2"> Driving in AM Congestion</div>
+			<div class="col-md-4" id="pmCong2"> Driving in PM Congestion </div>
 		</div>
 	</div>
 <div class="footer col-md-12">
