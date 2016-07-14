@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
-<title>Sidewalks and Trails in the Boston MPO Region</title>
+<title>Sidewalks in the Boston MPO Region</title>
 <link rel="stylesheet" href="app.css"/>
 <link rel="stylesheet" href="../../css/master.css"/>
 
@@ -28,10 +28,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
 
-.axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd;} 
-text {fill: #ddd; font-size: 14px;} .radar-chart .area {
-  fill-opacity: 0.7;
-}
+.axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
+text {fill: #ddd; font-size: 14px;} 
 
 form {
   position: absolute;
@@ -57,20 +55,14 @@ form {
 	<?php include '../../components/top-nav.php';?>
 </div>
 	<div class="col-md-12">
-		<h1>Sidewalks and Bike Trails</h1>
+		<h1>Sidewalks</h1>
 	</div>
 
 	<div class="col-md-12">
-		<h3> Sidewalks </h3>
+		<h3> Sidewalks in the Past Decade</h3>
 		<p> Doctors recommend 30 minutes of moderately paced walking a day.</p>
 		<!--<div class="col-md-3" id="mapRoute1"></div>-->
 		<div class="col-md-12" id="sidewalks"></div>
-	</div>
-
-	<div class="col-md-12">
-		<h3> Trails </h3>
-		<p> Wear your helmet, kids. </p>
-		<div class="col-md-12" id="bikeTrails"></div>
 	</div>
 
 	<div class="footer col-md-12">

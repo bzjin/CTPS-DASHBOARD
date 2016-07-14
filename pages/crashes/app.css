@@ -1,5 +1,9 @@
-#div {
+div {
   position: relative;
+}
+
+div h4 { 
+  font-weight: 700;
 }
 
 div h3 {
@@ -22,10 +26,6 @@ div h3 {
 }
 
 #map { 
-  position: relative;
-}
-
-#chart { 
   position: relative;
 }
 

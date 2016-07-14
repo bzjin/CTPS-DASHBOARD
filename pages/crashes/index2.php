@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
-<title>Nonmotorized Crashes in the Boston MPO Region</title>
+<title>Motorized Crashes in the Boston MPO Region</title>
 <link rel="stylesheet" href="app.css"/>
 <link rel="stylesheet" href="../../css/master.css"/>
 
@@ -42,8 +42,8 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	</div>
 	<div class="col-md-12">
 	<h1>Crashes</h1>
-	<h3 class="inner-nav col-md-12"><a href="#"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-	Non-Motorized Crashes</a><a href="index2.php"><i class="fa fa-circle-o" aria-hidden="true"></i>Motorized Crashes</a></h3>	
+	<h3 class="inner-nav col-md-12"><a href="index.php"><i class="fa fa-circle-o" aria-hidden="true"></i>
+	Non-Motorized Crashes</a><a href="#"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Motorized Crashes</a></h3>	
 	<p>The ability to move is crucial to every aspect of our existence. And yet, people face substantial risk getting from place to place in the Boston region. Roads claimed the lives of 53 people in the Boston region last year. </p>
 
 	<p>We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. The MPO aims to keep you safe everywhere and every way that you move. No loss of life is acceptable. </p>
@@ -51,22 +51,21 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	</div>
 
 	<div class="col-md-12"> 
-	<h3>Bike and Pedestrian Injuries Over Time </h3>
-		<div id="map" class="col-md-4">
+	<h3>Vehicle Injuries Over Time </h3>
+		<div id="map" class="col-md-5">
 			<p> Click on each city or town to see its injury counts over time. </p> 
 		</div>
-		<div id="bikeChart" class="col-md-4 key"><h4>Bicycle Injuries</h4></div>
-		<div id="pedChart" class = "col-md-4 key"><h4>Pedestrian Injuries</h4></div>
+		<div id="chart" class="col-md-7 key">
+			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries
+		</div>
 	</div>
 
 	<div class="col-md-12" >
-	<h3> Bike and Pedestrian Injuries and Fatalities in 2013 </h3>
-	<p> Boston Region saw <b>576</b> total bicycle crash injuries and <b>892</b> pedestrian crash injuries in 2013. Each dot represents one crash. <b>36</b> faded dots represent fatalities.</p>
+	<h3> Vehicle Injuries and Fatalities in 2013 </h3>
+	<p> Boston Region saw <b>14888</b> total vehicle crash injuries in 2013. Each dot represents one crash. <b>68</b> solid, filled dots represent fatalities.</p>
 		<div class="col-md-12 key">
-			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Bicycle Injuries
-			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Bicycle Fatalities
-			<i class="fa fa-circle-o pedes" aria-hidden="true"></i>  Pedestrian Injuries
-			<i class="fa fa-circle pedes" aria-hidden="true"></i> Pedestrian Fatalities</p>
+			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries
+			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Vehicle Fatalities
 		</div>
 	</div>
 
@@ -76,7 +75,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 		<?php include '../../components/footer.php';?>
 	</div>
 </div>
-<script src="app.js"></script>
+<script src="app2.js"></script>
 <script src="../../js/jquery.accessibleGrid-0.09.js"></script>
 </body>
 </html>

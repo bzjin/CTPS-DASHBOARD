@@ -22,40 +22,6 @@ div h3 {
   padding-bottom: -20px;
 }
 
-#map { 
-  position: absolute;
-  z-index: 0;
-  background: none;
-}
-
-#mapNonInterstate { 
-  background: 0;
-  z-index: 0;
-}
-
-#crossSection { 
-  z-index: 1;
-  float: right;
-  background: none;
-}
-
-#speedindex{
-  z-index: 1;
-  background: none;
-}
-
-#amchart{
-  position: relative;
-  display: inline-block;
-    background: none;
-}
-
-#pmchart{ 
-  position: relative;
-  display: inline-block;
-  background: none;
-}
-
 .d3-tip {
   line-height: 1;
   padding: 10px;

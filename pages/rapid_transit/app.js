@@ -205,7 +205,7 @@ route1.forEach(function(i){
 	//.attr("width", "100%")
 	//.attr("height", 600);
 
-var colorKey = ["#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd"];
+var colorKey = ["#f7f4f9","#e7e1ef","#d4b9da","#c994c7","#df65b0","#e7298a","#ce1256","#980043","#67001f"];
 var stopKey = ["Dudly", "Melwa", "Wasma", "masta", "hynes", "mit", "cntsq", "maput", "hhgat"];
 var stopKeyFull = ["Dudley Station", "Washington St @ Williams St", "Washington St @ Mass Ave", "Mass Ave Station", "Hynes Station", "MIT", "Central Square", "Mt Auburn St @ Putnam Ave", "Mass Ave @ Holyoke St"];
 
@@ -373,6 +373,7 @@ nested_runs.forEach(function(d){
 		if (nameA > nameB) { return 1 }
 			return 0;
 	})
+	if (d.values[0].Direction == "Outbound"){
 	polarStations.append("path")
 	    .attr("class", "id-" + d.values[0].TMTripID + " line buslines")
 	    .attr("d", line(d.values))
@@ -422,6 +423,7 @@ nested_runs.forEach(function(d){
 				.style("opacity", 1)
 			tip.hide(d);
 	    })
+	}
 });
 
 
@@ -438,7 +440,7 @@ route1.forEach(function(i){
 	//i.timeString = parseTime(new Date(i.Stime));
 	
 	//i.AvgEarliness = parseFloat(i.AvgEarliness); 
-	if (i.Timepoint == "Dudly" || i.Timepoint == "hhgat") { 
+	if ((i.Timepoint == "Dudly" && i.Direction == "Outbound" ) || (i.Timepoint == "hhgat" && i.Direction == "Inbound")) { 
 		i.AvgRunning = 0; 
 		i.ScheduledRunning = 0;
 	}
@@ -477,12 +479,12 @@ route1.forEach(function(i){
 })
 
 //Stop chart
-var width = 1000,
+var width = 500,
     height = 600;
 
-var stopScale = d3.scale.ordinal().domain(stopKey).rangePoints([150, 950]);
-var stopScaleNames = d3.scale.ordinal().domain(stopKeyFull).rangePoints([150, 950]);
-var dayScale = d3.scale.linear().domain([new Date("Mon Jan 01 1900 04:30:00 GMT-0500 (EST)"),new Date("Mon Jan 01 1900 14:00:00 GMT-0500 (EST)"), new Date("Mon Jan 01 1900 23:59:59 GMT-0500 (EST)")]).range(["#edf8b1","#7fcdbb","#2c7fb8"]);
+var stopScale = d3.scale.ordinal().domain(stopKey).rangePoints([50, 450]);
+var stopScaleNames = d3.scale.ordinal().domain(stopKeyFull).rangePoints([50, 450]);
+var dayScale = d3.scale.linear().domain([new Date("Mon Jan 01 1900 04:30:00 GMT-0500 (EST)"),new Date("Mon Jan 01 1900 14:00:00 GMT-0500 (EST)"), new Date("Mon Jan 01 1900 23:59:59 GMT-0500 (EST)")]).range(["#edf8b1","#41b6c4","#253494"]);
 var yScale = d3.scale.linear().domain([d3.min(minmax), d3.max(minmax)]).range([550, 50]);
 
 var line = d3.svg.line()
@@ -494,19 +496,32 @@ var area = d3.svg.area()
     .y0(function(d) { return yScale(d.AvgRunning - d.ScheduledRunning); })
     .y1(function(d) { return yScale(0); });
 
-var busStops = d3.select("#stops").append("svg")
+//Inbound
+var inboundStops = d3.select("#inboundStops").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+
+var outboundStops = d3.select("#outboundStops").append("svg")
     .attr("width", width)
     .attr("height", height)
 
 var xAxis = d3.svg.axis().scale(stopScaleNames).orient("bottom").ticks(10); 
 var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
 
-busStops.append("g").attr("class", "axis")
+inboundStops.append("g").attr("class", "axis")
 	.attr("transform", "translate(0, " + yScale(0) + ")").style("stroke-width", "1px")
-	.style("font-size", "14px")
 	.call(xAxis).selectAll("text")
 		.attr("transform", "rotate(-45)")
 		.style("text-anchor", "end")
+		.style("font-size", "10px")
+
+outboundStops.append("g").attr("class", "axis")
+	.attr("transform", "translate(0, " + yScale(0) + ")").style("stroke-width", "1px")
+	.call(xAxis).selectAll("text")
+		.attr("transform", "rotate(-45)")
+		.style("text-anchor", "end")
+		.style("font-size", "10px")
+
 
 var nested_runs = d3.nest()
 .key(function(d) { return d.TMTripID})
@@ -517,12 +532,25 @@ var tip = d3.tip()
 	  .attr('class', 'd3-tip')
 	  .offset([-40, 0])
 	  .html(function(d) {
-	    return stopKeyFull[stopKey.indexOf(d.Timepoint)] + "<br>Scheduled Running Time: " + parseInt(d.ScheduledRunning/60) + " min " + d.ScheduledRunning%60 + " s " + "<br>Actual Running Time: " + parseInt(d.AvgRunning/60) + " min " + d.AvgRunning%60 + " s " ;
+	  	if (d.Direction == "Inbound"){
+	  		if (d.Timepoint != "hhgat") {
+	    		return stopKeyFull[stopKey.indexOf(d.Timepoint) + 1] + " to " + stopKeyFull[stopKey.indexOf(d.Timepoint)] + "<br>Scheduled Running Time: " + parseInt(d.ScheduledRunning/60) + " min " + d.ScheduledRunning%60 + " s " + "<br>Actual Running Time: " + parseInt(d.AvgRunning/60) + " min " + d.AvgRunning%60 + " s" ;
+	  		} else { 
+	  			return stopKeyFull[stopKey.indexOf(d.Timepoint)] + ": 1st stop"
+	  		}
+	  	} else { 
+	  		if (d.Timepoint != "Dudly") {
+	    		return stopKeyFull[stopKey.indexOf(d.Timepoint) - 1] + " to " + stopKeyFull[stopKey.indexOf(d.Timepoint)] + "<br>Scheduled Running Time: " + parseInt(d.ScheduledRunning/60) + " min " + d.ScheduledRunning%60 + " s " + "<br>Actual Running Time: " + parseInt(d.AvgRunning/60) + " min " + d.AvgRunning%60 + " s" ;
+	  		} else { 
+	  			return stopKeyFull[stopKey.indexOf(d.Timepoint)] + ": 1st stop"
+	  		}
+	  	}
 	  })
 
-busStops.call(tip);
+inboundStops.call(tip);
+outboundStops.call(tip);
 
-//Draw radar chart (circles, lines)
+//Draw stops chart (circles, lines)
 nested_runs.forEach(function(d){
 	d.values.sort(function(a,b){
 		var nameA = a.TimepointOrder;
@@ -531,62 +559,120 @@ nested_runs.forEach(function(d){
 		if (nameA > nameB) { return 1 }
 			return 0;
 	})
-	busStops.append("path")
-	    .attr("class", "area buslines")
-	    .attr("d", area(d.values))
-	    .style("stroke", "none")
-	    .style("fill", dayScale(d.values[0].Stime))
-	    .style("opacity", .02);
+	if (d.values[0].Direction == "Inbound") { 
+		inboundStops.append("path")
+		    .attr("class", "area buslines")
+		    .attr("d", area(d.values))
+		    .style("stroke", "none")
+		    .style("fill", dayScale(d.values[0].Stime))
+		    .style("opacity", .02);
+	} else { 
+		outboundStops.append("path")
+		    .attr("class", "area buslines")
+		    .attr("d", area(d.values))
+		    .style("stroke", "none")
+		    .style("fill", dayScale(d.values[0].Stime))
+		    .style("opacity", .02);
+	}
 });
 
 nested_runs.forEach(function(d){
-	busStops.append("path")
-	    .attr("class", "id-" + d.values[0].TMTripID + " line buslines")
-	    .attr("d", line(d.values))
-	    .attr("fill", "none")
-	    .attr("stroke", dayScale(d.values[0].Stime))
-	    .attr("stroke-width", .1);
-	busStops.selectAll("point")
-	    .data(d.values)
-	    .enter()
-	    .append("circle")
-	    .attr("class", function(d) { return "id-" + d.TMTripID + " point"})
-	    .attr("cx", function(d) { return stopScale(d.Timepoint)})
-	    .attr("cy", function(d) { return yScale(d.AvgRunning - d.ScheduledRunning)})
-	    .style("fill", "#191b1d")
-	    .style("opacity", .1)
-	    .attr("r", 2)
-	    .style("fill", function(d) { return dayScale(d.Stime);})
-	    .on("mouseenter", function(d) { 
-	    	var mystring = this.getAttribute("class");
-			var arr = mystring.split(" ", 2);
-			var firstWord = arr[0]; 
+	if (d.values[0].Direction == "Inbound") { 
+		inboundStops.append("path")
+		    .attr("class", "id-" + d.values[0].TMTripID + " line buslines")
+		    .attr("d", line(d.values))
+		    .attr("fill", "none")
+		    .attr("stroke", dayScale(d.values[0].Stime))
+		    .attr("stroke-width", .1);
+		inboundStops.selectAll("point")
+		    .data(d.values)
+		    .enter()
+		    .append("circle")
+		    .attr("class", function(d) { return "id-" + d.TMTripID + " point"})
+		    .attr("cx", function(d) { return stopScale(d.Timepoint)})
+		    .attr("cy", function(d) { return yScale(d.AvgRunning - d.ScheduledRunning)})
+		    .style("fill", "#191b1d")
+		    .style("opacity", .1)
+		    .attr("r", 2)
+		    .style("fill", function(d) { return dayScale(d.Stime);})
+		    .on("mouseenter", function(d) { 
+		    	var mystring = this.getAttribute("class");
+				var arr = mystring.split(" ", 2);
+				var firstWord = arr[0]; 
 
-			busStops.selectAll(".line")
-				.style("opacity", .1)
+				inboundStops.selectAll(".line")
+					.style("opacity", .1)
 
-			busStops.selectAll(".point")
-				.style("opacity", .1)
+				inboundStops.selectAll(".point")
+					.style("opacity", .1)
 
-			busStops.selectAll("." + firstWord)
-				.style("stroke-width", 1)
-				.style("r", 3)
-				.style("opacity", 1)
+				inboundStops.selectAll("." + firstWord)
+					.style("stroke-width", 1)
+					.style("r", 3)
+					.style("opacity", 1)
 
-			tip.show(d);
-	    })
-	    .on("mouseleave", function(d) { 
-			busStops.selectAll(".line")
-				.style("stroke-width", .1)
-				.style("opacity", 1)
+				tip.show(d);
+		    })
+		    .on("mouseleave", function(d) { 
+				inboundStops.selectAll(".line")
+					.style("stroke-width", .1)
+					.style("opacity", 1)
 
-			busStops.selectAll(".point")
-				.style("stroke-width", .5)
-				.style("r", 2)
-				.style("opacity", .1)
-			tip.hide(d);
-	    })
-});
+				inboundStops.selectAll(".point")
+					.style("stroke-width", .5)
+					.style("r", 2)
+					.style("opacity", .1)
+				tip.hide(d);
+		    })
+	} else {
+		outboundStops.append("path")
+		    .attr("class", "id-" + d.values[0].TMTripID + " line buslines")
+		    .attr("d", line(d.values))
+		    .attr("fill", "none")
+		    .attr("stroke", dayScale(d.values[0].Stime))
+		    .attr("stroke-width", .1);
+		outboundStops.selectAll("point")
+		    .data(d.values)
+		    .enter()
+		    .append("circle")
+		    .attr("class", function(d) { return "id-" + d.TMTripID + " point"})
+		    .attr("cx", function(d) { return stopScale(d.Timepoint)})
+		    .attr("cy", function(d) { return yScale(d.AvgRunning - d.ScheduledRunning)})
+		    .style("fill", "#191b1d")
+		    .style("opacity", .1)
+		    .attr("r", 2)
+		    .style("fill", function(d) { return dayScale(d.Stime);})
+		    .on("mouseenter", function(d) { 
+		    	var mystring = this.getAttribute("class");
+				var arr = mystring.split(" ", 2);
+				var firstWord = arr[0]; 
+
+				outboundStops.selectAll(".line")
+					.style("opacity", .1)
+
+				outboundStops.selectAll(".point")
+					.style("opacity", .1)
+
+				outboundStops.selectAll("." + firstWord)
+					.style("stroke-width", 1)
+					.style("r", 3)
+					.style("opacity", 1)
+
+				tip.show(d);
+		    })
+		    .on("mouseleave", function(d) { 
+				outboundStops.selectAll(".line")
+					.style("stroke-width", .1)
+					.style("opacity", 1)
+
+				outboundStops.selectAll(".point")
+					.style("stroke-width", .5)
+					.style("r", 2)
+					.style("opacity", .1)
+				tip.hide(d);
+		    })
+	}
+	});
 
 
 }

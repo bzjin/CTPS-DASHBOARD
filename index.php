@@ -53,10 +53,10 @@
 		<li><a href="pages/pavement/index.php">Pavement</a></li>
 		<li><a href="pages/bridges/index.php">Bridges</a></li>
 		<li><a href="pages/congestion/index.php">Congestion</a></li>
-		<li><a href="pages/rapid_transit/index.php">Rapid Transit</a></li>
+		<li><a href="pages/rapid_transit/index.php">Bus Routes</a></li>
+		<li><a href="pages/sidewalks/index.php">Sidewalks</a></li>
 		<li><a href="#">Air Quality</a></li>
-		<li><a href="#">Inequality</a></li>
-		<li><a href="#">Compactness</a></li>
+		<li><a href="#">Inequity</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
       </div> <!-- /.container-fluid -->
@@ -69,10 +69,10 @@
 		<button><a href="pages/pavement/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</a><p><b class="good">78%</b><br>in good condition</p></button>
 		<button><a href="pages/congestion/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Congestion </a><p><b>12 sec.</b> <br>average delay per mile</p></button>
 		<button><a href="pages/bridges/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</a><p><b class="good">88%</b><br>in good condition</p></button>
-		<button><a href="pages/rapid_transit/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Rapid Transit</a><p><b>78</b> <br>average seconds late</p></button>
+		<button><a href="pages/rapid_transit/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Bus Routes</a><p><b>78</b> <br>average seconds late</p></button>
+		<button><a href="pages/sidewalks/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</a><p><b class="good">A LOT</b><br>more sidewalks</p></button>
 		<button><a href="#"><i class="fa fa-circle-o" aria-hidden="true"></i> Air Quality </a><p class="unavailable"><b>N/A</b></br>Data coming soon!</p></button>
 		<button><a href="#"><i class="fa fa-circle-o" aria-hidden="true"></i> Equity </a><p class="unavailable"><b>N/A</b><br>Data coming soon!</p></button>
-		<button><a href="#"><i class="fa fa-circle-o" aria-hidden="true"></i> Capacity </a><p class="unavailable"><b>N/A</b><br>Data coming soon!</p></button>
 		
 	</div>
 </div>

@@ -39,13 +39,13 @@
 
 	<p class="col-md-12">[Attention Getter] Blurb on pavement condition. Why is it important? Why do we care?</p>
 
-	<h3 class="col-md-12">Interstate Pavement Conditions by Route Coordinates</h3>
+	<h3 class="col-md-12">Interstate Pavement Condition</h3>
 	<p class="col-md-12">This mapping reflects the interstate pavement conditions in 2013. Interstate exits are marked by their number. </p>
 
 	<div id="chart" class="col-md-12"></div>
 
 	<div class = "col-md-12">
-		<h3>Interstate Pavement Condition in the Past Decade</h3>
+		<h3>How has interstate pavement condition changed in the past decade?</h3>
 		<p> Interstate roads are measured by individual, smaller road segments. Each line in the chart below represents the pavement condition of each of these road segments.</p>
 		<p> Click to see only one interstate at a time. </p>
 	</div>
@@ -60,7 +60,7 @@
 	<div id="timeline" class="col-md-12"></div>
 
 	<div class = "col-md-12">
-		<h3>Pavement Condition vs Average Daily Traffic</h3>
+		<h3>Does average daily traffic affect pavement condition?</h3>
 		<p> Average Daily Traffic, or ADT, is the average number of vehicles two-way passing a specific point in a 24-hour period. </p>
 	</div>
 	
