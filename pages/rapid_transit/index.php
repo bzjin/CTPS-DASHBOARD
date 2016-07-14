@@ -43,14 +43,16 @@ text {fill: #ddd; font-size: 14px;} .radar-chart .area {
 	<?php include '../../components/top-nav.php';?>
 </div>
 	<div class="col-md-12">
-		<h1>Rapid Transit</h1>
+		<h1>Bus Routes</h1>
 	</div>
 
 	<div class="col-md-12">
-		<h3> Bus Routes </h3>
-		<p> Route 1 bus arrivals in May 2016 </p>
+		<h3>How early/late is Route 1? </h3>
+		<p> The visualization below shows the average of Route 1 bus arrival times in May 2016.s</p>
 		<!--<div class="col-md-3" id="mapRoute1"></div>-->
 		<div class="col-md-12" id="busses"></div>
+		<h3>How long does it take to get from stop to stop? </h3>
+		<p> The visualization below shows how much more or less time than the scheduled running time it takes for the Route 1 bus to travel from stop to stop. Actual running time is calculated from the average of each run throughout May 2016. </p>
 		<div class="col-md-12" id="stops"></div>
 	</div>
 <!--

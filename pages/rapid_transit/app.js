@@ -358,7 +358,7 @@ var tip = d3.tip()
 	  .attr('class', 'd3-tip')
 	  .offset([-40, 0])
 	  .html(function(d) {
-	    return stopKeyFull[stopKey.indexOf(d.Timepoint)] + "<br>Scheduled Arrival: " + d.timeString + "<br>Average Arrival: " + d.avgtime;
+	    return stopKeyFull[stopKey.indexOf(d.Timepoint)] + "<br>Scheduled Arrival: " + d.timeString + "<br>Actual Arrival: " + d.avgtime;
 	  })
 
 polarStations.call(tip);
@@ -438,7 +438,7 @@ route1.forEach(function(i){
 	//i.timeString = parseTime(new Date(i.Stime));
 	
 	//i.AvgEarliness = parseFloat(i.AvgEarliness); 
-	if (i.ScheduledRunning > 1000) { 
+	if (i.Timepoint == "Dudly" || i.Timepoint == "hhgat") { 
 		i.AvgRunning = 0; 
 		i.ScheduledRunning = 0;
 	}
@@ -480,14 +480,19 @@ route1.forEach(function(i){
 var width = 1000,
     height = 600;
 
-var stopScale = d3.scale.ordinal().domain(stopKey).rangePoints([100, 900]);
-var stopScaleNames = d3.scale.ordinal().domain(stopKeyFull).rangePoints([100, 900]);
+var stopScale = d3.scale.ordinal().domain(stopKey).rangePoints([150, 950]);
+var stopScaleNames = d3.scale.ordinal().domain(stopKeyFull).rangePoints([150, 950]);
 var dayScale = d3.scale.linear().domain([new Date("Mon Jan 01 1900 04:30:00 GMT-0500 (EST)"),new Date("Mon Jan 01 1900 14:00:00 GMT-0500 (EST)"), new Date("Mon Jan 01 1900 23:59:59 GMT-0500 (EST)")]).range(["#edf8b1","#7fcdbb","#2c7fb8"]);
 var yScale = d3.scale.linear().domain([d3.min(minmax), d3.max(minmax)]).range([550, 50]);
 
 var line = d3.svg.line()
     .x(function(d) { return stopScale(d.Timepoint); })
     .y(function(d) { return yScale(d.AvgRunning - d.ScheduledRunning); });
+
+var area = d3.svg.area()
+    .x(function(d) { return stopScale(d.Timepoint); })
+    .y0(function(d) { return yScale(d.AvgRunning - d.ScheduledRunning); })
+    .y1(function(d) { return yScale(0); });
 
 var busStops = d3.select("#stops").append("svg")
     .attr("width", width)
@@ -512,7 +517,7 @@ var tip = d3.tip()
 	  .attr('class', 'd3-tip')
 	  .offset([-40, 0])
 	  .html(function(d) {
-	    return stopKeyFull[stopKey.indexOf(d.Timepoint)] + "<br>Scheduled Arrival: " + d.timeString + "<br>Average Arrival: " + d.avgtime;
+	    return stopKeyFull[stopKey.indexOf(d.Timepoint)] + "<br>Scheduled Running Time: " + parseInt(d.ScheduledRunning/60) + " min " + d.ScheduledRunning%60 + " s " + "<br>Actual Running Time: " + parseInt(d.AvgRunning/60) + " min " + d.AvgRunning%60 + " s " ;
 	  })
 
 busStops.call(tip);
@@ -526,6 +531,15 @@ nested_runs.forEach(function(d){
 		if (nameA > nameB) { return 1 }
 			return 0;
 	})
+	busStops.append("path")
+	    .attr("class", "area buslines")
+	    .attr("d", area(d.values))
+	    .style("stroke", "none")
+	    .style("fill", dayScale(d.values[0].Stime))
+	    .style("opacity", .02);
+});
+
+nested_runs.forEach(function(d){
 	busStops.append("path")
 	    .attr("class", "id-" + d.values[0].TMTripID + " line buslines")
 	    .attr("d", line(d.values))
