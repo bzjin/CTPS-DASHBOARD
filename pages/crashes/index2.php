@@ -65,7 +65,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	<p> Boston Region saw <b>14888</b> total vehicle crash injuries in 2013. Each dot represents one crash. <b>68</b> solid, filled dots represent fatalities.</p>
 		<div class="col-md-12 key">
 			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries
-			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Vehicle Fatalities
+			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Vehicle Fatalities </p>
 		</div>
 	</div>
 

@@ -39,15 +39,8 @@ div h3 {
   background: none;
 }
 
-#speedindex{
-  z-index: 1;
-  background: none;
-}
-
-#amchart{
-  position: relative;
-  display: inline-block;
-    background: none;
+.yrpicker { 
+   width: 9%;
 }
 
 #pmchart{ 

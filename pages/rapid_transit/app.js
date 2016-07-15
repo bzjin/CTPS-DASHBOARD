@@ -205,7 +205,7 @@ route1.forEach(function(i){
 	//.attr("width", "100%")
 	//.attr("height", 600);
 
-var colorKey = ["#f7f4f9","#e7e1ef","#d4b9da","#c994c7","#df65b0","#e7298a","#ce1256","#980043","#67001f"];
+var colorKey = ["#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd"];
 var stopKey = ["Dudly", "Melwa", "Wasma", "masta", "hynes", "mit", "cntsq", "maput", "hhgat"];
 var stopKeyFull = ["Dudley Station", "Washington St @ Williams St", "Washington St @ Mass Ave", "Mass Ave Station", "Hynes Station", "MIT", "Central Square", "Mt Auburn St @ Putnam Ave", "Mass Ave @ Holyoke St"];
 

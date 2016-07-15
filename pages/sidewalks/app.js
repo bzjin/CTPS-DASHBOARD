@@ -26,61 +26,144 @@ CTPS.demoApp.generateSidewalk = function(allData) {
 // SVG Viewport
 var timeline = d3.select("#sidewalks").append("svg")
     .attr("width", "100%")
-    .attr("height", 550)
+    .attr("height", 1200)
+
+allData.sort(function(a, b){
+  var nameA = a.sidewalk_to_miles;
+  var nameB = b.sidewalk_to_miles;
+  if (nameA < nameB) { return -1;}
+  if (nameA > nameB) { return 1;}
+  return 0;
+
+})
 
 var towns = [];
 var capitalized = [];
 allData.forEach(function(i){
   if (towns.indexOf(i) == -1) {
+    i.town = i.town.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     towns.push(i.town);
-    capitalized.push(i.town.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}))
   }
 })
 
 console.log(capitalized);
 
-var colorToYear = d3.scale.linear().domain([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015]).range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
-xScale = d3.scale.linear().domain([0, 1.8]).range([150, 1000]);
-yNames = d3.scale.ordinal().domain(capitalized).rangePoints([50, 1000]);
+var colorToYear = d3.scale.linear().domain([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015]).range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
+xScaleRatio = d3.scale.linear().domain([0, 1.8]).range([80, 1050]);
 yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1150]);
 
-var xAxis = d3.svg.axis().scale(xScale).orient("top").tickSize(-1000, 0, 0);
-var yAxis = d3.svg.axis().scale(yNames).orient("left").tickSize(-850, 0, 0);
+var xAxis = d3.svg.axis().scale(xScaleRatio).orient("top").tickSize(-1100, 0, 0);
+var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-970, 0, 0);
 
 timeline.append("text")
-    .attr("x", 400)
+    .attr("x", 80)
     .attr("y", 20)
     .style("font-weight", 300)
     .text("Sidewalk per Center Lane Mile")
 
 timeline.append("g").attr("class", "axis")
-    .attr("transform", "translate(0, 450)")
+    .attr("transform", "translate(0, 50)")
     .call(xAxis)
   
-timeline.append("g").attr("class", "axis")
-    .attr("transform", "translate(150, 0)")
+timeline.append("g").attr("class", "yaxis")
+    .attr("transform", "translate(80, 0)")
     .call(yAxis)
     .selectAll("text")
-    .attr("transform", "translate(-70, 0)")
+    .attr("transform", "translate(-75, 0)")
     .style("text-anchor", "start")
     .style("font-size", 10);
 
-timeline.selectAll("sidewalks")
-  .data(allData)
-  .enter()
-  .append("rect")
-    .attr("class", "sidewalks")
-    .attr("x", function(d) { return xScale(Math.ceil(d.sidewalk_to_miles*40)/40)+10;})
-    .attr("y", function(d) { return yScale(d.town);})
-    .attr("height", 10)
-    .attr("width", 10)
-    .style("fill", function(d){ return colorToYear(d.year)})
-    //.style("fill", "#fdae61")
-    .style("opacity", .5)
-    .on("mouseenter", function(d){
-      console.log(d.town)
+dataVizAll();
+
+function dataVizAll() {
+  timeline.selectAll("circle").remove();
+
+  timeline.selectAll(".roads")
+    .data(allData)
+    .enter()
+    .append("circle")
+      .attr("class", ".roads")
+      .attr("cx", function(d) { return xScaleRatio(Math.ceil(d.sidewalk_to_miles*40)/40);})
+      .attr("cy", function(d) { return yScale(d.town);})
+      .attr("r", function(d) { return Math.sqrt(d.center_line_miles);})
+      .style("stroke", function(d){ return colorToYear(d.year)})
+      .style("stroke-width", 1)
+      .style("fill", "none")
+      .style("opacity", .2)
+      .on("mouseenter", function(d){
+      });
+
+  timeline.selectAll(".sidewalks")
+    .data(allData)
+    .enter()
+    .append("circle")
+      .attr("class", "sidewalks")
+      .attr("cx", function(d) { return xScaleRatio(Math.ceil(d.sidewalk_to_miles*40)/40);})
+      .attr("cy", function(d) { return yScale(d.town);})
+      .attr("r", function(d) { return Math.sqrt(d.sidewalk_miles);})
+      .style("fill", function(d){ return colorToYear(d.year)})
+      .style("stroke-width", 0)
+      .style("opacity", .2)
+      .on("mouseenter", function(d){
+    })
+}
+
+//button activation 
+  d3.select("#alphabetize").on("click", function(){
+    allData.sort(function(a,b) { 
+        var nameA = a.town;
+        var nameB = b.town; 
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0; 
+      })
+    
+    towns = []; 
+
+    allData.forEach(function(i){ 
+      towns.push(i.town);
     })
 
+    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1150]);
+    var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-970, 0, 0);
+    
+    timeline.select(".yaxis").transition()
+      .duration(750)
+      .call(yAxis)
+    .selectAll("text")
+      .attr("transform", "translate(-75, 0)")
+      .style("text-anchor", "start");
+
+    dataVizAll();
+  })
+
+  d3.select("#byAverages").on("click", function(){
+    allData.sort(function(a,b) { 
+        var nameA = a.sidewalk_to_miles;
+        var nameB = b.sidewalk_to_miles; 
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0; 
+      })
+    
+     towns = []; 
+
+    allData.forEach(function(i){ 
+      towns.push(i.town);
+    })
+
+    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1150]);
+    var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-970, 0, 0);
+    
+    timeline.select(".yaxis").transition()
+      .duration(750)
+      .call(yAxis)
+    .selectAll("text")
+      .attr("transform", "translate(-75, 0)")
+      .style("text-anchor", "start");
+
+    dataVizAll();
+  })
 /*
 var margin = {top: 40, right: 10, bottom: 10, left: 10},
     width = 960 - margin.left - margin.right,
