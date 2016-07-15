@@ -38,17 +38,31 @@ div h3 {
   float: right;
   background: none;
 }
+.bigbutton {
+    border: .5px solid white;
+    color: white;
+    width: 40%;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 300;
+}
 
+.bigbutton:hover, .bigbutton:active, .bigbutton:focus {
+    font-weight: 700;
+    outline:none;
+}
 .yrpicker { 
-   width: 9%;
+  font-weight: 300;
 }
 
-#pmchart{ 
-  position: relative;
-  display: inline-block;
-  background: none;
+.yrpicker:hover, .yrpicker:active, .yrpicker:focus {
+    color: ;
+    font-weight: 700;
+    outline:none;
 }
-
 .d3-tip {
   line-height: 1;
   padding: 10px;

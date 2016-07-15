@@ -13,7 +13,7 @@ queue()
 	//.defer(d3.json, "../../JSON/green_line_boardings.json")
 	//.defer(d3.json, "../../JSON/blue_line_boardings.json")
 	//.defer(d3.json, "../../JSON/orange_line_boardings.json")
-	.defer(d3.csv, "../../JSON/bus_route_1.csv")
+	.defer(d3.csv, "../../JSON/bus_routes.csv")
 	//.defer(d3.json, "../../JSON/mbta_bus_route_1.geojson")
 	//.defer(d3.json, "../../JSON/mbta_bus_route_1_stops.geojson")
 
@@ -22,6 +22,8 @@ queue()
 	.awaitAll(function(error, results){ 
 
 		//CTPS.demoApp.generateMBTA(results[0],results[1], results[2], results[3], results[4], results[5]);
+				console.log(results[0])
+
 		CTPS.demoApp.generateBusPolar(results[0]);
 		CTPS.demoApp.generateBusStops(results[0]);
 		//CTPS.demoApp.generateTimes(results[1]);
@@ -188,14 +190,17 @@ CTPS.demoApp.generateBusPolar = function(route1) {
 // Define Zoom Behavior
 var minmax = [];
 var parseTime = d3.time.format("%I:%M:%S %p");
+ 
 
 //var start = new Date(); 
 route1.forEach(function(i){
-	i.Stime = parseTime.parse(i.Stime);
-	i.timeString = parseTime(new Date(i.Stime));
-	
-	minmax.push(i.Stime);
-	i.AvgEarliness = parseFloat(i.AvgEarliness); 
+	if (i.Route == 1) { 
+		i.Stime = parseTime.parse(i.Stime);
+		i.timeString = parseTime(new Date(i.Stime));
+		
+		minmax.push(i.Stime);
+		i.AvgEarliness = parseFloat(i.AvgEarliness); 
+	}
 })
 //var finish = new Date();
 //console.log(start, finish, finish - start);
@@ -235,8 +240,19 @@ var width = 1000,
 var r = d3.scale.linear().domain([900, -1200]).range([0, radius]);
 var deg = d3.scale.linear().domain([new Date("Mon Jan 01 1900 00:00:00 GMT-0500(EST)"), new Date("Mon Jan 01 1900 23:59:59 GMT-0500(EST)")]).range([0, 2 * Math.PI]);
 
-var line = d3.svg.line.radial()
-    .radius(function(d) { return r(d.AvgEarliness); })
+var area = d3.svg.area.radial()
+    .outerRadius(function(d) { return r(d.MedianEarliness); })
+    .innerRadius(function(d) { return r(0); })
+    .angle(function(d) { return deg(d.Stime); });
+
+var areaLow = d3.svg.area.radial()
+    .outerRadius(function(d) { return r(d.LowEarliness); })
+    .innerRadius(function(d) { return r(0); })
+    .angle(function(d) { return deg(d.Stime); });
+
+var areaHigh = d3.svg.area.radial()
+    .outerRadius(function(d) { return r(d.HighEarliness); })
+    .innerRadius(function(d) { return r(0); })
     .angle(function(d) { return deg(d.Stime); });
 
 var rushHour = d3.svg.area.radial()
@@ -358,7 +374,7 @@ var tip = d3.tip()
 	  .attr('class', 'd3-tip')
 	  .offset([-40, 0])
 	  .html(function(d) {
-	    return stopKeyFull[stopKey.indexOf(d.Timepoint)] + "<br>Scheduled Arrival: " + d.timeString + "<br>Actual Arrival: " + d.avgtime;
+	    return stopKeyFull[stopKey.indexOf(d.Timepoint)] + "<br>Scheduled Arrival: " + d.timeString + "<br>Actual Arrival: " + d.AvgArrival;
 	  })
 
 polarStations.call(tip);
@@ -373,14 +389,30 @@ nested_runs.forEach(function(d){
 		if (nameA > nameB) { return 1 }
 			return 0;
 	})
-	if (d.values[0].Direction == "Outbound"){
 	polarStations.append("path")
 	    .attr("class", "id-" + d.values[0].TMTripID + " line buslines")
-	    .attr("d", line(d.values))
-	    .attr("fill", "none")
-	    .attr("stroke", "#fff")
-	    .attr("stroke-width", .1);
-	polarStations.selectAll("point")
+	    .attr("d", areaLow(d.values))
+	    .attr("fill", "#99d594")
+	    	    .style("opacity", .1)
+
+	
+	polarStations.append("path")
+	    .attr("class", "id-" + d.values[0].TMTripID + " line buslines")
+	    .attr("d", area(d.values))
+	    .attr("fill", "#fff")
+		    .style("opacity", .1)
+
+	
+	polarStations.append("path")
+	    .attr("class", "id-" + d.values[0].TMTripID + " line buslines")
+	    .attr("d", areaHigh(d.values))
+	    .attr("fill", "#fc8d59")
+	    .style("opacity", .1)
+
+
+	    //.attr("stroke", "#fff")
+	    //.attr("stroke-width", .1);
+	/*polarStations.selectAll("point")
 	    .data(d.values)
 	    .enter()
 	    .append("circle")
@@ -422,8 +454,8 @@ nested_runs.forEach(function(d){
 				.style("r", 2)
 				.style("opacity", 1)
 			tip.hide(d);
-	    })
-	}
+	    })*/
+	
 });
 
 
@@ -444,8 +476,9 @@ route1.forEach(function(i){
 		i.AvgRunning = 0; 
 		i.ScheduledRunning = 0;
 	}
-	minmax.push(i.AvgRunning - i.ScheduledRunning);
-
+	if (i.Route == 1) { 
+		minmax.push(i.AvgRunning - i.ScheduledRunning);
+	}
 })
 //var finish = new Date();
 //console.log(start, finish, finish - start);
@@ -576,6 +609,7 @@ nested_runs.forEach(function(d){
 	}
 });
 
+console.log(d.values[0])
 nested_runs.forEach(function(d){
 	if (d.values[0].Direction == "Inbound") { 
 		inboundStops.append("path")

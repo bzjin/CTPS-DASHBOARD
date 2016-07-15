@@ -172,10 +172,12 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 					.attr("fill", "#ddd")
 					.attr("r", 2);
 
-				timeline.selectAll("." + thisreg)
+				d3.selectAll("." + thisreg)
 					.style("opacity", 1)
 					.style("stroke", "#ddd")
-					.style("stroke-width", 2);
+					.style("stroke-width", 2)
+					.style("color","#e26a6a")
+					.style("font-weight", 700);
 
 				timeline.selectAll("circle." + thisreg)
 					.style("fill", "#e26a6a")
@@ -191,6 +193,18 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 
 				})
 			.on("mouseleave", function(d) {
+				d3.selectAll(".townpicker")
+					.style("opacity", 1)
+					.style("stroke", "none")
+					.style("stroke-width", 0)
+					.style("color","#fff")
+					.style("font-weight", 300);
+					
+				d3.selectAll("." + thisreg)
+					.style("opacity", 1)
+					.style("stroke", "none")
+					.style("stroke-width", 0)
+
 				timeline.selectAll("path")
 					.style("opacity", .5)
 					.style("stroke", "#ddd")

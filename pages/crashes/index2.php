@@ -55,9 +55,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 		<div id="map" class="col-md-5">
 			<p> Click on each city or town to see its injury counts over time. </p> 
 		</div>
-		<div id="chart" class="col-md-7 key">
-			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries
-		</div>
+		<div id="chart" class="col-md-7 key"></div>
 	</div>
 
 	<div class="col-md-12" >

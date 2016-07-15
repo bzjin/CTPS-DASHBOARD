@@ -26,7 +26,7 @@ CTPS.demoApp.generateSidewalk = function(allData) {
 // SVG Viewport
 var timeline = d3.select("#sidewalks").append("svg")
     .attr("width", "100%")
-    .attr("height", 1200)
+    .attr("height", 1400)
 
 allData.sort(function(a, b){
   var nameA = a.sidewalk_to_miles;
@@ -49,20 +49,20 @@ allData.forEach(function(i){
 console.log(capitalized);
 
 var colorToYear = d3.scale.linear().domain([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015]).range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
-xScaleRatio = d3.scale.linear().domain([0, 1.8]).range([80, 1050]);
-yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1150]);
+xScaleRatio = d3.scale.linear().domain([0, 1]).range([80, 1050]);
+yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1350]);
 
-var xAxis = d3.svg.axis().scale(xScaleRatio).orient("top").tickSize(-1100, 0, 0);
+var xAxis = d3.svg.axis().scale(xScaleRatio).orient("top").tickSize(-1300, 0, 0);
 var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-970, 0, 0);
 
 timeline.append("text")
     .attr("x", 80)
     .attr("y", 20)
-    .style("font-weight", 300)
-    .text("Sidewalk per Center Lane Mile")
+    .style("font-weight", 700)
+    .text("Sidewalk per Center Line Mile")
 
 timeline.append("g").attr("class", "axis")
-    .attr("transform", "translate(0, 50)")
+    .attr("transform", "translate(0, 45)")
     .call(xAxis)
   
 timeline.append("g").attr("class", "yaxis")
@@ -73,39 +73,111 @@ timeline.append("g").attr("class", "yaxis")
     .style("text-anchor", "start")
     .style("font-size", 10);
 
+var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([0, 10])
+    .html(function(d) {
+      return d.town + "<br>" + d.year + "<br>Sidewalk Miles: " + d.sidewalk_miles + "<br>Centerline Miles: " + d.center_line_miles;
+    })
+
+timeline.call(tip); 
+
 dataVizAll();
 
 function dataVizAll() {
   timeline.selectAll("circle").remove();
+  timeline.selectAll("rect").remove();
+
+
+  timeline.selectAll(".markers")
+    .data(allData)
+    .enter()
+    .append("rect")
+      .attr("class", function(d) { return d.town })
+      .attr("x", function(d) { return xScaleRatio(-0.025);})
+      .attr("y", function(d) { return yScale(d.town)-1;})
+      .attr("height", 2)
+      .attr("width", 1005)
+      .style("fill", "#fff")
+      .style("opacity", 0)
+      .on("mouseenter", function(d){
+        var mystring = this.getAttribute("class");
+
+        d3.selectAll("." + mystring)
+          .style("opacity", 1)
+      })
+      .on("mouseleave", function(d){
+
+        d3.selectAll("circle")
+          .style("opacity", .1)
+        
+        d3.selectAll("rect")
+          .style("opacity", 0)
+      });
+
 
   timeline.selectAll(".roads")
     .data(allData)
     .enter()
     .append("circle")
-      .attr("class", ".roads")
+      .attr("class", function(d) { return "yr" + d.year + " roads " + d.town;})
       .attr("cx", function(d) { return xScaleRatio(Math.ceil(d.sidewalk_to_miles*40)/40);})
       .attr("cy", function(d) { return yScale(d.town);})
       .attr("r", function(d) { return Math.sqrt(d.center_line_miles);})
       .style("stroke", function(d){ return colorToYear(d.year)})
       .style("stroke-width", 1)
       .style("fill", "none")
-      .style("opacity", .2)
+      .style("opacity", .1)
       .on("mouseenter", function(d){
+        var mystring = this.getAttribute("class");
+        var arr = mystring.split(" ");
+        var thirdWord = arr[2]; 
+
+        d3.selectAll("." + thirdWord)
+          .style("opacity", 1)
+
+        tip.show(d); 
+      })
+      .on("mouseleave", function(d){
+
+        d3.selectAll("circle")
+          .style("opacity", .1)
+        
+        d3.selectAll("rect")
+          .style("opacity", 0)
+        tip.hide(d); 
       });
 
   timeline.selectAll(".sidewalks")
     .data(allData)
     .enter()
     .append("circle")
-      .attr("class", "sidewalks")
+      .attr("class", function(d) { return "yr" + d.year + " sidewalks " + d.town;})
       .attr("cx", function(d) { return xScaleRatio(Math.ceil(d.sidewalk_to_miles*40)/40);})
       .attr("cy", function(d) { return yScale(d.town);})
       .attr("r", function(d) { return Math.sqrt(d.sidewalk_miles);})
       .style("fill", function(d){ return colorToYear(d.year)})
       .style("stroke-width", 0)
-      .style("opacity", .2)
+      .style("opacity", .1)
       .on("mouseenter", function(d){
-    })
+        var mystring = this.getAttribute("class");
+        var arr = mystring.split(" ");
+        var thirdWord = arr[2]; 
+
+        d3.selectAll("." + thirdWord)
+          .style("opacity", 1)
+
+        tip.show(d); 
+      })
+      .on("mouseleave", function(d){
+        d3.selectAll("circle")
+          .style("opacity", .1)
+        
+        d3.selectAll("rect")
+          .style("opacity", 0)
+        tip.hide(d); 
+      });
+    
 }
 
 //button activation 
@@ -124,7 +196,7 @@ function dataVizAll() {
       towns.push(i.town);
     })
 
-    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1150]);
+    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1350]);
     var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-970, 0, 0);
     
     timeline.select(".yaxis").transition()
@@ -152,7 +224,7 @@ function dataVizAll() {
       towns.push(i.town);
     })
 
-    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1150]);
+    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1350]);
     var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-970, 0, 0);
     
     timeline.select(".yaxis").transition()
@@ -163,6 +235,26 @@ function dataVizAll() {
       .style("text-anchor", "start");
 
     dataVizAll();
+  })
+
+  d3.selectAll(".yrpicker").on("click", function(){
+    var mystring = this.getAttribute("class");
+    var arr = mystring.split(" ");
+    var thirdWord = arr[0]; 
+
+    if (thirdWord == "allyrs") { 
+      timeline.selectAll("circle").transition()
+        .duration(750)
+        .style("opacity", .1)
+    } else {
+      timeline.selectAll("circle").transition()
+        .duration(750)
+        .style("opacity", .05)
+
+      timeline.selectAll("circle").filter("." + thirdWord).transition()
+        .duration(750)
+        .style("opacity", 1)
+    }
   })
 /*
 var margin = {top: 40, right: 10, bottom: 10, left: 10},

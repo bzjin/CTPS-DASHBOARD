@@ -59,27 +59,31 @@ form {
 	</div>
 
 	<div class="col-md-12">
-		<h3> Sidewalks in the Past Decade</h3>
+		<h3> How much sidewalk does Boston have on its roadways?</h3>
 		<p> Doctors recommend 30 minutes of moderately paced walking a day.</p>
-		<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Center Lane Miles
+		<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Center Line Miles
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Sidewalk Miles </p>
-		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> <button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
-		<div class = "col-md-10">
-			<button class='yr2006 yrpicker col-md-1'> 2006</button>
-			<button class='yr2007 yrpicker col-md-1'> 2007</button>
-			<button class='yr2008 yrpicker col-md-1'> 2008</button>
-			<button class='yr2009 yrpicker col-md-1'> 2009</button>
-			<button class='yr2010 yrpicker col-md-1'> 2010</button>
-			<button class='yr2011 yrpicker col-md-1'> 2011</button>
-			<button class='yr2012 yrpicker col-md-1'> 2012</button>
-			<button class='yr2013 yrpicker col-md-1'> 2013</button>
-			<button class='yr2014 yrpicker col-md-1'> 2014</button>
-			<button class='yr2015 yrpicker col-md-1'> 2015</button>
-		</div>
+	</div>
+	<div class="col-md-12">
+		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> <button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average Sidewalk to Road Ratio</button>
+	</div>
+	<div class="col-md-12">
+		<button class='allyrs yrpicker col-md-1'> All</button>
+		<button class='yr2006 yrpicker col-md-1'> 2006</button>
+		<button class='yr2007 yrpicker col-md-1'> 2007</button>
+		<button class='yr2008 yrpicker col-md-1'> 2008</button>
+		<button class='yr2009 yrpicker col-md-1'> 2009</button>
+		<button class='yr2010 yrpicker col-md-1'> 2010</button>
+		<button class='yr2011 yrpicker col-md-1'> 2011</button>
+		<button class='yr2012 yrpicker col-md-1'> 2012</button>
+		<button class='yr2013 yrpicker col-md-1'> 2013</button>
+		<button class='yr2014 yrpicker col-md-1'> 2014</button>
+		<button class='yr2015 yrpicker col-md-1'> 2015</button>
+	</div>
 
 		<!--<div class="col-md-3" id="mapRoute1"></div>-->
-		<div class="col-md-12" id="sidewalks"></div>
-	</div>
+	<div class="col-md-12" id="sidewalks"></div>
+</div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
