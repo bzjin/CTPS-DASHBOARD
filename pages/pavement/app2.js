@@ -65,7 +65,6 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	.entries(cityavg_time);
 
 	var valueline = d3.svg.line()
-		.interpolate("basis")
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.median); });
 
@@ -80,7 +79,7 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	    .y(function(d) { return yScale(d.thirdQuartile); })*/
 
 	var valuearea = d3.svg.area()
-	.interpolate("basis")
+	//.interpolate("basis")
 	    .x0(function(d) { return xScale(d.year); })
 	    .x1(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(d.firstQuartile); })

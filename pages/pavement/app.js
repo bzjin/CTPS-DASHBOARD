@@ -19,7 +19,7 @@ queue()
 	.defer(d3.json, "../../JSON/psi_timeline.JSON")
 	.defer(d3.json, "../../JSON/road_inv_mpo_nhs_interstate_2015.geojson")
 	.defer(d3.json, "../../JSON/townregion.json")
-	.defer(d3.json, "../../JSON/exit_measures_in_MPO.json")
+	.defer(d3.csv, "../../JSON/notable_exits_interstates.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateTimeline(results[0]);
 		CTPS.demoApp.generateADTgraph(results[1]);
@@ -440,8 +440,8 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	var routekey = ["I-90", "I-93", "I-95", "I495", "I290"];
 	var unhyphened = ["I90", "I93", "I95", "I495", "I290"];
 	//Assign scales and axes 
-	xScaleRoad = d3.scale.linear().domain([0,62]).range([70, 1000]);
-	xScaleSegment = d3.scale.linear().domain([0,62]).range([0, 930]);
+	xScaleRoad = d3.scale.linear().domain([0,62]).range([70, 1000]); // define displacement with respect to origin
+	xScaleSegment = d3.scale.linear().domain([0,62]).range([0, 930]); // define width
 	yScale = d3.scale.ordinal().domain(routekey).rangePoints([80, 550]);
 	yScaleU = d3.scale.ordinal().domain(unhyphened).rangePoints([80, 550]);
 
@@ -462,7 +462,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 		.attr("transform", "translate(30, 0)")
 		.call(yAxisU).selectAll("text").remove();
 
-	function findFlipFrom(d) { 
+	function findFlipFrom(d) { // Use to invert mile markers (find corresponding opposite origin for different route directions)
 		var tostorage = []; 
 		var fromstorage = []; 
 		interstateRoads.features.forEach(function(j){ 
@@ -478,7 +478,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 		return maxmin; 
 	}
 
-			//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
+	//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
 	interstateRoads.features.forEach(function(i){ 
 		if ((i.properties.ROUTEDIRECTION == "EB" || i.properties.ROUTEDIRECTION == "SB")) { 
 			i.properties.NORMALIZEDSTART = -(i.properties.ROUTETO - findFlipFrom(i)[0]);
@@ -533,6 +533,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 			})
 			.style("stroke", "none")
 			.style("fill", "#ddd");*/
+	//		
 	var nested_directions = d3.nest()
 	.key(function(d) { return d.properties.ROUTEKEY;})
 	.entries(interstateRoads.features)
@@ -609,62 +610,64 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 
 	var oddeven = 1; 
 	exits.forEach(function(i){
-		if (i.ROUTE_NUM == "I90" || i.ROUTE_NUM == "I93" || i.ROUTE_NUM == "I95" || i.ROUTE_NUM == "I495" || i.ROUTE_NUM == "I290") {
-			chartContainer.append("rect")
-				.attr("class", "markers")
-				.attr("height", function(){
-					if (oddeven == -1) { return 20;}
-					else {return 10;}
-				})
-				.attr("width", 1)
-				.attr("x", function() {
-					if ((i.ROUTE_NUM == "I495" && (i.NORMALIZEDSTART < 0 || i.NORMALIZEDSTART > 50)) || (i.ROUTE_NUM == "I95" && (i.NORMALIZEDSTART < 0 || i.NORMALIZEDSTART > 58))|| (i.ROUTE_NUM == "I93" && i.NORMALIZEDSTART > 37)) {
-						return -9000;
-					} else {
-						return xScaleRoad(i.NORMALIZEDSTART);}
+		if (i.NAME != "NULL") { 
+			if (i.ROUTE_NUM == "I90" || i.ROUTE_NUM == "I93" || i.ROUTE_NUM == "I95" || i.ROUTE_NUM == "I495" || i.ROUTE_NUM == "I290") {
+				chartContainer.append("rect")
+					.attr("class", "markers")
+					.attr("height", function(){
+						if (oddeven == -1) { return 20;}
+						else {return 10;}
 					})
-				.attr("y", function(){
-					if (oddeven == -1) { 
-						if (i.ROUTE_DIR == "NB" || i.ROUTE_DIR == "EB") { 
-							return yScaleU(i.ROUTE_NUM) - 40;
-						} else { return yScaleU(i.ROUTE_NUM) + 12; }
-					} else { 
-						if (i.ROUTE_DIR == "NB" || i.ROUTE_DIR == "EB") { 
-							return yScaleU(i.ROUTE_NUM) - 30;
-						} else { return yScaleU(i.ROUTE_NUM) + 13; }
-					}
-				})
-				.style("fill", "#ddd")
-				.style("opacity", .5);
+					.attr("width", 1)
+					.attr("x", function() {
+						if ((i.ROUTE_NUM == "I495" && (i.NORMALIZEDSTART < 0 || i.NORMALIZEDSTART > 50)) || (i.ROUTE_NUM == "I95" && (i.NORMALIZEDSTART < 0 || i.NORMALIZEDSTART > 58))|| (i.ROUTE_NUM == "I93" && i.NORMALIZEDSTART > 37)) {
+							return -9000;
+						} else {
+							return xScaleRoad(i.NORMALIZEDSTART);}
+						})
+					.attr("y", function(){
+						if (oddeven == -1) { 
+							if (i.ROUTE_DIR == "NB" || i.ROUTE_DIR == "EB") { 
+								return yScaleU(i.ROUTE_NUM) - 40;
+							} else { return yScaleU(i.ROUTE_NUM) + 12; }
+						} else { 
+							if (i.ROUTE_DIR == "NB" || i.ROUTE_DIR == "EB") { 
+								return yScaleU(i.ROUTE_NUM) - 30;
+							} else { return yScaleU(i.ROUTE_NUM) + 13; }
+						}
+					})
+					.style("fill", "#ddd")
+					.style("opacity", .5);
 
-			chartContainer.append("text")
-				.attr("class", "text")
-				.text(i.EXITNUMBER)
-				.attr("x", function() {
-					if ((i.ROUTE_NUM == "I495" && (i.NORMALIZEDSTART < 0 || i.NORMALIZEDSTART > 50)) || (i.ROUTE_NUM == "I95" && (i.NORMALIZEDSTART < 0 || i.NORMALIZEDSTART > 58))|| (i.ROUTE_NUM == "I93" && i.NORMALIZEDSTART > 37)) {
-						return -9000;
-					} else {
-						return xScaleRoad(i.NORMALIZEDSTART);}
+				chartContainer.append("text")
+					.attr("class", "text")
+					.html(i.NAME)
+					.attr("x", function() {
+						if ((i.ROUTE_NUM == "I495" && (i.NORMALIZEDSTART < 0 || i.NORMALIZEDSTART > 50)) || (i.ROUTE_NUM == "I95" && (i.NORMALIZEDSTART < 0 || i.NORMALIZEDSTART > 58))|| (i.ROUTE_NUM == "I93" && i.NORMALIZEDSTART > 37)) {
+							return -9000;
+						} else {
+							return xScaleRoad(i.NORMALIZEDSTART);}
+						})
+					.attr("y", function(){
+						if (oddeven == -1) { 
+							if (i.ROUTE_DIR == "NB" || i.ROUTE_DIR == "EB") { 
+								return yScaleU(i.ROUTE_NUM) - 45;
+							} else { return yScaleU(i.ROUTE_NUM) + 42; }
+						} else {
+							if (i.ROUTE_DIR == "NB" || i.ROUTE_DIR == "EB") { 
+								return yScaleU(i.ROUTE_NUM) - 35;
+							} else { return yScaleU(i.ROUTE_NUM) + 32; }
+						}
 					})
-				.attr("y", function(){
-					if (oddeven == -1) { 
-						if (i.ROUTE_DIR == "NB" || i.ROUTE_DIR == "EB") { 
-							return yScaleU(i.ROUTE_NUM) - 45;
-						} else { return yScaleU(i.ROUTE_NUM) + 42; }
-					} else {
-						if (i.ROUTE_DIR == "NB" || i.ROUTE_DIR == "EB") { 
-							return yScaleU(i.ROUTE_NUM) - 35;
-						} else { return yScaleU(i.ROUTE_NUM) + 32; }
-					}
-				})
-				.style("opacity", function() { 
-					if (parseInt(i.EXITNUMBER)%2 == 1) { return .5;}
-					else { return 1; }
-				})
-				.style("font-size", 10)
-				.style("font-weight", 300)
-				.style("text-anchor", "middle")
-			oddeven = -oddeven; 
+					.style("opacity", function() { 
+						if (oddeven == 1) { return .5;}
+						else { return 1; }
+					})
+					.style("font-size", 10)
+					.style("font-weight", 300)
+					.style("text-anchor", "middle")
+				oddeven = -oddeven; 
+			}
 		}
 	})
 

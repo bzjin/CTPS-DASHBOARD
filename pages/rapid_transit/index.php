@@ -47,8 +47,8 @@ text {fill: #ddd; font-size: 14px;} .radar-chart .area {
 	</div>
 
 	<div class="col-md-12">
-		<h3>How early/late is Route 1? </h3>
-		<p> The visualization below shows the average of Route 1 bus arrival times in May 2016.</p>
+		<h3>How early/late are our busses? </h3>
+		<p> The visualization below shows the average bus arrival times in May 2016.</p>
 		<!--<div class="col-md-3" id="mapRoute1"></div>-->
 		<div class="col-md-12" id="busses"></div>
 		<h3>How long does it take to get from stop to stop? </h3>

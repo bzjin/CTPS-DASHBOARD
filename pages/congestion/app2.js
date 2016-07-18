@@ -149,12 +149,12 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 		var storage = []; 
 		var shift = [];
 		arterialRoads.forEach(function(j){ 
-			if (j.properties.ROAD_NAME == d.properties.ROAD_NAME && j.properties.RTE_NAME == d.properties.RTE_NAME && j.properties.DIRECTION == d.properties.DIRECTION) { 
+			if (j.properties.RID == d.properties.RID) { 
 				storage.push(j.properties.TO_MEAS); 
 				shift.push(j.properties.FROM_MEAS);
 			}
 		})
-		return [d3.max(storage), d3.min(shift), d3.min(storage)]; 
+		return [d3.max(storage), d3.min(shift)]; 
 	}
 
 	//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
