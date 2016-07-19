@@ -93,7 +93,8 @@ CTPS.demoApp.generateStats = function(equity){
   console.log(maxmins[0].length)
 
   var width = 300; 
-  var height = 300; 
+  var height = 200; 
+  var padding = 10; 
   //Population by town
   var chartPop = d3.select("#chartPop").append("svg")
       .attr("width", "100%")
@@ -114,15 +115,15 @@ CTPS.demoApp.generateStats = function(equity){
 
   var xScale = d3.scale.ordinal()
               .domain(townOrder)
-              .rangePoints([50, width - 50])
+              .rangePoints([padding, width - padding])
 
   var yScale = d3.scale.linear()
               .domain([0, d3.max(maxmins[0])])
-              .range([height-50, 50])
+              .range([height-padding, padding])
 
   var yScaleHeight = d3.scale.linear()
               .domain([0, d3.max(maxmins[0])])
-              .range([0, height - 100])
+              .range([0, height - (2*padding)])
 
   chartPop.selectAll(".population")
     .data(equity)
@@ -135,22 +136,35 @@ CTPS.demoApp.generateStats = function(equity){
         .attr("height", function(d) {return yScaleHeight(d.Population)})
         .style("fill", "#ddd")
 
+  equity.sort(function(a, b){
+    var nameA = a.Median_Household_Income;
+    var nameB = b.Median_Household_Income;
+    if (nameA < nameB) { return -1}
+    if (nameA > nameB) { return 1}
+    return 0;
+  })
+
+  townOrder = [];
+  equity.forEach(function(i){
+    townOrder.push(i.MPO_Municipality)
+  })
 //Income by town
   var chartIncome = d3.select("#chartIncome").append("svg")
       .attr("width", "100%")
       .attr("height", height)
 
-  var yScale = d3.scale.linear()
-              .domain([0, d3.max(maxmins[1])])
-              .range([height-50, 50])
+  var xScale = d3.scale.ordinal()
+              .domain(townOrder)
+              .rangePoints([padding, width - padding])
 
   var yScale = d3.scale.linear()
               .domain([0, d3.max(maxmins[1])])
-              .range([250, 50])
+              .range([height-padding, padding])
 
   var yScaleHeight = d3.scale.linear()
               .domain([0, d3.max(maxmins[1])])
-              .range([0, 200])
+              .range([0, height-(2*padding)])
+
 
   chartIncome.selectAll(".income")
     .data(equity)
@@ -164,21 +178,35 @@ CTPS.demoApp.generateStats = function(equity){
         .style("fill", "#ddd")
 
 //Minorities by town
+
+equity.sort(function(a, b){
+    var nameA = a.MINORITY_2010;
+    var nameB = b.MINORITY_2010;
+    if (nameA < nameB) { return -1}
+
+    if (nameA > nameB) { return 1}
+    return 0;
+  })
+
+  townOrder = [];
+  equity.forEach(function(i){
+    townOrder.push(i.MPO_Municipality)
+  })
   var chartMinority = d3.select("#chartMinority").append("svg")
       .attr("width", "100%")
       .attr("height", height)
 
+var xScale = d3.scale.ordinal()
+              .domain(townOrder)
+              .rangePoints([padding, width - padding])
+
  var yScale = d3.scale.linear()
               .domain([0, d3.max(maxmins[2])])
-              .range([height-50, 50])
-
-  var yScale = d3.scale.linear()
-              .domain([0, d3.max(maxmins[2])])
-              .range([250, 50])
+              .range([height-padding, padding])
 
   var yScaleHeight = d3.scale.linear()
               .domain([0, d3.max(maxmins[2])])
-              .range([0, 200])
+              .range([0, height-(2*padding)])
 
   chartMinority.selectAll(".minority")
     .data(equity)
@@ -196,17 +224,30 @@ CTPS.demoApp.generateStats = function(equity){
       .attr("width", "100%")
       .attr("height", height)
 
-  var yScale = d3.scale.linear()
-              .domain([0, d3.max(maxmins[3])])
-              .range([height-50, 50])
+  equity.sort(function(a, b){
+    var nameA = a.MILES_2010;
+    var nameB = b.MILES_2010;
+    if (nameA < nameB) { return -1}
+    if (nameA > nameB) { return 1}
+    return 0;
+  })
+
+  townOrder = [];
+  equity.forEach(function(i){
+    townOrder.push(i.MPO_Municipality)
+  })
+
+  var xScale = d3.scale.ordinal()
+              .domain(townOrder)
+              .rangePoints([padding, width - padding])
 
  var yScale = d3.scale.linear()
               .domain([0, d3.max(maxmins[3])])
-              .range([250, 50])
+              .range([height-padding, padding])
 
   var yScaleHeight = d3.scale.linear()
               .domain([0, d3.max(maxmins[3])])
-              .range([0, 200])
+              .range([0, height-(2*padding)])
 
   chartMiles.selectAll(".miles")
     .data(equity)
