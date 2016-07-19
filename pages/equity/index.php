@@ -29,7 +29,7 @@
 <style> 
 
 .axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
-text {fill: #ddd; font-size: 14px;} 
+text {fill: #ddd; font-size: 12px;} .axis text { font-size: 10;}
 
 form {
   position: absolute;
@@ -62,14 +62,14 @@ form {
 		<h3> How much funding does each municipality receive? </h3>
 	</div>
 	<div class="col-md-12">
-		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> <button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average Sidewalk to Road Ratio</button>
+		<button class="bigbutton col-md-3" id="byPopulation" alt="Sort by Population">Sort by Population</button>
+		<button class="bigbutton col-md-3" id="byIncome" alt="Sort by Median Household Income">Sort by Income</button>
+		<button class="bigbutton col-md-3" id="byMinority" alt="Sort by Minority">Sort by Minority</button>
+		<button class="bigbutton col-md-3" id="byMiles" alt="Sort by Miles">Sort by Miles</button>
 	</div>
 
 	<div class="col-md-4" id="map"></div>
-	<div class="col-md-4" id="chartPop"></div>
-	<div class="col-md-4" id="chartIncome"></div>
-	<div class="col-md-4" id="chartMinority"></div>
-	<div class="col-md-4" id="chartMiles"></div>
+	<div class="col-md-8" id="chart"></div>
 
 </div>
 

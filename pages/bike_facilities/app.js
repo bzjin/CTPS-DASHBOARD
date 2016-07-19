@@ -13,12 +13,12 @@ var geoPath = d3.geo.path().projection(projection);
 queue()
   .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
   .defer(d3.csv, "../../json/bike_facilities_by_town.csv")
-  .defer(d3.json, "../../json/Existing_Bicycle_Facilities.json")
+  .defer(d3.json, "../../json/mpo_existing_bike_facilities_2016.topojson")
 
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0],results[1], results[2]);
-    //CTPS.demoApp.generatePlot(results[1]);
-    CTPS.demoApp.generateAccessibleTable(results[1]);
+    CTPS.demoApp.generatePlot(results[1]);
+    //CTPS.demoApp.generateAccessibleTable(results[1]);
   }); 
 
 //Color Scale
@@ -70,7 +70,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData, bikeRoads) {
       .style("stroke-width", "1px")
 
    var bikeTrails = svgContainer.selectAll(".biketrails")
-    .data(topojson.feature(bikeRoads, bikeRoads.objects.collection).features)
+    .data(topojson.feature(bikeRoads, bikeRoads.objects.mpo_existing_bike_facilities_2016).features)
     .enter()
     .append("path")
       //.attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
@@ -78,146 +78,38 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData, bikeRoads) {
       .style("opacity", 1)
       .style("stroke", "#6af73c")
       .style("stroke-width", "1px")
-    /*.on("click", function() {
-        var thisreg = this.getAttribute("class");
-        var yScale = d3.scale.linear().domain([0, findTownMax(thisreg)[0]]).range([400, 20]);
-        var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-250, 0, 0).tickFormat(d3.format("d"));
-
-        d3.selectAll(".area").transition()
-          .style("fill", "none");
-
-        chartContainer.select(".yaxis").transition()
-          .duration(750)
-          .ease("sin-in-out")  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
-                    .call(yAxis).selectAll("text").style("fill", colorScale(findTownMax(thisreg)[0]))
-                    .attr("transform", "translate(-5,0)");
-
-        var yScale = d3.scale.linear().domain([0, findTownMax(thisreg)[1]]).range([400, 20]);
-        var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-250, 0, 0).tickFormat(d3.format("d"));
-                chartContainer2.select(".yaxis").transition()
-          .duration(750)
-          .ease("sin-in-out")  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
-                    .call(yAxis).selectAll("text").style("fill", colorScale(findTownMax(thisreg)[1]))
-                    .attr("transform", "translate(-5,0)");
-
-                circleMaker(thisreg);
-          }) 
-    .on("mouseenter", function(d) { 
-      tip.show(d); 
-    })
-
-  var chartContainer = d3.select("#bikeChart").append("svg")
-    .attr("width", "100%")
-    .attr("height", 500)
-
-  var chartContainer2 = d3.select("#pedChart").append("svg")
-    .attr("width", "100%")
-    .attr("height", 500)
-
-  var nested_crashes = d3.nest()
-  .key(function(d) { return d.town})
-  .entries(crashdata);
-
-  //Determine scales dynamically
-  function findTownMax(town) { 
-    var crashvalues = [];
-    crashvalues[0] = [];
-    crashvalues[1] = [];
-    nested_crashes.forEach(function(i) { 
-      if (i.key == town) {
-        i.values.forEach(function(j){
-          crashvalues[0].push(j.bike_inj);
-          crashvalues[1].push(j.ped_inj);
-        })
-      }
-    })
-    return [d3.max(crashvalues[0]), d3.max(crashvalues[1])];
-  }
-//Label axes
-  chartContainer.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("x", -270)
-    .attr("y", 10)
-    .style("font-weight", 300)
-    .text("Number of Injuries")
-
-  chartContainer2.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("x", -270)
-    .attr("y", 10)
-    .style("font-weight", 300)
-    .text("Number of Injuries")
-
-//Assign scales and axes 
-  var xScale = d3.scale.linear().domain([2004, 2013]).range([50, 300]);
-  var yScale = d3.scale.linear().domain([0, findTownMax("Total")[0]]).range([400, 20]);
-
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(-250, 0, 0);
-
-  chartContainer.append("g").attr("class", "axis")
-    .attr("transform", "translate(0, 400)").style("stroke-width", "1px")
-    .call(xAxis).selectAll("text").style("font-size", "12px").style("text-anchor", "end").attr("transform", "rotate(-45)");
-  
-  chartContainer.append("g").attr("class", "yaxis")
-    .attr("transform", "translate(50, 0)")
-    .call(yAxis).selectAll("text").style("font-size", "12px")
-    .attr("transform", "translate(-5,0)");
-
-  var yScale = d3.scale.linear().domain([0, findTownMax("Total")[1]]).range([400, 20]);
-  var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(-250, 0, 0);
-
-  chartContainer2.append("g").attr("class", "axis")
-    .attr("transform", "translate(0, 400)").style("stroke-width", "1px")
-    .call(xAxis).selectAll("text").style("font-size", "12px").style("text-anchor", "end").attr("transform", "rotate(-45)");
-  
-  chartContainer2.append("g").attr("class", "yaxis")
-    .attr("transform", "translate(50, 0)")
-    .call(yAxis).selectAll("text").style("font-size", "12px")
-    .attr("transform", "translate(-5,0)");
-
-
-  circleMaker("Total");
-
-  function circleMaker (town) {
-    //graph connecting lines
-    nested_crashes.forEach(function(i) { 
-      i.values.forEach(function(j) { 
-        if (j.town == town) {
-          yScale = d3.scale.linear().domain([0, findTownMax(town)[0]]).range([400, 20]);
-
-          var areamaker = d3.svg.area() //Bike injuries
-              .x(function(d) { return xScale(d.year); })
-              .y1(function(d) { return yScale(d.bike_inj); })
-              .y0(function(d) { return yScale(0)});
-          chartContainer.append("path")
-              .datum(i.values)
-              .attr("class", "area")
-              .attr("d", areamaker)
-              .style("fill", colorScale(findTownMax(i.key)[0]))
-              .style("stroke", "none")
-              .style("opacity", .1);
-
-             yScale = d3.scale.linear().domain([0, findTownMax(town)[1]]).range([400, 20]);
-
-              var areamaker2 = d3.svg.area() //Bike injuries
-              .x(function(d) { return xScale(d.year); })
-              .y1(function(d) { return yScale(d.ped_inj); })
-              .y0(function(d) { return yScale(0)});
-            chartContainer2.append("path")
-              .datum(i.values)
-              .attr("class", "area")
-              .attr("d", areamaker2)
-              .style("fill", colorScale(findTownMax(i.key)[1]))
-              .style("stroke", "none")
-              .style("opacity", .1);
-        }
-      })
-    })
-
-    
-  }*/
 }
+
+CTPS.demoApp.generatePlot = function(bikeData) {  
+    var facilities = d3.select("#facilities").append("svg")
+      .attr("width", "100%")
+      .attr("height", 500)
+
+    var xNow = 0;
+    var xPos = 20; 
+    var yNow = 0; 
+    var yPos = 20; 
+
+    facilities.selectAll(".box")
+      .data(bikeData)
+      .enter()
+      .append("rect")
+        .attr("class", "box")
+        .attr("x", function(d) { 
+          xPos += xNow; 
+          xNow = d.BICYCLE_LANE_MILES + 1;
+          return xPos; 
+        })
+        .attr("y", function(d){ 
+          yPos += yNow; 
+          yNow = d.SHARED_USE_PATH_MILES + 1;
+          return yPos; 
+        })
+        .attr("width", function(d){ return +d.BICYCLE_LANE_MILES})
+        .attr("height", function(d){ return +d.SHARED_USE_PATH_MILES})
+        .style("fill", "#ddd")
+}
+
 
 CTPS.demoApp.generateAccessibleTable = function(crashjson){
   var colDesc = [{ // array of objects

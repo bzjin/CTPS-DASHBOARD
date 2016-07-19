@@ -68,8 +68,8 @@ form {
 		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> <button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average Sidewalk to Road Ratio</button>
 	</div>
 
-	<div class="col-md-12" id="map"></div>
-	<div class="col-md-12" id="facilities"></div>
+	<div class="col-md-4" id="map"></div>
+	<div class="col-md-8" id="facilities"></div>
 </div>
 
 	<div class="footer col-md-12">

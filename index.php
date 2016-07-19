@@ -53,28 +53,23 @@
 		<li><a href="pages/pavement/index.php">Pavement</a></li>
 		<li><a href="pages/bridges/index.php">Bridges</a></li>
 		<li><a href="pages/congestion/index.php">Congestion</a></li>
-		<li><a href="pages/rapid_transit/index.php">Bus Routes</a></li>
 		<li><a href="pages/sidewalks/index.php">Sidewalks</a></li>
-		<li><a href="#">Air Quality</a></li>
-		<li><a href="#">Inequity</a></li>
+		<li><a href="pages/bike_facilities/index.php">Bike Facilities</a></li>
+		<li><a href="pages/equity/index.php">Inequity</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
       </div> <!-- /.container-fluid -->
 </nav>
 
 <!-- Desktop nav --> 
-<div class="col-md-3 col-md-offset-9">
-	<div class="navi right">
-		<button><a href="pages/crashes/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Crashes</a> <p><b>760/53</b><br>Injuries/Deaths<br>  </button>
-		<button><a href="pages/pavement/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</a><p><b class="good">78%</b><br>in good condition</p></button>
-		<button><a href="pages/congestion/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Congestion </a><p><b>12 sec.</b> <br>average delay per mile</p></button>
-		<button><a href="pages/bridges/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</a><p><b class="good">88%</b><br>in good condition</p></button>
-		<button><a href="pages/rapid_transit/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Bus Routes</a><p><b>78</b> <br>average seconds late</p></button>
-		<button><a href="pages/sidewalks/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</a><p><b class="good">A LOT</b><br>more sidewalks</p></button>
-		<button><a href="#"><i class="fa fa-circle-o" aria-hidden="true"></i> Air Quality </a><p class="unavailable"><b>N/A</b></br>Data coming soon!</p></button>
-		<button><a href="#"><i class="fa fa-circle-o" aria-hidden="true"></i> Equity </a><p class="unavailable"><b>N/A</b><br>Data coming soon!</p></button>
-		
-	</div>
+<div class="col-md-3 col-md-offset-9 desktop-nav">
+	<a href="pages/crashes/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Crashes</a> <p><b>760/53</b><br>Injuries/Deaths<br></p>
+	<a href="pages/pavement/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</a><p><b class="good">78%</b><br>in good condition</p>
+	<a href="pages/congestion/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Congestion </a><p><b>12 sec.</b> <br>average delay per mile</p>
+	<a href="pages/bridges/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</a><p><b class="good">88%</b><br>in good condition</p>
+	<a href="pages/sidewalks/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</a><p><b class="good">A LOT</b><br>more sidewalks</p>
+	<a href="pages/bike_facilities/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Bike Facilities </a><p><b>.45</b></br>bike lanes per centerline mile</p>
+	<a href="pages/equity/index.php"><i class="fa fa-circle-o" aria-hidden="true"></i> Equity </a><p><b class="good">+$35m</b><br>TIP funding FFY 2017</p>
 </div>
 
 <script src="js/map.js"></script>
