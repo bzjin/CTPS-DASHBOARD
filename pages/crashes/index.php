@@ -41,9 +41,11 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 		<?php include '../../components/top-nav.php';?>
 	</div>
 	<div class="col-md-12">
+	
+	<h3 class="inner-nav col-md-12"><a href="#" alt="Go to non-motorized crashes"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+	Non-Motorized Crashes</a><a href="index2.php" alt="Go to motorized crashes"><i class="fa fa-circle-o" aria-hidden="true"></i>Motorized Crashes</a></h3>	
 	<h1>Crashes</h1>
-	<h3 class="inner-nav col-md-12"><a href="#"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-	Non-Motorized Crashes</a><a href="index2.php"><i class="fa fa-circle-o" aria-hidden="true"></i>Motorized Crashes</a></h3>	
+
 	<p>The ability to move is crucial to every aspect of our existence. And yet, people face substantial risk getting from place to place in the Boston region. Roads claimed the lives of 53 people in the Boston region last year. </p>
 
 	<p>We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. The MPO aims to keep you safe everywhere and every way that you move. No loss of life is acceptable. </p>

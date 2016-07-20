@@ -253,7 +253,51 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 					}})
 			
 	} 
-
+//Color key
+		var xPos = 5;
+		var yPos = 50; 
+		var height = 600; 
+		//background
+		svgContainer.append("text")
+			.style("font-weight", 700)
+			.attr("x", xPos).attr("y", yPos -7)
+			.html("KEY");
+		//text and colors
+		svgContainer.append("rect")
+			.style("fill", colorScale(.5)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
+		svgContainer.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 7)
+			.html("0.5 : Very congested");
+		svgContainer.append("rect")
+			.style("fill", colorScale(.7)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
+		svgContainer.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 22)
+			.html("0.7 : Congested");
+		svgContainer.append("rect")
+			.style("fill", colorScale(.9)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
+		svgContainer.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 37)
+			.html("0.9 : Not congested");
+		svgContainer.append("rect")
+			.style("fill", colorScale(1)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
+		svgContainer.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 52)
+			.html("1.0 : Matching Speed Limit");
+		svgContainer.append("rect")
+			.style("fill", colorScale(1.25)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
+		svgContainer.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 67)
+			.html("1.2 : Speeding");
 	
 } // CTPS.demoApp.generateViz()
 

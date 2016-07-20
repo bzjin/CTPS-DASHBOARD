@@ -244,7 +244,7 @@ CTPS.demoApp.generateChart = function(congestion) {
 					.attr("transform", "translate(0, -3)")
 					.attr("height", 21);
 
-				d3.selectAll(".map" + firstWord).transition()
+				d3.selectAll(".map" + firstWord)
 					.style("opacity", 1)
 					.style("stroke-width", function(d) { return (4/d.properties.AM_SPD_IX*5); })
 
@@ -389,7 +389,7 @@ pmchartContainer.selectAll(".labels")
 					.attr("transform", "translate(0, -3)")
 					.attr("height", 21);
 
-				d3.selectAll(".map" + firstWord).transition()
+				d3.selectAll(".map" + firstWord)
 					.style("opacity", 1)
 					.style("stroke-width", function(d) { return (4/d.properties.AM_SPD_IX*5); })
 
@@ -413,6 +413,53 @@ pmchartContainer.selectAll(".labels")
 				tip2.hide(d);
 			})
 		.html(function(d) { return d.properties.ROUTE_NUM; });
+
+		//Color key
+		var xPos = 5;
+		var yPos = 450; 
+		var height = 600; 
+		//background
+		twoCharts.append("text")
+			.style("font-weight", 700)
+			.attr("x", xPos).attr("y", yPos -7)
+			.html("KEY");
+		//text and colors
+		twoCharts.append("rect")
+			.style("fill", colorScale(.5)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
+		twoCharts.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 7)
+			.html("0.5 : Very congested");
+		twoCharts.append("rect")
+			.style("fill", colorScale(.7)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
+		twoCharts.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 22)
+			.html("0.7 : Congested");
+		twoCharts.append("rect")
+			.style("fill", colorScale(.9)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
+		twoCharts.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 37)
+			.html("0.9 : Not congested");
+		twoCharts.append("rect")
+			.style("fill", colorScale(1)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
+		twoCharts.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 52)
+			.html("1.0 : Matching Speed Limit");
+		twoCharts.append("rect")
+			.style("fill", colorScale(1.25)).style("stroke", "none")
+			.attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
+		twoCharts.append("text")
+			.style("font-weight", 300)
+			.attr("x", xPos + 25).attr("y", yPos + 67)
+			.html("1.2 : Speeding");
+
 
 }
 
@@ -446,180 +493,6 @@ CTPS.demoApp.generateTimes = function(interstateRoads) {
 		maxmins.push(i.properties.TO_MEAS)
 	})
 	routes.sort(); 
-
-	//Assign scales and axes 
-	/*xScaleRoad = d3.scale.linear().domain([0, d3.max(maxmins)]).range([50, 1050]);
-	xScaleSegment = d3.scale.linear().domain([0, d3.max(maxmins)]).range([0, 1000]);
-	yScale = d3.scale.linear().domain([0, 50]).range([550, 60]);
-
-	var xAxis = d3.svg.axis().scale(xScaleRoad).orient("bottom").ticks(7);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
-
-	cumulativeTime.append("g").attr("class", "axis")
-		.attr("transform", "translate(0, 550)").style("stroke-width", "1px")
-		.style("font-size", "10px")
-		.call(xAxis);
-	
-	cumulativeTime.append("g").attr("class", "axis")
-		.attr("transform", "translate(50, 0)")
-		.style("font-size", "10px")
-		.call(yAxis); 
-
-	function findFlipFrom(d) { 
-		var storage = []; 
-		interstateRoads.forEach(function(j){ 
-			if (j.properties.ROUTE_NUM == d.properties.ROUTE_NUM && j.properties.DIRECTION == d.properties.DIRECTION) { 
-				storage.push(j.properties.TO_MEAS); 
-			}
-		})
-		var max = d3.max(storage); 
-		return max; 
-	}
-
-		//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
-	interstateRoads.forEach(function(i){ 
-		if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
-			i.properties.NORMALIZEDSTART = -(i.properties.TO_MEAS - findFlipFrom(i));
-			i.properties.NORMALIZEDEND = -(i.properties.FROM_MEAS - findFlipFrom(i));
-		} else if (i.properties.ROUTE_NUM == "MA-2" && i.properties.DIRECTION == "Eastbound") {
-			i.properties.NORMALIZEDSTART = i.properties.FROM_MEAS - 5751.4697;
-			i.properties.NORMALIZEDEND = i.properties.TO_MEAS - 5751.4697; 
-		} else {
-			i.properties.NORMALIZEDSTART = i.properties.FROM_MEAS;
-			i.properties.NORMALIZEDEND = i.properties.TO_MEAS;
-		}
-	}); 
-
-	nested_roads.forEach(function(i) { 
-		var amcumulative = 0; 
-		var pmcumulative = 0; 
-
-		i.values.sort(function(a,b) { 
-			var nameA = a.properties.NORMALIZEDSTART; // ignore upper and lowercase
-			var nameB = b.properties.NORMALIZEDSTART;
-			  if (nameA < nameB) {return -1; }
-			  if (nameA > nameB) {return 1;}
-			  return 0; 
-		});
-
-		i.values.forEach(function(j){ 
-			cumulativeTime.append("line")
-					.attr("class", j.properties.ROUTE_NUM + j.properties.DIRECTION + " lines")
-					.attr("x1", xScaleRoad(j.properties.NORMALIZEDSTART))
-					.attr("x2", xScaleRoad(j.properties.NORMALIZEDEND))
-					.attr("y1", yScale(amcumulative))
-					.attr("y2", function() { 
-						if (isNaN(j.properties.AM_DEL_MI)) { 
-							return yScale(amcumulative); 
-						} else {
-							return yScale(amcumulative + j.properties.AM_DEL_MI)
-						}
-					})
-					.style("stroke", "#FFd056")
-					.style("stroke-width", 2)
-					.on("mouseenter", function () { 
-						var mystring = this.getAttribute("class");
-						var arr = mystring.split(" ", 2);
-						var firstWord = arr[0]; 
-
-						d3.selectAll(".lines").transition()
-							.attr("opacity", 0.2)
-							.attr("stroke-width", 2);
-
-						d3.selectAll("." + firstWord).transition()
-							.style("stroke-width", 2)
-							.style("opacity", 1)
-							.attr("r", 3);
-
-						tip2.show(j); 
-					})
-					.on("mouseleave", function () {
-						d3.selectAll(".lines").transition()
-							.attr("opacity", 1)
-							.style("stroke-width", 2);
-
-						d3.selectAll(".circles").transition()
-							.attr("r", 0);
-
-						tip2.hide(j);
-					});
-
-			cumulativeTime.append("circle")
-					.attr("class", j.properties.ROUTE_NUM + j.properties.DIRECTION + " circles")
-					.attr("cx", xScaleRoad(j.properties.NORMALIZEDEND))
-					.attr("cy", function() { 
-						if (isNaN(j.properties.AM_DEL_MI)) { 
-							return yScale(amcumulative); 
-						} else {
-							return yScale(amcumulative + j.properties.AM_DEL_MI)
-						}
-					})
-					.attr("r", 0)
-					.style("fill", "#FFd056");
-
-			cumulativeTime.append("line")
-					.attr("class", j.properties.ROUTE_NUM + j.properties.DIRECTION + " lines")
-					.attr("x1", xScaleRoad(j.properties.NORMALIZEDSTART))
-					.attr("x2", xScaleRoad(j.properties.NORMALIZEDEND))
-					.attr("y1", yScale(pmcumulative))
-					.attr("y2", function() { 
-						if (isNaN(j.properties.PM_DEL_MI)) { 
-							return yScale(pmcumulative); 
-						} else {
-							return yScale(pmcumulative + j.properties.PM_DEL_MI)
-						}
-					})
-					.style("stroke", "#408DFF")
-					.style("stroke-width", 2)
-					.on("mouseenter", function () { 
-						var mystring = this.getAttribute("class");
-						var arr = mystring.split(" ", 2);
-						var firstWord = arr[0]; 
-
-						d3.selectAll(".lines").transition()
-							.attr("opacity", 0.2)
-							.attr("stroke-width", 2);
-
-						d3.selectAll("." + firstWord).transition()
-							.style("stroke-width", 2)
-							.style("opacity", 1)
-							.attr("r", 3);
-
-						tip2.show(j); 
-					})
-					.on("mouseleave", function () {
-						d3.selectAll(".lines").transition()
-							.attr("opacity", 1)
-							.style("stroke-width", 2);
-
-						d3.selectAll(".circles").transition()
-							.attr("r", 0);
-
-						tip2.hide(j);
-					});
-
-			cumulativeTime.append("circle")
-					.attr("class", j.properties.ROUTE_NUM + j.properties.DIRECTION + " circles")
-					.attr("cx", xScaleRoad(j.properties.NORMALIZEDEND))
-					.attr("cy", function() { 
-						if (isNaN(j.properties.PM_DEL_MI)) { 
-							return yScale(pmcumulative); 
-						} else {
-							return yScale(pmcumulative + j.properties.PM_DEL_MI)
-						}
-					})
-					.attr("r", 0)
-					.style("fill", "#408DFF");
-
-			if (!isNaN(j.properties.AM_DEL_MI)) { 
-				amcumulative += j.properties.AM_DEL_MI; 
-			} 
-
-			if (!isNaN(j.properties.PM_DEL_MI)) { 
-				pmcumulative += j.properties.PM_DEL_MI; 
-			}
-		})
-	})*/
 
 	//Assign scales and axes 
 	xScale = d3.scale.linear().domain([0, 3.5]).range([50, 1050]);

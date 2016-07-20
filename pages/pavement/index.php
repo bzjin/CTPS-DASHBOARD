@@ -32,10 +32,14 @@
 	<div class="top-nav col-md-12">
 		<?php include '../../components/top-nav.php';?>
 	</div>
-	<h1 class="col-md-12">Pavement Condition</h1>
 
-	<h3 class="inner-nav col-md-12"><a href="#"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-	Interstate Roads</a><a href="index2.php"><i class="fa fa-circle-o" aria-hidden="true"></i>Non-Interstate Roads</a></h3>	
+	<h3 class="inner-nav col-md-12">
+		<a href="#" alt="Go to interstate pavement condition"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+	Interstate Roads</a>
+		<a href="index2.php" alt="go to noninterstate pavement condition"><i class="fa fa-circle-o" aria-hidden="true"></i>Non-Interstate Roads</a>
+	</h3>	
+
+	<h1 class="col-md-12">Pavement Condition</h1>
 
 	<p class="col-md-12">[Attention Getter] Blurb on pavement condition. Why is it important? Why do we care?</p>
 
@@ -58,13 +62,13 @@
 		<button class = "I495 timeline">I-495</button>
 	</div>
 	<div id="timeline" class="col-md-12"></div>
-
+	<!--
 	<div class = "col-md-12">
 		<h3>Does average daily traffic affect pavement condition?</h3>
 		<p> Average Daily Traffic, or ADT, is the average number of vehicles two-way passing a specific point in a 24-hour period. </p>
 	</div>
 	
-	<div id="adtgraph" class="col-md-12"></div>
+	<div id="adtgraph" class="col-md-12"></div>-->
 	
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>

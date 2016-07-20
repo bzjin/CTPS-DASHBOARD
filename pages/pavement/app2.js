@@ -16,12 +16,11 @@ var geoPath = d3.geo.path().projection(projection);
 //Using the queue.js library
 queue()
 	.defer(d3.json, "../../JSON/city_lane_avgs.JSON")
-	//.defer(d3.json, "../../JSON/noninterstate_psi_timeline.JSON") THIS FILE IS VERY LARGE
-	.defer(d3.json, "../../JSON/noninterstate_psi_avg_timeline_by_city.JSON")
+	//.defer(d3.json, "../../JSON/noninterstate_psi_avg_timeline_by_city.JSON")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateCities(results[0]);
 		//CTPS.demoApp.generateTimeline(results[1]); FANCY CRAZY ART FOR ALL ROAD SEGMENT PSI
-		CTPS.demoApp.generateCityTimeline(results[1]);
+		//CTPS.demoApp.generateCityTimeline(results[0]);
 	}); 
 
 CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
@@ -588,35 +587,35 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 		.style("fill", "#d7191c").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
 	cityContainer.append("text")
-		.style("font-size", 14)
+		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 7)
 		.html("0.0-2.5: Dismal");
 	cityContainer.append("rect")
 		.style("fill", "#fdae61").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
 	cityContainer.append("text")
-		.style("font-size", 14)
+		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 22)
 		.html("2.5-3.0: Minimally Acceptable");
 	cityContainer.append("rect")
 		.style("fill", "#ffffbf").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
 	cityContainer.append("text")
-		.style("font-size", 14)
+		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 37)
 		.html("3.0-3.5: Acceptable");
 	cityContainer.append("rect")
 		.style("fill", "#a6d96a").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
 	cityContainer.append("text")
-		.style("font-size", 14)
+		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 52)
 		.html("3.5-4.0: Good");
 	cityContainer.append("rect")
 		.style("fill", "#1a9641").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
 	cityContainer.append("text")
-		.style("font-size", 14)
+		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 67)
 		.html("4.0-5.0: Excellent");
 

@@ -9,7 +9,7 @@
 <!-- Font Awesome -->
 <script src="https://use.fontawesome.com/3b0ffee8ad.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <!-- Tooltip -->
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
@@ -28,23 +28,26 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
 
-.axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
-text {fill: #ddd; font-size: 14px;} 
-
-form {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #ddd;
+  shape-rendering: crispEdges;
 }
 
-.node {
-  border: none;
+.axis text {
   font: 10px sans-serif;
-  line-height: 12px;
-  overflow: hidden;
-  position: absolute;
-  text-indent: 2px;
 }
+
+.cells path {
+  fill: none;
+  pointer-events: all;
+}
+
+.cells :hover circle {
+  fill: red;
+}
+
 </style> 
 </head>
 

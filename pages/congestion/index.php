@@ -40,31 +40,30 @@
 	<?php include '../../components/top-nav.php';?>
 </div>
 	<div class="col-md-12">
+		<h3 class="inner-nav col-md-12">
+			<a href="#" title="Go to interstate roads congestion"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Interstate Roads</a>
+			<a href="index2.php" title="Go to arterial roads congestion"><i class="fa fa-circle-o" aria-hidden="true"></i>Arterial Roads</a>
+		</h3>	
 		<h1>Congestion</h1>
-			<h3 class="inner-nav col-md-12"><a href="#"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-	Interstate Roads</a><a href="index2.php"><i class="fa fa-circle-o" aria-hidden="true"></i>Non-Interstate Roads</a></h3>	
 		<p>[Attention Getter] Blurb on Congestion. Why is it important? Why do we care?</p>
 		<p> Define Speed Index and Congestion Minutes</p>
 	</div>
 
 
 	<div class="col-md-12">
-		<h3> Interstate Speed Index by Route Coordinates </h3>
+		<h3> Interstate Speed Index by Route Segments </h3>
 		<p> One of the main ways congestion is measured is by speed index, which is a ratio giving the average, observed speed of travel during congestion hours to the posted speed limit.</p>
 		<p> Speed Index = (Observed speed during congested hours) / (Posted speed limit) </p>
 		<p> Mouse over the interstate roads to see its speed index during morning and afternoon congestion hours. The selected road segment will appear on the map to the right. </p>
 		<div class="col-md-6 col-md-offset-6" id="map"></div>
 
-		<div class="row col-md-12" id="speedindex"> 
-			<!-- <div id="amchart"></div>
-			<div id="pmchart"></div>-->
-		</div>
+		<div class="row col-md-12" id="speedindex"> </div>
 	</div>
 	
 	<!--<div class="col-md-12" id="timeVsSpeed">
 		<h3> Travel Time Index vs. Speed Index </h3> 
 		<div id="cumulativetime"> </div>
-	</div>-->
+	</div>
 
 	<div class="col-md-12">
 		<h3> Free Flow v. Congested Travel Time </h3> 
@@ -74,7 +73,7 @@
 			<div class="col-md-4" id="amCong"> Driving in AM Congestion</div>
 			<div class="col-md-4" id="pmCong"> Driving in PM Congestion </div>
 		</div>
-	</div>
+	</div>-->
 <div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>

@@ -72,9 +72,9 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	})
 
 	//placeholders: 
-	structdefs.push( { "year": 2008, "structDef": 900, "structDefNOT": 300, "totalCount": 1200, "healthavg": .8});
-	structdefs.push( { "year": 2009, "structDef": 900, "structDefNOT": 300, "totalCount": 1200, "healthavg": .8});
-	structdefs.push( { "year": 2011, "structDef": 900, "structDefNOT": 300, "totalCount": 1200, "healthavg": .8});
+	structdefs.push( { "year": 2008, "structDef": 100, "structDefNOT": 900, "totalCount": 1000, "healthavg": .8});
+	structdefs.push( { "year": 2009, "structDef": 100, "structDefNOT": 900, "totalCount": 1000, "healthavg": .8});
+	structdefs.push( { "year": 2011, "structDef": 100, "structDefNOT": 900, "totalCount": 1000, "healthavg": .8});
 	
 	structdefs.sort(function(a,b){ 
 		var nameA = a.year;
@@ -84,7 +84,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		return 0; 
 	})
 
-	nested_ind_bridge = d3.nest()
+	var nested_ind_bridge = d3.nest()
 	.key(function(i) { return i.bridgeId;})
 	.entries(cleanedbridges);
 
@@ -292,7 +292,21 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 					//.style("opacity", 1);
 			})	
 	})
-	
+
+var healthline = d3.svg.line()
+		.interpolate("basis")
+	    .x(function(d) { return xScale(d.year); })
+	    .y(function(d) { return yScale(d.healthIndex); });
+
+console.log(nested_ind_bridge);
+nested_ind_bridge.forEach(function(i){
+	timeline2.append("path")
+		.attr("d", healthline(i.values))
+		.style("fill", "none")
+		.style("stroke", "#ddd")
+		.style("stroke-width", .1)
+})
+
 }
 
 
@@ -312,6 +326,9 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 	bridgeContainer.call(tip2); 
 
 	var maxminsADT = [];*/
+
+	
+
 	var cleanedbridges = []; 
 	bridges.forEach(function(i){
 		//maxminsADT.push(i.adt);

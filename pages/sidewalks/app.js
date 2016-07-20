@@ -87,7 +87,7 @@ timeline.call(tip);
 dataVizAll();
 
 function dataVizAll() {
-  timeline.selectAll("circle").remove();
+  timeline.selectAll("circle:not(.key)").remove();
   timeline.selectAll("rect").remove();
 
 
@@ -110,7 +110,7 @@ function dataVizAll() {
       })
       .on("mouseleave", function(d){
 
-        d3.selectAll("circle")
+        d3.selectAll("circle:not(.key)")
           .style("opacity", .1)
         
         d3.selectAll("rect")
@@ -142,7 +142,7 @@ function dataVizAll() {
       })
       .on("mouseleave", function(d){
 
-        d3.selectAll("circle")
+        d3.selectAll("circle:not(.key)")
           .style("opacity", .1)
         
         d3.selectAll("rect")
@@ -172,7 +172,7 @@ function dataVizAll() {
         tip.show(d); 
       })
       .on("mouseleave", function(d){
-        d3.selectAll("circle")
+        d3.selectAll("circle:not(.key)")
           .style("opacity", .1)
         
         d3.selectAll("rect")
@@ -245,19 +245,70 @@ function dataVizAll() {
     var thirdWord = arr[0]; 
 
     if (thirdWord == "allyrs") { 
-      timeline.selectAll("circle").transition()
+      timeline.selectAll("circle:not(.key)").transition()
         .duration(750)
         .style("opacity", .1)
     } else {
-      timeline.selectAll("circle").transition()
+      timeline.selectAll("circle:not(.key)").transition()
         .duration(750)
         .style("opacity", .05)
 
-      timeline.selectAll("circle").filter("." + thirdWord).transition()
+      timeline.selectAll("circle:not(.key)").filter("." + thirdWord).transition()
         .duration(750)
         .style("opacity", 1)
     }
   })
+
+  //Color key
+    var xPos = 940;
+    var yPos = 120; 
+    var height = 600; 
+    //background
+    timeline.append("text")
+      .style("font-weight", 700)
+      .attr("x", xPos + 20).attr("y", yPos - 40)
+      .html("KEY").style("text-anchor","middle");
+    //text and colors
+    timeline.append("circle")
+      .attr("class", "key")
+      .style("fill", "none").style("stroke", "#fff")
+      .attr("cx", xPos + 60).attr("cy", yPos).attr("r", 30)
+    timeline.append("text")
+      .style("font-weight", 300).style("text-anchor", "end")
+      .attr("x", xPos + 20).attr("y", yPos + 7)
+      .style("font-size", 12).html("900 Miles");
+    timeline.append("circle")
+      .attr("class", "key")
+      .style("fill", "none").style("stroke", "#fff")
+      .attr("cx", xPos + 60).attr("cy", yPos + 60).attr("r", 20)
+    timeline.append("text")
+      .style("font-weight", 300).style("text-anchor", "end")
+      .attr("x", xPos + 30).attr("y", yPos + 67)
+      .style("font-size", 12).html("400 Miles");
+    timeline.append("circle")
+      .attr("class", "key")
+      .style("fill", "none").style("stroke", "#fff")
+      .attr("cx", xPos + 60).attr("cy", yPos + 100).attr("r", 10)
+    timeline.append("text")
+      .style("font-weight", 300).style("text-anchor", "end")
+      .attr("x", xPos + 40).attr("y", yPos + 107)
+      .style("font-size", 12).html("100 Miles");
+    timeline.append("circle")
+      .attr("class", "key")
+      .style("fill", "none").style("stroke", "#fff")
+      .attr("cx", xPos + 60).attr("cy", yPos + 130).attr("r", 5)
+    timeline.append("text")
+      .style("font-weight", 300).style("text-anchor", "end")
+      .attr("x", xPos + 40).attr("y", yPos + 133)
+      .style("font-size", 12).html("Centerline Miles");
+    timeline.append("circle")
+      .attr("class", "key")
+      .style("stroke", "none").style("fill", "#fff")
+      .attr("cx", xPos + 60).attr("cy", yPos + 160).attr("r", 5)
+    timeline.append("text")
+      .style("font-weight", 300).style("text-anchor", "end")
+      .attr("x", xPos + 40).attr("y", yPos + 163)
+      .style("font-size", 12).html("Sidewalk Miles");
 /*
 var margin = {top: 40, right: 10, bottom: 10, left: 10},
     width = 960 - margin.left - margin.right,

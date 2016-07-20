@@ -1,5 +1,4 @@
-
-#div {
+div {
   position: relative;
   color: #fff;
 }
@@ -25,7 +24,6 @@ div h3 {
 
 #citygradients { 
   position: relative;
-  height: 60vh;
 }
 #adtgraph { 
   height: 80vh;
@@ -42,15 +40,6 @@ div h3 {
   text-align: center;
 }
 
-.subregion { 
-  fill: #e0e0e0;
-  stroke: #fff;
-  stroke-width: 1px;
-}
-
-.subregion:hover {
-    fill: #666;
-}
 
 .hidden {
     display: none;

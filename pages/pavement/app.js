@@ -22,7 +22,7 @@ queue()
 	.defer(d3.csv, "../../JSON/notable_exits_interstates.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateTimeline(results[0]);
-		CTPS.demoApp.generateADTgraph(results[1]);
+		//CTPS.demoApp.generateADTgraph(results[1]);
 		CTPS.demoApp.generateChart(results[1], results[2], results[3]);
 	}); 
 	//CTPS.demoApp.generateViz);
@@ -671,69 +671,55 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 		}
 	})
 
-	
-	/*var townmarker = interstateRoads.features;
+	//Color key
+	var xPos = 700;
+	var yPos = 50; 
+	var height = 600; 
+	//background
+	chartContainer.append("rect")
+		.style("fill", "#191b1d").style("stroke", "white").style("stroke-width", 0)
+		.attr("x", xPos-10).attr("y", yPos-11).attr("height", 90).attr("width", 240)
+		.style("opacity", .8);
+	//text and colors
+	chartContainer.append("text")
+		.style("font-weight", 700)
+		.attr("x", xPos).attr("y", yPos - 10)
+		.html("KEY");
+	chartContainer.append("rect")
+		.style("fill", "#d7191c").style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
+	chartContainer.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 7)
+		.html("0.0-2.5: Dismal");
+	chartContainer.append("rect")
+		.style("fill", "#fdae61").style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
+	chartContainer.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 22)
+		.html("2.5-3.0: Minimally Acceptable");
+	chartContainer.append("rect")
+		.style("fill", "#ffffbf").style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
+	chartContainer.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 37)
+		.html("3.0-3.5: Acceptable");
+	chartContainer.append("rect")
+		.style("fill", "#a6d96a").style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
+	chartContainer.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 52)
+		.html("3.5-4.0: Good");
+	chartContainer.append("rect")
+		.style("fill", "#1a9641").style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
+	chartContainer.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 67)
+		.html("4.0-5.0: Excellent");
 
-	townmarker.sort(function(a,b) { 
-		var nameA = a.properties.ROUTEKEY; 
-		var nameB = b.properties.ROUTEKEY; 
-		var subnameA = a.properties.NORMALIZEDSTART; 
-		var subnameB = b.properties.NORMALIZEDSTART; 
-		if (nameA < nameB ) {return -1; }
-		if (nameA > nameB) { return 1;}
-		else { 
-			if (subnameA < subnameB) { return -1; }
-			if (subnameA > subnameB) { return 1; }
-			return 0; 
-		}
-	})
-
-	var townstorage = 0;
-	var lengthstorage = 0; 
-	var markers = chartContainer.selectAll(".markers")
-		.data(townmarker)
-		.enter();
-
-	markers.append("rect")
-		.attr("class", "markers")
-		.attr("height", 50)
-		.attr("width", .5)
-		.attr("x", function(d) { 
-			if ((d.properties.CITY != townstorage) && (d.properties.ROUTEDIRECTION == "NB" || d.properties.ROUTEDIRECTION == "WB") && (lengthstorage > 1)) { 
-				townstorage = d.properties.CITY; 
-				lengthstorage = 0; 
-				return xScaleRoad(d.properties.NORMALIZEDSTART);
-			} else { 
-				lengthstorage += Math.abs(d.properties.ROUTETO - d.properties.ROUTEFROM);
-				return -50; }
-			})
-		.attr("y", function(d) { return yScale(d.properties.FEDERALAIDROUTENUMBER) - 35; })
-		.style("stroke", "none")
-		.style("fill", "#ddd")
-		.on("mouseenter", tip2.show)
-		.on("mouseleave", tip2.hide)
-
-	var townstorage = 0;
-	var lengthstorage = 0; 
-	markers.append("text")
-		.attr("class", "text")
-		.text(function(d){ return d.properties.TOWN; })
-		.attr("x", function(d) { 
-			if ((d.properties.CITY != townstorage) && (d.properties.ROUTEDIRECTION == "NB" || d.properties.ROUTEDIRECTION == "WB") && (lengthstorage > 1)) { 
-				townstorage = d.properties.CITY; 
-				lengthstorage = 0; 
-				return xScaleRoad(d.properties.NORMALIZEDSTART) + 30;
-			} else { 
-				lengthstorage += Math.abs(d.properties.ROUTETO - d.properties.ROUTEFROM);
-				return -9000; }
-			})
-		.attr("y", function(d) { 
-				return yScale(d.properties.FEDERALAIDROUTENUMBER) - 20; 
-			})
-		.style("font-size", 10)
-		.attr("transform", function(d) { 
-			return "rotate(-45, " + xScaleRoad(d.properties.NORMALIZEDSTART) + ", " + yScale(d.properties.FEDERALAIDROUTENUMBER) + ")" 
-		});*/
-		
 } //CTPS.demoApp.generateChart
 

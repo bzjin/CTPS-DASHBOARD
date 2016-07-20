@@ -31,20 +31,6 @@
 .axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
 text {fill: #ddd; font-size: 14px;} 
 
-form {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-.node {
-  border: none;
-  font: 10px sans-serif;
-  line-height: 12px;
-  overflow: hidden;
-  position: absolute;
-  text-indent: 2px;
-}
 </style> 
 </head>
 
@@ -55,17 +41,19 @@ form {
 	<?php include '../../components/top-nav.php';?>
 </div>
 	<div class="col-md-12">
-		<h1>Sidewalks</h1>
+		<h1>Sidewalk Coverage</h1>
 	</div>
 
 	<div class="col-md-12">
-		<h3> How much sidewalk does Boston have on its roadways?</h3>
-		<p> Doctors recommend 30 minutes of moderately paced walking a day.</p>
-		<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Center Line Miles
+		<h3> How much sidewalk do Boston region municipalities have on their roadways?</h3>
+		<p> Can we walk to all the places to which we can drive? The visualization below shows the number of road miles that have sidewalks on either side of the road.
+			A ratio of 0.0  means that none of that municipality's roads have sidewalks on either side. A ratio of 1.0 means that all of its roads have sidewalks on either side. </p>
+		<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Centerline Miles
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Sidewalk Miles </p>
 	</div>
 	<div class="col-md-12">
-		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> <button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average Sidewalk to Road Ratio</button>
+		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> 
+		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average Sidewalk Miles to Centerline Miles Ratio</button>
 	</div>
 	<div class="col-md-12">
 		<button class='allyrs yrpicker col-md-1'> All</button>

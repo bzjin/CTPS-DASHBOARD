@@ -27,19 +27,23 @@
 
 <body>
 <div id="header" class="col-md-10 col-md-offset-1">
-<div class="top-nav col-md-12">
-	<?php include '../../components/top-nav.php';?>
-</div>	<div class="col-md-12">
-	<h1>Pavement Condition</h1>
+	<div class="top-nav col-md-12">
+		<?php include '../../components/top-nav.php';?>
+	</div>	
 
-	<h3 class="inner-nav"><a href="index.php"><i class="fa fa-circle-o" aria-hidden="true"></i>
-	Interstate Roads</a><a href="#"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-	 Non-Interstate Roads</a></h3>
+	<h3 class="inner-nav col-md-12">
+		<a href="index.php" alt="Go to interstate pavement condition"><i class="fa fa-circle-o" aria-hidden="true"></i>
+		Interstate Roads</a>
+		<a href="#" alt="Go to non-interstate pavement condition"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+		 Non-Interstate Roads</a>
+	</h3>
 
-	<p>[Attention Getter] Blurb on pavement condition. Why is it important? Why do we care?</p>
-	<p> Define PSI<p>
-	</div>
+	<h1 class="col-md-12">Pavement Condition</h1>
 
+	<p class="col-md-12">[Attention Getter] Blurb on pavement condition. Why is it important? Why do we care?</p>
+	<p class="col-md-12"> Define PSI<p>
+
+	<!--
 	<div class="col-md-12">
 	<h3>Non-Interstate Pavement over the Past Decade</h3>
 	<button class='ACTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Acton</button>
@@ -145,20 +149,20 @@
 	<button class='WRENTHAM townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Wrentham</button>
 	</div>
 
-	<div id="timeline" class="col-md-10"></div>
+	<div id="timeline" class="col-md-12"></div> -->
 
-	<div class="col-md-10">
-	<h3>Boston Cities and Towns Pavement in 2015</h3>
-	<button class="bigbutton" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> <button class="bigbutton" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
+	<div class="col-md-12">
+	<h3>Boston Region Municipalities Pavement in 2015</h3>
+		<button class="bigbutton" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
+		<button class="bigbutton" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
 	</div>
 
-	<div id="citygradients" class="col-md-12">
+	<div id="citygradients" class="col-md-12"></div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>
 </div>
-
 
 <script src="app2.js"></script>
 
