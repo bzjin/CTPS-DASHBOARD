@@ -23,6 +23,7 @@ queue()
 
 CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 
+	
 	var cleanedbridges = []; 
 	bridges.forEach(function(i){
 		if (i.healthIndex != -1) {
@@ -38,6 +39,22 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 			})
 		}
 	})
+
+var nested_data = d3.nest()
+	.key(function(d) { return d.town; })
+	.rollup(function(d) { return {"length": d.length, "total_SD": d3.sum(d, function(d) {if (d.structDef == "TRUE") {return 1;}}) }})
+	.entries(cleanedbridges);
+
+console.log(nested_data)
+	var yahoo = [];
+	nested_data.forEach(function(i){
+		yahoo.push({
+			"town": i.key,
+			"perc_D": i.values.total_SD/i.values.length
+		})
+	})
+
+console.log(JSON.stringify(yahoo));
 
 	nested_struct_def = d3.nest() 
 	.key(function(i) { return i.year })
@@ -264,22 +281,25 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 
 	//individual points
 	cleanedbridges.forEach(function(i){
-		timeline2.append("circle")
+		timeline2.append("rect")
 			.attr("class", "yr" + i.year + " bin" + d3.round(d3.round(i.healthIndex/5, 2)*100) + " individuals " + i.bridgeId)
-			.attr("cx", xScale(i.year) + 8 + 5 * Math.floor(Math.random() * 10))
+			//.attr("cx", xScale(i.year) + 8 + 5 * Math.floor(Math.random() * 10))
+			.attr("x", xScale(i.year))
 			//.attr("cy", yScale(d3.round(i.healthIndex/2, 2)*2))
-			.attr("cy", yScale(i.healthIndex))
-			.attr("r", 2)
+			.attr("y", yScale(i.healthIndex))
+			.attr("width", xScale(2010)-xScale(2009))
+			.attr("height", 1)
 			.style("stroke", function() { 
 				if (i.structDef == "TRUE" || i.structDef == "True") { return "none";}
-				else {return "#26a65b";}
+				//else {return "#26a65b";}
+				else { return "none"}
 			})
 			.style("fill", function() { 
 				if (i.structDef == "TRUE" || i.structDef == "True") { return "#ff6347";}
 				else {return "none";}
 			})
 			.style("stroke-width", .5)
-			.style("opacity", 0)
+			.style("opacity", .2)
 			.on("mouseenter", function(){ 
 				var mystring = this.getAttribute("class");
 				var arr = mystring.split(" ", 2);
@@ -293,10 +313,11 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 			})	
 	})
 
-var healthline = d3.svg.line()
+var healthline = d3.svg.area()
 		.interpolate("basis")
 	    .x(function(d) { return xScale(d.year); })
-	    .y(function(d) { return yScale(d.healthIndex); });
+	    .y1(function(d) { return yScale(d.healthIndex); })
+	    .y0(yScale(0))
 
 console.log(nested_ind_bridge);
 nested_ind_bridge.forEach(function(i){
@@ -305,6 +326,7 @@ nested_ind_bridge.forEach(function(i){
 		.style("fill", "none")
 		.style("stroke", "#ddd")
 		.style("stroke-width", .1)
+		.style("opacity", 1)
 })
 
 }

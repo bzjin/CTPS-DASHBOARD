@@ -123,18 +123,18 @@ CTPS.demoApp.generateStats = function(equity){
 
     var table = d3.select("#chart").append("svg")
       .attr("width", "100%")
-      .attr("height", 400)
+      .attr("height", 500)
     
     var xScale = d3.scale.linear()
                     //.domain([d3.min(maxmins), d3.max(maxmins)])
-                    .domain([2007.8, 2021.2])
-                    .range([80, 650])
+                    .domain([2007.5, 2021.5])
+                    .range([85, 650])
 
-    var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(-290, 0, 0).tickFormat(d3.format("d"));
+    var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));
 
     var yScale = d3.scale.linear()
                   .domain([0, d3.max(fundingPop)])
-                  .range([340, 50])
+                  .range([440, 50])
 
     nested_towns.forEach(function(town){ 
          table.selectAll(".circle")
@@ -145,11 +145,11 @@ CTPS.demoApp.generateStats = function(equity){
                 //.attr("cx", yScale(i.year))
                 .attr("cx", function(d) { return xScale(d.year)})
                 .attr("cy", function(d) { return yScale(d.Population); })
-                .attr("r", function(d) { return Math.sqrt(d.funding/100000)})
-                .style("stroke", function(d) { return colorScale(d.funding); })
+                .attr("r", function(d) { return Math.sqrt(d.funding/20000)})
+                .style("fill", function(d) { return colorScale(d.funding); })
                 .style("stroke-width", 1)
-                .style("fill", "none")
-                .style("opacity", .5)
+                .style("stroke", "none")
+                .style("opacity", .2)
       }) //end nested_towns forEach loop
 
     //Call first chart
@@ -158,9 +158,9 @@ CTPS.demoApp.generateStats = function(equity){
     //generate xy chart of attribute over time per town
     function chartViz(attribute) { 
         table.selectAll("text").remove();
-        
+
         table.append("g").attr("class", "axis")
-              .attr("transform", "translate(0, 340)")
+              .attr("transform", "translate(0, 440)")
               .call(xAxis)
         
         var maxmins = [];
@@ -172,15 +172,15 @@ CTPS.demoApp.generateStats = function(equity){
         })
 
         var yScale = d3.scale.linear()
-                    .domain([d3.min(maxmins), d3.max(maxmins)])
+                    .domain([0, d3.max(maxmins)])
                     //.domain([2007.8, 2021.2])
-                    .range([340, 50])
+                    .range([440, 50])
 
-        var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-570, 0, 0);
+        var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 
         table.append("g").attr("class", "axis")
-            .attr("transform", "translate(60, 0)")
+            .attr("transform", "translate(85, 0)")
             .call(yAxis)
         
         table.append("text")
@@ -199,7 +199,7 @@ CTPS.demoApp.generateStats = function(equity){
 
         table.append("text")
           .attr("x", 330)
-          .attr("y", 385)
+          .attr("y", 475)
           .text("Year")
           
    

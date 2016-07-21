@@ -49,13 +49,13 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="pages/crashes/index.php" alt="Go to crashes page">Crashes</a></li>
-		<li><a href="pages/pavement/index.php" alt="Go to pavement condition page">Pavement</a></li>
-		<li><a href="pages/bridges/index.php" alt="Go to bridge condition page">Bridges</a></li>
-		<li><a href="pages/congestion/index.php" alt="Go to congestion page">Congestion</a></li>
-		<li><a href="pages/sidewalks/index.php" alt="Go to sidewalk coverage page">Sidewalks</a></li>
-		<li><a href="pages/bike_facilities/index.php" alt="Go to bike facilities page">Bike Facilities</a></li>
-		<li><a href="pages/equity/index.php" alt="Go to equity page">Equity</a></li>
+        <li><a href="pages/crashes/index.php" title="Go to crashes page">Crashes</a></li>
+		<li><a href="pages/pavement/index.php" title="Go to pavement condition page">Pavement</a></li>
+		<li><a href="pages/bridges/index.php" title="Go to bridge condition page">Bridges</a></li>
+		<li><a href="pages/congestion/index.php" title="Go to congestion page">Congestion</a></li>
+		<li><a href="pages/sidewalks/index.php" title="Go to sidewalk coverage page">Sidewalks</a></li>
+		<li><a href="pages/bike_facilities/index.php" title="Go to bike facilities page">Bike Facilities</a></li>
+		<li><a href="pages/equity/index.php" title="Go to equity page">Equity</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
       </div> <!-- /.container-fluid -->
@@ -63,13 +63,13 @@
 
 <!-- Desktop nav --> 
 <div class="col-md-3 col-md-offset-9 desktop-nav">
-	<a href="pages/crashes/index.php" alt="Go to crashes page"><i class="fa fa-circle-o" aria-hidden="true"></i> Crashes</a> <p><b>760/53</b><br>Injuries/Deaths<br></p>
-	<a href="pages/pavement/index.php" alt="Go to pavement condition page"><i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</a><p><b class="good">78%</b><br>in good condition</p>
-	<a href="pages/congestion/index.php" alt="Go to congestion page"><i class="fa fa-circle-o" aria-hidden="true"></i> Congestion </a><p><b>12 sec.</b> <br>average delay per mile</p>
-	<a href="pages/bridges/index.php" alt="Go to bridges page"><i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</a><p><b class="good">88%</b><br>in good condition</p>
-	<a href="pages/sidewalks/index.php" alt="Go to sidewalks page"><i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</a><p><b class="good">A LOT</b><br>more sidewalks</p>
-	<a href="pages/bike_facilities/index.php" alt="Go to bike facilities page"><i class="fa fa-circle-o" aria-hidden="true"></i> Bike Facilities </a><p><b>.45</b></br>bike lanes per centerline mile</p>
-	<a href="pages/equity/index.php" alt="Go to equity page"><i class="fa fa-circle-o" aria-hidden="true"></i> Equity </a><p><b class="good">+$35m</b><br>TIP funding FFY 2017</p>
+	<a href="pages/crashes/index.php" title="Go to crashes page" id="crashes"><i class="fa fa-circle-o" aria-hidden="true"></i> Crashes</a> <p><b>760/53</b><br>Injuries/Deaths<br></p>
+	<a href="pages/pavement/index.php" title="Go to pavement condition page" id="pavement"><i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</a><p><b class="good">78%</b><br>in good condition</p>
+	<a href="pages/congestion/index.php" title="Go to congestion page" id="congestion"><i class="fa fa-circle-o" aria-hidden="true"></i> Congestion </a><p><b>12 sec.</b> <br>average delay per mile</p>
+	<a href="pages/bridges/index.php" title="Go to bridges page" id="bridges"><i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</a><p><b class="good">88%</b><br>in good condition</p>
+	<a href="pages/sidewalks/index.php" title="Go to sidewalks page" id="sidewalks"><i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</a><p><b class="good">A LOT</b><br>more sidewalks</p>
+	<a href="pages/bike_facilities/index.php" title="Go to bike facilities page" id="bikes"><i class="fa fa-circle-o" aria-hidden="true"></i> Bike Facilities </a><p><b>.45</b></br>bike lanes per centerline mile</p>
+	<a href="pages/equity/index.php" title="Go to equity page" id="equity"><i class="fa fa-circle-o" aria-hidden="true"></i> Equity </a><p><b class="good">+$35m</b><br>TIP funding FFY 2017</p>
 </div>
 
 <script src="js/map.js"></script>

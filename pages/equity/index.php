@@ -60,11 +60,12 @@ form {
 
 	<div class="col-md-12">
 		<h3> How much funding does each municipality receive? </h3>
+		<p> All demographic statistics were taken during the 2010 Census. </p>
 	</div>
 	<div class="col-md-12">
 		<button class="bigbutton col-md-3" id="byPopulation" alt="Sort by Population">Sort by Population</button>
-		<button class="bigbutton col-md-3" id="byIncome" alt="Sort by Median Household Income">Sort by Income</button>
-		<button class="bigbutton col-md-3" id="byMinority" alt="Sort by Minority">Sort by Minority</button>
+		<button class="bigbutton col-md-3" id="byIncome" alt="Sort by Median Household Income">Sort by Median Household Income</button>
+		<button class="bigbutton col-md-3" id="byMinority" alt="Sort by Minority">Sort by Percent Minority</button>
 		<button class="bigbutton col-md-3" id="byMiles" alt="Sort by Miles">Sort by Miles</button>
 	</div>
 
