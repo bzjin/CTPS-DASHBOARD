@@ -34,9 +34,9 @@
 	</div>
 
 	<h3 class="inner-nav col-md-12">
-		<a href="#" alt="Go to interstate pavement condition"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+		<a href="#" title="Go to interstate pavement condition"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
 	Interstate Roads</a>
-		<a href="index2.php" alt="go to noninterstate pavement condition"><i class="fa fa-circle-o" aria-hidden="true"></i>Non-Interstate Roads</a>
+		<a href="index2.php" title="go to noninterstate pavement condition"><i class="fa fa-circle-o" aria-hidden="true"></i> Non-Interstate Roads</a>
 	</h3>	
 
 	<h1 class="col-md-12">Pavement Condition</h1>

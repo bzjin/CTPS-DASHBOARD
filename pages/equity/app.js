@@ -4,8 +4,8 @@ CTPS.demoApp = {};
 var projection = d3.geo.conicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
-  .scale([18000]) // N.B. The scale and translation vector were determined empirically.
-  .translate([40,740]);
+  .scale([19000]) // N.B. The scale and translation vector were determined empirically.
+  .translate([40,790]);
   
 var geoPath = d3.geo.path().projection(projection); 
 
@@ -31,10 +31,11 @@ var colorScale = d3.scale.linear()
 
 ////////////////* GENERATE MAP *////////////////////
 CTPS.demoApp.generateMap = function(mpoTowns, equity) {  
+  // SVG Viewport
 
   var svgContainer = d3.select("#map").append("svg")
     .attr("width", "100%")
-    .attr("height", 500)
+    .attr("height", 600)
 
   //D3 Tooltip
   var tip = d3.tip()
@@ -42,12 +43,11 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
     .offset([-10, 0])
     .html(function(d) {
       var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      return "<b>" + capTown + "</b><p>TIP Funding 2008-2013: <br>" + findIndex(capTown, "Total_FFY_2008_2013_TIPs") + "</p>";
+      return "<b>" + capTown + "</b> <br>TIP 2008-2013: " + findIndex(capTown, "Total_FFY_2008_2013_TIPs") + "<br>TIP 2014-2021: " + findIndex(capTown, "Tota_FFY_2014_2021_TIPs");
     })
 
   svgContainer.call(tip); 
 
-  //this function finds the statistic corresponding to the down selected on the map
   var findIndex = function(town, statistic) { 
     for (var i = 0; i < equity.length; i++) { 
       if (equity[i].MPO_Municipality == town) {
@@ -76,168 +76,256 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
         }
       })
       .style("stroke", "#191b1d")
-      .style("stroke-width", "1px")
+      .style("stroke-width", 1)
       .on("mouseenter", function(d){
+        d3.selectAll("." + this.getAttribute("class")).filter(".bars")
+          .style("stroke-width", 10)
+          .style("stroke", function(d) { return colorScale(d.Total_FFY_2008_2013_TIPs);  })
+        d3.selectAll("." + this.getAttribute("class")).filter(".labels")
+          .style("opacity", 1)
+        d3.selectAll("." + this.getAttribute("class")).filter(".tipFunding")
+          .style("stroke-width", 10)
+          .style("opacity", 1)
+          .style("stroke", function(d) { return colorScale(d.funding);  })
         tip.show(d);
       })
-      .on("click", function(d){
-        d3.selectAll("circle")
-          .style("opacity", .1)
-
-        d3.selectAll("." + this.getAttribute("class")).filter("circle")
-          .style("opacity", 1)
+      .on("mouseleave", function(d){
+        d3.selectAll("." + this.getAttribute("class")).filter(".bars").transition()
+          .style("stroke-width", 0)
+        d3.selectAll("." + this.getAttribute("class")).filter(".tipFunding").transition()
+          .style("stroke-width", 0)
+          .style("opacity", .2)
+          //.style("stroke", function(d) { return colorScale(d.Total_FFY_2008_2013_TIPs);  })
+        d3.selectAll("." + this.getAttribute("class")).filter(".labels").transition()
+          .style("opacity", 0)
       })
+
+      //Color key
+    var xPos = 15;
+    var yPos = 420; 
+    var height = 600; 
+    //background
+    svgContainer.append("text")
+      .style("font-weight", 700)
+      .attr("x", xPos).attr("y", yPos -7)
+      .html("KEY");
+    //text and colors
+    svgContainer.append("rect")
+      .style("fill", colorScale(0)).style("stroke", "none").style("opacity", .1)
+      .attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 7)
+      .html("No funding");
+    svgContainer.append("rect")
+      .style("fill", colorScale(500000)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 22)
+      .html("$500,000 - $5 million");
+    svgContainer.append("rect")
+      .style("fill", colorScale(10000000)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 37)
+      .html("$5 million - $15 million");
+    svgContainer.append("rect")
+      .style("fill", colorScale(20000000)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 52)
+      .html("$15 million - $25 million");
+    svgContainer.append("rect")
+      .style("fill", colorScale(25000000)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 67)
+      .html("> $25 million");
 }
 
 CTPS.demoApp.generateStats = function(equity){
-    //Create array for equity over the years
-    var timeline = [];
-    var fundingPop = [];
+  
+  equity.forEach(function(i){
+    i.percentMinority = d3.round(i.MINORITY_2010/i.Population*100, 2);
+    i.percentEmployed = i.Employment/i.Population;
+  })
 
-    equity.forEach(function(i){ 
-        for (var j = 2008; j < 2022; j++){ 
-          if (i['FFY_' + j + '_TIP'] != 0) {
-            timeline.push({
-              "town": i.MPO_Municipality,
-              "year": j, 
-              "funding": i['FFY_' + j + '_TIP'],
-              "Median_Household_Income": i.Median_Household_Income,
-              "MINORITY_2010": i.MINORITY_2010/i.Population*100,
-              "Population": i.Population,
-              "MILES_2010": i.MILES_2010,
-              "CHAPTER_90": i.CHAPTER_90,
-              "Employment": i.Employment,
-              "SUBREGION": i.SUBREGION,
-              "COMMUNITY_TYPE": i.COMMUNITY_TYPE
-            })
+  var width = 680; 
+  var height = 80; 
+  var padding = 30; 
 
-            fundingPop.push(i.Population);
-          }
-        }
+generateStats = function(attribute, divID) { 
+  //Sort towns by ascending attribute order
+    equity.sort(function(a, b){
+        var nameA = a[attribute];
+        var nameB = b[attribute];
+        if (nameA < nameB) { return -1}
+        if (nameA > nameB) { return 1}
+        return 0;
+      })
+    //Push towns into array for x axis
+    townOrder = [];
+    maxmins = [];
+      equity.forEach(function(i){
+        townOrder.push(i.MPO_Municipality);
+        maxmins.push(i[attribute]);
     })
-    
-    //nest timeline by towns to graph
-    var nested_towns = d3.nest()
-    .key(function(d) { return d.town; })
-    .entries(timeline)
 
-    var table = d3.select("#chart").append("svg")
-      .attr("width", "100%")
-      .attr("height", 500)
-    
-    var xScale = d3.scale.linear()
-                    //.domain([d3.min(maxmins), d3.max(maxmins)])
-                    .domain([2007.5, 2021.5])
-                    .range([85, 650])
 
-    var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));
+    var xScale = d3.scale.ordinal()
+                .domain(townOrder)
+                .rangePoints([padding, width - (2*padding)])
 
     var yScale = d3.scale.linear()
-                  .domain([0, d3.max(fundingPop)])
-                  .range([440, 50]);
+                .domain([0, d3.max(maxmins)])
+                .range([height, padding])
 
-     var yAxis = d3.svg.axis().scale(yScale).orient("left");
+    var yScaleHeight = d3.scale.linear()
+                .domain([0, d3.max(maxmins)])
+                .range([0, height - padding])
 
-    table.append("g").attr("class", "yaxis")
-        .attr("transform", "translate(85, 0)")
-        .call(yAxis)
+    var newChart = d3.select("#" + divID).append("svg")
+      .attr("width", "100%")
+      .attr("height", height)
 
-    nested_towns.forEach(function(town){ 
-         table.selectAll(".circle")
-            .data(town.values)
-            .enter()
-            .append("circle")
-                .attr("class", function(d) { return d.town + " .circle"; })
-                //.attr("cx", yScale(i.year))
-                .attr("cx", function(d) { return xScale(d.year)})
-                .attr("cy", function(d) { return yScale(d.Population); })
-                .attr("r", function(d) { return Math.sqrt(d.funding/20000)})
-                .style("fill", function(d) { return colorScale(d.funding); })
-                .style("stroke-width", 1)
-                .style("stroke", "none")
-                .style("opacity", .2)
-      }) //end nested_towns forEach loop
+    newChart.append("text")
+      .attr("x", 5)
+      .attr("y", 25)
+      .text(function(d) { 
+        if (attribute == "percentMinority") { return "Percent Minority Population"; }
+        if (attribute == "MILES_2010") { return "Number of Centerline Miles"; }
+        if (attribute == "Median_Household_Income") { return "Median Household Income"; }
+        else { 
+            return attribute;
+        }
+    })
 
-    //Call first chart
-    chartViz('Population');
+    newChart.selectAll("." + attribute)
+      .data(equity)
+      .enter()
+      .append("rect")
+          .attr("class", function(d) { return d.MPO_Municipality + " bars " + attribute})
+          .attr("x", function(d) { return xScale(d.MPO_Municipality);})
+          .attr("y", function(d) { return yScale(d[attribute]);})
+          .attr("width", 5)
+          .attr("height", function(d) {return yScaleHeight(d[attribute])})
+          .style("fill", function(d) {return colorScale(d.Total_FFY_2008_2013_TIPs)})
+          .style("opacity", function(d) { 
+            if (d.Total_FFY_2008_2013_TIPs == 0) { return .1;
+            } else { return 1; }
+          })
+          .on("mouseenter", function(d) { 
+          })
 
-    //generate xy chart of attribute over time per town
-    function chartViz(attribute) { 
-        table.selectAll("text").remove();
+     newChart.selectAll("." + attribute + "labels")
+      .data(equity)
+      .enter()
+      .append("text")
+          .attr("class", function(d) { return d.MPO_Municipality + " labels " + attribute + "labels"})
+          .attr("x", function(d) { return xScale(d.MPO_Municipality) + 2;})
+          .attr("y", function(d) { return yScale(d[attribute]) - 15;})
+          .text(function(d) { return d[attribute];})
+          .style("text-anchor", "middle")
+          .style("fill", "#fff")
+          .style("opacity", 0)
+          .style("font-weight", 300)
+          .on("mouseenter", function(d) { 
+          })
+} //end of generateStats
 
-        table.append("g").attr("class", "axis")
-              .attr("transform", "translate(0, 440)")
-              .call(xAxis)
-        
-        var maxmins = [];
+generateStats("Population", "chartPop")
+generateStats("percentMinority", "chartMinority")
+generateStats("Median_Household_Income", "chartIncome")
+generateStats("MILES_2010", "chartMiles")
 
-        timeline.forEach(function(i){
-          if (i[attribute] != 0) { 
-            maxmins.push(i[attribute]); //find max of attribute
-          }
+ 
+
+  //TIP funding chart
+  var tipFunding= d3.select("#tipFunding").append("svg")
+      .attr("width", "100%")
+      .attr("height", height*2.5)
+
+ tipFunding.append("text")
+      .attr("x", 5)
+      .attr("y", 25)
+      .text("TIP Funding by Year")
+
+  var timeline = [];
+  var maxFunding = [];
+
+  //extract year for each town
+  equity.forEach(function(i){ 
+      for (var j = 2008; j < 2022; j++){ 
+        if (i['FFY_' + j + '_TIP'] != 0) {
+          timeline.push({
+            "town": i.MPO_Municipality,
+            "year": j, 
+            "funding": i['FFY_' + j + '_TIP'],
+            "SUBREGION": i.SUBREGION,
+            "COMMUNITY_TYPE": i.COMMUNITY_TYPE
+          })
+          maxFunding.push(i['FFY_' + j + '_TIP']);
+        }
+      }
+  })
+  var xScale = d3.scale.linear()
+              .domain([2007.5, 2021.5])
+              .range([0, width - 2*padding])
+
+  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d")).ticks(14);
+
+  tipFunding.append("g").attr("class", "axis")
+    .attr("transform", "translate(0," + height*1.8 + ")")
+    .call(xAxis)
+    .selectAll("text")
+    .style("text-anchor", "middle")
+    .attr("transform", "translate(10, 3)");
+
+  var yScale = d3.scale.linear()
+              .domain([0, d3.max(maxFunding)])
+              .range([height*1.8, 1.5*padding])
+
+  tipFunding.selectAll(".tipFunding")
+    .data(timeline)
+    .enter()
+    .append("rect")
+        .attr("class", function(d) { return d.town + " tipFunding"})
+        .attr("x", function(d) { return xScale(d.year)-10;})
+        .attr("y", function(d) { return yScale(d.funding);})
+        .attr("width", function(d) { 
+          if (d.funding > 0) { return 40 }
+          else { return 0 }
+        })
+        .attr("height", 5)
+        .style("opacity", .2)
+        .style("fill", function(d) { return colorScale(d.funding)})
+        .on("mouseenter", function(d){ 
+          console.log(this.getAttribute("class"))
         })
 
-        var yScale = d3.scale.linear()
-                    .domain([0, d3.max(maxmins)])
-                    //.domain([2007.8, 2021.2])
-                    .range([440, 50]);
-
-        var yAxis = d3.svg.axis().scale(yScale).orient("left");
-
-        table.selectAll(".yaxis").transition()
-          .ease("sin-in-out")  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
-          .call(yAxis)
-        
-        table.append("text")
-          .attr("x", -250)
-          .attr("y", 15)
-          .attr("transform", "rotate(-90)")
-          .text(function(){
-            if (attribute == "Median_Household_Income") { return "Median Household Income"}
-            if (attribute == "MINORITY_2010") { return "Minority Percent of Population"}
-            if (attribute == "MILES_2010") { return "Number of Miles"}
-            else { 
-              return attribute;
-            }
+  tipFunding.selectAll(".tipFunds")
+      .data(timeline)
+      .enter()
+      .append("text")
+          .attr("class", function(d) { return d.town + " tipFunds labels"})
+          .attr("x", function(d) { return xScale(d.year)+10;})
+          .attr("y", function(d) { 
+            if (d.year%2 == 1) { return yScale(d.funding)-15;}
+            else { return yScale(d.funding)-10;}
           })
+          .text(function(d) { return d.funding;})
           .style("text-anchor", "middle")
-          .style("font-size", 14)
+          .style("font-weight", 300)
+          .style("font-size", 12)
+          .style("fill", "#fff")
+          .style("opacity", 0)
+          .on("mouseenter", function(d) { 
+          })
 
-        table.append("text")
-          .attr("x", 330)
-          .attr("y", 475)
-          .text("Year")
-          
-   
-
-        table.selectAll("circle").transition()
-            .duration( function(d, i) { return (d.year-2007)*200;})
-            .ease("sin-in-out") 
-            .attr("cy", function(d) { return yScale(d[attribute]); })
-
-
-
-      } //end function chartViz
-
-    
-
-      //buttons: click to see funding graphed against another variable
-      //button activation
-      d3.selectAll("#byPopulation").on("click", function(){
-        chartViz("Population");
-      })
-
-      d3.selectAll("#byIncome").on("click", function(){
-        chartViz("Median_Household_Income");
-      })
-
-      d3.selectAll("#byMinority").on("click", function(){
-        chartViz("MINORITY_2010");
-      })
-
-      d3.selectAll("#byMiles").on("click", function(){
-        chartViz("MILES_2010");
-      })
 }
 
 CTPS.demoApp.generateAccessibleTable = function(crashjson){

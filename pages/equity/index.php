@@ -27,16 +27,13 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
-
-.axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
-text {fill: #ddd; font-size: 12px;} .axis text { font-size: 10;}
-
+.axis line, .axis path { fill: none; stroke-width: 0; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
+text {fill: #ddd; font-size: 14px;} 
 form {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-
 .node {
   border: none;
   font: 10px sans-serif;
@@ -60,17 +57,14 @@ form {
 
 	<div class="col-md-12">
 		<h3> How much funding does each municipality receive? </h3>
-		<p> All demographic statistics were taken during the 2010 Census. </p>
-	</div>
-	<div class="col-md-12">
-		<button class="bigbutton col-md-3" id="byPopulation" alt="Sort by Population">Sort by Population</button>
-		<button class="bigbutton col-md-3" id="byIncome" alt="Sort by Median Household Income">Sort by Median Household Income</button>
-		<button class="bigbutton col-md-3" id="byMinority" alt="Sort by Minority">Sort by Percent Minority</button>
-		<button class="bigbutton col-md-3" id="byMiles" alt="Sort by Miles">Sort by Miles</button>
 	</div>
 
 	<div class="col-md-4" id="map"></div>
-	<div class="col-md-8" id="chart"></div>
+	<div class="col-md-8" id="chartPop"></div>
+	<div class="col-md-8" id="chartMinority"></div>
+	<div class="col-md-8" id="chartIncome"></div>
+	<div class="col-md-8" id="chartMiles"></div>
+	<div class="col-md-8" id="tipFunding"></div>
 
 </div>
 
@@ -78,7 +72,6 @@ form {
 		<?php include '../../components/footer.php';?>
 	</div>
 </div>
-<script src="fisheye.js"></script>
 <script src="app.js"></script>
 
 </body>
