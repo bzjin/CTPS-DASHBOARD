@@ -134,7 +134,13 @@ CTPS.demoApp.generateStats = function(equity){
 
     var yScale = d3.scale.linear()
                   .domain([0, d3.max(fundingPop)])
-                  .range([440, 50])
+                  .range([440, 50]);
+
+     var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+    table.append("g").attr("class", "yaxis")
+        .attr("transform", "translate(85, 0)")
+        .call(yAxis)
 
     nested_towns.forEach(function(town){ 
          table.selectAll(".circle")
@@ -174,17 +180,16 @@ CTPS.demoApp.generateStats = function(equity){
         var yScale = d3.scale.linear()
                     .domain([0, d3.max(maxmins)])
                     //.domain([2007.8, 2021.2])
-                    .range([440, 50])
+                    .range([440, 50]);
 
         var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-
-        table.append("g").attr("class", "axis")
-            .attr("transform", "translate(85, 0)")
-            .call(yAxis)
+        table.selectAll(".yaxis").transition()
+          .ease("sin-in-out")  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
+          .call(yAxis)
         
         table.append("text")
-          .attr("x", -200)
+          .attr("x", -250)
           .attr("y", 15)
           .attr("transform", "rotate(-90)")
           .text(function(){
@@ -196,6 +201,7 @@ CTPS.demoApp.generateStats = function(equity){
             }
           })
           .style("text-anchor", "middle")
+          .style("font-size", 14)
 
         table.append("text")
           .attr("x", 330)
