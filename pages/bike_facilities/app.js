@@ -1,20 +1,47 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-/*var projection = d3.geo.conicConformal()
+var projection = d3.geo.conicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([18000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,740]);
   
-var geoPath = d3.geo.path().projection(projection);*/
+var geoPath = d3.geo.path().projection(projection);
 
 //Color Scale
 var colorScale = d3.scaleLinear()
     .domain([0, 25, 50, 100, 250, 500, 1000])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
+
+//Using the queue.js library
+queue()
+  .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
+  .defer(d3.csv, "../../json/bike_facilities_by_town.csv")
+  .awaitAll(function(error, results){ 
+    CTPS.demoApp.generateMap(results[0],results[1]);
+    CTPS.demoApp.generatePlot(results[1]);
+    CTPS.demoApp.generateAccessibleTable(results[1]);
+  }); 
+
+//Color Scale
+var colorScale = d3.scale.linear()
+    .domain([0, 5, 10, 20, 40, 240, 900])
+    .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
+
 //var colorScale = d3.scale.linear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
+
+var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+      return d.properties.TOWN ;
+    })
+
+////////////////* GENERATE MAP *////////////////////
+CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {  
+  // SVG Viewport
 
 var svg = d3.select("#facilities").append("svg")
   .attr("width", 700)

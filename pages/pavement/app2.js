@@ -16,14 +16,15 @@ var geoPath = d3.geo.path().projection(projection);
 //Using the queue.js library
 queue()
 	.defer(d3.json, "../../JSON/city_lane_avgs.JSON")
-	//.defer(d3.json, "../../JSON/noninterstate_psi_avg_timeline_by_city.JSON")
+	.defer(d3.json, "../../JSON/noninterstate_psi_avg_timeline_by_city.JSON")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateCities(results[0]);
 		//CTPS.demoApp.generateTimeline(results[1]); FANCY CRAZY ART FOR ALL ROAD SEGMENT PSI
-		//CTPS.demoApp.generateCityTimeline(results[0]);
+		CTPS.demoApp.generateCityTimeline(results[1]);
 	}); 
 
 CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
+	console.log(cityavg_time);
 	var timeline = d3.select("#timeline").append("svg")
 		.attr("width", 1200)
 		.attr("height", 500);
@@ -63,7 +64,23 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	.key(function(d) { return d.town;})
 	.entries(cityavg_time);
 
+	var voronoi = d3.geom.voronoi()
+		.clipExtent([[50, 50], [1000, 450]])
+
+	var xyCoords = [];
+	cityavg_time.forEach(function(i){
+		xyCoords.push([xScale(i.year), yScale(i.median)])
+	})
+	console.log(xyCoords)
+
+	/*timeline.selectAll("path")
+	    .data(voronoi(xyCoords))
+	  .enter().append("path")
+	    .style("fill", function(d, i) { return none; })
+	    .attr("d", function(d) { return "M" + d.join("L") + "Z"; }); */
+
 	var valueline = d3.svg.line()
+		.interpolate("basis")
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.median); });
 
@@ -78,14 +95,13 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	    .y(function(d) { return yScale(d.thirdQuartile); })*/
 
 	var valuearea = d3.svg.area()
-	//.interpolate("basis")
+		.interpolate("basis")
 	    .x0(function(d) { return xScale(d.year); })
 	    .x1(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(d.firstQuartile); })
 	    .y0(function(d) { return yScale(d.thirdQuartile); })
 
 	nested_routes.forEach(function(i){  
-
 		timeline.append("path")
 		      .attr("class", i.values[0].town + "area uncolor")
 		      .attr("d", valuearea(i.values))
@@ -101,26 +117,17 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 			.style("opacity", .5)
 			.on("mouseenter", function(d) {
 				var thisreg = this.getAttribute("class");
+				console.log(thisreg);
 				timeline.selectAll("path")
 					.style("opacity", .05)
 					.style("stroke", "#ddd")
 					.style("stroke-width", .5);
-
-				timeline.selectAll("circle")
-					.style("opacity", .05)
-					.style("stroke-width", 0)
-					.attr("fill", "#ddd")
-					.attr("r", 2);
 
 				timeline.selectAll("." + thisreg)
 					.style("opacity", 1)
 					.style("stroke", "#ddd")
 					.style("stroke-width", 2);
 
-				timeline.selectAll("circle." + thisreg)
-					.style("fill", "#e26a6a")
-					.attr("r", 4);
-
 				timeline.selectAll(".uncolor")
 					.style("opacity", .01)
 					.style("stroke", "none")
@@ -136,87 +143,11 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 					.style("stroke", "#ddd")
 					.style("stroke-width", .5);
 
-				timeline.selectAll("circle")
-					.style("opacity", .5)
-					.style("stroke-width", 0)
-					.attr("fill", "#ddd")
-					.attr("r", 2);
 				timeline.selectAll(".uncolor")
 					.style("opacity", .01)
 					.style("stroke", "none")
 			})
 	})
-
-	timeline.selectAll(".yearboxes")
-		.data(cityavg_time)
-		.enter()
-		.append("circle")
-			.attr("class", function(d) { return d.town; } )
-			.attr("cx", function(d) { return xScale(d.year); })
-			.attr("cy", function(d) { return yScale(d.median); })
-			.attr("r", 2)
-			.style("fill", "#ddd")
-			.style("opacity", .5)
-			.on("mouseenter", function(d) {
-				var thisreg = this.getAttribute("class");
-				timeline.selectAll("path")
-					.style("opacity", .05)
-					.style("stroke", "#ddd")
-					.style("stroke-width", .5);
-
-				timeline.selectAll("circle")
-					.style("opacity", .05)
-					.style("stroke-width", 0)
-					.attr("fill", "#ddd")
-					.attr("r", 2);
-
-				d3.selectAll("." + thisreg)
-					.style("opacity", 1)
-					.style("stroke", "#ddd")
-					.style("stroke-width", 2)
-					.style("color","#e26a6a")
-					.style("font-weight", 700);
-
-				timeline.selectAll("circle." + thisreg)
-					.style("fill", "#e26a6a")
-					.attr("r", 4);
-
-				timeline.selectAll(".uncolor")
-					.style("opacity", .01)
-					.style("stroke", "none")
-
-				timeline.selectAll("." + thisreg + "area")
-					.style("opacity", .2)
-					.style("stroke", "none")
-
-				})
-			.on("mouseleave", function(d) {
-				d3.selectAll(".townpicker")
-					.style("opacity", 1)
-					.style("stroke", "none")
-					.style("stroke-width", 0)
-					.style("color","#fff")
-					.style("font-weight", 300);
-					
-				d3.selectAll("." + thisreg)
-					.style("opacity", 1)
-					.style("stroke", "none")
-					.style("stroke-width", 0)
-
-				timeline.selectAll("path")
-					.style("opacity", .5)
-					.style("stroke", "#ddd")
-					.style("stroke-width", .5);
-
-				timeline.selectAll("circle")
-					.style("opacity", .5)
-					.style("stroke-width", 0)
-					.attr("fill", "#ddd")
-					.attr("r", 2);
-				timeline.selectAll(".uncolor")
-					.style("opacity", .01)
-					.style("stroke", "none")
-			})
 			//.style("stroke-width", .5)
 		//	.style("stroke", "#ddd")
 	//button activation
@@ -230,20 +161,10 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 			.style("stroke", "#ddd")
 			.style("stroke-width", .5);
 
-		timeline.selectAll("circle")
-			.style("opacity", .05)
-			.style("stroke-width", 0)
-			.attr("fill", "#e26a6a")
-			.attr("r", 2);
-
 		timeline.selectAll("." + firstWord)
 			.style("opacity", 1)
 			.style("stroke", "#ddd")
 			.style("stroke-width", 2);
-
-		timeline.selectAll("circle." + firstWord)
-			.style("fill", "#e26a6a")
-			.attr("r", 4);
 
 		timeline.selectAll(".uncolor")
 			.style("opacity", .01)

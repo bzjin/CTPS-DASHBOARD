@@ -5,7 +5,7 @@ var projection = d3.geo.conicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([18000]) // N.B. The scale and translation vector were determined empirically.
-	.translate([40,740]);
+	.translate([40,770]);
 	
 var geoPath = d3.geo.path().projection(projection);	
 
@@ -204,6 +204,53 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 		
 	}
+
+	 //Color key
+    var xPos = 5;
+    var yPos = 30; 
+    var height = 600; 
+    //background
+    svgContainer.append("text")
+      .style("font-weight", 700)
+      .attr("x", xPos).attr("y", yPos -7)
+      .html("KEY");
+    //text and colors
+    svgContainer.append("rect")
+      .style("fill", colorScale(5)).style("stroke", "none").style("opacity", .1)
+      .attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 7)
+      .html("<5 crashes");
+    svgContainer.append("rect")
+      .style("fill", colorScale(10)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 22)
+      .html("5-10 crashes");
+    svgContainer.append("rect")
+      .style("fill", colorScale(50)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 37)
+      .html("10-50 crashes");
+    svgContainer.append("rect")
+      .style("fill", colorScale(100)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 52)
+      .html("50-200 crashes");
+    svgContainer.append("rect")
+      .style("fill", colorScale(240)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 67)
+      .html(">200 crashes");
+
 }
 
 CTPS.demoApp.generatePlot = function (crashdata) {

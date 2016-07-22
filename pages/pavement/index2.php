@@ -43,7 +43,7 @@
 	<p class="col-md-12">[Attention Getter] Blurb on pavement condition. Why is it important? Why do we care?</p>
 	<p class="col-md-12"> Define PSI<p>
 
-	<!--
+	
 	<div class="col-md-12">
 	<h3>Non-Interstate Pavement over the Past Decade</h3>
 	<button class='ACTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Acton</button>
@@ -108,7 +108,7 @@
 	<button class='NEEDHAM townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Needham</button>
 	<button class='NEWTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Newton</button>
 	<button class='NORFOLK townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Norfolk</button>
-	<button class='NORTH READING townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> N. Reading</button>
+	<button class='NORTHREADING townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> N. Reading</button>
 	<button class='NORWELL townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Norwell</button>
 	<button class='NORWOOD townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Norwood</button>
 	<button class='PEABODY townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Peabody</button>
@@ -149,7 +149,7 @@
 	<button class='WRENTHAM townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Wrentham</button>
 	</div>
 
-	<div id="timeline" class="col-md-12"></div> -->
+	<div id="timeline" class="col-md-12"></div> 
 
 	<div class="col-md-12">
 	<h3>Boston Region Municipalities Pavement in 2015</h3>
