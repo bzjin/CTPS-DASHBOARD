@@ -17,9 +17,9 @@ var geoPath = d3.geo.path().projection(projection);
 //Using the queue.js library
 queue()
 	.defer(d3.json, "json/boston_region_mpo_towns.topo.json")
-	.defer(d3.json, "json/arterials_summary.json")
-	.defer(d3.csv, "json/front_page_summaries.csv")
-	.defer(d3.json, "json/pavement_summary.json")
+	.defer(d3.json, "js/arterials_summary.json")
+	.defer(d3.csv, "js/front_page_summaries.csv")
+	.defer(d3.json, "js/pavement_summary.json")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1], results[2], results[3]);
 	}); 
@@ -29,12 +29,6 @@ CTPS.demoApp.generateMap = function(cities, congestion, summaries, pavement) {
 	// Show name of MAPC Sub Region
 	// Define Zoom Behavior
 var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_noninterstate_2015).features;
-console.log(simplify)
-simplify.forEach(function(i){
-	if (i.properties.ROUTEDIRECTION == "NB") { 
-		console.log(i);
-	}
-})
 
 	// SVG Viewport
 	var svgContainer = d3.select("#map").append("svg")
@@ -77,10 +71,10 @@ simplify.forEach(function(i){
 				.attr("class", "pavement")
 				.attr("d", function(d) {return geoPath(d)})
 				.style("fill", "none")
-				.style("stroke-width", 2)
-				.style("stroke", "none")
-				.style("stroke-linecap", "butt")
-				.style("opacity", .2)
+				.style("stroke-width", 1)
+				.style("stroke", "#191b1d")
+				.style("stroke-linecap", "round")
+				.style("opacity", 0)
 
 	d3.selectAll(".subregion").transition()
 		.duration(3000)
@@ -139,14 +133,14 @@ simplify.forEach(function(i){
 				.delay(function(d) { return d.properties.PSI*500})
 				.ease("elastic")
 				.duration(3000)
-				//.style("stroke-width", function(d) { return 1/(d.properties.AM_SPD_IX*d.properties.AM_SPD_IX)}); 
 				.style("stroke", function(d) { return colorPavement(d.properties.PSI)})
+				.style("opacity", 1)
 	});
 
 	d3.select("#pavement").on("mouseleave", function(){
 		d3.selectAll(".pavement").transition()
 			.duration(750)
-			.style("stroke", "none")			
+			.style("opacity", 0)
 	})
 
 
