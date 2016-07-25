@@ -101,7 +101,20 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	    .y1(function(d) { return yScale(d.firstQuartile); })
 	    .y0(function(d) { return yScale(d.thirdQuartile); })
 
+	var valuerange = d3.svg.area()
+		.interpolate("basis")
+	    .x0(function(d) { return xScale(d.year); })
+	    .x1(function(d) { return xScale(d.year); })
+	    .y1(function(d) { return yScale(d.minimum); })
+	    .y0(function(d) { return yScale(d.maximum); })
+
 	nested_routes.forEach(function(i){  
+		timeline.append("path")
+		      .attr("class", i.values[0].town + "minmax uncolor")
+		      .attr("d", valuerange(i.values))
+		      .style("fill", "#fff")
+		      .style("opacity", 0);
+
 		timeline.append("path")
 		      .attr("class", i.values[0].town + "area uncolor")
 		      .attr("d", valuearea(i.values))
@@ -133,7 +146,11 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 					.style("stroke", "none")
 
 				timeline.selectAll("." + thisreg + "area")
-					.style("opacity", .2)
+					.style("opacity", .3)
+					.style("stroke", "none")
+
+				timeline.selectAll("." + thisreg + "minmax")
+					.style("opacity", .1)
 					.style("stroke", "none")
 
 				})
@@ -167,99 +184,58 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 			.style("stroke-width", 2);
 
 		timeline.selectAll(".uncolor")
-			.style("opacity", .01)
+			.style("opacity", 0)
 			.style("stroke", "none")
 
 		timeline.selectAll("." + firstWord + "area")
-			.style("opacity", .2)
+			.style("opacity", .3)
+			.style("stroke", "none")
+
+		timeline.selectAll("." + firstWord + "minmax")
+			.style("opacity", .1)
 			.style("stroke", "none")
 	})
+	//Color key
+	var xPos = 840;
+	var yPos = 350; 
+	var height = 600; 
+	//background
+	timeline.append("text").style("font-size", 12)
+		.style("font-weight", 700)
+		.attr("x", xPos).attr("y", yPos -7)
+		.html("KEY");
+	//text and colors
+	timeline.append("rect")
+		.style("fill", "#fff").style("stroke", "none").style("opacity", .1)
+		.attr("x", xPos).attr("y", yPos).attr("height", "80px").attr("width", height/10)
+	timeline.append("text").style("font-size", 12)
+		.style("font-weight", 300)
+		.attr("x", xPos + 70).attr("y", yPos + 3)
+		.html("Maximum");
+	timeline.append("rect")
+		.style("fill", "#e26a6a").style("stroke", "none").style("opacity", .3)
+		.attr("x", xPos).attr("y", yPos + 20).attr("height", "40px").attr("width", height/10);
+	timeline.append("text").style("font-size", 12)
+		.style("font-weight", 300)
+		.attr("x", xPos + 70).attr("y", yPos + 25)
+		.html("75% Quartile");
+	timeline.append("rect")
+		.style("fill", "fff").style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos + 38).attr("height", "4px").attr("width", height/10);
+	timeline.append("text").style("font-size", 12)
+		.style("font-weight", 300)
+		.attr("x", xPos + 70).attr("y", yPos + 45)
+		.html("Median");
+	timeline.append("text").style("font-size", 12)
+		.style("font-weight", 300)
+		.attr("x", xPos + 70).attr("y", yPos + 65)
+		.html("25% Quartile");
+	timeline.append("text").style("font-size", 12)
+		.style("font-weight", 300)
+		.attr("x", xPos + 70).attr("y", yPos + 85)
+		.html("Minimum");
 }
 
-/*CTPS.demoApp.generateTimeline = function(psitimeline) { 
-	var timeline = d3.select("#timeline").append("svg")
-		.attr("width", 1200)
-		.attr("height", 500);
-
-	//mouseover function	
-	var tip2 = d3.tip()
-	  .attr('class', 'd3-tip')
-	  .offset([-10, 0])
-	  .html(function(d) {
-	    return d.values[0].route;
-	  })
-
-	timeline.call(tip2); 
-
-	//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
-	//var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
-	//Assign scales and axes 
-	xScale= d3.scale.linear().domain([0,5]).range([50, 1100]);
-	yScale = d3.scale.linear().domain([2007, 2015]).range([50, 450]);
-
-	var xAxis = d3.svg.axis().scale(xScale).orient("top").ticks(11).tickSize(-450, 0, 0).tickFormat(d3.format("d"));
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickFormat(d3.format("d"));
-
-	timeline.append("g").attr("class", "axis")
-		.attr("transform", "translate(0, 50)")
-		.call(xAxis)
-		.selectAll("text")
-		.attr("transform", "translate(0, -5)");
-
-	timeline.append("g").attr("class", "axis")
-		.attr("transform", "translate(0, 500)")
-		.call(xAxis)
-		.selectAll("text")
-		.remove();
-	
-	timeline.append("g").attr("class", "axis")
-		.attr("transform", "translate(50, 0)")
-		.call(yAxis)
-		.selectAll("text")
-		.attr("transform", "translate(0, 25)");
-
-	var nested_routes = d3.nest()
-	.key(function(d) { return d.segmentid;})
-	.entries(psitimeline);
-
-	var valueline = d3.svg.line()
-		.interpolate("basis")
-	    .x(function(d) { return xScale(d.psi); })
-	    .y(function(d) { return yScale(d.psiyear)+20; });
-
-	timeline.sort(function(a, b) { 
-		var nameA = a.psi;
-		var nameB = b.psi; 
-		if (nameA < nameB) { return -1; }
-		if (nameA > nameB) { return 1; }
-		return 0;
-	})
-
-	nested_routes.forEach(function(i){    
-		timeline.append("path")
-			.attr("class", i.values[0].route)
-			.attr("d", function(d) { return valueline(i.values);})
-			.style("stroke", "#ddd")
-			.style("stroke-width", .5)
-			.style("fill", "none")
-			.style("opacity", function(d) { return i.values[0].lanes/16;});
-	})
-
-
-	timeline.selectAll(".yearboxes")
-		.data(psitimeline)
-		.enter()
-		.append("circle")
-			.attr("class", function(d) { return d.route; } )
-			.attr("cx", function(d) { return xScale(d.psi); })
-			.attr("cy", function(d) { return yScale(d.psiyear) + 20; })
-			.attr("r", 2)
-			.style("fill", "#ddd")
-			.style("opacity", function(d) { return d.lanes/4;});
-			//.style("stroke-width", .5)
-		//	.style("stroke", "#ddd")
-
-}*/
 
 CTPS.demoApp.generateCities = function(avgpsi) {	
 
