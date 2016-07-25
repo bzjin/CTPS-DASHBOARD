@@ -4,33 +4,32 @@ CTPS.demoApp = {};
 var projection = d3.geo.conicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
-  .scale([18000]) // N.B. The scale and translation vector were determined empirically.
-  .translate([40,740]);
+  .scale([26000]) // N.B. The scale and translation vector were determined empirically.
+  .translate([100,1050]);
   
 var geoPath = d3.geo.path().projection(projection);
 
 //Color Scale
-var colorScale = d3.scaleLinear()
+var colorScale = d3.scale.linear()
     .domain([0, 25, 50, 100, 250, 500, 1000])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
+//Color Scale for bar chart 
+var colorScaleBars = d3.scale.linear()
+    .domain([0, .01, .02, .05, .1, .2])
+    .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse())
 
 //Using the queue.js library
 queue()
   .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
+  .defer(d3.json, "../../json/mpo_existing_bike_facilities_2016.topojson")
   .defer(d3.csv, "../../json/bike_facilities_by_town.csv")
   .awaitAll(function(error, results){ 
-    CTPS.demoApp.generateMap(results[0],results[1]);
-    CTPS.demoApp.generatePlot(results[1]);
-    CTPS.demoApp.generateAccessibleTable(results[1]);
+    CTPS.demoApp.generateMap(results[0],results[1], results[2]);
+    CTPS.demoApp.generatePlot(results[2]);
+    //CTPS.demoApp.generateAccessibleTable(results[1]);
   }); 
-
-//Color Scale
-var colorScale = d3.scale.linear()
-    .domain([0, 5, 10, 20, 40, 240, 900])
-    .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
-
-//var colorScale = d3.scale.linear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
+//ar colorScale = d3.scale.linear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
 
 var tip = d3.tip()
     .attr('class', 'd3-tip')
@@ -40,133 +39,193 @@ var tip = d3.tip()
     })
 
 ////////////////* GENERATE MAP *////////////////////
-CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {  
-  // SVG Viewport
-
-var svg = d3.select("#facilities").append("svg")
-  .attr("width", 700)
-  .attr("height", 500),
-    margin = {top: 40, right: 40, bottom: 40, left: 80},
-    width = svg.attr("width") - margin.left - margin.right,
-    height = svg.attr("height") - margin.top - margin.bottom;
-
-var formatValue = d3.format(",d");
-
-var x = d3.scaleLinear()
-    .range([0, width]);
-
-var g = svg.append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-function type(d) {
-  if (!d.TOTAL_PERCENT) return;
-  d.TOTAL_PERCENT = +d.TOTAL_PERCENT;
-  return d;
-}
-//Using the queue.js library
-d3.csv("../../json/bike_facilities_by_town.csv", type, function(error, data){
-  if (error) throw error;
-  CTPS.demoApp.generatePlot(data);
-    //CTPS.demoApp.generateAccessibleTable(results[1]);
-}); 
-
-CTPS.demoApp.generatePlot = function(data) { 
-
-x.domain(d3.extent(data, function(d) { return d.TOTAL_PERCENT; }));
-
-var simulation = d3.forceSimulation(data)
-    .force("x", d3.forceX(function(d) { return x(d.TOTAL_PERCENT); }).strength(1))
-    .force("y", d3.forceY(height / 2))
-    .force("collide", d3.forceCollide().radius(function(d) { return 1.3 * Math.sqrt(d.CENTERLINE_MILES)}).iterations(5))
-    .stop();
-
-for (var i = 0; i < 120; ++i) simulation.tick();
-
-g.append("g")
-    .attr("class", "axis axis--x")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).ticks(10))
-    .selectAll("text").style("fill", "#ddd");
-
-var cell = g.append("g")
-    .attr("class", "cells")
-  .selectAll("g").data(d3.voronoi()
-      .extent([[-margin.left, -margin.top], [width + margin.right, height + margin.top]])
-      .x(function(d) { return d.x; })
-      .y(function(d) { return d.y; })
-    .polygons(data)).enter().append("g");
-
-cell.append("circle")
-    .attr("r", function(d) { return 1.1* Math.sqrt(d.data.CENTERLINE_MILES)})
-    .attr("cx", function(d) { return d.data.x; })
-    .attr("cy", function(d) { return d.data.y; })
-    .style("fill", "none")
-    .style("stroke", function(d) { return colorScale(d.data.CENTERLINE_MILES)});
-
-/*var grad = svg.append("defs").append("linearGradient").attr("id", "grad")
-              .attr("x1", "0%").attr("x2", "0%").attr("y1", "100%").attr("y2", "0%");
-              grad.append("stop").attr("offset", "50%").style("stop-color", "#f96f3b");
-              grad.append("stop").attr("offset", "50%").style("stop-color", "white");
-*/
-
-cell.append("circle")
-    .attr("r", function(d) { return 1.1* Math.sqrt(d.data.TOTAL_MILES)})
-    .attr("cx", function(d) { return d.data.x; })
-    .attr("cy", function(d) { return d.data.y; })
-    .style("fill", function(d) { return colorScale(d.data.CENTERLINE_MILES)});
-
-
-cell.append("path")
-    .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
-
-cell.append("title")
-    .text(function(d) { return d.data.TOWN + "\n" + d.data.TOTAL_PERCENT; });
-}
-
-////////////////* GENERATE MAP *////////////////////
-CTPS.demoApp.generateMap = function(mpoTowns, bikeData, bikeRoads) {  
+CTPS.demoApp.generateMap = function(mpoTowns, bikeRoads, bikeData) {  
   // SVG Viewport
 
   var svgContainer = d3.select("#map").append("svg")
     .attr("width", "100%")
-    .attr("height", 400)
+    .attr("height", 500)
 
   svgContainer.call(tip); 
 
   var findIndex = function(town, statistic) { 
     for (var i = 0; i < bikeData.length; i++) { 
-      if (bikeData[i].MUNICIPALITY == town) {
+      if (bikeData[i].TOWN == town) {
         return bikeData[i][statistic]; 
       } 
     }
   }
+
+  var findTownIndex = function(townID) { 
+    var towns = topojson.feature(mpoTowns, mpoTowns.objects.collection).features;
+    for (var i = 0; i < towns.length; i++) { 
+      if (towns[i].properties.TOWN_ID == townID) {
+          var capTown = towns[i].properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+          return capTown;
+      }
+    }
+  }
+
 
   // Create Boston Region MPO map with SVG paths for individual towns.
   var mapcSVG = svgContainer.selectAll(".mpo")
     .data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
     .enter()
     .append("path")
-      //.attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
+      .attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
       .attr("d", function(d, i) {return geoPath(d); })
-      //.style("fill", function(d){ 
-        //var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-        //return colorScale(findIndex(capTown, "TOTAL_MILES"));  
-      //})
-      .style("fill", "#fff")
-      .style("opacity", 1)
+      .style("fill", function(d){ 
+        var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        return colorScaleBars(findIndex(capTown, "TOTAL_PERCENT"));  
+      })
+      .style("opacity", function(d) { 
+          var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+          if (findIndex(capTown, "TOTAL_PERCENT") == 0 ) { return .1 } 
+          else { return 1}
+      })
       .style("stroke", "#191b1d")
       .style("stroke-width", "1px")
 
-   var bikeTrails = svgContainer.selectAll(".biketrails")
+   /*var bikeTrails = svgContainer.selectAll(".biketrails")
     .data(topojson.feature(bikeRoads, bikeRoads.objects.mpo_existing_bike_facilities_2016).features)
     .enter()
     .append("path")
-      //.attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
+      //.attr("class", function(d){ return findTownIndex(d.properties.muni_id); })
       .attr("d", function(d, i) {return geoPath(d); })
-      .style("opacity", 1)
-      .style("stroke", "#6af73c")
-      .style("stroke-width", "1px")
+      .style("stroke", "#191b1d")
+      .style("fill", "none")
+      .style("stroke-linecap", "round")
+      .style("opacity", function(d) { return d.properties.TOTAL_PERCENT; })
+      .style("stroke-width", "1px")*/
 }
+
+CTPS.demoApp.generatePlot = function(bikeData) { 
+
+var towns = [];
+bikeData.forEach(function(i){
+  i.TOTAL_PERCENT = +i.TOTAL_PERCENT;
+  if (i.TOTAL_PERCENT != 0) { 
+    towns.push(i.TOWN);
+  }
+})
+
+var bikes = {
+  "TOWN": "All", 
+  "children": bikeData
+}
+var margin = {top: 40, right: 10, bottom: 10, left: 10},
+    width = 500 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var treemap = d3.layout.treemap()
+    .size([width, height])
+    .sticky(true)
+    .value(function(d) { return d.TOTAL_MILES; });
+
+var div = d3.select("#facilities").append("div")
+    .style("position", "relative")
+    .style("width", (width + margin.left + margin.right) + "px")
+    .style("height", (height + margin.top + margin.bottom) + "px")
+    .style("left", margin.left + "px")
+    .style("top", margin.top + "px");
+
+treemap.nodes.sort(function(a, b) { 
+  var nameA = a.TOTAL_PERCENT;
+  var nameB = b.TOTAL_PERCENT; 
+  if (nameA < nameB) { return 1}
+  if (nameA > nameB) { return -1 }
+  return 0; 
+})
+
+var node = div.datum(bikes).selectAll(".node")
+    .data(treemap.nodes)
+  .enter().append("div")
+    .attr("class", function(d) { return d.TOWN + " node"; } )
+    .call(position)
+    .style("opacity", function(d) { 
+        return d.TOTAL_PERCENT + .8
+    })
+    .style("border", ".5px solid #191b1d")
+    .style("border-radius", "3px")
+    .style("background", function(d) { 
+      return "linear-gradient(" + colorScaleBars(d.PERCENT_OFFROAD) + " " + 100*d.OFF_ROAD_MILES/d.TOTAL_MILES + "%, " +  colorScaleBars(d.PERCENT_ONROAD) + " " + 100*d.OFF_ROAD_MILES/d.TOTAL_MILES + "%," + colorScaleBars(d.PERCENT_ONROAD) + ")";
+    })
+      //return colorScaleBars(d.TOTAL_PERCENT)})
+    .on("mouseenter", function(d) { 
+    })
+
+
+
+d3.selectAll("input").on("change", function change() {
+  var value = this.value === "count"
+      ? function() { return 1; }
+      : function(d) { return d.TOTAL_MILES; };
+
+node
+  .data(treemap.value(value).nodes)
+  .transition()
+    .duration(1500)
+    .call(position);
+});
+
+  function position() {
+    this.style("left", function(d) { return d.x + "px"; })
+        .style("top", function(d) { return d.y + "px"; })
+        .style("width", function(d) { return Math.max(0, d.dx - 3) + "px"; })
+        .style("height", function(d) { return Math.max(0, d.dy - 3) + "px"; });
+  }
+/*
+ var stacks = d3.select("#stacks").append("svg")
+  .attr("width", "100%")
+  .attr("height", 500)
+
+var xScale = d3.scale.linear()
+            .domain([0, 109])
+            .range([50, 900])
+
+var xScaleWidth = d3.scale.linear()
+            .domain([0, 109])
+            .range([0, 850])
+
+var yScale = d3.scale.linear()
+            .domain([0, 50])
+            .range([350, 50])
+
+var yScaleHeight = d3.scale.linear()
+            .domain([0, 50])
+            .range([0, 300])
+
+bikeData.sort(function(a, b) { 
+  var nameA = a.OFF_ROAD_MILES;
+  var nameB = b.OFF_ROAD_MILES; 
+  if (nameA < nameB) { return -1}
+  if (nameA > nameB) { return 1 }
+  return 0; 
+})
+
+var xPos = 0; 
+stacks.selectAll("stacks")
+  .data(bikeData)
+  .enter()
+  .append("rect")
+    .attr("class", "stacks")
+    .attr("width", function(d) { 
+      if (d.TOTAL_MILES != 0) { 
+        return xScaleWidth(d.OFF_ROAD_MILES);
+      } else { 
+        return 0; 
+      }
+    })
+    .attr("height", function(d) { return yScaleHeight(d.SHARED_USE_PATH_MILES)})
+    .attr("x", function(d) { 
+      xPos = xPos + +d.OFF_ROAD_MILES;
+      return xScale(xPos - +d.OFF_ROAD_MILES);
+    })
+    .attr("y", function(d) { return yScale(d.SHARED_USE_PATH_MILES)})
+    .style("fill", function(d) { return colorScaleBars(d.TOTAL_PERCENT)})*/
+
+}
+
 
 
 

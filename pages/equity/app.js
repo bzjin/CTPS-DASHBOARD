@@ -152,6 +152,7 @@ CTPS.demoApp.generateStats = function(equity){
   equity.forEach(function(i){
     i.percentMinority = d3.round(i.MINORITY_2010/i.Population*100, 2);
     i.percentEmployed = i.Employment/i.Population;
+    i.milesPerPerson = i.MILES_2010/i.Population;
   })
 
   var width = 680; 

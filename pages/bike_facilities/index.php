@@ -39,13 +39,13 @@
   font: 10px sans-serif;
 }
 
-.cells path {
-  fill: none;
-  pointer-events: all;
-}
-
-.cells :hover circle {
-  fill: red;
+.node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
 }
 
 </style> 
@@ -71,8 +71,9 @@
 		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> <button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average Sidewalk to Road Ratio</button>
 	</div>
 
-	<div class="col-md-4" id="map"></div>
-	<div class="col-md-8" id="facilities"></div>
+	<div class="col-md-6" id="map"></div>
+	<div class="col-md-6" id="facilities"></div>
+	<div class="col-md-12" id="stacks"></div>
 </div>
 
 	<div class="footer col-md-12">

@@ -2,8 +2,10 @@ var CTPS = {};
 CTPS.demoApp = {};
 
 //Define Color Scale
-var colorScale = d3.scale.quantize().domain([1, 5])
-    .range(["#d7191c", "#d7191c", "#d7191c", "#fdae61","#ffffbf","#a6d96a","#1a9641"]);
+var colorScale = d3.scale.linear()
+	.domain([0, .5, 1])
+	.range(["#fc8d59","#ffffbf","#91cf60"])
+
 
 var projection = d3.geo.conicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
@@ -43,21 +45,33 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	.key(function(i) { return i.year })
 	.entries(bridges) 
 
-	var structdefs = [];
+	var structdefs = []; //array stores cumlative structural deficient bridges and health index
 	nested_struct_def.forEach(function(i){ 
 		var countT = 0; 
 		var countF = 0; 
 		var elseCount = 0; 
 		var healthCount = 0; 
 		var healthPoints = 0; 
+		var sdHealth = 0; //health for sd bridges
+		var nsdHealth = 0; //health for nsd bridges
+		var sdHealthCount = 0; //number for health sd bridges
+		var nsdHealthCount = 0; //number for health nsd bridges
 
 		i.values.forEach(function(j){ 
-			if ( j.structDef == "TRUE" || j.structDef == "True") { countT++;}
-			if ( j.structDef == "FALSE" || j.structDef == "False") { countF++; }
-			elseCount++;
+			if ( (j.structDef == "TRUE" || j.structDef == "True") && j.healthIndex != -1) { 
+				countT++;
+				sdHealth += +j.healthIndex;
+				sdHealthCount++; 
+				}
+			if ( (j.structDef == "FALSE" || j.structDef == "False") && j.healthIndex != -1) { 
+				countF++; 
+				nsdHealth += +j.healthIndex;
+				nsdHealthCount ++; 
+			}
 			if (j.healthIndex != -1) { 
 				healthPoints++;
 				healthCount += +j.healthIndex;
+				elseCount++; 
 			}
 		})
 
@@ -66,15 +80,19 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 			"structDef" : countT, //# structurally def bridges
 			"structDefNOT" : countF, //#good bridges
 			"totalCount" : elseCount, //# good bridges
-			"healthavg" : healthCount/healthPoints
+			"healthavg" : healthCount/healthPoints,
+			"sdHealthAvg" : sdHealth/sdHealthCount,
+			"nsdHealthAvg" : nsdHealth/nsdHealthCount
 		})
 		
 	})
 
+	console.log(structdefs)
+
 	//placeholders: 
-	structdefs.push( { "year": 2008, "structDef": 900, "structDefNOT": 300, "totalCount": 1200, "healthavg": .8});
-	structdefs.push( { "year": 2009, "structDef": 900, "structDefNOT": 300, "totalCount": 1200, "healthavg": .8});
-	structdefs.push( { "year": 2011, "structDef": 900, "structDefNOT": 300, "totalCount": 1200, "healthavg": .8});
+	structdefs.push( { "year": 2008, "structDef": 200, "structDefNOT": 1000, "totalCount": 1200, "healthavg": .8, "sdHealthAvg": .65, "nsdHealthAvg": .85 });
+	structdefs.push( { "year": 2009, "structDef": 200, "structDefNOT": 1000, "totalCount": 1200, "healthavg": .8, "sdHealthAvg": .65, "nsdHealthAvg": .85 });
+	structdefs.push( { "year": 2011, "structDef": 200, "structDefNOT": 1000, "totalCount": 1200, "healthavg": .8, "sdHealthAvg": .65, "nsdHealthAvg": .83 });
 	
 	structdefs.sort(function(a,b){ 
 		var nameA = a.year;
@@ -90,16 +108,17 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 
 	var timeline = d3.select("#timeline").append("svg")
 	.attr("width", "100%")
-	.attr("height", 500);
+	.attr("height", 500)
+
 
 		//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
 	//var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
-	xScale= d3.scale.linear().domain([2007, 2016]).range([70, 400]);
+	xScale= d3.scale.linear().domain([2007, 2016]).range([70, 350]);
 	yScale = d3.scale.linear().domain([0, 1]).range([450, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(-400, 0, 0).tickFormat(d3.format("d"));
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-330, 0, 0);
+	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));
+	var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 	timeline.append("text")
 		.attr("x", -350)
@@ -119,11 +138,25 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		.selectAll("text")
 		.attr("transform", "translate(-5, 0)");
 
+	//Line for average health index
 	var valueline = d3.svg.line()
 		.interpolate("basis")
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.healthavg); });
 
+	//health index of structurally deficient bridges
+	var sdHealthLine = d3.svg.line()
+		.interpolate("basis")
+	    .x(function(d) { return xScale(d.year); })
+	    .y(function(d) { return yScale(d.sdHealthAvg); });
+
+	//health inedex of non structurally deficient health bridges
+	var nsdHealthLine = d3.svg.line()
+		.interpolate("basis")
+	    .x(function(d) { return xScale(d.year); })
+	    .y(function(d) { return yScale(d.nsdHealthAvg); });
+
+	//Areas for structural deficient and not so
 	var goodline = d3.svg.area()
 		.interpolate("basis")
 	    .x(function(d) { return xScale(d.year); })
@@ -139,17 +172,15 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	
 	timeline.append("path")
 		.attr("d", function(d) { return goodline(structdefs);})
-		.style("stroke", "#26a65b")
-		.style("stroke-width", 1)
-		.style("fill", "#26a65b")
-		.style("opacity", .8)
+		.style("stroke-width", 0)
+		.style("fill", colorScale(1))
+		.style("opacity", .5)
 
 	timeline.append("path")
 		.attr("d", function(d) { return badline(structdefs);})
-		.style("stroke", "#ff6347")
-		.style("stroke-width", 1)
-		.style("fill", "#ff6347")
-		.style("opacity", .8)
+		.style("stroke-width", 0)
+		.style("fill", colorScale(0))
+		.style("opacity", .5)
 
 	timeline.append("path")
 		.attr("d", function(d) { return valueline(structdefs);})
@@ -157,6 +188,22 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		.style("fill", "none")
 		.style("stroke-width", 3)
 		.style("opacity", .8)
+
+
+	timeline.append("path")
+		.attr("d", function(d) { return sdHealthLine(structdefs);})
+		.style("stroke", colorScale(1))
+		.style("fill", "none")
+		.style("stroke-width", 1)
+		.style("opacity", 1)
+
+
+	timeline.append("path")
+		.attr("d", function(d) { return nsdHealthLine(structdefs);})
+		.style("stroke", colorScale(0))
+		.style("fill", "none")
+		.style("stroke-width", 1)
+		.style("opacity", 1)
 
 	var timeline2 = d3.select("#timeline2").append("svg")
 	.attr("width", "100%")
@@ -267,7 +314,13 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	cleanedbridges.forEach(function(i){
 		timeline2.append("circle")
 			.attr("class", "yr" + i.year + " bin" + d3.round(d3.round(i.healthIndex/5, 2)*100) + " individuals")
-			.attr("cx", xScale(i.year) + 8 + 5 * Math.floor(Math.random() * 10))
+			.attr("cx", function() { 
+				if (i.structDef == "TRUE" || i.structDef == "True") { 
+					return xScale(i.year) + 8 + 1 * Math.floor(Math.random() * 10)
+				} else {
+					return xScale(i.year) + 58 - 4 * Math.floor(Math.random() * 10)
+				}
+			})
 			//.attr("cy", yScale(d3.round(i.healthIndex/2, 2)*2))
 			.attr("cy", yScale(i.healthIndex))
 			.attr("r", 2)
@@ -279,8 +332,8 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 				if (i.structDef == "TRUE" || i.structDef == "True") { return "#ff6347";}
 				else {return "none";}
 			})
-			.style("stroke-width", .5)
-			.style("opacity", 0)
+			.style("stroke-width", .1)
+			.style("opacity", .1)
 			.on("mouseenter", function(){ 
 				var mystring = this.getAttribute("class");
 				var arr = mystring.split(" ", 2);
