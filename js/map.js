@@ -59,8 +59,8 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 			.attr("d", function(d) {return geoPath(d)})
 			.style("fill", "none")
 			.style("stroke-width", 2)
-			.style("stroke-linecap", "butt")
-			.style("stroke", "none")
+			.style("stroke-linecap", "round")
+			.style("stroke", "#ff6347")
 			//.style("opacity", function(d) { return (1 - d.properties.AM_SPD_IX/1.8);})//function(d) { return (d.properties.AM_SPD_IX-.5);})
 			.style("opacity", 0)
 
@@ -84,7 +84,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 		.delay(function(d) { return d.properties.AM_SPD_IX*2000})
 		.ease("elastic")
 		.duration(6000)
-		//.style("stroke-width", function(d) { return 1/(d.properties.AM_SPD_IX*d.properties.AM_SPD_IX)}); 
+		.style("fill", "none")
 		.style("stroke-width", 1)
 		.style("stroke", "#191b1d")
 		.style("opacity", 1)
@@ -242,7 +242,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 	})
 
 //Hover over BIKES link
-	d3.select("#equity").on("mouseenter", function(){
+	d3.select("#funding").on("mouseenter", function(){
 		//load crashdata
 		var colorEquity = d3.scale.linear()
 		    .domain([0, 500000, 5000000, 10000000, 15000000, 20000000, 25000000])

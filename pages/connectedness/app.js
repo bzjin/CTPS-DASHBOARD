@@ -302,48 +302,137 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
       .attr("x", xPos + 60).attr("y", yPos + 157)
       .style("font-size", 12).html("More outbound trips");
 
-    //Make bar chart
-    function sankey(source) { 
-       var barChart = d3.select("#barChart").append("svg")
-      .attr("width", "100%")
-      .attr("height", 600)
-      .attr("x", 600)
-      .attr("y", 100)
-      .style("overflow", "visible")
+    //Reorganize data into sankey diagram array
+    var graph = {
+      "links": [],
+      "nodes": []
+    };
 
-
-      var districtNames = [];
-      for (var i = 0; i < 45; i++) { 
-        if (i < 42){
-          districtNames.push("d" + i);
-        } else { 
-          districtNames.push("d" + 9 + i);
+    highway_going.forEach(function(i){ 
+        graph.nodes.push({
+          "name": i.abbrev
+        })
+        if (i.abbrev == "d1") { 
+        highway_going.forEach(function(j){
+          if (j.abbrev != "d1" && j.abbrev != "Total"){
+            graph.links.push({
+            "source": i.abbrev,
+            "target": j.abbrev,
+            "value": i[j.abbrev]
+            })
+          }
+        })
         }
-      }
-      console.log(districtNames)
+    })
 
-      var yScale = d3.scale.ordinal()
-                  .domain(districtNames)
-                  .rangePoints([50, 550])
+    console.log(graph);
 
-      /*var xScaleIn = d3.scale.linear()
-                  .domain([0, 50000])
-                  .range([250, 0])*/
+    var units = "Trips";
+     
+    var margin = {top: 10, right: 10, bottom: 10, left: 10},
+        width = 600 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
+     
+    var formatNumber = d3.format(",.0f"),    // zero decimal places
+        format = function(d) { return formatNumber(d) + " " + units; },
+        color = d3.scale.category20();
+     
+    // append the svg canvas to the page
+    var sankeyChart = d3.select("#sankeyChart").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", 
+              "translate(" + margin.left + "," + margin.top + ")");
+ 
+    // Set the sankey diagram properties
+    var sankey = d3.sankey()
+        .nodeWidth(36)
+        .nodePadding(5)
+        .size([width, height]);
+     
+    var path = sankey.link();
+ 
+// load the data
+    var nodeMap = {};
+    graph.nodes.forEach(function(x) { nodeMap[x.name] = x; });
+    graph.links = graph.links.map(function(x) {
+      return {
+        source: nodeMap[x.source],
+        target: nodeMap[x.target],
+        value: x.value
+      };
+    });
+ 
+ sankey
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .layout(32);
+ 
+// add in the links
+  var link = svg.append("g").selectAll(".link")
+      .data(graph.links)
+    .enter().append("path")
+      .attr("class", "link")
+      .attr("d", path)
+      .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+      .sort(function(a, b) { return b.dy - a.dy; });
+ 
+// add the link titles
+  link.append("title")
+        .text(function(d) {
+        return d.source.name + " → " + 
+                d.target.name + "\n" + format(d.value); });
+ 
+// add in the nodes
+  var node = svg.append("g").selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { 
+      return "translate(" + d.x + "," + d.y + ")"; })
+    .call(d3.behavior.drag()
+      .origin(function(d) { return d; })
+      .on("dragstart", function() { 
+      this.parentNode.appendChild(this); })
+      .on("drag", dragmove));
+ 
+// add the rectangles for the nodes
+  node.append("rect")
+      .attr("height", function(d) { return d.dy; })
+      .attr("width", sankey.nodeWidth())
+      .style("fill", function(d) { 
+        return d.color = color(d.name.replace(/ .*/, ""))
+      ;})
+      .append("title")
+      .text(function(d) { 
+          return "District " + parseInt(d.name); 
+      });
+ 
+// add in the title for the nodes
+  node.append("text")
+      .attr("x", -6)
+      .attr("y", function(d) { return d.dy / 2; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", "end")
+      .attr("transform", null)
+      .style("font-weight", 100)
+      .text(function(d) { return "District " + d.name; })
+    .filter(function(d) { return d.x < width / 2; })
+      .attr("x", 6 + sankey.nodeWidth())
+      .attr("text-anchor", "start");
+ 
+// the function for moving the nodes
+  function dragmove(d) {
+    d3.select(this).attr("transform", 
+        "translate(" + (
+             d.x = Math.max(0, Math.min(width - d.dx, d3.event.x))
+          ) + "," + (
+                   d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
+            ) + ")");
+    sankey.relayout();
+    link.attr("d", path);
+  }
 
-      var xScaleOut = d3.scale.linear()
-                  .domain([0, 50000])
-                  .range([50, 510])
 
-      barChart.selectAll(".barsOut")
-        .data(highway_going)
-        .enter()
-        .append("circle")
-          .attr("class", "barsOut")
-          .attr("cx", function(d) { return xScaleOut(d.d1)})
-          .attr("cy", function(d) { return yScale(d.abbrev) })
-          .attr("r", function(d) { return Math.sqrt(d.d1) })
-          .attr("height", 5)
-          .style("fill", "none")
-
-      }//end Sankey function
 }

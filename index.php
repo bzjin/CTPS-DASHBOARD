@@ -55,7 +55,7 @@
 		<li><a href="pages/congestion/index.php" title="Go to congestion page">Congestion</a></li>
 		<li><a href="pages/sidewalks/index.php" title="Go to sidewalk coverage page">Sidewalks</a></li>
 		<li><a href="pages/bike_facilities/index.php" title="Go to bike facilities page">Bike Facilities</a></li>
-		<li><a href="pages/equity/index.php" title="Go to equity page">Equity</a></li>
+		<li><a href="pages/funding/index.php" title="Go to funding page">Funding</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
       </div> <!-- /.container-fluid -->
@@ -69,7 +69,7 @@
 	<a href="pages/bridges/index.php" title="Go to bridges page" id="bridges"><i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</a><p><b class="good">88%</b><br>in good condition</p>
 	<a href="pages/sidewalks/index.php" title="Go to sidewalks page" id="sidewalks"><i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</a><p><b class="good">A LOT</b><br>more sidewalks</p>
 	<a href="pages/bike_facilities/index.php" title="Go to bike facilities page" id="bikes"><i class="fa fa-circle-o" aria-hidden="true"></i> Bike Facilities </a><p><b>.45</b></br>bike lanes per centerline mile</p>
-	<a href="pages/equity/index.php" title="Go to equity page" id="equity"><i class="fa fa-circle-o" aria-hidden="true"></i> Equity </a><p><b class="good">+$35m</b><br>TIP funding FFY 2017</p>
+	<a href="pages/funding/index.php" title="Go to funding page" id="funding"><i class="fa fa-circle-o" aria-hidden="true"></i> Equity </a><p><b class="good">+$35m</b><br>TIP funding FFY 2017</p>
 </div>
 
 <script src="js/map.js"></script>

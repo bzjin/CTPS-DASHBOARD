@@ -31,6 +31,27 @@
 .axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
 text {fill: #ddd; font-size: 14px;} 
 
+.node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+ 
+.node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+ 
+.link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+ 
+.link:hover {
+  stroke-opacity: .5;
+}
+
 </style> 
 </head>
 
@@ -50,13 +71,14 @@ text {fill: #ddd; font-size: 14px;}
 	</div>
 
 	<div class="col-md-7" id="map"></div>
-	<div class="col-md-5" id="barChart"></div>
+	<div class="col-md-5" id="sankeyChart"></div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>
 </div>
 <script src="app.js"></script>
+<script src="../../js/sankey.js"></script>
 
 </body>
 </html>
