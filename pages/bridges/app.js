@@ -211,11 +211,11 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
 	//var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
-	xScale= d3.scale.linear().domain([2007, 2016]).range([30, 580]);
+	xScale= d3.scale.linear().domain([2007, 2016]).range([50, 580]);
 	yScale = d3.scale.linear().domain([0, 1]).range([450, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(-400, 0, 0).tickFormat(d3.format("d"));
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-600, 0, 0);
+	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));//.tickSize(-400, 0, 0)
+	var yAxis = d3.svg.axis().scale(yScale).orient("left")//.tickSize(-600, 0, 0);
 
 	timeline2.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -225,7 +225,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		.attr("transform", "translate(30, 5)");
 	
 	timeline2.append("g").attr("class", "axis")
-		.attr("transform", "translate(30, 0)")
+		.attr("transform", "translate(50, 0)")
 		.call(yAxis)
 		.selectAll("text")
 		.attr("transform", "translate(-5, 0)");
@@ -256,7 +256,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	})
 
 	//binned circles
-	years.forEach(function(i){
+	/*years.forEach(function(i){
 		i.goodbins.forEach(function(j){
 			timeline2.append("rect")
 			.attr("class", "yr" + i.year + " bin" + i.goodbins.indexOf(j) + " aggregates")
@@ -287,15 +287,16 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 
 	years.forEach(function(i){
 		i.badbins.forEach(function(j){
-			timeline2.append("circle")
+			timeline2.append("rect")
 			.attr("class", "yr" + i.year + " bin" + i.badbins.indexOf(j) + " aggregates")
-			.attr("cx", xScale(i.year) + 30)
-			.attr("cy", yScale(i.badbins.indexOf(j)/20))
-			.attr("r", Math.sqrt(j) * 1.5)
+			.attr("x", xScale(i.year) - j/4)
+			.attr("y", yScale(i.badbins.indexOf(j)/20))
+			.attr("width", j/4)
+			.attr("height", 18)
 			.style("stroke", "#ff6347")
 			.style("fill", "#ff6347")
-			.style("fill-opacity", .8)
-			.style("stroke-width", 1.5)
+			.style("fill-opacity", .3)
+			.style("stroke-width", 1)
 			.style("opacity", 1)
 			.on("mouseenter", function(){ 
 				var mystring = this.getAttribute("class");
@@ -310,7 +311,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 					.style("opacity", 1);
 			})
 		})
-	})
+	})*/
 
 	//individual points
 	cleanedbridges.forEach(function(i){
@@ -334,8 +335,8 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 			})
 			.style("fill-opacity", .5)
 			.style("stroke-width", .1)
-			.style("opacity", .1)
-			.on("mouseenter", function(){ 
+			.style("opacity", 1)
+			/*.on("mouseenter", function(){ 
 				var mystring = this.getAttribute("class");
 				var arr = mystring.split(" ", 2);
 				var firstWord = arr[0]; 
@@ -345,7 +346,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 
 				d3.selectAll("." + firstWord).filter(".aggregates").transition()
 					.style("opacity", 1);
-			})	
+			})	*/
 	})
 	
 }

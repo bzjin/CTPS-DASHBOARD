@@ -35,17 +35,8 @@
   shape-rendering: crispEdges;
 }
 
-.axis text {
-  font: 10px sans-serif;
-}
-
-.node {
-  border: solid 1px white;
-  font: 10px sans-serif;
-  line-height: 12px;
-  overflow: hidden;
-  position: absolute;
-  text-indent: 2px;
+text { 
+	fill: #ddd;
 }
 
 </style> 
@@ -64,15 +55,15 @@
 	<div class="col-md-12">
 		<h3> How many bike lanes does Boston have on its roadways?</h3>
 		<p> I'm gonna ride my bicycle (doot doot doot).</p>
-		<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Centerline Miles
-			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Bike Facility Miles </p>
 	</div>
 	<div class="col-md-12">
-		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> <button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average Sidewalk to Road Ratio</button>
+		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
+		<button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending percent bike facilities to centerline miles">Sort by Bike Facility Miles to Centerline Miles Ratio</button>
+		<button class="bigbutton col-md-4" id="byNumber" alt="Sort towns by ascending miles of bike facilities">Sort by Bike Facility Miles</button>
 	</div>
 
-	<div class="col-md-6" id="map"></div>
-	<div class="col-md-6" id="facilities"></div>
+	<div class="col-md-3" id="map"></div>
+	<div class="col-md-9" id="facilities"></div>
 	<div class="col-md-12" id="stacks"></div>
 </div>
 

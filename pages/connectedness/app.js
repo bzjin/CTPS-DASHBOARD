@@ -218,9 +218,9 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
         var startx = geoPath.centroid(theState[0][0].__data__)[0];
         var starty = geoPath.centroid(theState[0][0].__data__)[1];
         if(finalval > 0) {
-          return "M" + startx + "," + starty + " L" + (startx + homex)/2 + " " + (starty + homey)/1.5 +" " + homex+" "   + homey;
+          return "M" + startx + "," + starty + " Q" + (startx + homex)/2 + " " + (starty + homey)/1.5 +" " + homex+" "   + homey;
         } else {
-          return "M" + homex + "," + homey + " L" + (startx + homex)/2 + " " + (starty + homey)/2.5 +" " + startx+" "   + starty;
+          return "M" + homex + "," + homey + " Q" + (startx + homex)/2 + " " + (starty + homey)/2.5 +" " + startx+" "   + starty;
         }
       }
     })
@@ -303,65 +303,47 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
       .style("font-size", 12).html("More outbound trips");
 
     //Make bar chart
+    function sankey(source) { 
+       var barChart = d3.select("#barChart").append("svg")
+      .attr("width", "100%")
+      .attr("height", 600)
+      .attr("x", 600)
+      .attr("y", 100)
+      .style("overflow", "visible")
 
-     var barChart = d3.select("#barChart").append("svg")
-    .attr("width", "100%")
-    .attr("height", 600)
-    .attr("x", 600)
-    .attr("y", 100)
-    .style("overflow", "visible")
 
-    var districtNames = [];
-    for (var i = 0; i < 45; i++) { 
-      if (i < 42){
-        districtNames.push("d" + i);
-      } else { 
-        districtNames.push("d" + 9 + i);
+      var districtNames = [];
+      for (var i = 0; i < 45; i++) { 
+        if (i < 42){
+          districtNames.push("d" + i);
+        } else { 
+          districtNames.push("d" + 9 + i);
+        }
       }
-    }
-    console.log(districtNames)
+      console.log(districtNames)
 
-    var yScale = d3.scale.linear()
-                .domain([0, 50000])
-                .range([50, 550])
+      var yScale = d3.scale.ordinal()
+                  .domain(districtNames)
+                  .rangePoints([50, 550])
 
-    /*var xScaleIn = d3.scale.linear()
-                .domain([0, 50000])
-                .range([250, 0])*/
+      /*var xScaleIn = d3.scale.linear()
+                  .domain([0, 50000])
+                  .range([250, 0])*/
 
-    var xScaleOut = d3.scale.linear()
-                .domain([0, 50000])
-                .range([50, 510])
+      var xScaleOut = d3.scale.linear()
+                  .domain([0, 50000])
+                  .range([50, 510])
 
-    barChart.selectAll(".barsOut")
-      .data(highway_going)
-      .enter()
-      .append("circle")
-        .attr("class", "barsOut")
-        .attr("cx", xScaleOut(d[indexOf(d1)]))
-        .attr("cy", function(d) { return yScale(d.d1) })
-        .attr("width", function(d) { 
-          if (d.abbrev == "Total") { return 0; }
-          else {
-            return xScaleOut(d.d1) - 260; 
-          }})
-        .attr("height", 5)
-        .style("fill", "red")
+      barChart.selectAll(".barsOut")
+        .data(highway_going)
+        .enter()
+        .append("circle")
+          .attr("class", "barsOut")
+          .attr("cx", function(d) { return xScaleOut(d.d1)})
+          .attr("cy", function(d) { return yScale(d.abbrev) })
+          .attr("r", function(d) { return Math.sqrt(d.d1) })
+          .attr("height", 5)
+          .style("fill", "none")
 
-    barChart.selectAll(".barsIn")
-      .data(highway_coming)
-      .enter()
-      .append("rect")
-        .attr("class", "barsIn")
-        .attr("x", function(d) { return xScaleIn(d.d1) })
-        .attr("y", function(d) { return yScale(d.abbrev) })
-        .attr("width", function(d) { 
-          if (d.abbrev == "Total") { return 0; }
-          else {
-            return xScaleOut(d.d1) - 260; 
-          }})
-        .attr("height", 5)
-        .style("fill", function(d) { 
-            return flowVolume()
-        })
+      }//end Sankey function
 }
