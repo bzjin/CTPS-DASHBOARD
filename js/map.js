@@ -28,7 +28,7 @@ queue()
 CTPS.demoApp.generateMap = function(cities, congestion, summaries, pavement) {	
 	// Show name of MAPC Sub Region
 	// Define Zoom Behavior
-var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_noninterstate_2015).features;
+var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_interstate_2015).features;
 
 	// SVG Viewport
 	var svgContainer = d3.select("#map").append("svg")
@@ -65,7 +65,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_noni
 			.style("opacity", 0)
 
 	var pavements = svgContainer.selectAll(".pavement")
-			.data(topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_noninterstate_2015).features)
+			.data(topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_interstate_2015).features)
 			.enter()
 			.append("path")
 				.attr("class", "pavement")
