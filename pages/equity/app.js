@@ -17,7 +17,8 @@ queue()
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0],results[1]);
     CTPS.demoApp.generateStats(results[1]);
-    //CTPS.demoApp.generateAccessibleTable(results[1]);
+    CTPS.demoApp.generateMap2(results[0],results[1]);
+    CTPS.demoApp.generatePerPerson(results[1]);
   }); 
 
 //Color Scale
@@ -25,8 +26,11 @@ var colorScale = d3.scale.linear()
     .domain([0, 500000, 5000000, 10000000, 15000000, 20000000, 25000000])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
-//var colorScale = d3.scale.linear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
 
+//Color Scale
+var colorScalePerson = d3.scale.linear()
+  .domain([0, 10, 50, 100, 500, 1000, 3000])
+  .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
 
 ////////////////* GENERATE MAP *////////////////////
@@ -43,7 +47,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
     .offset([-10, 0])
     .html(function(d) {
       var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      return "<b>" + capTown + "</b> <br>TIP 2008-2013: " + findIndex(capTown, "Total_FFY_2008_2013_TIPs") + "<br>TIP 2014-2021: " + findIndex(capTown, "Tota_FFY_2014_2021_TIPs");
+      return "<h4>" + capTown + "</h4><br><p>TIP 2008-2013: <b>$" + d3.format(',')(findIndex(capTown, "Total_FFY_2008_2013_TIPs")) + "</b><br>TIP 2014-2021: <b>$" + d3.format(',')(findIndex(capTown, "Tota_FFY_2014_2021_TIPs")) + "</b></p>";
     })
 
   svgContainer.call(tip); 
@@ -98,6 +102,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
           //.style("stroke", function(d) { return colorScale(d.Total_FFY_2008_2013_TIPs);  })
         d3.selectAll("." + this.getAttribute("class")).filter(".labels").transition()
           .style("opacity", 0)
+        tip.hide(d);
       })
 
       //Color key
@@ -229,7 +234,7 @@ generateStats = function(attribute, divID) {
           .attr("class", function(d) { return d.MPO_Municipality + " labels " + attribute + "labels"})
           .attr("x", function(d) { return xScale(d.MPO_Municipality) + 2;})
           .attr("y", function(d) { return yScale(d[attribute]) - 15;})
-          .text(function(d) { return d[attribute];})
+          .text(function(d) { return d3.format(',')(d[attribute]);})
           .style("text-anchor", "middle")
           .style("fill", "#fff")
           .style("opacity", 0)
@@ -318,7 +323,10 @@ generateStats("MILES_2010", "chartMiles")
             if (d.year%2 == 1) { return yScale(d.funding)-15;}
             else { return yScale(d.funding)-10;}
           })
-          .text(function(d) { return d.funding;})
+          .text(function(d) {
+            if (d.funding > 1000000) { return "$" + d3.round(d.funding/1000000, 2) + "m"}
+            else { return "$" + d3.round(d.funding/100000, 2) + "k"; }
+          })
           .style("text-anchor", "middle")
           .style("font-weight", 300)
           .style("font-size", 12)
@@ -327,6 +335,219 @@ generateStats("MILES_2010", "chartMiles")
           .on("mouseenter", function(d) { 
           })
 
+}
+////////////////* GENERATE MAP *////////////////////
+CTPS.demoApp.generateMap2 = function(mpoTowns, equity) {  
+
+  var findIndex = function(town, statistic) { 
+    for (var i = 0; i < equity.length; i++) { 
+      if (equity[i].MPO_Municipality == town) {
+        return equity[i][statistic]; 
+      } 
+    }
+  }
+
+  var svgContainer = d3.select("#map2").append("svg")
+    .attr("width", "100%")
+    .attr("height", 600)
+
+  //D3 Tooltip
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+      var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+      return "<h4>" + capTown + "</h4> <br><p>TIP dollars per person 2008-2013: <b>$" + d3.round(findIndex(capTown, "Total_FFY_2008_2013_TIPs")/findIndex(capTown, "Population"),2) + "</b><br>TIP dollars per person 2014-2021: $<b>" + d3.round(findIndex(capTown, "Tota_FFY_2014_2021_TIPs")/findIndex(capTown, "Population"), 2) + "</b></p>";
+    })
+
+  svgContainer.call(tip); 
+
+  var findIndex = function(town, statistic) { 
+    for (var i = 0; i < equity.length; i++) { 
+      if (equity[i].MPO_Municipality == town) {
+        return equity[i][statistic]; 
+      } 
+    }
+  }
+
+  // Create Boston Region MPO map with SVG paths for individual towns.
+  var mapcSVG2 = svgContainer.selectAll(".perPerson")
+    .data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
+    .enter()
+    .append("path")
+      .attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
+      .attr("d", function(d, i) {return geoPath(d); })
+      .style("fill", function(d){ 
+        var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        return colorScalePerson(findIndex(capTown, "Total_FFY_2008_2013_TIPs")/findIndex(capTown, "Population"));  
+      })
+      .style("opacity", function(d) { 
+        var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        if (findIndex(capTown, "Total_FFY_2008_2013_TIPs") == 0) { 
+          return .1;
+        } else {
+          return 1;
+        }
+      })
+      .style("stroke", "#191b1d")
+      .style("stroke-width", 1)
+      .on("mouseenter", function(d){
+        d3.selectAll("." + this.getAttribute("class")).filter(".labels2")
+          .style("opacity", 1)
+        d3.selectAll("." + this.getAttribute("class")).filter(".tipFunding2")
+          .style("stroke-width", 10)
+          .style("opacity", 1)
+          .style("stroke", function(d) { return colorScalePerson(d.funding);  })
+        tip.show(d);
+      })
+      .on("mouseleave", function(d){
+        d3.selectAll("." + this.getAttribute("class")).filter(".tipFunding2").transition()
+          .style("stroke-width", 0)
+          .style("opacity", .2)
+          //.style("stroke", function(d) { return colorScale(d.Total_FFY_2008_2013_TIPs);  })
+        d3.selectAll("." + this.getAttribute("class")).filter(".labels2").transition()
+          .style("opacity", 0)
+        tip.hide(d);
+      })
+
+      //Color key
+    var xPos = 15;
+    var yPos = 420; 
+    var height = 600; 
+    //background
+    svgContainer.append("text")
+      .style("font-weight", 700)
+      .attr("x", xPos).attr("y", yPos -7)
+      .html("KEY");
+    //text and colors
+    svgContainer.append("rect")
+      .style("fill", colorScalePerson(0)).style("stroke", "none").style("opacity", .1)
+      .attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 7)
+      .html("No funding");
+    svgContainer.append("rect")
+      .style("fill", colorScalePerson(10)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 22)
+      .html("$10 per person");
+    svgContainer.append("rect")
+      .style("fill", colorScalePerson(150)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 37)
+      .html("$100 per person");
+    svgContainer.append("rect")
+      .style("fill", colorScalePerson(500)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 52)
+      .html("$500 per person");
+    svgContainer.append("rect")
+      .style("fill", colorScalePerson(1500)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 67)
+      .html("> $1000 per person");
+}
+
+CTPS.demoApp.generatePerPerson = function(equity) { 
+//TIP funding chart
+  var fundPerson = d3.select("#perPerson").append("svg")
+      .attr("width", "100%")
+      .attr("height", 600)
+
+ fundPerson.append("text")
+      .attr("x", 5)
+      .attr("y", 45)
+      .style("font-size", 16)
+      .text("TIP Funding Per Person Over Time")
+
+  var timeline = [];
+  var maxFunding = [];
+
+  //extract year for each town
+  equity.forEach(function(i){ 
+      for (var j = 2008; j < 2022; j++){ 
+        if (i['FFY_' + j + '_TIP'] != 0) {
+          timeline.push({
+            "town": i.MPO_Municipality,
+            "year": j, 
+            "funding": i['FFY_' + j + '_TIP']/i.Population,
+            "SUBREGION": i.SUBREGION,
+            "COMMUNITY_TYPE": i.COMMUNITY_TYPE
+          })
+          maxFunding.push(i['FFY_' + j + '_TIP']/i.Population);
+        }
+      }
+  })
+
+  var xScale = d3.scale.linear()
+              .domain([2007.5, 2021.5])
+              .range([60, 650])
+
+  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d")).ticks(14);
+
+  fundPerson.append("g").attr("class", "axis")
+    .attr("transform", "translate(0, 470)")
+    .call(xAxis)
+    .selectAll("text")
+    .style("text-anchor", "middle")
+    .attr("transform", "translate(10, 3)");
+
+  var yScale = d3.scale.linear()
+              .domain([0, d3.max(maxFunding)])
+              .range([470, 100])
+
+  var yAxis = d3.svg.axis().scale(yScale).orient("left")
+              .tickFormat(function(d) { return "$" + d; });
+
+  fundPerson.append("g").attr("class", "yaxis")
+    .attr("transform", "translate(60, 0)")
+    .call(yAxis)
+
+  fundPerson.selectAll(".fundPerson")
+    .data(timeline)
+    .enter()
+    .append("rect")
+        .attr("class", function(d) { return d.town + " fundPerson tipFunding2"})
+        .attr("x", function(d) { return xScale(d.year)-10;})
+        .attr("y", function(d) { return yScale(d.funding);})
+        .attr("width", function(d) { 
+          if (d.funding > 0) { return 35 }
+          else { return 0 }
+        })
+        .attr("height", 5)
+        .style("opacity", .7)
+        .style("fill", function(d) { return colorScalePerson(d.funding)})
+        .on("mouseenter", function(d){ 
+          console.log(this.getAttribute("class"))
+        })
+
+  fundPerson.selectAll(".tipfunds")
+      .data(timeline)
+      .enter()
+      .append("text")
+          .attr("class", function(d) { return d.town + " tipfunds labels2"})
+          .attr("x", function(d) { return xScale(d.year)+10;})
+          .attr("y", function(d) { 
+            if (d.year%2 == 1) { return yScale(d.funding)-15;}
+            else { return yScale(d.funding)-10;}
+          })
+          .text(function(d) { return "$" + d3.round(d.funding,2);})
+          .style("text-anchor", "middle")
+          .style("font-weight", 300)
+          .style("font-size", 12)
+          .style("fill", "#fff")
+          .style("opacity", 0)
+          .on("mouseenter", function(d) { 
+          })
 }
 
 CTPS.demoApp.generateAccessibleTable = function(crashjson){

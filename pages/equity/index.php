@@ -66,6 +66,13 @@ form {
 	<div class="col-md-8" id="chartMiles"></div>
 	<div class="col-md-8" id="tipFunding"></div>
 
+	<div class="col-md-12">
+		<h3> How much funding does each person receive? </h3>
+	</div>
+
+	<div class="col-md-4" id="map2"></div>
+	<div class="col-md-8" id="perPerson"></div>
+
 </div>
 
 	<div class="footer col-md-12">

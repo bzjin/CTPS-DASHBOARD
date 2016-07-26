@@ -4,7 +4,7 @@ CTPS.demoApp = {};
 //Define Color Scale
 var colorScale = d3.scale.linear()
 	.domain([0, .5, 1])
-	.range(["#fc8d59","#ffffbf","#91cf60"])
+	.range(["#ff6347","#ffffbf","#1a9850"])
 
 
 var projection = d3.geo.conicConformal()
@@ -114,7 +114,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
 	//var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
-	xScale= d3.scale.linear().domain([2007, 2016]).range([70, 350]);
+	xScale= d3.scale.linear().domain([2007, 2016]).range([70, 400]);
 	yScale = d3.scale.linear().domain([0, 1]).range([450, 50]);
 
 	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));
@@ -174,13 +174,13 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		.attr("d", function(d) { return goodline(structdefs);})
 		.style("stroke-width", 0)
 		.style("fill", colorScale(1))
-		.style("opacity", .5)
+		.style("opacity", .8)
 
 	timeline.append("path")
 		.attr("d", function(d) { return badline(structdefs);})
 		.style("stroke-width", 0)
 		.style("fill", colorScale(0))
-		.style("opacity", .5)
+		.style("opacity", .8)
 
 	timeline.append("path")
 		.attr("d", function(d) { return valueline(structdefs);})
@@ -189,8 +189,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		.style("stroke-width", 3)
 		.style("opacity", .8)
 
-
-	timeline.append("path")
+	/*timeline.append("path")
 		.attr("d", function(d) { return sdHealthLine(structdefs);})
 		.style("stroke", colorScale(1))
 		.style("fill", "none")
@@ -203,7 +202,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		.style("stroke", colorScale(0))
 		.style("fill", "none")
 		.style("stroke-width", 1)
-		.style("opacity", 1)
+		.style("opacity", 1)*/
 
 	var timeline2 = d3.select("#timeline2").append("svg")
 	.attr("width", "100%")
@@ -259,13 +258,15 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	//binned circles
 	years.forEach(function(i){
 		i.goodbins.forEach(function(j){
-			timeline2.append("circle")
+			timeline2.append("rect")
 			.attr("class", "yr" + i.year + " bin" + i.goodbins.indexOf(j) + " aggregates")
-			.attr("cx", xScale(i.year) + 30)
-			.attr("cy", yScale(i.goodbins.indexOf(j)/20))
-			.attr("r", Math.sqrt(j) * 1.5)
+			.attr("x", xScale(i.year))
+			.attr("y", yScale(i.goodbins.indexOf(j)/20))
+			.attr("width", j/4)
+			.attr("height", 18)
 			.style("stroke", "#26a65b")
-			.style("fill", "none")
+			.style("fill", "#26a65b")
+			.style("fill-opacity", .3)
 			.style("stroke-width", 1)
 			.style("opacity", 1)
 			.on("mouseenter", function(){ 
@@ -292,7 +293,8 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 			.attr("cy", yScale(i.badbins.indexOf(j)/20))
 			.attr("r", Math.sqrt(j) * 1.5)
 			.style("stroke", "#ff6347")
-			.style("fill", "none")
+			.style("fill", "#ff6347")
+			.style("fill-opacity", .8)
 			.style("stroke-width", 1.5)
 			.style("opacity", 1)
 			.on("mouseenter", function(){ 
@@ -312,18 +314,16 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 
 	//individual points
 	cleanedbridges.forEach(function(i){
-		timeline2.append("circle")
+
+		timeline2.append("rect")
 			.attr("class", "yr" + i.year + " bin" + d3.round(d3.round(i.healthIndex/5, 2)*100) + " individuals")
-			.attr("cx", function() { 
-				if (i.structDef == "TRUE" || i.structDef == "True") { 
-					return xScale(i.year) + 8 + 1 * Math.floor(Math.random() * 10)
-				} else {
-					return xScale(i.year) + 58 - 4 * Math.floor(Math.random() * 10)
-				}
+			.attr("x", function() { 
+				return xScale(i.year) + 8 + 15 * Math.floor(Math.random() * 3)
 			})
 			//.attr("cy", yScale(d3.round(i.healthIndex/2, 2)*2))
-			.attr("cy", yScale(i.healthIndex))
-			.attr("r", 2)
+			.attr("y", yScale(i.healthIndex))
+			.attr("width", 15)
+			.attr("height", 3)
 			.style("stroke", function() { 
 				if (i.structDef == "TRUE" || i.structDef == "True") { return "none";}
 				else {return "#26a65b";}
@@ -332,6 +332,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 				if (i.structDef == "TRUE" || i.structDef == "True") { return "#ff6347";}
 				else {return "none";}
 			})
+			.style("fill-opacity", .5)
 			.style("stroke-width", .1)
 			.style("opacity", .1)
 			.on("mouseenter", function(){ 
