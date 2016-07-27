@@ -28,7 +28,7 @@ var projection = d3.geo.conicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([24000]) // N.B. The scale and translation vector were determined empirically.
-  .translate([250, 1000]);
+  .translate([150, 1000]);
   
   var geoPath = d3.geo.path().projection(projection);
 //Using the queue.js library
@@ -73,13 +73,11 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
   // Define the gradient colors
   gradientOut.append("stop")
       .attr("offset", "0%")
-      .attr("stop-color", flowVolume(-400))
-      .attr("stop-opacity", .3);
+      .attr("stop-color", flowVolume(-400));
 
   gradientOut.append("stop")
       .attr("offset", "100%")
       .attr("stop-color", flowVolume(400))
-      .attr("stop-opacity", 1);
 
   // Define the gradient
   var gradientIn = svg.append("defs")
@@ -95,12 +93,10 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
   gradientIn.append("stop")
       .attr("offset", "0%")
       .attr("stop-color", flowVolume(400))
-      .attr("stop-opacity", .3);
 
   gradientIn.append("stop")
       .attr("offset", "100%")
       .attr("stop-color", flowVolume(-400))
-      .attr("stop-opacity", 1);
 
   var districts = svg.append("g").attr("id", "districts");
   var centroids = svg.append("g").attr("id", "centroids");
@@ -149,6 +145,9 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
   function clicked(selected) {
   //var coming = selected.properties;
   var selname = "d" + selected.properties.DISTRICT_NUM;
+
+  makeSankey(selname);
+
   var coming = highway_coming;
   var going = highway_going;
 
@@ -156,8 +155,15 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
   var homey = geoPath.centroid(selected)[1];
 
   svg.selectAll("circle").filter(".district").remove();
+  svg.selectAll(".volumeLine").remove();
+  svg.selectAll(".district")
+      .style("opacity", function(d) { 
+        var thisDistrict = this.getAttribute("class").split(' ')[0];
+        return opacityScale(+highway_coming[45][thisDistrict] + +highway_going[45][thisDistrict]);
+      })
+      .style("fill", "#ddd")
 
-  svg.selectAll("circle")
+  /*svg.selectAll("circle")
       .data(topojson.feature(district_geo, district_geo.objects.features).features)
       .enter()
       .append("circle")
@@ -186,8 +192,19 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
         })
         .attr("fill", "none")
         .attr("stroke-width", 0)
-        .call(popup)
+        .call(popup)*/
   
+  d3.selectAll(".district").transition()
+      .duration(1000)
+      .style("fill", function(d) { 
+          var thisDistrict = this.getAttribute("class").split(' ')[0];
+          var outgoing = highway_going[selected.properties.DISTRICT_NUM][thisDistrict]
+          var incoming = highway_coming[selected.properties.DISTRICT_NUM][thisDistrict]
+          var finalval = incoming - outgoing; 
+          return flowVolume(finalval);
+      })
+      .style("opacity", .5)
+
   svg.selectAll(".goingline")
     .attr("stroke-dasharray", 0)
     .remove()
@@ -196,22 +213,28 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
     .data(highway_going)
     .enter().append("path")
     .attr("class", "goingline")
-    .style("stroke-width", 1)
+    .attr("class", function(d) { 
+          return d.abbrev + " volumeLine"; 
+        })
+    .style("stroke-width", function(d) { 
+          var thisDistrict = this.getAttribute("class").split(' ')[0];
+          var outgoing = highway_going[selected.properties.DISTRICT_NUM][thisDistrict]
+          var incoming = highway_coming[selected.properties.DISTRICT_NUM][thisDistrict]
+          var finalval = Math.abs(incoming - outgoing)/100; 
+          return finalval;
+    })
     .style("fill", "none")
     .style("stroke", function(d, i) {
       var finalval = coming[i][selname] - going[i][selname];
       if (finalval > 0) { return "url(#gradientIn)";
       } else { return "url(#gradientOut)";}
       })
-    .style("opacity", function(d, i) { 
-      var finalval = .5/Math.abs(coming[i][selname] - going[i][selname]);
-    })
+    .style("opacity", 1)
     .style("stroke-linecap", "round")
         .call(transition)
     .attr("d", function(d,i) {
       var abb = d.abbrev;
       var finalval = coming[i][selname] - going[i][selname];
-      console.log(finalval)
       var theState = d3.select("#" + abb);
     
       if(!isNaN(finalval)) {
@@ -302,40 +325,16 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
       .attr("x", xPos + 60).attr("y", yPos + 157)
       .style("font-size", 12).html("More outbound trips");
 
-    //Reorganize data into sankey diagram array
-    var graph = {
-      "links": [],
-      "nodes": []
-    };
 
-    highway_going.forEach(function(i){ 
-        graph.nodes.push({
-          "name": i.abbrev
-        })
-        if (i.abbrev == "d1") { 
-        highway_going.forEach(function(j){
-          if (j.abbrev != "d1" && j.abbrev != "Total"){
-            graph.links.push({
-            "source": i.abbrev,
-            "target": j.abbrev,
-            "value": i[j.abbrev]
-            })
-          }
-        })
-        }
-    })
-
-    console.log(graph);
-
+    //Set up Sankey diagram
     var units = "Trips";
      
     var margin = {top: 10, right: 10, bottom: 10, left: 10},
-        width = 600 - margin.left - margin.right,
+        width = 450 - margin.left - margin.right,
         height = 600 - margin.top - margin.bottom;
      
     var formatNumber = d3.format(",.0f"),    // zero decimal places
-        format = function(d) { return formatNumber(d) + " " + units; },
-        color = d3.scale.category20();
+        format = function(d) { return formatNumber(d) + " " + units; };
      
     // append the svg canvas to the page
     var sankeyChart = d3.select("#sankeyChart").append("svg")
@@ -350,6 +349,45 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
         .nodeWidth(36)
         .nodePadding(5)
         .size([width, height]);
+
+ function makeSankey(selectedDistrict) { 
+    sankeyChart.selectAll('*').remove();
+
+    //Reorganize data into sankey diagram array
+    var graph = {
+      "links": [],
+      "nodes": []
+    };
+
+    graph.nodes.push({ "name": selectedDistrict });
+
+    highway_going.forEach(function(i){ 
+        if (i.abbrev == selectedDistrict) { 
+          highway_going.forEach(function(j){
+            if (j.abbrev != selectedDistrict && j.abbrev != "Total" && i[j.abbrev] > 0){
+              graph.links.push({
+                "source": i.abbrev,
+                "target": j.abbrev,
+                "value": i[j.abbrev]
+              })
+              graph.nodes.push({ "name": j.abbrev })
+            }
+          })
+          highway_coming.forEach(function(j){
+            if (j.abbrev != selectedDistrict && j.abbrev != "Total" && j[i.abbrev] > 0){
+              graph.links.push({
+                "source": "d" + j.abbrev,
+                "target": i.abbrev,
+                "value": j[i.abbrev]
+              })
+              graph.nodes.push({ "name": "d" + j.abbrev })
+            }
+          })
+        }
+    })
+
+    console.log(graph);
+
      
     var path = sankey.link();
  
@@ -368,45 +406,66 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
       .nodes(graph.nodes)
       .links(graph.links)
       .layout(32);
- 
+
 // add in the links
-  var link = svg.append("g").selectAll(".link")
+  var link = sankeyChart.append("g").selectAll(".link")
       .data(graph.links)
     .enter().append("path")
       .attr("class", "link")
       .attr("d", path)
+      .style("stroke", function(d) { 
+        if (d.target.name == selectedDistrict) { 
+          //if (isNaN(d.dy)) { console.log(d.source.name, d.target.name)}
+          var index = parseInt(d.source.name.replace( /^\D+/g, ''));
+        } else { 
+          var index = parseInt(d.target.name.replace( /^\D+/g, ''));
+        }
+        var propIndex = index; 
+        if (index > 41) { index = index - 9; }
+        var difference = highway_coming[index]["d" + propIndex] - highway_going[index]["d" + propIndex];
+        return flowVolume(difference);
+      })
       .style("stroke-width", function(d) { return Math.max(1, d.dy); })
       .sort(function(a, b) { return b.dy - a.dy; });
  
 // add the link titles
   link.append("title")
         .text(function(d) {
-        return d.source.name + " → " + 
-                d.target.name + "\n" + format(d.value); });
+        return d.source.name.replace( /^\D+/g, '') + " → " + 
+                d.target.name.replace( /^\D+/g, '') + "\n" + format(d.value)});
  
 // add in the nodes
-  var node = svg.append("g").selectAll(".node")
+  var node = sankeyChart.append("g").selectAll(".node")
       .data(graph.nodes)
     .enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { 
+        if (isNaN(d.y)) { console.log(d)}
       return "translate(" + d.x + "," + d.y + ")"; })
-    .call(d3.behavior.drag()
-      .origin(function(d) { return d; })
-      .on("dragstart", function() { 
-      this.parentNode.appendChild(this); })
-      .on("drag", dragmove));
- 
+
 // add the rectangles for the nodes
   node.append("rect")
       .attr("height", function(d) { return d.dy; })
       .attr("width", sankey.nodeWidth())
+      /*.style("stroke", function(d) { 
+        var index = parseInt(d.name.replace( /^\D+/g, ''));
+        var propIndex = index; 
+        if (index > 41) { index = index - 9; }
+        var difference = highway_coming[index]["d" + propIndex] - highway_going[index]["d" + propIndex];
+        return flowVolume(difference);
+      })*/
+      .style("rx", 5)
+      .style("ry", 5)
       .style("fill", function(d) { 
-        return d.color = color(d.name.replace(/ .*/, ""))
-      ;})
+        var index = parseInt(d.name.replace( /^\D+/g, ''));
+        var propIndex = index; 
+        if (index > 41) { index -= 9 }
+        var difference = highway_coming[index]["d" + propIndex] - highway_going[index]["d" + propIndex];
+        return flowVolume(difference);
+      })
       .append("title")
       .text(function(d) { 
-          return "District " + parseInt(d.name); 
+          return "District " + d.name.replace( /^\D+/g, ''); 
       });
  
 // add in the title for the nodes
@@ -414,25 +473,15 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
       .attr("x", -6)
       .attr("y", function(d) { return d.dy / 2; })
       .attr("dy", ".35em")
-      .attr("text-anchor", "end")
-      .attr("transform", null)
+      .style("font-size", 10)
+      .style("text-anchor", "middle")
+      .style("transform", null)
       .style("font-weight", 100)
-      .text(function(d) { return "District " + d.name; })
+      .text(function(d) { return "District " + d.name.replace( /^\D+/g, ''); })
     .filter(function(d) { return d.x < width / 2; })
       .attr("x", 6 + sankey.nodeWidth())
-      .attr("text-anchor", "start");
+      .style("text-anchor", "middle");
  
-// the function for moving the nodes
-  function dragmove(d) {
-    d3.select(this).attr("transform", 
-        "translate(" + (
-             d.x = Math.max(0, Math.min(width - d.dx, d3.event.x))
-          ) + "," + (
-                   d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
-            ) + ")");
-    sankey.relayout();
-    link.attr("d", path);
-  }
-
+} // end function makeSankey
 
 }

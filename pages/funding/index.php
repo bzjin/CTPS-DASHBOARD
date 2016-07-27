@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
-<title>Equity in the Boston MPO Region</title>
+<title>Funding in the Boston MPO Region</title>
 <link rel="stylesheet" href="app.css"/>
 <link rel="stylesheet" href="../../css/master.css"/>
 
@@ -52,7 +52,7 @@ form {
 	<?php include '../../components/top-nav.php';?>
 </div>
 	<div class="col-md-12">
-		<h1>Equity</h1>
+		<h1>Funding</h1>
 	</div>
 
 	<div class="col-md-12">
