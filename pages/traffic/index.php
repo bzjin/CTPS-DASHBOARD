@@ -59,8 +59,8 @@ form {
 		<h3> This is not a drill.</h3>
 	</div>
 
-	<div class="col-md-7" id="map"></div>
-	<div class="col-md-5" id="chart"></div>
+	<div class="col-md-4" id="map"></div>
+	<div class="col-md-8" id="chart"></div>
 	
 
 </div>

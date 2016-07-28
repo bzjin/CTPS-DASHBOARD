@@ -113,7 +113,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
     svgContainer.append("text")
       .style("font-weight", 700)
       .attr("x", xPos).attr("y", yPos -7)
-      .html("KEY");
+      .text("KEY");
     //text and colors
     svgContainer.append("rect")
       .style("fill", colorScale(0)).style("stroke", "none").style("opacity", .1)
@@ -121,35 +121,35 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 7)
-      .html("No funding");
+      .text("No funding");
     svgContainer.append("rect")
       .style("fill", colorScale(500000)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
-      .html("$500,000 - $5 million");
+      .text("$500,000 - $5 million");
     svgContainer.append("rect")
       .style("fill", colorScale(10000000)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
-      .html("$5 million - $15 million");
+      .text("$5 million - $15 million");
     svgContainer.append("rect")
       .style("fill", colorScale(20000000)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
-      .html("$15 million - $25 million");
+      .text("$15 million - $25 million");
     svgContainer.append("rect")
       .style("fill", colorScale(25000000)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .html("> $25 million");
+      .text("> $25 million");
 }
 
 CTPS.demoApp.generateStats = function(equity){

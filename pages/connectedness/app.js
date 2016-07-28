@@ -1,29 +1,6 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-//Define Color Scale
-var colorScale = d3.scale.linear()
-                .domain([0, 100000, 200000, 300000, 400000])
-                .range(["#a6611a","#dfc27d","#f5f5f5","#80cdc1"]);	
-
-var arcScale = d3.scale.linear()
-                .domain([0, 100, 250, 500, 1000, 1250, 1500, 2000])
-                .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"])
-
-var lineSize = d3.scale.linear()
-                .domain([0, 3000])
-                .range([1,25]);
-
-var opacityScale = d3.scale.linear()
-                .domain([0, 200000, 400000, 600000, 800000])
-                .range([0, .03, .05, .1, .15]);
-
-var flowVolume = d3.scale.linear()
-                .domain([-400, 400])
-                .range(["#d53e4f","#3288bd"])
-
-
-
 var projection = d3.geo.conicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
@@ -34,16 +11,116 @@ var projection = d3.geo.conicConformal()
 //Using the queue.js library
 queue()
 	.defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
-	.defer(d3.csv, "../../JSON/highway_coming.csv")
-  .defer(d3.csv, "../../JSON/highway_going.csv")
+	.defer(d3.csv, "../../JSON/flow_highway_coming.csv")
+  .defer(d3.csv, "../../JSON/flow_highway_going.csv")
 	.awaitAll(function(error, results){ 
 
 		CTPS.demoApp.generateMap(results[0], results[1], results[2]);
 		//CTPS.demoApp.generateBikeTrails(results[0]);
-	}); 
-	//CTPS.demoApp.generateViz);
+}); 
+
+//HIGHWAY BUTTON
+d3.select(".highwayFlow").on("click", function(){
+      d3.selectAll("svg").remove();
+
+  queue()
+    .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
+    .defer(d3.csv, "../../JSON/flow_highway_coming.csv")
+    .defer(d3.csv, "../../JSON/flow_highway_going.csv")
+    .awaitAll(function(error, results){ 
+
+      CTPS.demoApp.generateMap(results[0], results[1], results[2]);
+  }); 
+})
+
+//BIKE BUTTON
+d3.select(".bikeFlow").on("click", function(){
+  d3.selectAll("svg").remove();
+  queue()
+    .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
+    .defer(d3.csv, "../../JSON/flow_bike_coming.csv")
+    .defer(d3.csv, "../../JSON/flow_bike_going.csv")
+    .awaitAll(function(error, results){ 
+      CTPS.demoApp.generateMap(results[0], results[1], results[2]);
+  }); 
+})
+
+//PEDESTRIAN BUTTON
+d3.selectAll(".pedFlow").on("click", function(){
+      d3.selectAll("svg").remove();
+
+  queue()
+    .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
+    .defer(d3.csv, "../../JSON/flow_walk_coming.csv")
+    .defer(d3.csv, "../../JSON/flow_walk_going.csv")
+    .awaitAll(function(error, results){ 
+
+      CTPS.demoApp.generateMap(results[0], results[1], results[2]);
+  }); 
+})
+
+//TRUCK BUTTON
+d3.select(".truckFlow").on("click", function(){
+      d3.selectAll("svg").remove();
+
+  queue()
+    .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
+    .defer(d3.csv, "../../JSON/flow_truck_coming.csv")
+    .defer(d3.csv, "../../JSON/flow_truck_going.csv")
+    .awaitAll(function(error, results){ 
+
+      CTPS.demoApp.generateMap(results[0], results[1], results[2]);
+  }); 
+})
+
+//TRANSIT BUTTON
+d3.select(".transitFlow").on("click", function(){
+      d3.selectAll("svg").remove();
+
+  queue()
+    .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
+    .defer(d3.csv, "../../JSON/flow_transit_coming.csv")
+    .defer(d3.csv, "../../JSON/flow_transit_going.csv")
+    .awaitAll(function(error, results){ 
+
+      CTPS.demoApp.generateMap(results[0], results[1], results[2]);
+  }); 
+})
+
 
 CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going) { 
+
+var maxmins = [];
+var totals = [];
+
+for (var i = 0; i < 44; i++) { 
+    totals.push(highway_coming[45]["d"+i] - highway_going[45]["d"+i]);
+
+    for (var k = 0; k < 44; k++) { 
+      if (k > 41) { k += 9; }
+      if (!isNaN(highway_coming[i]["d"+k] - highway_going[i]["d"+k])){
+        maxmins.push(highway_coming[i]["d"+k] - highway_going[i]["d"+k]);
+      }
+    }
+}
+
+var opacityMax = d3.max(totals);
+maxmins.sort(function(a, b){return a-b});
+console.log(maxmins);
+
+var opacityScale = d3.scale.linear()
+                .domain([0, opacityMax/12, opacityMax/6, opacityMax/3, opacityMax])
+                .range([0, .03, .05, .1, .15]);
+
+var flowVolume = d3.scale.linear()
+                .domain([maxmins[parseInt(maxmins.length/10)], 0, 0, maxmins[parseInt(maxmins.length*9/10)]])
+                .range(["#d53e4f", "grey", "grey", "#3288bd"])
+
+var lineScale = d3.scale.linear()
+                .domain([0, opacityMax/12, opacityMax/6, opacityMax/3, opacityMax])
+                .range([0, 5, 10, 20, 40]);
+
+  
   console.log(highway_going, highway_coming)
  // SVG Viewport
   var svg = d3.select("#map").append("svg")
@@ -73,11 +150,11 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
   // Define the gradient colors
   gradientOut.append("stop")
       .attr("offset", "0%")
-      .attr("stop-color", flowVolume(-400));
+      .attr("stop-color", flowVolume([maxmins[parseInt(maxmins.length/10)]]));
 
   gradientOut.append("stop")
       .attr("offset", "100%")
-      .attr("stop-color", flowVolume(400))
+      .attr("stop-color", ([maxmins[parseInt(maxmins.length*9/10)]]))
 
   // Define the gradient
   var gradientIn = svg.append("defs")
@@ -92,11 +169,11 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
   // Define the gradient colors
   gradientIn.append("stop")
       .attr("offset", "0%")
-      .attr("stop-color", flowVolume(400))
+      .attr("stop-color", ([maxmins[parseInt(maxmins.length*9/10)]]))
 
   gradientIn.append("stop")
       .attr("offset", "100%")
-      .attr("stop-color", flowVolume(-400))
+      .attr("stop-color", flowVolume([maxmins[parseInt(maxmins.length/10)]]));
 
   var districts = svg.append("g").attr("id", "districts");
   var centroids = svg.append("g").attr("id", "centroids");
@@ -146,7 +223,8 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
   //var coming = selected.properties;
   var selname = "d" + selected.properties.DISTRICT_NUM;
 
-  makeSankey(selname);
+  //makeSankey(selname);
+  makeLineChart(selname);
 
   var coming = highway_coming;
   var going = highway_going;
@@ -220,8 +298,8 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
           var thisDistrict = this.getAttribute("class").split(' ')[0];
           var outgoing = highway_going[selected.properties.DISTRICT_NUM][thisDistrict]
           var incoming = highway_coming[selected.properties.DISTRICT_NUM][thisDistrict]
-          var finalval = Math.abs(incoming - outgoing)/100; 
-          return finalval;
+          var finalval = Math.abs(incoming - outgoing)
+          return lineScale(finalval);
     })
     .style("fill", "none")
     .style("stroke", function(d, i) {
@@ -337,7 +415,7 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
         format = function(d) { return formatNumber(d) + " " + units; };
      
     // append the svg canvas to the page
-    var sankeyChart = d3.select("#sankeyChart").append("svg")
+    sankeyChart = d3.select("#sankeyChart").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -349,6 +427,27 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
         .nodeWidth(36)
         .nodePadding(5)
         .size([width, height]);
+
+  function makeLineChart(selectedDistrict) { 
+    sankeyChart.selectAll('*').remove();
+
+    var yScale = d3.scale.linear()
+                .domain([0, 50000])
+                .range([550, 50])
+
+    highway_going.forEach(function(i){ 
+      sankeyChart.append("line")
+        .attr("x1", 50)
+        .attr("x2", 350)
+        .attr("y1", yScale(i[selectedDistrict]))
+        .attr("y2", yScale(highway_coming[highway_going.indexOf(i)][selectedDistrict]))
+        .style("stroke", function(d) {
+          return flowVolume(highway_coming[highway_going.indexOf(i)][selectedDistrict] - i[selectedDistrict]);
+        })
+        .style("fill", flowVolume(highway_coming[highway_going.indexOf(i)][selectedDistrict] - i[selectedDistrict]))
+        .style("fill-opacity", .1)
+    })
+  }
 
  function makeSankey(selectedDistrict) { 
     sankeyChart.selectAll('*').remove();
@@ -373,12 +472,17 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
               graph.nodes.push({ "name": j.abbrev })
             }
           })
+      }
+    })
+
+    highway_coming.forEach(function(i){ 
+        if (i.abbrev == selectedDistrict) { 
           highway_coming.forEach(function(j){
-            if (j.abbrev != selectedDistrict && j.abbrev != "Total" && j[i.abbrev] > 0){
+            if (j.abbrev != selectedDistrict && j.abbrev != "Total" && i[j.abbrev] > 0){
               graph.links.push({
                 "source": "d" + j.abbrev,
                 "target": i.abbrev,
-                "value": j[i.abbrev]
+                "value": i[j.abbrev]
               })
               graph.nodes.push({ "name": "d" + j.abbrev })
             }
@@ -386,7 +490,7 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
         }
     })
 
-    console.log(graph);
+    console.log(graph.links);
 
      
     var path = sankey.link();
@@ -454,8 +558,6 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
         var difference = highway_coming[index]["d" + propIndex] - highway_going[index]["d" + propIndex];
         return flowVolume(difference);
       })*/
-      .style("rx", 5)
-      .style("ry", 5)
       .style("fill", function(d) { 
         var index = parseInt(d.name.replace( /^\D+/g, ''));
         var propIndex = index; 
@@ -470,18 +572,23 @@ CTPS.demoApp.generateMap = function(district_geo, highway_coming, highway_going)
  
 // add in the title for the nodes
   node.append("text")
-      .attr("x", -6)
+      .attr("x", function(d) { 
+        if (d.x < width / 2) { return 6 + sankey.nodeWidth();}
+        else { return -6; }
+      })
       .attr("y", function(d) { return d.dy / 2; })
       .attr("dy", ".35em")
       .style("font-size", 10)
       .style("text-anchor", "middle")
       .style("transform", null)
       .style("font-weight", 100)
-      .text(function(d) { return "District " + d.name.replace( /^\D+/g, ''); })
-    .filter(function(d) { return d.x < width / 2; })
-      .attr("x", 6 + sankey.nodeWidth())
-      .style("text-anchor", "middle");
+      .text(function(d) { 
+        if (d.dy > 8) { 
+          return "District " + d.name.replace( /^\D+/g, ''); }
+        })
  
 } // end function makeSankey
+
+
 
 }

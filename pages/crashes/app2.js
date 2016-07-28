@@ -163,7 +163,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
     svgContainer.append("text")
       .style("font-weight", 700)
       .attr("x", xPos).attr("y", yPos -7)
-      .html("KEY");
+      .text("KEY");
     //text and colors
     svgContainer.append("rect")
       .style("fill", colorScale(50)).style("stroke", "none").style("opacity", .1)
@@ -171,35 +171,35 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 7)
-      .html("<50 crashes");
+      .text("<50 crashes");
     svgContainer.append("rect")
       .style("fill", colorScale(120)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
-      .html("51-200 crashes");
+      .text("51-200 crashes");
     svgContainer.append("rect")
       .style("fill", colorScale(250)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
-      .html("201-400 crashes");
+      .text("201-400 crashes");
     svgContainer.append("rect")
       .style("fill", colorScale(450)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
-      .html("401-1200 crashes");
+      .text("401-1200 crashes");
     svgContainer.append("rect")
       .style("fill", colorScale(1200)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .html(">1200 crashes");
+      .text(">1200 crashes");
 
 }
 

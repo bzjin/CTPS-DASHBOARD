@@ -69,7 +69,11 @@ text {fill: #ddd; font-size: 14px;}
 		<h3>Where do people travel within the Boston region?</h3>
 		<p> The map below shows which the DIFFERENCE of inbound and outbound trips to a particular district.
 	</div>
-
+		<button class='highwayFlow col-md-2'> Highway</button>
+		<button class='bikeFlow col-md-2'> Bike</button>
+		<button class='pedFlow col-md-2'> Pedestrian</button>
+		<button class='truckFlow yrpicker col-md-2'> Trucks</button>
+		<button class='transitFlow yrpicker col-md-2'> Transit</button>
 	<div class="col-md-6" id="map"></div>
 	<div class="col-md-6" id="sankeyChart"></div>
 

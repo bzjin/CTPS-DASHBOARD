@@ -684,42 +684,42 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	chartContainer.append("text")
 		.style("font-weight", 700)
 		.attr("x", xPos).attr("y", yPos - 10)
-		.html("KEY");
+		.text("KEY");
 	chartContainer.append("rect")
 		.style("fill", "#d7191c").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 7)
-		.html("0.0-2.5: Dismal");
+		.text("0.0-2.5: Dismal");
 	chartContainer.append("rect")
 		.style("fill", "#fdae61").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 22)
-		.html("2.5-3.0: Minimally Acceptable");
+		.text("2.5-3.0: Minimally Acceptable");
 	chartContainer.append("rect")
 		.style("fill", "#ffffbf").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 37)
-		.html("3.0-3.5: Acceptable");
+		.text("3.0-3.5: Acceptable");
 	chartContainer.append("rect")
 		.style("fill", "#a6d96a").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 52)
-		.html("3.5-4.0: Good");
+		.text("3.5-4.0: Good");
 	chartContainer.append("rect")
 		.style("fill", "#1a9641").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 67)
-		.html("4.0-5.0: Excellent");
+		.text("4.0-5.0: Excellent");
 
 } //CTPS.demoApp.generateChart
 

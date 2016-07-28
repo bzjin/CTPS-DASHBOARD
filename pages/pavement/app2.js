@@ -203,7 +203,7 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	timeline.append("text").style("font-size", 12)
 		.style("font-weight", 700)
 		.attr("x", xPos).attr("y", yPos -7)
-		.html("KEY");
+		.text("KEY");
 	//text and colors
 	timeline.append("rect")
 		.style("fill", "#fff").style("stroke", "none").style("opacity", .1)
@@ -211,29 +211,29 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	timeline.append("text").style("font-size", 12)
 		.style("font-weight", 300)
 		.attr("x", xPos + 70).attr("y", yPos + 3)
-		.html("Maximum");
+		.text("Maximum");
 	timeline.append("rect")
 		.style("fill", "#e26a6a").style("stroke", "none").style("opacity", .3)
 		.attr("x", xPos).attr("y", yPos + 20).attr("height", "40px").attr("width", height/10);
 	timeline.append("text").style("font-size", 12)
 		.style("font-weight", 300)
 		.attr("x", xPos + 70).attr("y", yPos + 25)
-		.html("75% Quartile");
+		.text("75% Quartile");
 	timeline.append("rect")
 		.style("fill", "fff").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 38).attr("height", "4px").attr("width", height/10);
 	timeline.append("text").style("font-size", 12)
 		.style("font-weight", 300)
 		.attr("x", xPos + 70).attr("y", yPos + 45)
-		.html("Median");
+		.text("Median");
 	timeline.append("text").style("font-size", 12)
 		.style("font-weight", 300)
 		.attr("x", xPos + 70).attr("y", yPos + 65)
-		.html("25% Quartile");
+		.text("25% Quartile");
 	timeline.append("text").style("font-size", 12)
 		.style("font-weight", 300)
 		.attr("x", xPos + 70).attr("y", yPos + 85)
-		.html("Minimum");
+		.text("Minimum");
 }
 
 
@@ -474,11 +474,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	var xPos = 815;
 	var yPos = 100; 
 	var height = 600; 
-	//background
-	cityContainer.append("rect")
-		.style("fill", "#191b1d").style("stroke", "white").style("stroke-width", 1)
-		.attr("x", xPos-10).attr("y", yPos-11).attr("height", 90).attr("width", 240)
-		.style("opacity", .8);
+
 	//text and colors
 	cityContainer.append("rect")
 		.style("fill", "#d7191c").style("stroke", "none")
@@ -486,35 +482,35 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	cityContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 7)
-		.html("0.0-2.5: Dismal");
+		.text("0.0-2.5: Dismal");
 	cityContainer.append("rect")
 		.style("fill", "#fdae61").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
 	cityContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 22)
-		.html("2.5-3.0: Minimally Acceptable");
+		.text("2.5-3.0: Minimally Acceptable");
 	cityContainer.append("rect")
 		.style("fill", "#ffffbf").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
 	cityContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 37)
-		.html("3.0-3.5: Acceptable");
+		.text("3.0-3.5: Acceptable");
 	cityContainer.append("rect")
 		.style("fill", "#a6d96a").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
 	cityContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 52)
-		.html("3.5-4.0: Good");
+		.text("3.5-4.0: Good");
 	cityContainer.append("rect")
 		.style("fill", "#1a9641").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
 	cityContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 67)
-		.html("4.0-5.0: Excellent");
+		.text("4.0-5.0: Excellent");
 
 	//button activation 
 	d3.select("#alphabetize").on("click", function(){

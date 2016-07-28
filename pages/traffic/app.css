@@ -1,6 +1,8 @@
 div {
   position: relative;
   color: #fff;
+  background-color: none;
+  background: none;
 }
 
 div h3 {
@@ -98,20 +100,6 @@ button {
     font-size: 16px;
 }
 
-#timeVsSpeed{
-  clear: both;
-  float:left;
-}
-#congAnim { 
-  clear: both;
-  margin: 10px 0px;
-}
-
-#congAnim:hover, #congAnim:active, #congAnim:focus {
-    color: #e26a6a;
-    font-weight: 700;
-      outline:none;
-}
 
 .inner-nav { 
   text-align: left;

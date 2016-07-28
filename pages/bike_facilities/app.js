@@ -106,7 +106,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeRoads, bikeData) {
     svgContainer.append("text")
       .style("font-weight", 700)
       .attr("x", xPos).attr("y", yPos -7)
-      .html("KEY");
+      .text("KEY");
     //text and colors
     svgContainer.append("rect")
       .style("fill", colorScaleBars(0)).style("stroke", "none").style("opacity", .1)
@@ -114,35 +114,35 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeRoads, bikeData) {
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 7)
-      .html("No bike facilities");
+      .text("No bike facilities");
     svgContainer.append("rect")
       .style("fill", colorScaleBars(.02)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
-      .html("0-5%");
+      .text("0-5%");
     svgContainer.append("rect")
       .style("fill", colorScaleBars(.05)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
-      .html("5-15%");
+      .text("5-15%");
     svgContainer.append("rect")
       .style("fill", colorScaleBars(.1)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
-      .html("10-20%");
+      .text("10-20%");
     svgContainer.append("rect")
       .style("fill", colorScaleBars(.2)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .html(">20%");
+      .text(">20%");
 
     //Circle key
     var xPos = 40;
@@ -234,6 +234,9 @@ function plot() {
         .on("mouseenter", function() { 
           tip.show(i)
         })
+        .on("mouseleave", function() { 
+          tip.hide(i)
+        })
 
       stacks.append("circle")
         .attr("cx", width/2)
@@ -245,6 +248,9 @@ function plot() {
         .on("mouseenter", function() { 
           tip.show(i)
         }) 
+        .on("mouseleave", function() { 
+          tip.hide(i)
+        })
 
       stacks.append("text")
         .attr("x", width/2)
