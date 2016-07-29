@@ -11,14 +11,17 @@ var geoPath = d3.geo.path().projection(projection);
 
 //Using the queue.js library
 queue()
-  .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
+  .defer(d3.json, "../../json/town_census.topojson")
   .defer(d3.json, "../../json/equity.json")
+  .defer(d3.json, "../../json/tract_census.topojson")
 
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0],results[1]);
-    CTPS.demoApp.generateStats(results[1]);
+    CTPS.demoApp.generateStats(results[0], results[1]);
     CTPS.demoApp.generateMap2(results[0],results[1]);
     CTPS.demoApp.generatePerPerson(results[1]);
+    CTPS.demoApp.generateMap3(results[2]);
+    CTPS.demoApp.generateStats2(results[2]);
   }); 
 
 //Color Scale
@@ -62,10 +65,10 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
 
   // Create Boston Region MPO map with SVG paths for individual towns.
   var mapcSVG = svgContainer.selectAll(".mpo")
-    .data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
+    .data(topojson.feature(mpoTowns, mpoTowns.objects.town_census).features)
     .enter()
     .append("path")
-      .attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
+      .attr("class", function(d){ return d.properties.TOWN; })
       .attr("d", function(d, i) {return geoPath(d); })
       .style("fill", function(d){ 
         var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -82,9 +85,13 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
       .style("stroke", "#191b1d")
       .style("stroke-width", 1)
       .on("mouseenter", function(d){
+        var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+
         d3.selectAll("." + this.getAttribute("class")).filter(".bars")
           .style("stroke-width", 10)
-          .style("stroke", function(d) { return colorScale(d.Total_FFY_2008_2013_TIPs);  })
+          .style("stroke", function(d) { 
+            return colorScale(findIndex(capTown, "Total_FFY_2008_2013_TIPs"));   
+          })
         d3.selectAll("." + this.getAttribute("class")).filter(".labels")
           .style("opacity", 1)
         d3.selectAll("." + this.getAttribute("class")).filter(".tipFunding")
@@ -152,12 +159,22 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
       .text("> $25 million");
 }
 
-CTPS.demoApp.generateStats = function(equity){
-  
-  equity.forEach(function(i){
-    i.percentMinority = d3.round(i.MINORITY_2010/i.Population*100, 2);
-    i.percentEmployed = i.Employment/i.Population;
-    i.milesPerPerson = i.MILES_2010/i.Population;
+CTPS.demoApp.generateStats = function(mpoTowns, equity){
+  var findIndex = function(town, statistic) { 
+    for (var i = 0; i < equity.length; i++) { 
+      if (equity[i].MPO_Municipality == town) {
+        return equity[i][statistic]; 
+      } 
+    }
+  }
+  var census = topojson.feature(mpoTowns, mpoTowns.objects.town_census).features;
+
+  census.forEach(function(i){
+    i.properties.MINORITY_HH_PCT = d3.round(i.properties.MINORITY_HH_PCT * 100, 2);
+    i.properties.SINGLE_FEMALE_HOH_PCT = d3.round(i.properties.SINGLE_FEMALE_HOH_PCT * 100, 2);
+    i.properties.LEP_POP_PCT = d3.round(i.properties.LEP_POP_PCT * 100, 2);
+    i.properties.ZERO_VEH_HH_PCT = d3.round(i.properties.ZERO_VEH_HH_PCT * 100, 2);
+    i.properties.LOW_INC_HH_PCT = d3.round(i.properties.LOW_INC_HH_PCT * 100, 2);
   })
 
   var width = 680; 
@@ -166,9 +183,9 @@ CTPS.demoApp.generateStats = function(equity){
 
 generateStats = function(attribute, divID) { 
   //Sort towns by ascending attribute order
-    equity.sort(function(a, b){
-        var nameA = a[attribute];
-        var nameB = b[attribute];
+    census.sort(function(a, b){
+        var nameA = a.properties[attribute];
+        var nameB = b.properties[attribute];
         if (nameA < nameB) { return -1}
         if (nameA > nameB) { return 1}
         return 0;
@@ -176,9 +193,9 @@ generateStats = function(attribute, divID) {
     //Push towns into array for x axis
     townOrder = [];
     maxmins = [];
-      equity.forEach(function(i){
-        townOrder.push(i.MPO_Municipality);
-        maxmins.push(i[attribute]);
+      census.forEach(function(i){
+        townOrder.push(i.properties.TOWN);
+        maxmins.push(i.properties[attribute]);
     })
 
 
@@ -202,39 +219,42 @@ generateStats = function(attribute, divID) {
       .attr("x", 5)
       .attr("y", 25)
       .text(function(d) { 
-        if (attribute == "percentMinority") { return "Percent Minority Population"; }
-        if (attribute == "MILES_2010") { return "Number of Centerline Miles"; }
-        if (attribute == "Median_Household_Income") { return "Median Household Income"; }
-        else { 
-            return attribute;
-        }
+        if (attribute == "MINORITY_HH_PCT") { return "Percent Minority Households"; }
+        if (attribute == "LOW_INC_HH_PCT") { return "Percent Low Income Households"; }
+        if (attribute == "LEP_POP_PCT") { return "Percent Limited English Proficiency Population"; }
+        if (attribute == "SINGLE_FEMALE_HOH_PCT") { return "Percent Households Headed by Unmarried Female"; }
+
     })
 
     newChart.selectAll("." + attribute)
-      .data(equity)
+      .data(census)
       .enter()
       .append("rect")
-          .attr("class", function(d) { return d.MPO_Municipality + " bars " + attribute})
-          .attr("x", function(d) { return xScale(d.MPO_Municipality);})
-          .attr("y", function(d) { return yScale(d[attribute]);})
+          .attr("class", function(d) { return d.properties.TOWN + " bars " + attribute})
+          .attr("x", function(d) { return xScale(d.properties.TOWN);})
+          .attr("y", function(d) { return yScale(d.properties[attribute]);})
           .attr("width", 5)
-          .attr("height", function(d) {return yScaleHeight(d[attribute])})
-          .style("fill", function(d) {return colorScale(d.Total_FFY_2008_2013_TIPs)})
+          .attr("height", function(d) {return yScaleHeight(d.properties[attribute])})
+          .style("fill", function(d) {
+            var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            return colorScale(findIndex(capTown, "Total_FFY_2008_2013_TIPs"));  
+           })
           .style("opacity", function(d) { 
-            if (d.Total_FFY_2008_2013_TIPs == 0) { return .1;
-            } else { return 1; }
-          })
+            var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            if (findIndex(capTown, "Total_FFY_2008_2013_TIPs") == 0) { return .1 } 
+            else { return 1 }  
+           })
           .on("mouseenter", function(d) { 
           })
 
      newChart.selectAll("." + attribute + "labels")
-      .data(equity)
+      .data(census)
       .enter()
       .append("text")
-          .attr("class", function(d) { return d.MPO_Municipality + " labels " + attribute + "labels"})
-          .attr("x", function(d) { return xScale(d.MPO_Municipality) + 2;})
-          .attr("y", function(d) { return yScale(d[attribute]) - 15;})
-          .text(function(d) { return d3.format(',')(d[attribute]);})
+          .attr("class", function(d) { return d.properties.TOWN + " labels " + attribute + "labels"})
+          .attr("x", function(d) { return xScale(d.properties.TOWN) + 2;})
+          .attr("y", function(d) { return yScale(d.properties[attribute]) - 15;})
+          .text(function(d) { return d3.format(',')(d.properties[attribute]);})
           .style("text-anchor", "middle")
           .style("fill", "#fff")
           .style("opacity", 0)
@@ -243,10 +263,10 @@ generateStats = function(attribute, divID) {
           })
 } //end of generateStats
 
-generateStats("Population", "chartPop")
-generateStats("percentMinority", "chartMinority")
-generateStats("Median_Household_Income", "chartIncome")
-generateStats("MILES_2010", "chartMiles")
+generateStats("MINORITY_HH_PCT", "chartMinority")
+generateStats("LOW_INC_HH_PCT", "chartIncome")
+generateStats("LEP_POP_PCT", "chartLEP")
+generateStats("SINGLE_FEMALE_HOH_PCT", "chartFemale")
 
  
 
@@ -338,7 +358,6 @@ generateStats("MILES_2010", "chartMiles")
 }
 ////////////////* GENERATE MAP *////////////////////
 CTPS.demoApp.generateMap2 = function(mpoTowns, equity) {  
-
   var findIndex = function(town, statistic) { 
     for (var i = 0; i < equity.length; i++) { 
       if (equity[i].MPO_Municipality == town) {
@@ -372,7 +391,7 @@ CTPS.demoApp.generateMap2 = function(mpoTowns, equity) {
 
   // Create Boston Region MPO map with SVG paths for individual towns.
   var mapcSVG2 = svgContainer.selectAll(".perPerson")
-    .data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
+    .data(topojson.feature(mpoTowns, mpoTowns.objects.town_census).features)
     .enter()
     .append("path")
       .attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
@@ -550,31 +569,198 @@ CTPS.demoApp.generatePerPerson = function(equity) {
           })
 }
 
-CTPS.demoApp.generateAccessibleTable = function(crashjson){
-  var colDesc = [{ // array of objects
-    "dataIndex" : "year",
-    "header" : "Year"
-  },{ 
-    "dataIndex" : "town",
-    "header" : "Town"
-  },{ 
-    "dataIndex" : "bike_inj",
-    "header" : "Bike Injuries"
-  },{ 
-    "dataIndex" : "bike_fat",
-    "header" : "Bike Fatalities"
-  },{ 
-    "dataIndex" : "ped_inj",
-    "header" : "Pedestrian Injuries"
-  },{ 
-    "dataIndex" : "ped_fat",
-    "header" : "Pedestrian Fatalities"
-  }];
+////////////////* GENERATE MAP *////////////////////
+CTPS.demoApp.generateMap3 = function(tracts, equity) {  
+  // SVG Viewport
+  var colorScale = d3.scale.linear()
+                  .domain([0, 1, 2, 3])
+                  .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"])
 
-  var options = {
-    "divId" : "crashTableDiv",
-    "caption": "Nonmotorized Crash Data over Time: Bicycle and Pedestrian Injuries and Fatalities from 2004 to 2013",
-  };
+var projection = d3.geo.conicConformal()
+  .parallels([41 + 43 / 60, 42 + 41 / 60])
+    .rotate([71 + 30 / 60, -41 ])
+  .scale([14000]) // N.B. The scale and translation vector were determined empirically.
+  .translate([30,550]);
+  
+var geoPath = d3.geo.path().projection(projection); 
 
-  $("#crashTable").accessibleGrid(colDesc, options, crashjson);
+  var svgContainer = d3.select("#map3").append("svg")
+                    .attr("width", "100%")
+                    .attr("height", 260)
+  var svgContainer1 = d3.select("#map4").append("svg")
+                    .attr("width", "100%")
+                    .attr("height", 260)
+  var svgContainer2 = d3.select("#map5").append("svg")
+                    .attr("width", "100%")
+                    .attr("height", 260)
+  var svgContainer3 = d3.select("#map6").append("svg")
+                    .attr("width", "100%")
+                    .attr("height", 260)
+
+  //D3 Tooltip
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+      return "<h4>" + d.properties.NAMELSAD + "</h2>";
+    })
+
+  svgContainer.call(tip); 
+
+  var findIndex = function(town, statistic) { 
+    for (var i = 0; i < equity.length; i++) { 
+      if (equity[i].MPO_Municipality == town) {
+        return equity[i][statistic]; 
+      } 
+    }
+  }
+
+  // Create Boston Region MPO map with SVG paths for individual towns.
+  var tractMap = svgContainer.selectAll(".tracts")
+    .data(topojson.feature(tracts, tracts.objects.tract_census).features)
+    .enter()
+    .append("path")
+      .attr("class", function(d){ return "t" + d.properties.TRACT; })
+      .attr("d", function(d, i) {return geoPath(d); })
+      .style("fill", colorScale(0))
+      .style("fill-opacity", function(d) { return d.properties.MINORITY_HH_PCT * 2; } )
+      .style("opacity", 1)
+      .on("mouseenter", function(d){
+        d3.selectAll("." + this.getAttribute("class"))
+            .style("stroke-width", 2)
+            .style("stroke", "#ddd")
+
+        tip.show(d);
+      })
+      .on("mouseleave", function(d){
+         d3.selectAll("." + this.getAttribute("class"))
+            .style("stroke-width", 0)
+            .style("stroke", "#ddd")
+
+        tip.hide(d);
+      })
+
+      svgContainer1.selectAll(".tracts")
+    .data(topojson.feature(tracts, tracts.objects.tract_census).features)
+    .enter()
+    .append("path")
+      .attr("class", function(d){ return "t" + d.properties.TRACT; })
+      .attr("d", function(d, i) {return geoPath(d); })
+      .style("fill", colorScale(1))
+      .style("fill-opacity", function(d) { return d.properties.LOW_INC_HH_PCT * 2; } )
+      .style("opacity", 1)
+
+      svgContainer2.selectAll(".tracts")
+    .data(topojson.feature(tracts, tracts.objects.tract_census).features)
+    .enter()
+    .append("path")
+      .attr("class", function(d){ return "t" + d.properties.TRACT; })
+      .attr("d", function(d, i) {return geoPath(d); })
+      .style("fill", colorScale(2))
+      .style("fill-opacity", function(d) { return d.properties.SINGLE_FEMALE_HOH_PCT * 2; } )
+      .style("opacity", 1)
+
+      svgContainer3.selectAll(".tracts")
+    .data(topojson.feature(tracts, tracts.objects.tract_census).features)
+    .enter()
+    .append("path")
+      .attr("class", function(d){ return "t" + d.properties.TRACT; })
+      .attr("d", function(d, i) {return geoPath(d); })
+      .style("fill", colorScale(3))
+      .style("fill-opacity", function(d) { return d.properties.ZERO_VEH_HH_PCT * 2; } )
+      .style("opacity", 1)
+}
+
+CTPS.demoApp.generateStats2 = function(tracts){
+
+  var colorScale = d3.scale.linear()
+                  .domain([0, 1, 2, 3])
+                  .range(["#7570b3","#e7298a","#66a61e","#e6ab02"])
+
+  var allChart = d3.select("#chartMinority2").append("svg")
+    .attr("width", "100%")
+    .attr("height", 400)
+
+  var census = topojson.feature(tracts, tracts.objects.tract_census).features;
+  var maxmins = [];
+  census.forEach(function(i){
+    i.properties.MINORITY_HH_PCT = d3.round(i.properties.MINORITY_HH_PCT * 100, 2);
+    i.properties.SINGLE_FEMALE_HOH_PCT = d3.round(i.properties.SINGLE_FEMALE_HOH_PCT * 100, 2);
+    i.properties.LEP_POP_PCT = d3.round(i.properties.LEP_POP_PCT * 100, 2);
+    i.properties.ZERO_VEH_HH_PCT = d3.round(i.properties.ZERO_VEH_HH_PCT * 100, 2);
+    i.properties.LOW_INC_HH_PCT = d3.round(i.properties.LOW_INC_HH_PCT * 100, 2);
+    maxmins.push(i.properties.MINORITY_HH);
+    maxmins.push(i.properties.SINGLE_FEMALE_HOH);
+    maxmins.push(i.properties.LOW_INC_HH);
+    maxmins.push(i.properties.ZERO_VEH_HH);
+  })
+
+  var xScale = d3.scale.linear() 
+              .domain([0, 100])
+              .range([20, 1050])
+
+  var yScale = d3.scale.linear()
+              .domain([d3.min(maxmins), d3.max(maxmins)])
+              .range([350, -50])
+
+  var xNames = d3.scale.ordinal()
+              .domain(tracts)
+              .range([20, 500])
+ allChart.selectAll("points")
+    .data(census)
+    .enter()
+    .append("rect")
+      .attr("class", function(d){ return "t" + d.properties.TRACT; })
+      .attr("x", function(d) { return xScale(Math.floor(d.properties.MINORITY_HH_PCT))})
+      .attr("y", function(d) { return yScale(Math.floor(d.properties.MINORITY_HH/60) * 60) })
+      .attr("width", 8)
+      .attr("height", 8)
+      .style("fill-opacity", function(d) { return d.properties.MINORITY_HH_PCT/200; } )
+      .style("opacity", 1)
+      .style("fill", colorScale(0))  
+      .on("mouseenter", function(d) {
+                console.log( this.getAttribute("class"))
+
+      })
+
+ allChart.selectAll("points")
+    .data(census)
+    .enter()
+    .append("rect")
+      .attr("class", function(d){ return "t" + d.properties.TRACT; })
+      .attr("x", function(d) { return xScale(Math.floor(d.properties.LOW_INC_HH_PCT))})
+      .attr("y", function(d) { return yScale(Math.floor(d.properties.LOW_INC_HH/60) * 60) })
+      .attr("width", 8)
+      .attr("height", 8)
+      .style("fill-opacity", function(d) { return d.properties.LOW_INC_HH_PCT/200; } )
+      .style("fill", colorScale(1))  
+            .style("opacity", 1)
+
+
+ allChart.selectAll("points")
+    .data(census)
+    .enter()
+    .append("rect")
+      .attr("class", function(d){ return "t" + d.properties.TRACT; })      
+      .attr("x", function(d) { return xScale(Math.floor(d.properties.SINGLE_FEMALE_HOH_PCT))})
+      .attr("y", function(d) { return yScale(Math.floor(d.properties.SINGLE_FEMALE_HOH/60) * 60) })
+      .attr("width", 8)
+      .attr("height", 8)
+      .style("fill-opacity", function(d) { return d.properties.SINGLE_FEMALE_HOH_PCT/200; } )
+      .style("fill", colorScale(2))  
+      .style("opacity", 1)
+
+ allChart.selectAll("points")
+    .data(census)
+    .enter()
+    .append("rect")
+      .attr("class", function(d){ return "t" + d.properties.TRACT; })
+      .attr("x", function(d) { return xScale(Math.floor(d.properties.ZERO_VEH_HH_PCT))})
+      .attr("y", function(d) { return yScale(Math.floor(d.properties.ZERO_VEH_HH/60) * 60) })
+      .attr("width", 8)
+      .attr("height", 8)
+      .style("fill-opacity", function(d) { return d.properties.ZERO_VEH_HH_PCT/200; } )
+      .style("fill", colorScale(3))  
+      .style("opacity", 1)
+
 }

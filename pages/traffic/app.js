@@ -118,7 +118,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
       .attr("class", function(d) { return d.properties.city_town + " signals" })
       .attr("cx", function(d) {return projection(d.geometry.coordinates)[0]; })
       .attr("cy", function(d) {return projection(d.geometry.coordinates)[1]; })
-      .style("stroke-width", .5)
+      .style("stroke-width", 0)
       .attr("r", 1)
       .style("stroke", function(d) { 
         var whichCity = this.getAttribute("class").split(' ')[0];
@@ -128,7 +128,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
         })
         return colorScale(totalSignals);
       })
-      .style("fill",  function(d) { 
+      /*.style("fill",  function(d) { 
         var whichCity = this.getAttribute("class").split(' ')[0];
         var totalSignals = 0; 
         var signalsPerMile = 0; 
@@ -138,7 +138,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
               signalsPerMile = j.count/j.miles; }
         })
         return colorScale(totalSignals);
-      })
+      })*/
+      .style("fill", "white")
+
       .style("fill-opacity", 1)
       .style("opacity", .5)
       .on("mouseenter", function(d){
@@ -184,7 +186,9 @@ chart.selectAll(".lines")
       .attr("cy", function(d) { return yScale(d.count/d.miles)})
       .attr("r", function(d) { return Math.sqrt(d.miles)})
       .style("fill-opacity", .2)
-      .style("fill", function(d) { return colorScale(d.count)})
+      //.style("fill", function(d) { return colorScale(d.count)})
+          .style("fill", "white")
+
       .style("opacity", 1)
       .on("click", function(d){
         var whichCity = this.getAttribute("class").split(' ')[0];
@@ -204,7 +208,8 @@ chart.selectAll(".lines")
       //.attr("cx", function(d) { return xScale(d.count/d.miles)})
       .attr("cy", function(d) { return yScale(d.count/d.miles)})
       .attr("r", function(d) { return Math.sqrt(d.count)})
-      .style("fill", function(d) { return colorScale(d.count)})
+      //.style("fill", function(d) { return colorScale(d.count)})
+      .style("fill", "white")
       .style("opacity", 1)
       .on("click", function(d){
         var whichCity = this.getAttribute("class").split(' ')[0];

@@ -57,21 +57,39 @@ form {
 
 	<div class="col-md-12">
 		<h3> How much funding does each municipality receive? </h3>
+		<p> Census data from 2010 </p>
 	</div>
 
 	<div class="col-md-4" id="map"></div>
-	<div class="col-md-8" id="chartPop"></div>
 	<div class="col-md-8" id="chartMinority"></div>
 	<div class="col-md-8" id="chartIncome"></div>
-	<div class="col-md-8" id="chartMiles"></div>
+	<div class="col-md-8" id="chartLEP"></div>
+	<div class="col-md-8" id="chartFemale"></div>
 	<div class="col-md-8" id="tipFunding"></div>
 
 	<div class="col-md-12">
 		<h3> How much funding does each person receive? </h3>
+		<p> TIP Funding that year divided by the population
 	</div>
 
 	<div class="col-md-4" id="map2"></div>
 	<div class="col-md-8" id="perPerson"></div>
+
+	<div class="col-md-12">
+		<h3> A Closer Look at Municipality Demographics </h3>
+	</div>
+
+	<div class="col-md-3" id="map3"></div>
+	<div class="col-md-3" id="map4"></div>
+	<div class="col-md-3" id="map5"></div>
+	<div class="col-md-3" id="map6"></div>
+
+	<div class="col-md-12" id="chartMinority2"></div>
+
+	<div class="col-md-8" id="chartIncome2"></div>
+	<div class="col-md-8" id="chartLEP2"></div>
+	<div class="col-md-8" id="chartFemale2"></div>
+	<div class="col-md-8" id="chartVehicle"></div>
 
 </div>
 
