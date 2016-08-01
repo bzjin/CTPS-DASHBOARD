@@ -17,7 +17,7 @@ var geoPath = d3.geo.path().projection(projection);
 //Using the queue.js library
 queue()
 	.defer(d3.json, "../../JSON/psi_timeline.JSON")
-	.defer(d3.json, "../../JSON/road_inv_mpo_nhs_interstate_2015.geojson")
+	.defer(d3.json, "../../JSON/interstate_pavement_2015.topojson")
 	.defer(d3.json, "../../JSON/townregion.json")
 	.defer(d3.csv, "../../JSON/notable_exits_interstates.csv")
 	.awaitAll(function(error, results){ 
@@ -30,7 +30,8 @@ queue()
 CTPS.demoApp.generateTimeline = function(psitimeline) { 
 	var timeline = d3.select("#timeline").append("svg")
 		.attr("width", 1200)
-		.attr("height", 500);
+		.attr("height", 500)
+		//.style("overflow", "scroll");
 
 	timeline.append("text") 
 		.attr("x", -250)
@@ -207,7 +208,7 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 }
 
 //generate graph of PSI v. ADT 
-CTPS.demoApp.generateADTgraph = function(interstateRoads) { 
+/*CTPS.demoApp.generateADTgraph = function(interstateRoads) { 
 	console.log(interstateRoads.features);
 	var adtgraph = d3.select("#adtgraph").append("svg")
 		.attr("width", 1200)
@@ -399,14 +400,16 @@ CTPS.demoApp.generateADTgraph = function(interstateRoads) {
     		.style("opacity", .5)
     })
 
-    console.log(nested_routes);*/
+    console.log(nested_routes);
 } //end of generating ADTgraph
+*/
 
 CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {	
 
+  var interstateRoads = topojson.feature(interstateRoads, interstateRoads.objects.interstates).features
 //Create chart comparing interstate roads by coordinates
 	//append town names
-	interstateRoads.features.forEach(function(i){ 
+	interstateRoads.forEach(function(i){ 
 		var citytomatch = i.properties.CITY;
 		townregion.forEach(function(j){ 
 			if(j.TOWN_ID == citytomatch) {
@@ -465,7 +468,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	function findFlipFrom(d) { // Use to invert mile markers (find corresponding opposite origin for different route directions)
 		var tostorage = []; 
 		var fromstorage = []; 
-		interstateRoads.features.forEach(function(j){ 
+		interstateRoads.forEach(function(j){ 
 			if (j.properties.ROUTEKEY == d.properties.ROUTEKEY) { 
 				tostorage.push(j.properties.ROUTETO); 
 				fromstorage.push(j.properties.ROUTEFROM); 
@@ -479,7 +482,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	}
 
 	//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
-	interstateRoads.features.forEach(function(i){ 
+	interstateRoads.forEach(function(i){ 
 		if ((i.properties.ROUTEDIRECTION == "EB" || i.properties.ROUTEDIRECTION == "SB")) { 
 			i.properties.NORMALIZEDSTART = -(i.properties.ROUTETO - findFlipFrom(i)[0]);
 		} else if (i.properties.ROUTEKEY == "I95 NB" || i.properties.ROUTEKEY == "I495 NB") { 
@@ -492,7 +495,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	function findFlipExit(d) { 
 		var tostorage = []; 
 		var fromstorage = []; 
-		interstateRoads.features.forEach(function(j){ 
+		interstateRoads.forEach(function(j){ 
 			if (j.properties.ROUTEKEY == d.ROUTEKEY) { 
 				tostorage.push(j.properties.ROUTETO); 
 				fromstorage.push(j.properties.ROUTEFROM); 
@@ -536,7 +539,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	//		
 	var nested_directions = d3.nest()
 	.key(function(d) { return d.properties.ROUTEKEY;})
-	.entries(interstateRoads.features)
+	.entries(interstateRoads)
 
 	chartContainer.selectAll(".labels")
 		.data(nested_directions)
@@ -559,7 +562,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 
 	//Available data points
 	chartContainer.selectAll(".bars")
-		.data(interstateRoads.features)
+		.data(interstateRoads)
 		.enter()
 		.append("rect")
 			.attr("class", "bars")

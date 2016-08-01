@@ -130,7 +130,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		.attr("transform", "translate(0, 450)")
 		.call(xAxis)
 		.selectAll("text")
-		.attr("transform", "translate(0, 5)");
+		.style("font-size", "12px").style("text-anchor", "end").attr("transform", "rotate(-45) translate(-5, -5)");
 	
 	timeline.append("g").attr("class", "axis")
 		.attr("transform", "translate(70, 0)")
@@ -317,7 +317,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	cleanedbridges.forEach(function(i){
 
 		timeline2.append("rect")
-			.attr("class", "yr" + i.year + " bin" + d3.round(d3.round(i.healthIndex/5, 2)*100) + " individuals")
+			.attr("class", "yr" + i.year + " bin" + d3.round(d3.round(i.healthIndex/5, 2)*100) + " individuals " + i.town.toUpperCase())
 			.attr("x", function() { 
 				return xScale(i.year) + 8 + 15 * Math.floor(Math.random() * 3)
 			})
@@ -334,7 +334,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 				else {return "none";}
 			})
 			.style("fill-opacity", .5)
-			.style("stroke-width", .1)
+			.style("stroke-width", .5)
 			.style("opacity", 1)
 			/*.on("mouseenter", function(){ 
 				var mystring = this.getAttribute("class");
@@ -347,6 +347,20 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 				d3.selectAll("." + firstWord).filter(".aggregates").transition()
 					.style("opacity", 1);
 			})	*/
+	})
+
+	d3.selectAll(".townpicker").on("click", function(){
+		var mystring = this.getAttribute("class");
+		var arr = mystring.split(" ", 2);
+		var firstWord = arr[0]; 
+
+		timeline2.selectAll("rect")
+			.style("opacity", 0)
+
+		timeline2.selectAll("." + firstWord)
+			.style("opacity", 1)
+			.style("fill-opacity", 1)
+		
 	})
 	
 }
@@ -453,9 +467,9 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 		}
 	})*/
 
-	var height = 100;
-	var width = 100;
-	var padding = 10;
+	var height = 35;
+	var width = 70;
+	var padding = 0;
 
 	var nested_towns = d3.nest()
 		.key(function(d) { return d.town})
@@ -471,7 +485,7 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 
 	nested_towns.forEach(function(i) {
 		var xScale = d3.scale.linear().domain([2007, 2016]).range([0 + padding, width]);
-		var yScale = d3.scale.linear().domain([0, 1]).range([height, 30]);
+		var yScale = d3.scale.linear().domain([0, 1]).range([height, 0]);
 
 		var xAxis = d3.svg.axis().scale(xScale).tickSize(0);
 		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
@@ -490,12 +504,12 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 			.attr("transform", "translate(" + padding + ", 0)")
 			.call(yAxis).selectAll("text").remove();
 		
-		svg.append("text")
+		/*svg.append("text")
 			.attr("x", .5*(width + padding))
 			.attr("y", height * 0.1)
 			.style("text-anchor", "middle")
 			.style("font-size", 12)
-			.text(i.key);
+			.text(i.key);*/
 
 		var nested_struct_def = d3.nest() 
 			.key(function(j) { return j.year })
@@ -526,6 +540,13 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 			})
 			//placeholders: 
 		})
+
+		if (d3.max(structdefs, function(d) { return d.year}) != 2016 ) { 
+			structdefs.push( { "year": 2016, "structDef": .2, "structDefNOT": .8, "totalCount": 1200, "healthIndex": .8});
+		}
+		if (d3.max(structdefs, function(d) { return d.year}) != 2007 ) { 
+			structdefs.push( { "year": 2007, "structDef": .2, "structDefNOT": .8, "totalCount": 1200, "healthIndex": .8});
+		}
 
 		structdefs.push( { "year": 2008, "structDef": .2, "structDefNOT": .8, "totalCount": 1200, "healthIndex": .8});
 		structdefs.push( { "year": 2009, "structDef": .2, "structDefNOT": .8, "totalCount": 1200, "healthIndex": .8});

@@ -15,13 +15,16 @@ var geoPath = d3.geo.path().projection(projection);
 
 //Using the queue.js library
 queue()
-	.defer(d3.json, "../../JSON/city_lane_avgs.JSON")
 	.defer(d3.json, "../../JSON/noninterstate_psi_avg_timeline_by_city.JSON")
 	.awaitAll(function(error, results){ 
-		CTPS.demoApp.generateCities(results[0]);
-		//CTPS.demoApp.generateTimeline(results[1]); FANCY CRAZY ART FOR ALL ROAD SEGMENT PSI
-		CTPS.demoApp.generateCityTimeline(results[1]);
+		CTPS.demoApp.generateCityTimeline(results[0]);
 	}); 
+
+queue()
+	.defer(d3.json, "../../JSON/city_lane_avgs.JSON")
+	.awaitAll(function(error, results){ 
+		CTPS.demoApp.generateCities(results[0]);
+});
 
 CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	console.log(cityavg_time);
@@ -64,35 +67,11 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	.key(function(d) { return d.town;})
 	.entries(cityavg_time);
 
-	var voronoi = d3.geom.voronoi()
-		.clipExtent([[50, 50], [1000, 450]])
-
-	var xyCoords = [];
-	cityavg_time.forEach(function(i){
-		xyCoords.push([xScale(i.year), yScale(i.median)])
-	})
-	console.log(xyCoords)
-
-	/*timeline.selectAll("path")
-	    .data(voronoi(xyCoords))
-	  .enter().append("path")
-	    .style("fill", function(d, i) { return none; })
-	    .attr("d", function(d) { return "M" + d.join("L") + "Z"; }); */
-
+	
 	var valueline = d3.svg.line()
 		.interpolate("basis")
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.median); });
-
-	/*var q1 = d3.svg.line()
-		.interpolate("basis")
-	    .x(function(d) { return xScale(d.year); })
-	    .y(function(d) { return yScale(d.firstQuartile); })
-
-	var q3 = d3.svg.line()
-		.interpolate("basis")
-	    .x(function(d) { return xScale(d.year); })
-	    .y(function(d) { return yScale(d.thirdQuartile); })*/
 
 	var valuearea = d3.svg.area()
 		.interpolate("basis")
@@ -128,42 +107,6 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 			.style("stroke-width", .5)
 			.style("fill", "none")
 			.style("opacity", .5)
-			.on("mouseenter", function(d) {
-				var thisreg = this.getAttribute("class");
-				console.log(thisreg);
-				timeline.selectAll("path")
-					.style("opacity", .05)
-					.style("stroke", "#ddd")
-					.style("stroke-width", .5);
-
-				timeline.selectAll("." + thisreg)
-					.style("opacity", 1)
-					.style("stroke", "#ddd")
-					.style("stroke-width", 2);
-
-				timeline.selectAll(".uncolor")
-					.style("opacity", .01)
-					.style("stroke", "none")
-
-				timeline.selectAll("." + thisreg + "area")
-					.style("opacity", .3)
-					.style("stroke", "none")
-
-				timeline.selectAll("." + thisreg + "minmax")
-					.style("opacity", .1)
-					.style("stroke", "none")
-
-				})
-			.on("mouseleave", function(d) {
-				timeline.selectAll("path")
-					.style("opacity", .5)
-					.style("stroke", "#ddd")
-					.style("stroke-width", .5);
-
-				timeline.selectAll(".uncolor")
-					.style("opacity", .01)
-					.style("stroke", "none")
-			})
 	})
 			//.style("stroke-width", .5)
 		//	.style("stroke", "#ddd")
@@ -195,6 +138,7 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 			.style("opacity", .1)
 			.style("stroke", "none")
 	})
+	
 	//Color key
 	var xPos = 840;
 	var yPos = 350; 
@@ -241,6 +185,23 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 
 //Create bar chart comparing interstate highways by MAPC Subregions and cities
 	//Data sorting (could be worth "baking" outside of code)
+	avgpsi.forEach(function(i){ 
+		i.psiRed = 0; 
+		i.psiOrange = 0;
+		i.psiYellow = 0; 
+		i.psiGreen = 0; 
+		i.psiGreat = 0;
+
+		i['data'].forEach(function(j){
+			if (j.psi < 2.5) { i.psiRed += j.partlength * j.lanes}
+			else if (j.psi < 3) { i.psiOrange += j.partlength * j.lanes}
+			else if (j.psi < 3.5) { i.psiYellow += j.partlength * j.lanes}
+			else if (j.psi < 4) { i.psiGreen += j.partlength * j.lanes}
+			else if (j.psi < 5) { i.psiGreat += j.partlength * j.lanes}
+		})
+	})
+
+	
 	var city_names = [];
 	//Sort cities into an array by MAPC Subregion for x-axis
 	avgpsi.sort(function(a,b) { 
@@ -253,14 +214,15 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 
 	avgpsi.forEach(function(i){ 
 		city_names.push(i.city);
-		
 	})
 
+console.log(avgpsi)
 	//Begin creating visual elements 
 	 
 	var cityContainer = d3.select("#citygradients").append("svg")
 		.attr("width", "100%")
 		.attr("height", 1500)
+		.style("overflow", "scroll")
 	
 	//Title labels
 	cityContainer.append("text")
@@ -289,7 +251,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 		.style("opacity", .8);
 
 	//define axes
-	yScale = d3.scale.ordinal().domain(city_names).rangePoints([80, 1430]);
+	yScale = d3.scale.ordinal().domain(city_names).rangePoints([83, 1430]);
 
 	xScaleSegment = d3.scale.linear().domain([0, 5]).range([0, 300]);
 	xScaleGraph = d3.scale.linear().domain([0, 5]).range([100, 400]);
@@ -321,12 +283,12 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	cityContainer.append("g").attr("class", "yaxis")
 		.attr("transform", "translate(100, 0)")
 		.call(yAxis)
-	.selectAll("text")
-		.attr("x", -98)
-		.attr("transform", "translate(0, -3)")
-		.style("text-anchor", "start")
-		.style("font-weight", 300)
-		.style("font-size", 12);
+		.selectAll("text")
+			.attr("x", -98)
+			.attr("transform", "translate(0, -3)")
+			.style("text-anchor", "start")
+			.style("font-weight", 300)
+			.style("font-size", 12);
 
 
 //mouseover function	
@@ -338,135 +300,104 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	  })
 
 	cityContainer.call(tip3); 
-	
+
 	function dataVizAll() {
+		//cityContainer.selectAll(".gradient").remove();
+		cityContainer.selectAll("rect").remove();
 
-		//displays psi distribution in grey gradients of town
-		var bars_cities = cityContainer.selectAll(".gradient").remove();
-		var bars_cities = cityContainer.selectAll(".gradient")
-			.data(avgpsi)
-			.enter()
-			.append("rect")
-				.attr("class", function(d) { return "c" + d.city + " gradient"})
-				.attr("y", function(d) { return yScale(d.city)-10})
-				.attr("x", function(d) { 
-					if (!isNaN(d.psi)){
-						return xScaleGraph(d.psi)
-					} else { 
-						return -100;
-					}})
-				.attr("width", 10)
-				.attr("height", 10)
-				.style("fill", "grey")
-				.style("opacity", function(d) {return d.partlength * d.lanes * 0.5 ; })
-				.style("stroke", "none")
-				.on("mouseenter", function (d) { 
-					tip3.show(d);
-				})
-				.on("mouseleave", tip3.hide);
-		
-		//displays average PSI of town
-		var averages = cityContainer.selectAll(".averages").remove();
-		var averages = cityContainer.selectAll(".averages")
-			.data(avgpsi)
-			.enter()
-			.append("rect")
-				.attr("class", "averages")
-				.attr("y", function(d) { return yScale(d.city)-10;})
-				.attr("x", function(d) { return xScaleGraph(d.cityavg);})
-				.attr("width", 2)
-				.attr("height", 10)
-				.style("fill", function (d) { return colorScale(d.cityavg); })
-				.style("opacity", 1)
-				.style("stroke", "none")
-				.on("mouseenter", tip3.show)
-				.on("mouseleave", tip3.hide);
+		avgpsi.forEach(function(index){
+			cityContainer.selectAll(".gradient")
+				.data(index['data'])
+				.enter()
+				.append("rect")
+					.attr("class", function(d) { return "c" + index.city; })
+					.attr("y", function(d) { return yScale(index.city)-10})
+					.attr("x", function(d) { return xScaleGraph(d.psi) })
+					.attr("width", function(d) {
+						if (!isNaN(d.psi)){ return 10; }
+						else { return 0}})
+					.attr("height", 10)
+					.style("fill", "grey")
+					.style("opacity", function(d) { return d.partlength * d.lanes * .5; })
+					.style("stroke", "none")
+					.on("mouseenter", function (d) { 
+						tip3.show(index);
+					})
+					.on("mouseleave", tip3.hide);
+			
+			//displays average PSI of town
+			
 
-		var nested_cities = d3.nest()
-			.key(function(d) { return d.city; })
-			.key(function(d) { return colorScale(d.psi); })
-			.entries(avgpsi);
+			cityContainer
+				.append("rect")
+					.attr("y", yScale(index.city) - 10)
+					.attr("x", xScaleGraph(index.cityavg))
+					.attr("width", 2)
+					.attr("height", 10)
+					.style("fill", colorScale(index.cityavg))
+					.style("opacity", 1)
+					.style("stroke", "none")
 
-		var psisums = []; 
 
-		nested_cities.forEach(function(i) { 
-			i.values.forEach(function(j){
-				var psisum = d3.sum(j.values, function(d) { return d.partlength * d.lanes;}); 
-				var totalsum = j.values[0].citytotal; 
-				psisums.push({
-					"city_name" : i.key, 
-					"psiRange" : j.key,
-					"sum" : psisum,
-					"totalsum" : totalsum
-				});
-			});
-		}); 
+			var psiColors = d3.scale.linear()
+							.domain([0, 1, 2, 3, 4])
+							.range(["#d7191c", "#fdae61", "#ffffbf", "#a6d96a", "#1a9641"])
 
-		//console.log(nested_cities[478].values);
+			psiBins("psiRed");
+			psiBins("psiOrange");
+			psiBins("psiYellow");
+			psiBins("psiGreen");
+			psiBins("psiGreat");
 
-		var findCityStack = function(cityString, hexCode) {
-		    for (var i = 0; i < psisums.length; i++) {
-		        if (psisums[i].city_name == cityString) {
-		        	if (psisums[i].psiRange == hexCode) { 
-		        		return psisums[i].sum;
-		        	}
-		        } 
-		    }
-			return 0;
-		}
-
-		//displays total lane mileage in PSI bins
-		var bars_cities = cityContainer.selectAll(".bars_cities").remove();
-		var bars_cities = cityContainer.selectAll(".bars_cities")
-			.data(psisums)
-			.enter()
-			.append("rect")
-				.attr("class", "bars_cities")
-				.attr("height", 10)
-				.attr("width", function(d) { 
-					if (d.psiRange != undefined) { 
-						return xScaleSegmentBars(d.sum);
-					} else {
-						return 0; 
-					}})
-				.attr("y", function(d) { return yScale(d.city_name)-10;})
-				.attr("x", function(d) { 
-					if (d.psiRange == "undefined" ) { return -5000; }
-					if (d.psiRange == "#d7191c" ) { return xScaleGraphBars(0); }
-					if (d.psiRange == "#fdae61" ) { return xScaleGraphBars(findCityStack(d.city_name, "#d7191c"));}
-					if (d.psiRange == "#ffffbf" ) { return xScaleGraphBars(findCityStack(d.city_name, "#d7191c")+findCityStack(d.city_name, "#fdae61"));}
-					if (d.psiRange == "#a6d96a" ) { return xScaleGraphBars(findCityStack(d.city_name, "#d7191c")+findCityStack(d.city_name, "#fdae61")+findCityStack(d.city_name, "#ffffbf"));}
-					if (d.psiRange == "#1a9641" ) { return xScaleGraphBars(findCityStack(d.city_name, "#d7191c")+findCityStack(d.city_name, "#fdae61")+findCityStack(d.city_name, "#ffffbf")+findCityStack(d.city_name, "#a6d96a"));}
-				})
-				.style("stroke", "none")
-				.style("fill", function(d) { return d.psiRange;})
-
-		//displays lane mileage in PSI bins by percent
-		var percent_cities = cityContainer.selectAll(".percent_cities").remove();
-		var percent_cities = cityContainer.selectAll(".percent_cities")
-			.data(psisums)
-			.enter()
-			.append("rect")
-				.attr("class", "percent_cities")
-				.attr("height", 10)
-				.attr("width", function(d) { 
-					if (d.psiRange != undefined) { 
-						return xScaleSegmentPercent(d.sum/d.totalsum);
-					} else {
-						return 0; 
-					}})
-				.attr("y", function(d) { return yScale(d.city_name)-10;})
-				.attr("x", function(d) { 
-					if (d.psiRange == "undefined" ) { return -5000; }
-					if (d.psiRange == "#d7191c" ) { return xScaleGraphPercent(0); }
-					if (d.psiRange == "#fdae61" ) { return xScaleGraphPercent(findCityStack(d.city_name, "#d7191c")/d.totalsum);}
-					if (d.psiRange == "#ffffbf" ) { return xScaleGraphPercent((findCityStack(d.city_name, "#d7191c")+findCityStack(d.city_name, "#fdae61"))/d.totalsum);}
-					if (d.psiRange == "#a6d96a" ) { return xScaleGraphPercent((findCityStack(d.city_name, "#d7191c")+findCityStack(d.city_name, "#fdae61")+findCityStack(d.city_name, "#ffffbf"))/d.totalsum);}
-					if (d.psiRange == "#1a9641" ) { return xScaleGraphPercent((findCityStack(d.city_name, "#d7191c")+findCityStack(d.city_name, "#fdae61")+findCityStack(d.city_name, "#ffffbf")+findCityStack(d.city_name, "#a6d96a"))/d.totalsum);}
-				})
-				.style("stroke", "none")
-				.style("fill", function(d) { return d.psiRange;})
-	}
+			//displays total lane mileage in PSI bins
+			function psiBins (psiBin) { 
+				cityContainer
+					.append("rect")
+						.attr("class", "bars_cities")
+						.attr("height", 10)
+						.attr("width", xScaleSegmentBars(index[psiBin]))
+						.attr("y", yScale(index.city) - 10)
+						.attr("x", function() { 
+							if (psiBin == "psiRed") { return xScaleGraphBars(0); }
+							if (psiBin == "psiOrange") { return xScaleGraphBars(index.psiRed) }
+							if (psiBin == "psiYellow") { return xScaleGraphBars(index.psiRed + index.psiOrange) }
+							if (psiBin == "psiGreen") { return xScaleGraphBars(index.psiRed + index.psiOrange + index.psiYellow) }
+							if (psiBin == "psiGreat") { return xScaleGraphBars(index.psiRed + index.psiOrange + index.psiYellow + index.psiGreen) }								
+						})
+						.style("stroke", "none")
+						.style("fill", function() { 
+							if (psiBin == "psiRed") { return psiColors(0) }
+							if (psiBin == "psiOrange") { return psiColors(1) }
+							if (psiBin == "psiYellow") { return psiColors(2) }
+							if (psiBin == "psiGreen") { return psiColors(3) }
+							if (psiBin == "psiGreat") { return psiColors(4) }								
+						})
+			
+				//displays lane mileage in PSI bins by percent
+				cityContainer
+					.append("rect")
+						.attr("class", "bars_cities")
+						.attr("height", 10)
+						.attr("width", xScaleSegmentPercent(index[psiBin]/index.citytotal))
+						.attr("y", yScale(index.city) - 10)
+						.attr("x", function() { 
+							if (psiBin == "psiRed") { return xScaleGraphPercent(0); }
+							if (psiBin == "psiOrange") { return xScaleGraphPercent(index.psiRed/index.citytotal) }
+							if (psiBin == "psiYellow") { return xScaleGraphPercent((index.psiRed + index.psiOrange)/index.citytotal) }
+							if (psiBin == "psiGreen") { return xScaleGraphPercent((index.psiRed + index.psiOrange + index.psiYellow)/index.citytotal) }
+							if (psiBin == "psiGreat") { return xScaleGraphPercent((index.psiRed + index.psiOrange + index.psiYellow + index.psiGreen)/index.citytotal) }								
+						})
+						.style("stroke", "none")
+						.style("fill", function() { 
+							if (psiBin == "psiRed") { return psiColors(0) }
+							if (psiBin == "psiOrange") { return psiColors(1) }
+							if (psiBin == "psiYellow") { return psiColors(2) }
+							if (psiBin == "psiGreen") { return psiColors(3) }
+							if (psiBin == "psiGreat") { return psiColors(4) }								
+						})
+			}//end psiBins function
+		}) //end forEach loop
+	}//end dataVizAll();
 
 	dataVizAll(); 
 
@@ -532,7 +463,6 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-300, 0, 0);
 		
 		cityContainer.select(".yaxis").transition()
-			.duration(750)
 			.call(yAxis)
 		.selectAll("text")
 			.attr("x", -95)

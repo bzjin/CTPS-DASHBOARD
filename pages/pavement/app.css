@@ -25,9 +25,6 @@ div h3 {
 #citygradients { 
   position: relative;
 }
-#adtgraph { 
-  height: 80vh;
-}
 
 .d3-tip {
   line-height: 1.2;
@@ -46,9 +43,8 @@ div h3 {
 }
 
 .bigbutton {
-    border: .5px solid white;
+    border: .5px dotted white;
     color: white;
-    width: 40%;
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
@@ -58,6 +54,7 @@ div h3 {
 }
 
 .bigbutton:hover, .bigbutton:active, .bigbutton:focus {
+    background-color: rgba(255, 255, 255, .1);
     font-weight: 700;
     outline:none;
 }
@@ -123,4 +120,5 @@ div h3 {
     width: 9%;
 }
 
+}
 

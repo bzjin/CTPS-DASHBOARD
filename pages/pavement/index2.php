@@ -21,7 +21,7 @@
 <!-- Bootstrap-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<style> text {fill: #ddd;} .axis {fill: none; stroke-width: 0.1px; stroke: #ddd;} .yaxis {fill: none; stroke-width: .5; stroke: #ddd;}</style>
+<style> text {fill: #ddd;} .axis path, .axis line, .yaxis path, .yaxis line {fill: none; stroke-width: 0.5; stroke: #ddd; opacity: .1; } </style>
 
 </head>
 
@@ -153,8 +153,8 @@
 
 	<div class="col-md-12">
 	<h3>Boston Region Municipalities Pavement in 2015</h3>
-		<button class="bigbutton" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
-		<button class="bigbutton" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
+		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
+		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
 	</div>
 
 	<div id="citygradients" class="col-md-12"></div>

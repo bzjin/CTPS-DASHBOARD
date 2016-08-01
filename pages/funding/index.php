@@ -17,7 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet">
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -27,7 +27,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
-.axis line, .axis path { fill: none; stroke-width: 0; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
+.axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
 text {fill: #ddd; font-size: 14px;} 
 form {
   position: absolute;
@@ -79,19 +79,15 @@ form {
 		<h3> A Closer Look at Municipality Demographics </h3>
 	</div>
 
-	<div class="col-md-3" id="map3"></div>
-	<div class="col-md-3" id="map4"></div>
-	<div class="col-md-3" id="map5"></div>
-	<div class="col-md-3" id="map6"></div>
+	<button class='allMetrics bigbutton col-md-2'> All Households </button>
+	<button class='minority bigbutton col-md-2'> Minority </button>
+	<button class='lowIncome bigbutton col-md-2'> Low Income </button>
+	<button class='singleFemale bigbutton col-md-3'> Single Female Headed </button>
+	<button class='zeroVehicle bigbutton col-md-2'> Zero Vehicle </button>
 
-	<div class="col-md-12" id="chartMinority2"></div>
+	<div class="col-md-5" id="map3"></div>
 
-	<div class="col-md-8" id="chartIncome2"></div>
-	<div class="col-md-8" id="chartLEP2"></div>
-	<div class="col-md-8" id="chartFemale2"></div>
-	<div class="col-md-8" id="chartVehicle"></div>
-
-</div>
+	<div class="col-md-7" id="chartDemographics"></div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>

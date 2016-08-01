@@ -28,7 +28,7 @@ div h3 {
 }
 
 .bigbutton {
-    border: .5px solid white;
+    border: .5px dotted white;
     color: white;
     padding: 5px 10px;
     text-align: center;
@@ -39,18 +39,12 @@ div h3 {
 }
 
 .bigbutton:hover, .bigbutton:active, .bigbutton:focus {
+    background-color: rgba(255, 255, 255, .1);
     font-weight: 700;
     outline:none;
-}
-.yrpicker { 
-  font-weight: 300;
 }
 
-.yrpicker:hover, .yrpicker:active, .yrpicker:focus {
-    color: ;
-    font-weight: 700;
-    outline:none;
-}
+
 .d3-tip {
   line-height: 1;
   padding: 10px;

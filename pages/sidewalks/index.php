@@ -17,7 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet">
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -48,8 +48,6 @@ text {fill: #ddd; font-size: 14px;}
 		<h3> How much sidewalk do Boston region municipalities have on their roadways?</h3>
 		<p> Can we walk to all the places to which we can drive? The visualization below shows the number of road miles that have sidewalks on either side of the road.
 			A ratio of 0.0  means that none of that municipality's roads have sidewalks on either side. A ratio of 1.0 means that all of its roads have sidewalks on either side. </p>
-		<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Centerline Miles
-			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Sidewalk Miles </p>
 	</div>
 	<div class="col-md-12">
 		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> 

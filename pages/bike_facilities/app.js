@@ -22,25 +22,29 @@ var colorScaleBars = d3.scale.linear()
 //Using the queue.js library
 queue()
   .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
-  .defer(d3.json, "../../json/mpo_existing_bike_facilities_2016.topojson")
+  //.defer(d3.json, "../../json/mpo_existing_bike_facilities_2016.topojson")
   .defer(d3.csv, "../../json/bike_facilities_by_town.csv")
   .awaitAll(function(error, results){ 
-    CTPS.demoApp.generateMap(results[0],results[1], results[2]);
-    CTPS.demoApp.generatePlot(results[2]);
+    CTPS.demoApp.generateMap(results[0],results[1]);
+    CTPS.demoApp.generatePlot(results[1]);
     //CTPS.demoApp.generateAccessibleTable(results[1]);
   }); 
-//ar colorScale = d3.scale.linear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
-
-var tip = d3.tip()
-    .attr('class', 'd3-tip')
-    .offset([-10, 0])
-    .html(function(d) {
-      return d.properties.TOWN ;
-    })
 
 ////////////////* GENERATE MAP *////////////////////
-CTPS.demoApp.generateMap = function(mpoTowns, bikeRoads, bikeData) {  
+CTPS.demoApp.generateMap = function(mpoTowns, bikeData) {  
   // SVG Viewport
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([90, 0])
+    .html(function(d) {
+      var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+      var percent_onroad = findIndex(capTown, "PERCENT_ONROAD") * 100;
+      var percent_offroad = findIndex(capTown, "PERCENT_OFFROAD") * 100;
+      var miles_onroad = findIndex(capTown, "TOTAL_ONROAD");
+      var miles_offroad = findIndex(capTown, "TOTAL_OFFROAD");
+
+      return "<p>" + capTown + "</p>" + d3.round(percent_onroad, 1) + "% On-Road (" + miles_onroad + " Miles)<br>" + d3.round(percent_offroad, 1) + "% Off-Road (" + miles_offroad + " Miles)" ;
+    })
 
   var svgContainer = d3.select("#map").append("svg")
     .attr("width", "100%")
@@ -85,6 +89,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeRoads, bikeData) {
       })
       .style("stroke", "#191b1d")
       .style("stroke-width", "1px")
+      .on("mouseenter", function(d) { 
+        tip.show(d);
+      })
 
    /*var bikeTrails = svgContainer.selectAll(".biketrails")
     .data(topojson.feature(bikeRoads, bikeRoads.objects.mpo_existing_bike_facilities_2016).features)
@@ -206,7 +213,7 @@ function plot() {
     .attr('class', 'd3-tip')
     .offset([90, 0])
     .html(function(d) {
-      return "<p>" + d3.round(d.PERCENT_ONROAD*100, 1) + "% On-Road (" + d.TOTAL_ONROAD + " Miles)<br>" + d3.round(d.PERCENT_OFFROAD*100, 1) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)</p>" ;
+      return d3.round(d.PERCENT_ONROAD*100, 1) + "% On-Road (" + d.TOTAL_ONROAD + " Miles)<br>" + d3.round(d.PERCENT_OFFROAD*100, 1) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
     })
 
   bikeData.forEach(function(i){

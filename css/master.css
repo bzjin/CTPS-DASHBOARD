@@ -55,17 +55,17 @@ p > b {
 }
 
 button { 
-  font-weight: 700;
+  font-weight: 300;
   color: #ddd;
   background: none;
+  border: 1px dotted white;
+
 }
 
 button:active, button:hover, button:focus,  { 
   
   outline:none;
   font-weight: 700;
-  letter-spacing: 5px;
-  border-bottom: 1px dotted white;
   background-color: (255, 255, 255, .1);
 }
 
@@ -77,6 +77,10 @@ button:active, button:hover, button:focus,  {
   font-size: 10px;
   padding-top: 10px;
   opacity: .5;
+}
+
+.axis text, .yaxis text { 
+  font-family: "Open Sans";
 }
 
 .top-nav { 
@@ -97,21 +101,20 @@ button:active, button:hover, button:focus,  {
 }
 
 .top-nav li i { 
-  padding-right: 15px;
+  padding-right: 10px;
 }
 
 .top-nav a  { 
   color: white;
   opacity: .5;
-    transition: letter-spacing 1s; 
-   -webkit-transition: letter-spacing 1s
 }
 
 .top-nav a:hover, .top-nav a:focus, .top-nav a:active  { 
   text-decoration: none;
   color: white;
   opacity: .8;
-  letter-spacing: 2px;
+  font-weight: 700;
+  border-bottom: 2px dotted white;
 }
 
 .I-90 { 
@@ -128,6 +131,37 @@ button:active, button:hover, button:focus,  {
 }
 .I495 { 
   color: #e6ab02;
+}
+.yr2006 { 
+  color: #9e0142;
+}
+.yr2007 { 
+  color: #d53e4f;
+}
+.yr2008 { 
+  color: #f46d43;
+}
+.yr2009 { 
+  color: #fdae61;
+}
+.yr2010 { 
+  color: #fee08b;
+}
+.yr2011 { 
+  color: #ffffbf;
+}
+.yr2012 { 
+  color: #e6f598;
+}
+.yr2013 { 
+  color: #abdda4;
+}
+.yr2014 { 
+  color: #66c2a5;
+}
+
+.yr2015 { 
+  color: #3288bd;
 }
 
 /*These elements are only visible to screen readers*/
