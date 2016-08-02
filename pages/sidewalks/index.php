@@ -51,7 +51,7 @@ text {fill: #ddd; font-size: 14px;}
 	</div>
 	<div class="col-md-12">
 		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> 
-		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average Sidewalk Miles to Centerline Miles Ratio</button>
+		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Sidewalk Miles to Centerline Miles Ratio</button>
 	</div>
 	<div class="col-md-12">
 		<button class='allyrs yrpicker col-md-1'> All</button>

@@ -92,6 +92,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData) {
       .on("mouseenter", function(d) { 
         tip.show(d);
       })
+      .on("mouseleave", function(d) { 
+        tip.hide(d);
+      })
 
    /*var bikeTrails = svgContainer.selectAll(".biketrails")
     .data(topojson.feature(bikeRoads, bikeRoads.objects.mpo_existing_bike_facilities_2016).features)

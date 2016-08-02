@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
-<title>Congestion in the Boston MPO Region</title>
+<title>Funding in the Boston MPO Region</title>
 <link rel="stylesheet" href="app.css"/>
 <link rel="stylesheet" href="../../css/master.css"/>
 
@@ -17,19 +17,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet">
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <!-- Bootstrap-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
-
-.axis line, .axis path, .axis text { fill: none; stroke-width: 0; stroke: #ddd; shape-rendering: crispEdges;} 
-.yaxis line, .yaxis path { fill: none; stroke-width: 0px; shape-rendering: crispEdges;} text {fill: #ddd; font-size: 14px;} 
-.xaxis {fill: none; stroke-width: .5; stroke: #ddd;} path { shape-rendering: optimizeQuality;}
-
+.axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
+text {fill: #ddd; font-size: 14px;} 
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.node {
+  border: none;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
 </style> 
 </head>
 
@@ -40,36 +52,28 @@
 	<?php include '../../components/top-nav.php';?>
 </div>
 	<div class="col-md-12">
-		<h3 class="inner-nav">
-			<a href="index.php" title="Go to express highways congestion"><i class="fa fa-circle-o" aria-hidden="true"></i> Express Highways</a>
-			<a href="#" title="Go to arterial routes congestion"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Arterial Routes</a></h3>
-		<h1>Congestion</h1>
-		<p>Descriptive text TBD </p>
+		<h1>Demographics</h1>
 	</div>
 
-
 	<div class="col-md-12">
-		<h3> Congestion across Boston Region Arterial Routes </h3>
-		<p> Click on a route for a detailed view of its AM congestion. </p>
-		<div class="col-md-9" id="mapNonInterstate"></div>
-		<div class="col-md-3" id="crossSection"></div>
+		<h3> A Closer Look at Municipality Demographics </h3>
 	</div>
 
-	<!--
-	<div class="col-md-12">
-		<h3> Free Flow v. Congested Travel Time </h3> 
-		<button id="congAnim2"> Start Animation </button>
-		<div class="col-md-12">
-			<div class="col-md-4" id="freeFlow2"> Driving at Speed Limit </div>
-			<div class="col-md-4" id="amCong2"> Driving in AM Congestion</div>
-			<div class="col-md-4" id="pmCong2"> Driving in PM Congestion </div>
-		</div>
-	</div>-->
-<div class="footer col-md-12">
+	<button class='allMetrics bigbutton col-md-2' autofocus> All Households </button>
+	<button class='minority bigbutton col-md-2 I-90'> Minority </button>
+	<button class='lowIncome bigbutton col-md-2 I-93'> Low Income </button>
+	<button class='singleFemale bigbutton col-md-3 I-95'> Single Female Headed </button>
+	<button class='zeroVehicle bigbutton col-md-2 I290'> Zero Vehicle </button>
+
+	<div class="col-md-5" id="map3"></div>
+
+	<div class="col-md-7" id="chartDemographics"></div>
+
+	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>
 </div>
-<script src="app2.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>

@@ -46,14 +46,14 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	Non-Motorized Crashes</a><a href="#" alt="Go to non-motorized crashes"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Motorized Crashes</a></h3>	
 	<h1>Crashes</h1>
 	
-	<p>The ability to move is crucial to every aspect of our existence. And yet, people face substantial risk getting from place to place in the Boston region. Roads claimed the lives of 53 people in the Boston region last year. </p>
-
-	<p>We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. The MPO aims to keep you safe everywhere and every way that you move. No loss of life is acceptable. </p>
-	<p> Discuss (metrics)</p>
+	<p>The ability to move is crucial to every aspect of our existence. And yet, people face substantial risk getting from place to place in the Boston region. Roads claimed the lives of 53 people in the Boston region last year. 
+		We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. 
+		The MPO aims to keep you safe everywhere and every way that you move. For this reason, we track injuries and fatalities from crashes throughout the region.
+		</p>
 	</div>
 
 	<div class="col-md-12"> 
-	<h3>Vehicle Injuries Over Time </h3>
+	<h3>Trends Over TIme: Vehicle Injuries </h3>
 		<div id="map" class="col-md-5">
 			<p> Click on each city or town to see its injury counts over time. </p> 
 		</div>
@@ -61,7 +61,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	</div>
 
 	<div class="col-md-12" >
-	<h3> Vehicle Injuries and Fatalities in 2013 </h3>
+	<h3>A Closer Look: One Year of Vehicle Crashes</h3>
 	<p> Boston Region saw <b>14888</b> total vehicle crash injuries in 2013. Each dot represents one crash. <b>68</b> solid, filled dots represent fatalities.</p>
 		<div class="col-md-12 key">
 			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries

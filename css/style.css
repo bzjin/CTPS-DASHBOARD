@@ -3,27 +3,25 @@
 	font-family:"Raleway", sans-serif;
   color: #ddd;
   font-weight: 300; 
- 
 }
 
 html { 
   background-color: #191b1d; 
-
 }
+
 body { 
   background-color: #191b1d;
   z-index: -2; 
   height: 0;
-
 }
+
 #header { 
   position: absolute;
   padding-left: 50px;
   padding-top: 15px;
   text-align: left;
   text-transform: uppercase;
-
- }
+}
 
 h1 { 
   font-weight: 700; 
@@ -36,8 +34,6 @@ h2 {
   font-size: 18px;
   letter-spacing: 10px;
   padding-left: 7px;
-
-
 }
 
 h3, h4 { 
@@ -47,18 +43,16 @@ h3, h4 {
   padding-left: 7px;
   line-height: 1;
   padding-bottom: -20px;
-
  }
 
 p { 
-  font-family: "Open Sans";
   font-weight: 300;
   font-size: 12px;
   line-height: 1.3;
   padding-left: 25px;
   opacity: .5;
-  padding-bottom: 20px;
- }
+  padding-bottom: 30px;
+}
 
 p > b { 
   font-weight: 700; 
@@ -69,6 +63,7 @@ p > b {
 }
 
 div {
+  position: relative;
   display: inline-block;
   background-color: none;
 }
@@ -76,13 +71,8 @@ div {
 #map { 
   position: fixed; 
   top: 0;
-  left: 0; 
+  left: -200px; 
   z-index: -2;
-}
-
-/* Padding for spacing */
-.inner {
-  padding: 30px;
 }
 
 @media screen and (max-width: 768px) {
@@ -131,7 +121,7 @@ div {
 
   .desktop-nav { 
     float: right;
-    text-align: right;
+    text-align: left;
   }
 
   a { 
@@ -139,17 +129,14 @@ div {
     font-size: 18px;
     color: rgba(255,255,255,.75);
     text-decoration: none;
-    letter-spacing: 3px;
+      letter-spacing: 2px;
     text-transform: uppercase;
-    -webkit-transition: padding-left 1.5s, letter-spacing 2s; /* For Safari 3.1 to 6.0 */
-    transition: padding-left 1.5s, letter-spacing 2s;
   }
 
     a:hover, a:focus, a:active { 
     outline: none;
     font-weight: 700;
     padding-left: 0px;
-    letter-spacing: 5px;
     border-bottom: dotted 1px white;
     text-decoration: none;
     color: rgba(255,255,255,1);
@@ -165,22 +152,24 @@ div {
     display: none;
   }
 
+  .desktop-nav { 
+    float: right;
+    text-align: left;
+  }
+
   a { 
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     color: rgba(255,255,255,.75);
     text-decoration: none;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    -webkit-transition: padding-left 1.5s, letter-spacing 2s; /* For Safari 3.1 to 6.0 */
-    transition: padding-left 1.5s, letter-spacing 2s;
   }
 
     a:hover, a:focus, a:active { 
     outline: none;
     font-weight: 700;
     padding-left: 0px;
-    letter-spacing: 5px;
     border-bottom: dotted 1px white;
     text-decoration: none;
     color: rgba(255,255,255,1);
@@ -191,9 +180,9 @@ div {
 /* All */
 .footer { 
   position: absolute;
-  bottom: 10px;
+  bottom: 0px;
   text-align: left;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .fa { 

@@ -68,26 +68,12 @@ form {
 	<div class="col-md-8" id="tipFunding"></div>
 
 	<div class="col-md-12">
-		<h3> How much funding does each person receive? </h3>
-		<p> TIP Funding that year divided by the population
+		<h3> How much funding is available per capita in each municipality? </h3>
+		<p> TIP Funding per year divided by the population
 	</div>
 
 	<div class="col-md-4" id="map2"></div>
 	<div class="col-md-8" id="perPerson"></div>
-
-	<div class="col-md-12">
-		<h3> A Closer Look at Municipality Demographics </h3>
-	</div>
-
-	<button class='allMetrics bigbutton col-md-2'> All Households </button>
-	<button class='minority bigbutton col-md-2'> Minority </button>
-	<button class='lowIncome bigbutton col-md-2'> Low Income </button>
-	<button class='singleFemale bigbutton col-md-3'> Single Female Headed </button>
-	<button class='zeroVehicle bigbutton col-md-2'> Zero Vehicle </button>
-
-	<div class="col-md-5" id="map3"></div>
-
-	<div class="col-md-7" id="chartDemographics"></div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>

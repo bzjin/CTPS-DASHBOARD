@@ -61,7 +61,6 @@ div h3 {
 
 .timeline { 
     border: .5px dotted white;
-    width: 15%;
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
@@ -72,6 +71,7 @@ div h3 {
 
 .timeline:hover, .timeline:active, .timeline:focus {
     font-weight: 700;
+    background-color: rgba(255, 255, 255, .1);
     outline:none;
 }
 
@@ -89,7 +89,7 @@ div h3 {
   padding-right: 20px;
 }
 
-.inner-nav a:hover,  .inner-nav a:focus   .inner-nav a:active{ 
+.inner-nav a:hover,  .inner-nav a:focus,  .inner-nav a:active{ 
   color: #e26a6a;
   opacity: 1;
   text-decoration: none;
@@ -119,6 +119,5 @@ div h3 {
 .townpicker { 
     width: 9%;
 }
-
 }
 

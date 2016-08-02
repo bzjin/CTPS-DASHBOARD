@@ -40,8 +40,7 @@
 
 	<h1 class="col-md-12">Pavement Condition</h1>
 
-	<p class="col-md-12">[Attention Getter] Blurb on pavement condition. Why is it important? Why do we care?</p>
-	<p class="col-md-12"> Define PSI<p>
+	<p class="col-md-12">Descriptive text TBD</p>
 
 	
 	<div class="col-md-12">

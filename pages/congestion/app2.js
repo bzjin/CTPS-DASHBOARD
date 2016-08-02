@@ -290,14 +290,14 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 		svgContainer.append("text")
 			.style("font-weight", 300)
 			.attr("x", xPos + 25).attr("y", yPos + 52)
-			.text("1.0 : Matching Speed Limit");
+			.text("1.0 : At speed limit");
 		svgContainer.append("rect")
 			.style("fill", colorScale(1.25)).style("stroke", "none")
 			.attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
 		svgContainer.append("text")
 			.style("font-weight", 300)
 			.attr("x", xPos + 25).attr("y", yPos + 67)
-			.text("1.2 : Speeding");
+			.text("1.2 : Above speed limit");
 	
 } // CTPS.demoApp.generateViz()
 

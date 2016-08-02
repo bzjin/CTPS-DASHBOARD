@@ -559,6 +559,41 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 			.style("font-weight", 300)
 			.style("text-anchor", "end")
 			.text(function(d) { return d.values[0].properties.ROUTEDIRECTION;});
+//Append grey bars for segments outside the MPO region
+	chartContainer.append("rect")
+		.attr("height", 15)
+		.attr("width", 50)
+		.attr("x", xScaleRoad(30))
+		.attr("y", yScale("I-90") - 2)
+		.style("stroke", "none")
+		.style("fill", "grey")
+		.style("opacity", .5)
+	chartContainer.append("rect")
+		.attr("height", 15)
+		.attr("width", 50)
+		.attr("x", xScaleRoad(30))
+		.attr("y", yScale("I-90") - 20)
+		.style("stroke", "none")
+		.style("fill", "grey")
+				.style("opacity", .5)
+
+	chartContainer.append("rect")
+		.attr("height", 15)
+		.attr("width", 650)
+		.attr("x", xScaleRoad(1))
+		.attr("y", yScale("I495") - 2)
+		.style("stroke", "none")
+		.style("fill", "grey")
+				.style("opacity", .5)
+
+	chartContainer.append("rect")
+		.attr("height", 15)
+		.attr("width", 650)
+		.attr("x", xScaleRoad(1))
+		.attr("y", yScale("I495") - 20)
+		.style("stroke", "none")
+		.style("fill", "grey")
+				.style("opacity", .5)
 
 	//Available data points
 	chartContainer.selectAll(".bars")
@@ -595,7 +630,9 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 				})
 			.on("mouseenter", tip2.show)
 			.on("mouseleave", tip2.hide);	
+
 	
+
 	//Sort exits by interstate and then by PSI
 	exits.sort(function(a, b) { 
 		var nameA = a.ROUTEKEY;
@@ -694,7 +731,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 7)
-		.text("0.0-2.5: Dismal");
+		.text("0.0-2.5: Poor");
 	chartContainer.append("rect")
 		.style("fill", "#fdae61").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
@@ -723,6 +760,13 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 67)
 		.text("4.0-5.0: Excellent");
+	chartContainer.append("rect")
+		.style("fill", "grey").style("stroke", "none").style("opacity", .5)
+		.attr("x", xPos).attr("y", yPos + 75).attr("height", "7px").attr("width", height/35);
+	chartContainer.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 82)
+		.text("Outside MPO Region");
 
 } //CTPS.demoApp.generateChart
 

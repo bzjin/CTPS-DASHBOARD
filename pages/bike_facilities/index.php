@@ -54,7 +54,9 @@ text {
 
 	<div class="col-md-12">
 		<h3> How many bike lanes does Boston have on its roadways?</h3>
-		<p> I'm gonna ride my bicycle (doot doot doot).</p>
+		<p> Boston is covered in off and on road bike facilities. Offroad facilities are often shared with pedestrians, while onroad facilities
+			allow bicyclists to ride alongside motorized vehicles. The following visualization shows exactly how many miles each municipality
+			provides its bicyclists. The hue of the circles represent how many miles of bike facilities a town has per centerline mile.
 	</div>
 	<div class="col-md-12">
 		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>

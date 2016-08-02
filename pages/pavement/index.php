@@ -43,25 +43,28 @@
 
 	<h1 class="col-md-12">Pavement Condition</h1>
 
-	<p class="col-md-12">[Attention Getter] Blurb on pavement condition. Why is it important? Why do we care?</p>
+	<p class="col-md-12">Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. The MPO invests in regular roadway maintenance to extend pavement life, keeping rides smooth and users safe while saving public tax dollars. 
+		We measure pavement condition using the Present Serviceability Index (PSI), a measure of an road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
+	</p>
 
-	<h3 class="col-md-12">Interstate Pavement Condition</h3>
-	<p class="col-md-12">This mapping reflects the interstate pavement conditions in 2013. Interstate exits are marked by their number. </p>
+	<h3 class="col-md-12">Interstate Pavement Condition in 2013</h3>
+	<p class="col-md-12">Scroll across the bars below to see how the pavement condition of our region’s five interstate highways changes as they cross the region from North to South or East to West. 
+	 </p>
 
 	<div id="chart" class="col-md-12"></div>
 
 	<div class = "col-md-12">
-		<h3>How has interstate pavement condition changed in the past decade?</h3>
-		<p> Interstate roads are measured by individual, smaller road segments. Each line in the chart below represents the pavement condition of each of these road segments.</p>
+		<h3>Trends Over Time</h3>
+		<p> Select an interstate below to see how the pavement condition of all the road segments along its span have changed over the past decade. Each line charts the PSI value of a single interstate road segment.</p>
 		<p> Click to see only one interstate at a time. </p>
 	</div>
 	<div class="col-md-12">
-		<button class = "all timeline">All</button>
-		<button class = "I-90 timeline">I-90</button>
-		<button class = "I-93 timeline">I-93</button>
-		<button class = "I-95 timeline">I-95</button>
-		<button class = "I290 timeline">I-290</button>
-		<button class = "I495 timeline">I-495</button>
+		<button class = "all bigbutton timeline col-md-2">All</button>
+		<button class = "I-90 bigbutton timeline col-md-2">I-90</button>
+		<button class = "I-93 bigbutton timeline col-md-2">I-93</button>
+		<button class = "I-95 bigbutton timeline col-md-2">I-95</button>
+		<button class = "I290 bigbutton timeline col-md-2">I-290</button>
+		<button class = "I495 bigbutton timeline col-md-2">I-495</button>
 	</div>
 	<div id="timeline" class="col-md-12"></div>
 	<!--
@@ -78,7 +81,8 @@
 
 </div>
 
-<script src="app.js"></script>
 
 </body>
+<script src="app.js"></script>
+
 </html>

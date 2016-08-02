@@ -72,7 +72,7 @@ button:active, button:hover, button:focus,  {
 .footer { 
   clear: both;
   position: absolute;
-  bottom: 20px;
+  bottom: 5px;
   text-align: center;
   font-size: 10px;
   padding-top: 10px;
@@ -89,7 +89,7 @@ button:active, button:hover, button:focus,  {
   width: 100%;
   text-align: left;
   text-transform: uppercase;
-  padding: 40px 0px 10px 0px;
+  padding: 20px 0px 10px 0px;
 }
 
 .top-nav li  { 

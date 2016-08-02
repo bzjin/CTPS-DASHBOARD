@@ -40,6 +40,7 @@
 
 <div class="col-md-12"> 
 	<h3>Bridge Conditions Over Time</h3>
+	<button class='ALL townpicker' autofocus><i class="fa fa-map-marker" aria-hidden="true"></i> All </button>
 	<button class='ACTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Acton</button>
 	<button class='ARLINGTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Arlington</button>
 	<button class='ASHLAND townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Ashland</button>
@@ -145,7 +146,7 @@
 
 <div class="row col-md-12">
 	<div id="timeline" class="col-md-5"></div>
-	<div id="timeline2" class="col-md-7"></div>
+	<div id="timeline2" class="col-md-12"></div>
 </div>
 
 <div id="chart" class="col-md-12"></div>

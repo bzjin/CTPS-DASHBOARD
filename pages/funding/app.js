@@ -13,15 +13,12 @@ var geoPath = d3.geo.path().projection(projection);
 queue()
   .defer(d3.json, "../../json/town_census.topojson")
   .defer(d3.json, "../../json/equity.json")
-  .defer(d3.json, "../../json/tract_census.topojson")
 
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0],results[1]);
     CTPS.demoApp.generateStats(results[0], results[1]);
     CTPS.demoApp.generateMap2(results[0],results[1]);
     CTPS.demoApp.generatePerPerson(results[1]);
-    CTPS.demoApp.generateMap3(results[2]);
-    CTPS.demoApp.generateStats2(results[2]);
   }); 
 
 //Color Scale
@@ -219,12 +216,21 @@ generateStats = function(attribute, divID) {
       .attr("x", 5)
       .attr("y", 25)
       .text(function(d) { 
-        if (attribute == "MINORITY_HH_PCT") { return "Percent Minority Households"; }
-        if (attribute == "LOW_INC_HH_PCT") { return "Percent Low Income Households"; }
-        if (attribute == "LEP_POP_PCT") { return "Percent Limited English Proficiency Population"; }
-        if (attribute == "SINGLE_FEMALE_HOH_PCT") { return "Percent Households Headed by Unmarried Female"; }
+        if (attribute == "MINORITY_HH_PCT") { return "Municipalities by Percent Minority Households"; }
+        if (attribute == "LOW_INC_HH_PCT") { return "Municipalities by Percent Low Income Households"; }
+        if (attribute == "ZERO_VEH_HH_PCT") { return "Municipalities by Percent Zero Vehicle Households"; }
+        if (attribute == "SINGLE_FEMALE_HOH_PCT") { return "Municipalities by Percent Households Headed by Unmarried Female"; }
 
     })
+
+    var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-30, 0])
+    .html(function(d) {
+      return d.properties.TOWN;
+    })
+
+    newChart.call(tip); 
 
     newChart.selectAll("." + attribute)
       .data(census)
@@ -245,6 +251,32 @@ generateStats = function(attribute, divID) {
             else { return 1 }  
            })
           .on("mouseenter", function(d) { 
+            var townClass = this.getAttribute("class").split(' ')[0];
+
+            d3.selectAll("." + townClass).filter(".bars")
+              .style("stroke-width", 10)
+              .style("stroke", function(d) { 
+                return colorScale(findIndex(townClass, "Total_FFY_2008_2013_TIPs"));   
+              })
+            d3.selectAll("." + townClass).filter(".labels")
+              .style("opacity", 1)
+            d3.selectAll("." + townClass).filter(".tipFunding")
+              .style("stroke-width", 10)
+              .style("opacity", 1)
+              .style("stroke", function(d) { return colorScale(d.funding);  })
+            tip.show(d);
+          })
+          .on("mouseleave", function(d){
+            var townClass = this.getAttribute("class").split(' ')[0];
+            d3.selectAll("." + townClass).filter(".bars").transition()
+              .style("stroke-width", 0)
+            d3.selectAll("." + townClass).filter(".tipFunding").transition()
+              .style("stroke-width", 0)
+              .style("opacity", .2)
+              //.style("stroke", function(d) { return colorScale(d.Total_FFY_2008_2013_TIPs);  })
+            d3.selectAll("." + townClass).filter(".labels").transition()
+              .style("opacity", 0)
+            tip.hide(d);
           })
 
      newChart.selectAll("." + attribute + "labels")
@@ -259,16 +291,13 @@ generateStats = function(attribute, divID) {
           .style("fill", "#fff")
           .style("opacity", 0)
           .style("font-weight", 300)
-          .on("mouseenter", function(d) { 
-          })
+
 } //end of generateStats
 
 generateStats("MINORITY_HH_PCT", "chartMinority")
 generateStats("LOW_INC_HH_PCT", "chartIncome")
-generateStats("LEP_POP_PCT", "chartLEP")
+generateStats("ZERO_VEH_HH_PCT", "chartLEP")
 generateStats("SINGLE_FEMALE_HOH_PCT", "chartFemale")
-
- 
 
   //TIP funding chart
   var tipFunding= d3.select("#tipFunding").append("svg")
@@ -530,6 +559,15 @@ CTPS.demoApp.generatePerPerson = function(equity) {
   fundPerson.append("g").attr("class", "yaxis")
     .attr("transform", "translate(60, 0)")
     .call(yAxis)
+//D3 Tooltip
+  var tip2 = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-30, 0])
+    .html(function(d) {
+      return d.town;  
+    })
+
+  fundPerson.call(tip2); 
 
   fundPerson.selectAll(".fundPerson")
     .data(timeline)
@@ -545,8 +583,25 @@ CTPS.demoApp.generatePerPerson = function(equity) {
         .attr("height", 5)
         .style("opacity", .7)
         .style("fill", function(d) { return colorScalePerson(d.funding)})
-        .on("mouseenter", function(d){ 
-          console.log(this.getAttribute("class"))
+        .on("mouseenter", function(d){
+          var thisTown = this.getAttribute("class").split(' ')[0];
+          d3.selectAll("." + thisTown).filter(".labels2")
+            .style("opacity", 1)
+          d3.selectAll("." + thisTown).filter(".tipFunding2")
+            .style("stroke-width", 10)
+            .style("opacity", 1)
+            .style("stroke", function(d) { return colorScalePerson(d.funding);  })
+          tip2.show(d);
+        })
+        .on("mouseleave", function(d){
+          var thisTown = this.getAttribute("class").split(' ')[0];
+          d3.selectAll("." + thisTown).filter(".tipFunding2").transition()
+            .style("stroke-width", 0)
+            .style("opacity", .2)
+            //.style("stroke", function(d) { return colorScale(d.Total_FFY_2008_2013_TIPs);  })
+          d3.selectAll("." + thisTown).filter(".labels2").transition()
+            .style("opacity", 0)
+          tip2.hide(d);
         })
 
   fundPerson.selectAll(".tipfunds")
@@ -569,255 +624,3 @@ CTPS.demoApp.generatePerPerson = function(equity) {
           })
 }
 
-////////////////* GENERATE MAP *////////////////////
-CTPS.demoApp.generateMap3 = function(tracts, equity) {  
-  // SVG Viewport
-  var colorScale = d3.scale.linear()
-                  .domain([0, 1, 2, 3, 4])
-                  .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"])
-
-var projection = d3.geo.conicConformal()
-  .parallels([41 + 43 / 60, 42 + 41 / 60])
-    .rotate([71 + 30 / 60, -41 ])
-  .scale([25000]) // N.B. The scale and translation vector were determined empirically.
-  .translate([40,1000]);
-  
-var geoPath = d3.geo.path().projection(projection); 
-
-  svgContainer = d3.select("#map3").append("svg")
-                    .attr("width", "100%")
-                    .attr("height", 500)
-                    .style("overflow", "visible")
-
-  //D3 Tooltip
-  var tip = d3.tip()
-    .attr('class', 'd3-tip')
-    .offset([-10, 0])
-    .style("font-family", "Open Sans")
-    .html(function(d) {
-      return "<p style='font-weight:700'>Tract " + d.properties.TRACT + "</style></p><br>Town: " + d.properties.TOWN + "<br>% Minority: " + 
-      d.properties.MINORITY_HH_PCT + "<br>% Low Income: " + d.properties.LOW_INC_HH_PCT + "<br>% Single Female Headed: " + d.properties.SINGLE_FEMALE_HOH_PCT +
-      "<br>% Zero Vehicle: " + d.properties.ZERO_VEH_HH_PCT;
-    })
-
-  svgContainer.call(tip); 
-
-  var findIndex = function(town, statistic) { 
-    for (var i = 0; i < equity.length; i++) { 
-      if (equity[i].MPO_Municipality == town) {
-        return equity[i][statistic]; 
-      } 
-    }
-  }
-
-  colorMap = function(percent) { 
-  // Create Boston Region MPO map with SVG paths for individual towns.
-    var tractMap = svgContainer.selectAll(".tracts")
-      .data(topojson.feature(tracts, tracts.objects.tract_census_2).features)
-      .enter()
-      .append("path")
-        .attr("class", function(d){ return "t" + d.properties.TRACT; })
-        .attr("d", function(d, i) {return geoPath(d); })
-        .style("fill", function() { 
-          if (percent == "MINORITY_HH_PCT") { return colorScale(0)}
-          if (percent == "LOW_INC_HH_PCT") { return colorScale(1)}
-          if (percent == "SINGLE_FEMALE_HOH_PCT") { return colorScale(2)}
-          if (percent == "ZERO_VEH_HH_PCT") { return colorScale(3)}
-
-        }  )
-        .style("fill-opacity", function(d) { return d.properties[percent]/50; } )
-        .style("opacity", 1)
-        .on("mouseenter", function(d){
-          d3.selectAll("." + this.getAttribute("class"))
-              .style("stroke-width", 2)
-              .style("stroke", "#ddd")
-          tip.show(d);
-        })
-        .on("mouseleave", function(d){
-           d3.selectAll("." + this.getAttribute("class"))
-              .style("stroke-width", 0)
-              .style("stroke", "#ddd")
-         tip.hide(d);
-        })
-    } 
-  
-
-}
-
-CTPS.demoApp.generateStats2 = function(tracts){
-
-
-var colorScale = d3.scale.linear()
-                  .domain([0, 1, 2, 3])
-                  .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"])
-
-  var allChart = d3.select("#chartDemographics").append("svg")
-    .attr("width", "100%")
-    .attr("height", 500)
-    .attr("overflow", "visible")
-
-  var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
-  var maxmins = [];
-  census.forEach(function(i){
-    i.properties.MINORITY_HH_PCT = d3.round(i.properties.MINORITY_HH_PCT * 100, 2);
-    i.properties.SINGLE_FEMALE_HOH_PCT = d3.round(i.properties.SINGLE_FEMALE_HOH_PCT * 100, 2);
-    i.properties.LEP_POP_PCT = d3.round(i.properties.LEP_POP_PCT * 100, 2);
-    i.properties.ZERO_VEH_HH_PCT = d3.round(i.properties.ZERO_VEH_HH_PCT * 100, 2);
-    i.properties.LOW_INC_HH_PCT = d3.round(i.properties.LOW_INC_HH_PCT * 100, 2);
-    maxmins.push(i.properties.MINORITY_HH);
-    maxmins.push(i.properties.SINGLE_FEMALE_HOH);
-    maxmins.push(i.properties.LOW_INC_HH);
-    maxmins.push(i.properties.ZERO_VEH_HH);
-  })
-
-  var xScale = d3.scale.linear() 
-              .domain([0, 100])
-              .range([60, 550])
-
-  var yScale = d3.scale.linear()
-              .domain([d3.min(maxmins), d3.max(maxmins)])
-              .range([430, 30])
-
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(-490, 0, 0);
-//D3 Tooltip
-  var tip = d3.tip()
-    .attr('class', 'd3-tip-static')
-    .style("font-family", "Open Sans")
-    .html(function(d) {
-      return "<p style='font-weight:700'>Tract " + d.properties.TRACT + "</style></p><br>Town: " + d.properties.TOWN + "<br>% Minority: " + 
-      d.properties.MINORITY_HH_PCT + "<br>% Low Income: " + d.properties.LOW_INC_HH_PCT + "<br>% Single Female Headed: " + d.properties.SINGLE_FEMALE_HOH_PCT +
-      "<br>% Zero Vehicle: " + d.properties.ZERO_VEH_HH_PCT;
-    })
-
-  allChart.call(tip); 
-
-  allChart.append("g").attr("class", "axis")
-    .attr("transform", "translate(0, 430)")
-    .call(xAxis)
-    .selectAll("text")
-      .style("font-size", "12px")
-      .style("font-family", "Open Sans")
-      .style("font-weight", 700)
-      .attr("transform", "translate(0, 4)");
-
-  
-  allChart.append("g").attr("class", "yaxis")
-    .attr("transform", "translate(60, 0)")
-    .call(yAxis)
-    .selectAll("text")
-      .style("font-size", "12px")
-      .attr("transform", "translate(-2,0)");
-
-  allChart.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("x", -250)
-    .attr("y", 10)
-    .style("text-anchor", "middle")
-    .text("Number of Households")
-
-  allChart.append("text")
-    .attr("x", 310)
-    .attr("y", 470)
-    .style("text-anchor", "middle")
-    .style("font-weight", 300)
-    .text("Percent of Households")
-
-
-  populatePoints("MINORITY_HH_PCT", "MINORITY_HH");
-  populatePoints("LOW_INC_HH_PCT", "LOW_INC_HH");
-  populatePoints("SINGLE_FEMALE_HOH_PCT", "SINGLE_FEMALE_HOH");
-  populatePoints("ZERO_VEH_HH_PCT", "ZERO_VEH_HH");
-
-  colorMap("MINORITY_HH_PCT");
-  colorMap("LOW_INC_HH_PCT");
-  colorMap("SINGLE_FEMALE_HOH_PCT");
-  colorMap("ZERO_VEH_HH_PCT");
-
-  function populatePoints(percent, households) { 
-    allChart.selectAll("points")
-    .data(census)
-    .enter()
-    .append("rect")
-      .attr("class", function(d){ return "t" + d.properties.TRACT; })
-      .attr("x", function(d) { return xScale(Math.floor(d.properties[percent]/1.75)*1.75)})
-      .attr("y", function(d) { return yScale(Math.floor(d.properties[households]/50) * 50) - 6 })
-      //.attr("x", function(d) { return xScale(d.properties[percent])})
-      //.attr("y", function(d) { return yScale(d.properties[households]) - 6 })
-      .attr("width", 6)
-      .attr("height", 6)
-      .style("fill-opacity", function(d) { return d.properties[percent]/100; } )
-      .style("opacity", 1)
-      .style("fill", function() { 
-        if (households == "MINORITY_HH") { return colorScale(0)}
-        if (households == "LOW_INC_HH") { return colorScale(1)}
-        if (households == "SINGLE_FEMALE_HOH") { return colorScale(2)}
-        if (households == "ZERO_VEH_HH") { return colorScale(3)}
-
-      }  )
-      .on("mouseenter", function(d){
-          d3.selectAll("." + this.getAttribute("class"))
-              .style("stroke-width", 2)
-              .style("stroke", "#ddd")
-
-          tip.show(d);
-        })
-        .on("mouseleave", function(d){
-           d3.selectAll("." + this.getAttribute("class"))
-              .style("stroke-width", 0)
-              .style("stroke", "#ddd")
-
-          tip.hide(d);
-        })
-  }
-
-  d3.select(".allMetrics").on("click", function(){
-    allChart.selectAll("rect").remove();
-
-    populatePoints("MINORITY_HH_PCT", "MINORITY_HH");
-    populatePoints("LOW_INC_HH_PCT", "LOW_INC_HH");
-    populatePoints("SINGLE_FEMALE_HOH_PCT", "SINGLE_FEMALE_HOH");
-    populatePoints("ZERO_VEH_HH_PCT", "ZERO_VEH_HH");
-
-    svgContainer.selectAll("path").remove();
-
-    colorMap("MINORITY_HH_PCT");
-    colorMap("LOW_INC_HH_PCT");
-    colorMap("SINGLE_FEMALE_HOH_PCT");
-    colorMap("ZERO_VEH_HH_PCT");
-  })
-
-  d3.select(".minority").on("click", function(){
-    allChart.selectAll("rect").remove();
-    populatePoints("MINORITY_HH_PCT", "MINORITY_HH");
-
-    svgContainer.selectAll("path").remove();
-    colorMap("MINORITY_HH_PCT");
-
-  })
-
-  d3.select(".lowIncome").on("click", function(){
-    allChart.selectAll("rect").remove();
-    populatePoints("LOW_INC_HH_PCT", "LOW_INC_HH");
-
-    svgContainer.selectAll("path").remove();
-    colorMap("LOW_INC_HH_PCT");
-  })
-
-  d3.select(".singleFemale").on("click", function(){
-    allChart.selectAll("rect").remove();
-   populatePoints("SINGLE_FEMALE_HOH_PCT", "SINGLE_FEMALE_HOH");
-
-    svgContainer.selectAll("path").remove();
-    colorMap("SINGLE_FEMALE_HOH_PCT");
-  })
-
-  d3.select(".zeroVehicle").on("click", function(){
-    allChart.selectAll("rect").remove();
-    populatePoints("ZERO_VEH_HH_PCT", "ZERO_VEH_HH");
-
-    svgContainer.selectAll("path").remove();
-    colorMap("ZERO_VEH_HH_PCT");
-  })
-
-}
