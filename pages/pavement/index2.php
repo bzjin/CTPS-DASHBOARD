@@ -49,13 +49,14 @@
 	<p> Scroll down to compare pavement conditions between municipalities. The first column presents the overall distribution of pavement segments by their PSI score, with the average value highlighted. The second column and third columns display the percent of pavement and the total lane miles of pavement with acceptable PSI scores, respectively.
 	</p>
 		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
-		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
+		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI" autofocus>Sort by Average PSI</button>
 
 	<div id="citygradients" class="col-md-12"></div>
 
 	<h3> Trends Over Time </h3>
 	<p> Select a city or town from the map to see how the pavement conditions within the municipality have changed. Each line charts the PSI value of a segment of a non-interstate road over the the past decade.</p>
 	<div class="col-md-12">
+	<button class='ALL townpicker' autofocus><i class="fa fa-map-marker" aria-hidden="true"></i> All</button>
 	<button class='ACTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Acton</button>
 	<button class='ARLINGTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Arlington</button>
 	<button class='ASHLAND townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Ashland</button>

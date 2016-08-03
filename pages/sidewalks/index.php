@@ -51,8 +51,8 @@ text {fill: #ddd; font-size: 14px;}
 	</p>
 
 		<button class="bigbutton col-md-6" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> 
-		<button class="bigbutton col-md-6" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Sidewalk Miles to Centerline Miles Ratio</button>
-		<button class='allyrs yrpicker col-md-1'> All</button>
+		<button class="bigbutton col-md-6" id="byAverages" alt="Sort towns by ascending average PSI" autofocus>Sort by Sidewalk Miles to Centerline Miles Ratio</button>
+		<button class='allyrs yrpicker col-md-1' autofocus> All</button>
 		<button class='yr2006 yrpicker col-md-1'> 2006</button>
 		<button class='yr2007 yrpicker col-md-1'> 2007</button>
 		<button class='yr2008 yrpicker col-md-1'> 2008</button>

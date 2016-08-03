@@ -18,12 +18,6 @@ body {
   height: 0;
 }
 
-#header { 
-  position: absolute;
-  text-align: left;
-  text-transform: uppercase;
-}
-
 h1 { 
   font-weight: 700; 
   font-size: 108px;
@@ -78,6 +72,12 @@ div {
     display: none;
   }
 
+  #header { 
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
   .icon-bar { 
     background-color: white;
     text-align: right;
@@ -123,7 +123,6 @@ div {
   }
 
   .desktop-nav { 
-    float: right;
     text-align: left;
     position: relative;
   }
@@ -131,9 +130,14 @@ div {
   .page_link { 
     position: relative;
     float: left;
+    padding-top: 30px;
     padding-right: 20px;
-    width: 24vw;
-    height: 30vh;
+    width: 23vw;
+    height: 23vh;
+  }
+
+  .page_link i{ 
+    display: none;
   }
 
   a { 
@@ -158,8 +162,13 @@ div {
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 /* Styling for desktop (large) screens */
+#header { 
+  position: absolute;
+  text-align: left;
+  text-transform: uppercase;
+}
   .nav{
     display: none;
   }

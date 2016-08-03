@@ -66,7 +66,7 @@ p > b {
   font-family: "Open Sans";
   font-weight: 700; 
   color: #ddd;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 button { 
@@ -127,7 +127,7 @@ button:active, button:hover, button:focus,  {
   opacity: .5;
 }
 
-.top-nav a:hover, .top-nav a:focus, .top-nav a:active  { 
+.top-nav a:hover, .top-nav a:focus, .top-nav a:active, .top-nav a.active  { 
   text-decoration: none;
   color: white;
   opacity: .8;

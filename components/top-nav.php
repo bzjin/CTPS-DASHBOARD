@@ -2,7 +2,7 @@
 	'<ul>
 		<li><i class="fa fa-home" aria-hidden="true"></i> <a href="../../index.php" alt="Go to home page">The State of Boston Region Transportation</a></li>
 	</ul>
-	 <ul>
+	 <ul id="nav_pages">
 		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../crashes/index.php" alt="Go to crashes page">Crashes</a></li>
 		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../pavement/index.php" alt="Go to pavement page">Pavement</a></li>
 		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../congestion/index.php" alt="Go to congestion page">Congestion</a></li>
@@ -12,5 +12,18 @@
 		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../funding/index.php" alt="Go to funding page">Funding</a></li>
 		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../demographics/index.php" alt="Go to demographics page">Demographics</a></li>
 
-	</ul>'
+	</ul>
+
+	<script>(function() {
+    var nav = document.getElementById("nav_pages"),
+        anchor = nav.getElementsByTagName("a"),
+        current = window.location.pathname.split("pages/")[1];
+        for (var i = 0; i < anchor.length; i++) {
+        	var match = anchor[i].href.split("pages/")[1];
+	        if(match == current) {
+	            anchor[i].className = "active";
+	            console.log(anchor)
+	        }
+    	}
+	})()</script>'
 ?>

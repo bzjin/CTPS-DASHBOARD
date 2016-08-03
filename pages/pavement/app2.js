@@ -27,7 +27,6 @@ queue()
 });
 
 CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
-	console.log(cityavg_time);
 	var timeline = d3.select("#timeline").append("svg")
 		.attr("width", 1200)
 		.attr("height", 500);
@@ -42,8 +41,6 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 
 	timeline.call(tip2); 
 
-	//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
-	//var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
 	xScale = d3.scale.linear().domain([2007, 2015]).range([50, 1000]);
 	yScale = d3.scale.linear().domain([0, 5]).range([450, 50]);
@@ -95,56 +92,75 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	    .y1(function(d) { return yScale(d.minimum); })
 	    .y0(function(d) { return yScale(d.maximum); })
 
-	nested_routes.forEach(function(i){  
-		timeline.append("path")
-		      .attr("class", i.values[0].town + "minmax uncolor")
-		      .attr("d", valuerange(i.values))
-		      .style("fill", "#fff")
-		      .style("opacity", 0);
+	graphAll();
+	function graphAll() { 
+		nested_routes.forEach(function(i){  
+			timeline.append("path")
+			      .attr("class", i.values[0].town + "minmax uncolor")
+			      .attr("d", valuerange(i.values))
+			      .style("fill", "#fff")
+			      .style("opacity", 0);
 
-		timeline.append("path")
-		      .attr("class", i.values[0].town + "area uncolor")
-		      .attr("d", valuearea(i.values))
-		      .style("fill", "#e26a6a")
-		      .style("opacity", .01);
+			timeline.append("path")
+			      .attr("class", i.values[0].town + "area uncolor glow")
+			      .attr("d", valuearea(i.values))
+			      .style("fill", "#e26a6a")
+			      .style("opacity", .01);
 
-		timeline.append("path")
-			.attr("class", i.values[0].town)
-			.attr("d", function(d) { return valueline(i.values);})
-			.style("stroke", "#ddd")
-			.style("stroke-width", .5)
-			.style("fill", "none")
-			.style("opacity", .5)
-	})
+			timeline.append("path")
+				.attr("class", function(d) { return i.values[0].town + " medians"})
+				.attr("d", function(d) { return valueline(i.values);})
+				.style("stroke", "#ddd")
+				.style("stroke-width", .5)
+				.style("fill", "none")
+				.style("opacity", .5)
+		})
+	}
 			//.style("stroke-width", .5)
 		//	.style("stroke", "#ddd")
 	//button activation
 	d3.selectAll(".townpicker").on("click", function(){
 		var mystring = this.getAttribute("class");
-		var arr = mystring.split(" ", 2);
+		var arr = mystring.split(' ');
 		var firstWord = arr[0]; 
 
-		timeline.selectAll("path")
-			.style("opacity", .05)
-			.style("stroke", "#ddd")
-			.style("stroke-width", .5);
+		if (firstWord == "ALL") { 
+			timeline.selectAll("path").filter(".uncolor")
+			      .style("fill", "#fff")
+			      .style("opacity", 0);
 
-		timeline.selectAll("." + firstWord)
-			.style("opacity", 1)
-			.style("stroke", "#ddd")
-			.style("stroke-width", 2);
+			timeline.selectAll("path").filter(".glow")
+			      .style("fill", "#e26a6a")
+			      .style("opacity", .01);
 
-		timeline.selectAll(".uncolor")
-			.style("opacity", 0)
-			.style("stroke", "none")
+			timeline.selectAll("path").filter(".medians")
+				.style("stroke", "#ddd")
+				.style("stroke-width", .5)
+				.style("fill", "none")
+				.style("opacity", .5)
+		} else {
+			timeline.selectAll("path")
+				.style("opacity", .05)
+				.style("stroke", "#ddd")
+				.style("stroke-width", .5);
 
-		timeline.selectAll("." + firstWord + "area")
-			.style("opacity", .3)
-			.style("stroke", "none")
+			timeline.selectAll("." + firstWord)
+				.style("opacity", 1)
+				.style("stroke", "#ddd")
+				.style("stroke-width", 2);
 
-		timeline.selectAll("." + firstWord + "minmax")
-			.style("opacity", .1)
-			.style("stroke", "none")
+			timeline.selectAll(".uncolor")
+				.style("opacity", 0)
+				.style("stroke", "none")
+
+			timeline.selectAll("." + firstWord + "area")
+				.style("opacity", .3)
+				.style("stroke", "none")
+
+			timeline.selectAll("." + firstWord + "minmax")
+				.style("opacity", .1)
+				.style("stroke", "none")
+		}
 	})
 	
 	//Color key
