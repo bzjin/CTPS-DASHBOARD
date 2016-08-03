@@ -48,16 +48,16 @@ text {
 <div class="top-nav col-md-12">
 	<?php include '../../components/top-nav.php';?>
 </div>
-	<div class="col-md-12">
-		<h1>Bike Facilities</h1>
-	</div>
+	<h1>Bike Facilities</h1>
+	<p> People bike for fun, exercise, and transportation. They include children on their way to school, commuters in work clothes, athletes training, and seniors out for a relaxing ride. Most people who bike also use cars, transit, and sidewalks as alternate means of transportation. At the same time, when people bike more, they are healthier, have more expendable income, more free time, and more choice in how they move about their lives. 
+	</p><p>People who bike are also vulnerable users of the transportation system and account for a growing share of crashes and a disproportionate share of injuries in the region. The majority of the region still lacks adequate bicycle infrastructure, limiting the likelihood that people choose cycling as transportation option. 
+	</p><p>The Boston Region MPO monitors the bicycle network available throughout the region. Bicycle facilities include off-road trails that are often shared with pedestrians, as well as on-road lanes and cycle tracks on which people ride alongside motorized vehicles. We measure the total miles of facilities available to people biking and also calculate Bike Facility per Centerline Mile: the percent of road miles that provide designated bike lanes or cycle tracks. 
+	</p>
 
-	<div class="col-md-12">
-		<h3> How many bike lanes does Boston have on its roadways?</h3>
-		<p> Boston is covered in off and on road bike facilities. Offroad facilities are often shared with pedestrians, while onroad facilities
-			allow bicyclists to ride alongside motorized vehicles. The following visualization shows exactly how many miles each municipality
-			provides its bicyclists. The hue of the circles represent how many miles of bike facilities a town has per centerline mile.
-	</div>
+	<h3> Roadway Coverage </h3>
+	<p> This map of Boston Region cities and towns below depicts the percent of road miles that provide bicycle facilities. The circles to the right represent the total number of on-road and off-road miles of available to people biking in each municipality. 
+	</p>
+	
 	<div class="col-md-12">
 		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
 		<button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending percent bike facilities to centerline miles">Sort by Bike Facility Miles to Centerline Miles Ratio</button>

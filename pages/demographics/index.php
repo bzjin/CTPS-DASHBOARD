@@ -51,19 +51,16 @@ form {
 <div class="top-nav col-md-12">
 	<?php include '../../components/top-nav.php';?>
 </div>
-	<div class="col-md-12">
-		<h1>Demographics</h1>
-	</div>
 
-	<div class="col-md-12">
-		<h3> A Closer Look at Municipality Demographics </h3>
-	</div>
+<h1>Demographics</h1>
 
-	<button class='allMetrics bigbutton col-md-2' autofocus> All Households </button>
-	<button class='minority bigbutton col-md-2 I-90'> Minority </button>
-	<button class='lowIncome bigbutton col-md-2 I-93'> Low Income </button>
+<h3> A Closer Look at Municipality Demographics </h3>
+
+	<!-- <button class='allMetrics bigbutton col-md-2' autofocus> All Households </button> -->
+	<button class='minority bigbutton col-md-3 I-90' autofocus> Minority </button>
+	<button class='lowIncome bigbutton col-md-3 I-93'> Low Income </button>
 	<button class='singleFemale bigbutton col-md-3 I-95'> Single Female Headed </button>
-	<button class='zeroVehicle bigbutton col-md-2 I290'> Zero Vehicle </button>
+	<button class='zeroVehicle bigbutton col-md-3 I290'> Zero Vehicle </button>
 
 	<div class="col-md-5" id="map3"></div>
 

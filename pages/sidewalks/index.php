@@ -37,23 +37,21 @@ text {fill: #ddd; font-size: 14px;}
 <body>
 
 <div id="header" class="col-md-10 col-md-offset-1">
-<div class="top-nav col-md-12">
-	<?php include '../../components/top-nav.php';?>
-</div>
-	<div class="col-md-12">
-		<h1>Sidewalk Coverage</h1>
+	<div class="top-nav col-md-12">
+		<?php include '../../components/top-nav.php';?>
 	</div>
 
-	<div class="col-md-12">
-		<h3> How much sidewalk do Boston region municipalities have on their roadways?</h3>
-		<p> Can we walk to all the places to which we can drive? The visualization below shows the number of road miles that have sidewalks on either side of the road.
-			A ratio of 0.0  means that none of that municipality's roads have sidewalks on either side. A ratio of 1.0 means that all of its roads have sidewalks on either side. </p>
-	</div>
-	<div class="col-md-12">
-		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> 
-		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Sidewalk Miles to Centerline Miles Ratio</button>
-	</div>
-	<div class="col-md-12">
+	<h1>Sidewalks</h1>
+	<p> Walking is the basic form of transportation for most people. For those who are able, every trip, even by car, begins and ends with walking. Many people do not have access to cars or even bicycles and rely upon walking to get to school, work, doctor’s appointments, the grocery store, and other important destinations. In areas with public transit, people must walk to, between and from transit stops. Those unable to walk unassisted require pedestrian infrastructure that is suited to their mobility needs. Fortunately, well-designed sidewalks accommodate all types of pedestrians. 
+	</p><p>Sidewalks also offer incredible side-benefits: healthier people, less crime, better air quality, vibrant commerce, and more neighborly communities. Simply put, safe and convenient walking infrastrastructure underpins our quality of life. 
+	</p><p>The Boston Region MPO recognizes the importance of pedestrian infrastructure in our shared transportation system and regularly quantify and assess its performance. We measure Sidewalk per Centerlane Mile: the fraction of roads that have sidewalks on at least one shoulder. 
+	</p>
+	<h3> Sidewalk Coverage </h3>
+	<p> The graphic below displays Sidewalk per Centerlane Mile for each municipality over decade. The size of the outer circles and inner circles are proportional to the miles of roadway (“centerline miles”) and miles of sidewalk, respectively, within each municipality. Hover over the circles to discover how many miles each circle represents. 
+	</p>
+
+		<button class="bigbutton col-md-6" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> 
+		<button class="bigbutton col-md-6" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Sidewalk Miles to Centerline Miles Ratio</button>
 		<button class='allyrs yrpicker col-md-1'> All</button>
 		<button class='yr2006 yrpicker col-md-1'> 2006</button>
 		<button class='yr2007 yrpicker col-md-1'> 2007</button>
@@ -65,11 +63,9 @@ text {fill: #ddd; font-size: 14px;}
 		<button class='yr2013 yrpicker col-md-1'> 2013</button>
 		<button class='yr2014 yrpicker col-md-1'> 2014</button>
 		<button class='yr2015 yrpicker col-md-1'> 2015</button>
-	</div>
 
 		<!--<div class="col-md-3" id="mapRoute1"></div>-->
 	<div class="col-md-12" id="sidewalks"></div>
-</div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>

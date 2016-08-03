@@ -40,34 +40,30 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	<div class="top-nav col-md-12">
 		<?php include '../../components/top-nav.php';?>
 	</div>
-	<div class="col-md-12">
-	
+
+	<h1>Crashes</h1>
+
 	<h3 class="inner-nav col-md-12"><a href="index.php" alt="Go to motorized crashes"><i class="fa fa-circle-o" aria-hidden="true"></i>
 	Non-Motorized Crashes</a><a href="#" alt="Go to non-motorized crashes"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Motorized Crashes</a></h3>	
-	<h1>Crashes</h1>
 	
 	<p>The ability to move is crucial to every aspect of our existence. And yet, people face substantial risk getting from place to place in the Boston region. Roads claimed the lives of 53 people in the Boston region last year. 
-		We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. 
-		The MPO aims to keep you safe everywhere and every way that you move. For this reason, we track injuries and fatalities from crashes throughout the region.
-		</p>
-	</div>
+	We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. 
+	The MPO aims to keep you safe everywhere and every way that you move. For this reason, we track injuries and fatalities from crashes throughout the region.
+	</p>
 
-	<div class="col-md-12"> 
-	<h3>Trends Over TIme: Vehicle Injuries </h3>
-		<div id="map" class="col-md-5">
-			<p> Click on each city or town to see its injury counts over time. </p> 
-		</div>
+	<h2> Injuries to People Driving </h2> 
+	<h3>Trends Over Time</h3>
+		<p> Click on each city or town to see its injury counts over time. </p> 
+
+		<div id="map" class="col-md-5"></div>
 		<div id="chart" class="col-md-7 key"></div>
-	</div>
 
-	<div class="col-md-12" >
-	<h3>A Closer Look: One Year of Vehicle Crashes</h3>
+	<h3>One Year of Crashes</h3>
 	<p> Boston Region saw <b>14888</b> total vehicle crash injuries in 2013. Each dot represents one crash. <b>68</b> solid, filled dots represent fatalities.</p>
 		<div class="col-md-12 key">
 			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Vehicle Fatalities </p>
 		</div>
-	</div>
 
 	<div class="col-md-12" id="plot"></div>
 

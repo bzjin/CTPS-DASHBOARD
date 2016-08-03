@@ -31,6 +31,8 @@
 		<?php include '../../components/top-nav.php';?>
 	</div>	
 
+	<h1>Pavement Condition</h1>
+
 	<h3 class="inner-nav col-md-12">
 		<a href="index.php" alt="Go to interstate pavement condition"><i class="fa fa-circle-o" aria-hidden="true"></i>
 		Interstate Roads</a>
@@ -38,13 +40,22 @@
 		 Non-Interstate Roads</a>
 	</h3>
 
-	<h1 class="col-md-12">Pavement Condition</h1>
+	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. The MPO invests in regular roadway maintenance to extend pavement life, keeping rides smooth and users safe while saving public tax dollars. We measure pavement condition using the Present Serviceability Index (PSI), a measure of a road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
+	</p>
 
-	<p class="col-md-12">Descriptive text TBD</p>
+	<h2> Non-Interstate System </h2>
 
-	
+	<h3>Conditions in 2013</h3>
+	<p> Scroll down to compare pavement conditions between municipalities. The first column presents the overall distribution of pavement segments by their PSI score, with the average value highlighted. The second column and third columns display the percent of pavement and the total lane miles of pavement with acceptable PSI scores, respectively.
+	</p>
+		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
+		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
+
+	<div id="citygradients" class="col-md-12"></div>
+
+	<h3> Trends Over Time </h3>
+	<p> Select a city or town from the map to see how the pavement conditions within the municipality have changed. Each line charts the PSI value of a segment of a non-interstate road over the the past decade.</p>
 	<div class="col-md-12">
-	<h3>Non-Interstate Pavement over the Past Decade</h3>
 	<button class='ACTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Acton</button>
 	<button class='ARLINGTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Arlington</button>
 	<button class='ASHLAND townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Ashland</button>
@@ -150,13 +161,7 @@
 
 	<div id="timeline" class="col-md-12"></div> 
 
-	<div class="col-md-12">
-	<h3>Boston Region Municipalities Pavement in 2015</h3>
-		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
-		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
-	</div>
-
-	<div id="citygradients" class="col-md-12"></div>
+	
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>

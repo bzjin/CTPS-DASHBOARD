@@ -4,6 +4,9 @@
   color: #ddd;
   font-weight: 300; 
 }
+.navbar-custom {
+  position: absolute;
+}
 
 html { 
   background-color: #191b1d; 
@@ -17,30 +20,26 @@ body {
 
 #header { 
   position: absolute;
-  padding-left: 50px;
-  padding-top: 15px;
   text-align: left;
   text-transform: uppercase;
 }
 
 h1 { 
   font-weight: 700; 
-  font-size: 96px;
+  font-size: 108px;
   line-height: .8;
 }
 
 h2 {
   font-weight: 700; 
-  font-size: 18px;
+  font-size: 24px;
   letter-spacing: 10px;
-  padding-left: 7px;
 }
 
 h3, h4 { 
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 6px;
-  padding-left: 7px;
   line-height: 1;
   padding-bottom: -20px;
  }
@@ -49,9 +48,7 @@ p {
   font-weight: 300;
   font-size: 12px;
   line-height: 1.3;
-  padding-left: 25px;
   opacity: .5;
-  padding-bottom: 30px;
 }
 
 p > b { 
@@ -119,9 +116,24 @@ div {
     display: none;
   }
 
+  #header { 
+    position: relative;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
   .desktop-nav { 
     float: right;
     text-align: left;
+    position: relative;
+  }
+
+  .page_link { 
+    position: relative;
+    float: left;
+    padding-right: 20px;
+    width: 24vw;
+    height: 30vh;
   }
 
   a { 
@@ -129,7 +141,7 @@ div {
     font-size: 18px;
     color: rgba(255,255,255,.75);
     text-decoration: none;
-      letter-spacing: 2px;
+    letter-spacing: 2px;
     text-transform: uppercase;
   }
 
@@ -155,6 +167,16 @@ div {
   .desktop-nav { 
     float: right;
     text-align: left;
+    position: absolute;
+    height: 90vh;
+    right: 0;
+    top: 30px;
+  }
+
+  .page_link { 
+    height: 22vh;
+    padding-top: 20px;
+    padding-bottom: 30px;
   }
 
   a { 
@@ -182,8 +204,12 @@ div {
   position: absolute;
   bottom: 0px;
   text-align: left;
-  font-size: 10px;
+  left: 0px;
 }
+
+.footer p { 
+  font-size: 10px;
+ }
 
 .fa { 
   color: #ddd;
@@ -193,12 +219,28 @@ div {
   color: #66bd63;
 }
 
+.demo b, .demo{ 
+  color: white;
+  font-size: 14px;
+}
+
 .unavailable b, .unavailable { 
   color: white;
   opacity: .3;
 }
 
-#progress-test {
-  padding-right: 30%;
+.meter { 
+  height: 10px;  /* Can be anything */
+  width: 150px;
+  position: relative;
+  background: #555;
 }
 
+.meter > span {
+  display: block;
+  height: 100%;
+  background-color: rgb(43,194,83);
+  background-image: linear-gradient(rgb(43,194,83) 37%, rgb(84,240,84) 69%);
+  position: relative;
+  overflow: hidden;
+}

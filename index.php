@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <!-- CSS Custom Styling -->
 <link rel="stylesheet" href="css/style.css"/>
+
 </head>
 
 <body>
@@ -49,14 +50,14 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="pages/crashes/index.php" title="Go to crashes page">Crashes</a></li>
-		<li><a href="pages/pavement/index.php" title="Go to pavement condition page">Pavement</a></li>
-		<li><a href="pages/bridges/index.php" title="Go to bridge condition page">Bridges</a></li>
-		<li><a href="pages/congestion/index.php" title="Go to congestion page">Congestion</a></li>
-		<li><a href="pages/sidewalks/index.php" title="Go to sidewalk coverage page">Sidewalks</a></li>
-		<li><a href="pages/bike_facilities/index.php" title="Go to bike facilities page">Bike Facilities</a></li>
-		<li><a href="pages/funding/index.php" title="Go to funding page">Funding</a></li>
-		<li><a href="pages/demographics/index.php" title="Go to demographics page">Demographics</a></li>
+        <li><div><a href="pages/crashes/index.php" title="Go to crashes page">Crashes</a></li>
+		<li><div><a href="pages/pavement/index.php" title="Go to pavement condition page">Pavement</a></li>
+		<li><div><a href="pages/bridges/index.php" title="Go to bridge condition page">Bridges</a></li>
+		<li><div><a href="pages/congestion/index.php" title="Go to congestion page">Congestion</a></li>
+		<li><div><a href="pages/sidewalks/index.php" title="Go to sidewalk coverage page">Sidewalks</a></li>
+		<li><div><a href="pages/bike_facilities/index.php" title="Go to bike facilities page">Bike Facilities</a></li>
+		<li><div><a href="pages/funding/index.php" title="Go to funding page">Funding</a></li>
+		<li><div><a href="pages/demographics/index.php" title="Go to demographics page">Demographics</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
       </div> <!-- /.container-fluid -->
@@ -65,45 +66,63 @@
 <!-- Desktop nav --> 
 <div class="col-md-5 desktop-nav">
 	<div class="col-md-5 col-md-offset-1">
-	<a href="pages/crashes/index.php" title="Go to crashes page" id="crashes">
-		<i class="fa fa-circle-o" aria-hidden="true"></i> Crashes </a> 
-		<p> <b>1470/36</b> <br> non-motorized injuries/deaths<br>
-			<b>14888/68</b> <br> motorized injuries/deaths</p>
-	<a href="pages/pavement/index.php" title="Go to pavement condition page" id="pavement">
-		<i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</a>
-		<p> <b class="good">94%</b><br>interstates in good condition<br>
-			<b class="good">78%</b><br>non-interstates in good condition</p>
-	<a href="pages/congestion/index.php" title="Go to congestion page" id="congestion">
-		<i class="fa fa-circle-o" aria-hidden="true"></i> Congestion </a>
-		<p> <b class="good">0.78</b> <br>express highways avg. speed index<br>
-			<b>0.72</b> <br>arterial routes avg. speed index</p>
-	<a href="pages/bridges/index.php" title="Go to bridges page" id="bridges">
-		<i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</a>
-		<p> <b class="good">91.5%</b><br>not structurally deficient<br>
-			 <b>-0.2%</b> <br>since 2015</p>
+		<div class="page_link"><a href="pages/crashes/index.php" title="Go to crashes page" id="crashes">
+			<i class="fa fa-circle-o" aria-hidden="true"></i> Crashes </a> 
+			<p> Non-motorized injuries/deaths<br><b>1470/36</b> <br> 
+				Motorized injuries/deaths <br><b>14888/68</b> </p>
+		</div>
+		<div class="page_link"><a href="pages/pavement/index.php" title="Go to pavement condition page" id="pavement">
+			<i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</a>
+				<p>Interstates in good condition</p>
+				<p class="meter"> <span style="width: 94%"></span></p>
+				<p>Non-interstates in good condition</p>
+				<p class="meter"> <span style="width: 78%"></span></p>
+		</div>
+		<div class="page_link"><a href="pages/congestion/index.php" title="Go to congestion page" id="congestion">
+			<i class="fa fa-circle-o" aria-hidden="true"></i> Congestion </a>
+				<p>Congested express highways</p>
+				<p class="meter"> <span style="width: 78%"></span></p>
+				<p>Congested arterial routes</p>
+				<p class="meter"> <span style="width: 72%"></span></p>			
+		</div>
+		<div class="page_link"><a href="pages/funding/index.php" title="Go to funding page" id="funding">
+			<i class="fa fa-circle-o" aria-hidden="true"></i> Funding </a>
+			<p>TIP funding 2014-2021<br><b class="good">$785M</b><br>
+				Change since 2008-2013<br><b class="good">+$421M</b> </p>
+		</div>
 	</div>
 
 	<div class="col-md-5">
-	<a href="pages/sidewalks/index.php" title="Go to sidewalks page" id="sidewalks">
-		<i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</a>
-		<p><b class="good">42.7%</b><br>centerline miles paved with sidewalk on at least one side</p>
-	<a href="pages/bike_facilities/index.php" title="Go to bike facilities page" id="bikes">
-		<i class="fa fa-circle-o" aria-hidden="true"></i> Bike Facilities </a>
-		<p><b>2.88%</b></br>centerline miles with on-road bike facilities<br>
-			<b>34.8 feet</b></br>off-road bike facilities for every centerline mile</p>
-	<a href="pages/funding/index.php" title="Go to funding page" id="funding">
-		<i class="fa fa-circle-o" aria-hidden="true"></i> Funding </a>
-		<p><b class="good">$785M</b><br>TIP funding 2014-2021<br>
-			<b class="good">+$421M</b> <br>since 2008-2013</p>
-	<a href="pages/demographics/index.php" title="Go to demographics page" id="demographics">
-		<i class="fa fa-circle-o" aria-hidden="true"></i> Demographics </a>
-		<p><b class="good">27.8%</b><br>minority population<br>
-		<b>6.8%</b><br>unemployment rate<br>
-		<b class="good">1.49</b><br>avg. vehicles per household<br>
-		<b class="good">$70,829</b><br>median household income<br></p>
+		<div class="page_link"><a href="pages/sidewalks/index.php" title="Go to sidewalks page" id="sidewalks">
+			<i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</a>
+			<p>Centerline miles paved on either side with sidewalk</p>
+			<p class="meter"> <span style="width: 42.7%"></span></p>
+			<p>Sidewalk for every centerline mile<br>
+				<b>3694 feet</b></p>
+		</div>
+		<div class="page_link"><a href="pages/bike_facilities/index.php" title="Go to bike facilities page" id="bikes">
+			<i class="fa fa-circle-o" aria-hidden="true"></i> Bike Facilities </a>
+			<p>Centerline miles with on-road bike facilities</p>
+			<p class="meter"> <span style="width: 2.88%"></span></p>
+			<p>Off-road bike facilities for every centerline mile<br>
+			<b>34.8 feet</b></p>
+		</div>
+		<div class="page_link"><a href="pages/bridges/index.php" title="Go to bridges page" id="bridges">
+			<i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</a>
+				<p> Bridges not structurally deficient</p>
+				<p class="meter"> <span style="width: 91.5%"></span></p>
+				<p>Change since 2015<br><b>-0.2%</b></p>
+		</div>
+		<div class="page_link"><a href="pages/demographics/index.php" title="Go to demographics page" id="demographics">
+			<i class="fa fa-circle-o" aria-hidden="true"></i> Demographics </a>
+			<p><b class="demo">27.8%</b> minority population<br>
+			<b class="demo">6.8%</b> unemployment rate<br>
+			<b class="demo">1.49</b> average vehicles per household<br>
+			<b class="demo">$70,829</b> median household income<br></p>
+		</div>
 	</div>
 </div>
-<div class="footer col-md-6">
+<div class="footer">
 	<?php include 'components/footer.php';?>
 </div>
 </body>

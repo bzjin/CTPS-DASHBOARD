@@ -40,38 +40,32 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	<div class="top-nav col-md-12">
 		<?php include '../../components/top-nav.php';?>
 	</div>
-	<div class="col-md-12">
+
+	<h1>Crashes</h1>
 	
 	<h3 class="inner-nav col-md-12"><a href="#" alt="Go to non-motorized crashes"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
 	Non-Motorized Crashes</a><a href="index2.php" alt="Go to motorized crashes"><i class="fa fa-circle-o" aria-hidden="true"></i>Motorized Crashes</a></h3>	
-	<h1>Crashes</h1>
 
-		<p>The ability to move is crucial to every aspect of our existence. And yet, people face substantial risk getting from place to place in the Boston region. Roads claimed the lives of 53 people in the Boston region last year. 
-		We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. 
-		The MPO aims to keep you safe everywhere and every way that you move. For this reason, we track injuries and fatalities from crashes throughout the region.
-		</p>
+	<p>The ability to move is crucial to every aspect of our existence. And yet, people face substantial risk getting from place to place in the Boston region. <b> Roads claimed the lives of 53 people in the Boston region last year. 
+	</b> We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. 
+	The MPO aims to keep you safe everywhere and every way that you move. For this reason, we track <b>injuries</b> and <b>fatalities</b> from crashes throughout the region.
+	</p>
 
-	</div>
-
-	<div class="col-md-12"> 
-	<h3>Trends Over Time: Bicycle and Pedestrian Injuries</h3>
-		<div id="map" class="col-md-4">
-			<p> Click on the map below to see how the number of injuries incurred in each city or town has changed over a decade. </p> 
-		</div>
+	<h2> Injuries to People Riding Bikes and Walking </h2>
+	<h3>Trends Over Time</h3>
+		<p> Click on the map to discover how the number of injuries incurred in each city or town has changed over a decade. </p> 
+		<div id="map" class="col-md-4"></div>
 		<div id="bikeChart" class="col-md-4 key"><h4>Bicycle Injuries</h4></div>
 		<div id="pedChart" class = "col-md-4 key"><h4>Pedestrian Injuries</h4></div>
-	</div>
 
-	<div class="col-md-12" >
-	<h3> A Closer Look: One Year of Crashes</h3>
-	<p> Boston Region saw <b>576</b> total bicycle crash injuries and <b>892</b> pedestrian crash injuries in 2013. Each dot represents one crash. <b>36</b> faded dots represent fatalities.</p>
+	<h3> One Year of Crashes</h3>
+	<p> During 2013, 36 people died and 576 were injured riding bikes and walking on the Boston Region’s roads. Each dot represents an individual who died or suffered an injury. </p>
 		<div class="col-md-12 key">
 			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Bicycle Injuries
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Bicycle Fatalities
 			<i class="fa fa-circle-o pedes" aria-hidden="true"></i>  Pedestrian Injuries
 			<i class="fa fa-circle pedes" aria-hidden="true"></i> Pedestrian Fatalities</p>
 		</div>
-	</div>
 
 	<div class="col-md-12" id="plot"></div>
 

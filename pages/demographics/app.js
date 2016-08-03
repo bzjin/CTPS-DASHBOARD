@@ -71,6 +71,9 @@ var geoPath = d3.geo.path().projection(projection);
 
   colorMap = function(percent) { 
   // Create Boston Region MPO map with SVG paths for individual towns.
+  svgContainer.selectAll("rect").remove();
+  svgContainer.selectAll("text").remove(); 
+  
     var tractMap = svgContainer.selectAll(".tracts")
       .data(topojson.feature(tracts, tracts.objects.tract_census_2).features)
       .enter()
@@ -78,13 +81,13 @@ var geoPath = d3.geo.path().projection(projection);
         .attr("class", function(d){ return "t" + d.properties.TRACT; })
         .attr("d", function(d, i) {return geoPath(d); })
         .style("fill", function() { 
-          if (percent == "MINORITY_HH_PCT") { return colorScale(0)}
+          if (percent == "MINORITY_HH_PCT") { return colorScale(2)}
           if (percent == "LOW_INC_HH_PCT") { return colorScale(1)}
-          if (percent == "SINGLE_FEMALE_HOH_PCT") { return colorScale(2)}
+          if (percent == "SINGLE_FEMALE_HOH_PCT") { return colorScale(0)}
           if (percent == "ZERO_VEH_HH_PCT") { return colorScale(3)}
 
         }  )
-        .style("fill-opacity", function(d) { return d.properties[percent]/100; } )
+        .style("fill-opacity", function(d) { return d.properties[percent]/50; } )
         .style("opacity", 1)
         .on("mouseenter", function(d){
           d3.selectAll("." + this.getAttribute("class"))
@@ -98,7 +101,11 @@ var geoPath = d3.geo.path().projection(projection);
               .style("stroke", "#ddd")
          tip.hide(d);
         })
-    } 
+
+    if (percent == "MINORITY_HH_PCT") { var keyColor = colorScale(2)}
+    if (percent == "LOW_INC_HH_PCT") { var keyColor = colorScale(1)}
+    if (percent == "SINGLE_FEMALE_HOH_PCT") { var keyColor = colorScale(0)}
+    if (percent == "ZERO_VEH_HH_PCT") { var keyColor = colorScale(3)}
    //Color key
     var xPos = 5;
     var yPos = 40; 
@@ -110,40 +117,41 @@ var geoPath = d3.geo.path().projection(projection);
       .text("KEY");
     //text and colors
     svgContainer.append("rect")
-      .style("fill", "#ddd").style("stroke", "none").style("opacity", .2)
+      .style("fill", keyColor).style("stroke", "none").style("opacity", .2)
       .attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 7)
       .text("20% households");
     svgContainer.append("rect")
-      .style("fill", "#ddd").style("stroke", "none").style("opacity", .4)
+      .style("fill", keyColor).style("stroke", "none").style("opacity", .4)
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
       .text("40% households");
     svgContainer.append("rect")
-      .style("fill", "#ddd").style("stroke", "none").style("opacity", .6)
+      .style("fill", keyColor).style("stroke", "none").style("opacity", .6)
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
       .text("60% households");
     svgContainer.append("rect")
-      .style("fill", "#ddd").style("stroke", "none").style("opacity", .8)
+      .style("fill", keyColor).style("stroke", "none").style("opacity", .8)
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
       .text("80% households");
     svgContainer.append("rect")
-      .style("fill", "#ddd").style("stroke", "none").style("opacity", 1)
+      .style("fill", keyColor).style("stroke", "none").style("opacity", 1)
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
       .text("100% households");
+    }
 }
 
 CTPS.demoApp.generateStats2 = function(tracts){
@@ -227,14 +235,14 @@ var colorScale = d3.scale.linear()
 
 
   populatePoints("MINORITY_HH_PCT", "MINORITY_HH");
-  populatePoints("LOW_INC_HH_PCT", "LOW_INC_HH");
+  /*populatePoints("LOW_INC_HH_PCT", "LOW_INC_HH");
   populatePoints("SINGLE_FEMALE_HOH_PCT", "SINGLE_FEMALE_HOH");
-  populatePoints("ZERO_VEH_HH_PCT", "ZERO_VEH_HH");
+  populatePoints("ZERO_VEH_HH_PCT", "ZERO_VEH_HH");*/
 
   colorMap("MINORITY_HH_PCT");
-  colorMap("LOW_INC_HH_PCT");
+  /*colorMap("LOW_INC_HH_PCT");
   colorMap("SINGLE_FEMALE_HOH_PCT");
-  colorMap("ZERO_VEH_HH_PCT");
+  colorMap("ZERO_VEH_HH_PCT");*/
 
   function populatePoints(percent, households) { 
     allChart.selectAll("points")
@@ -251,9 +259,9 @@ var colorScale = d3.scale.linear()
       .style("fill-opacity", function(d) { return d.properties[percent]/100; } )
       .style("opacity", 1)
       .style("fill", function() { 
-        if (households == "MINORITY_HH") { return colorScale(0)}
+        if (households == "MINORITY_HH") { return colorScale(2)}
         if (households == "LOW_INC_HH") { return colorScale(1)}
-        if (households == "SINGLE_FEMALE_HOH") { return colorScale(2)}
+        if (households == "SINGLE_FEMALE_HOH") { return colorScale(0)}
         if (households == "ZERO_VEH_HH") { return colorScale(3)}
 
       }  )

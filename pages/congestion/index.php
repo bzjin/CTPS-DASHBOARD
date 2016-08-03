@@ -39,25 +39,23 @@
 <div class="top-nav col-md-12">
 	<?php include '../../components/top-nav.php';?>
 </div>
-	<div class="col-md-12">
-		<h3 class="inner-nav col-md-12">
-			<a href="#" title="Go to express highways congestion"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Express Highways</a>
-			<a href="index2.php" title="Go to arterial routes congestion"><i class="fa fa-circle-o" aria-hidden="true"></i>Arterial Routes</a>
-		</h3>	
-		<h1>Congestion</h1>
-		<p>Descriptive text TBD </p>
-	</div>
+	
+	<h1>Congestion</h1>
 
+	<h3 class="inner-nav col-md-12">
+		<a href="#" title="Go to express highways congestion"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Express Highways</a>
+		<a href="index2.php" title="Go to arterial routes congestion"><i class="fa fa-circle-o" aria-hidden="true"></i>Arterial Routes</a>
+	</h3>	
 
-	<div class="col-md-12">
-		<h3> Interstate Speed Index by Route Segment </h3>
-		<p> One of the main ways congestion is measured is by speed index, which is a ratio giving the average, observed speed of travel during congestion hours to the posted speed limit.</p>
-		<p> Speed Index = (Observed speed during AM/PM congested hours) / (Posted speed limit) </p>
-		<p> Mouse over the interstate roads to see its speed index during morning and afternoon peak travel periods (colloquially, rush hours). The selected road segment will appear on the map to the right. </p>
-		<div class="col-md-6 col-md-offset-6" id="map"></div>
+	<p> One of the main ways congestion is measured is by speed index, which is a ratio giving the average, observed speed of travel during congestion hours to the posted speed limit.</p>
+	<p> Speed Index = (Observed speed during AM/PM congested hours) / (Posted speed limit) </p>
 
-		<div class="row col-md-12" id="speedindex"> </div>
-	</div>
+	<h3> Congestion During Peak Travel Periods </h3>
+	
+	<p> Hover over the bars below to explore the degree that congestion slows travel on our region’s interstate highways during morning and evening rush hours.  </p>
+	<div class="col-md-6 col-md-offset-6" id="map"></div>
+
+	<div class="row col-md-12" id="speedindex"> </div>
 	
 	<!--<div class="col-md-12" id="timeVsSpeed">
 		<h3> Travel Time Index vs. Speed Index </h3> 

@@ -63,6 +63,14 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 		.selectAll("text")
 		.attr("transform", "translate(-5, 0)");
 
+	timeline.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("x", -250)
+		.attr("y", 10)
+		.style("font-weight", 300)
+		.style("text-anchor", "middle")
+		.text("Present Serviceability Index (PSI)")
+
 	var nested_routes = d3.nest()
 	.key(function(d) { return d.town;})
 	.entries(cityavg_time);
@@ -227,7 +235,7 @@ console.log(avgpsi)
 	//Title labels
 	cityContainer.append("text")
 		.attr("x", 0).attr("y", 45)
-		.html("City");
+		.html("Municipality");
 
 	cityContainer.append("text")
 		.attr("x", 100).attr("y", 45)
@@ -235,11 +243,11 @@ console.log(avgpsi)
 
 	cityContainer.append("text")
 		.attr("x", 420).attr("y",45)
-		.html("% City Pavement");
+		.html("% Pavement");
 
 	cityContainer.append("text")
 		.attr("x", 570).attr("y", 45)
-		.html("Lane Miles of City Pavement");
+		.html("Lane Miles");
 
 	cityContainer.append("line")
 		.attr("x1", 0)

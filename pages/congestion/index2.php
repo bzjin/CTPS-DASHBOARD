@@ -39,21 +39,20 @@
 <div class="top-nav col-md-12">
 	<?php include '../../components/top-nav.php';?>
 </div>
-	<div class="col-md-12">
-		<h3 class="inner-nav">
-			<a href="index.php" title="Go to express highways congestion"><i class="fa fa-circle-o" aria-hidden="true"></i> Express Highways</a>
-			<a href="#" title="Go to arterial routes congestion"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Arterial Routes</a></h3>
-		<h1>Congestion</h1>
-		<p>Descriptive text TBD </p>
-	</div>
+	<h1>Congestion</h1>
 
+	<h3 class="inner-nav col-md-12">
+		<a href="index.php" title="Go to express highways congestion"><i class="fa fa-circle-o" aria-hidden="true"></i> Express Highways</a>
+		<a href="#" title="Go to arterial routes congestion"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Arterial Routes</a>
+	</h3>
 
-	<div class="col-md-12">
-		<h3> Congestion across Boston Region Arterial Routes </h3>
-		<p> Click on a route for a detailed view of its AM congestion. </p>
-		<div class="col-md-9" id="mapNonInterstate"></div>
-		<div class="col-md-3" id="crossSection"></div>
-	</div>
+	<p> One of the main ways congestion is measured is by speed index, which is a ratio giving the average, observed speed of travel during congestion hours to the posted speed limit.</p>
+	<p> Speed Index = (Observed speed during AM/PM congested hours) / (Posted speed limit) </p>
+
+	<h3> Congestion across Boston Region Arterial Routes </h3>
+	<p> Click on individual routes to explore the degree that congestion slows travel on the Boston Region’s many arterials.  </p>
+	<div class="col-md-9" id="mapNonInterstate"></div>
+	<div class="col-md-3" id="crossSection"></div>
 
 	<!--
 	<div class="col-md-12">
