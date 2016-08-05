@@ -1,5 +1,4 @@
 # CTPS Dashboard Description/Thoughts
-# BK wuz here.
 
 Every MPO in the US is being required by the Federal Government to define performance metrics and goals for their transportation system, and track progress with respect to those goals over time. This repository holds every commit of the Boston MPO dashboard from July 2016 to its final release in January 2018.
 
