@@ -240,7 +240,6 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 		city_names.push(i.city);
 	})
 
-console.log(avgpsi)
 	//Begin creating visual elements 
 	 
 	var cityContainer = d3.select("#citygradients").append("svg")

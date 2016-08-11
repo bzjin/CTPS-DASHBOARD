@@ -551,7 +551,11 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 				if (d.values[0].properties.ROUTEDIRECTION == "EB" || d.values[0].properties.ROUTEDIRECTION == "NB") { 
 					return yScale(d.values[0].properties.FEDERALAIDROUTENUMBER) - 8;
 				} else {
-					return yScale(d.values[0].properties.FEDERALAIDROUTENUMBER) + 10;
+					if (!isNaN(yScale(d.values[0].properties.FEDERALAIDROUTENUMBER))){
+						return yScale(d.values[0].properties.FEDERALAIDROUTENUMBER) + 10;
+					} else { 
+						return -100000;
+					}
 				}})
 			.style("stroke", "none")
 			.style("font-size", 11)
@@ -618,7 +622,11 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 				if (d.properties.ROUTEDIRECTION == "EB" || d.properties.ROUTEDIRECTION == "NB") { 
 					return yScale(d.properties.FEDERALAIDROUTENUMBER) - 20;
 				} else {
-					return yScale(d.properties.FEDERALAIDROUTENUMBER) - 2;
+					if (!isNaN(yScale(d.values[0].properties.FEDERALAIDROUTENUMBER))){
+						return yScale(d.values[0].properties.FEDERALAIDROUTENUMBER) + 10;
+					} else { 
+						return -100000;
+					}
 				}})
 			.style("stroke", "none")
 			.style("fill", function(d) { 

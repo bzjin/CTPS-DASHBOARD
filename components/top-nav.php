@@ -22,7 +22,6 @@
         	var match = anchor[i].href.split("pages/")[1];
 	        if(match == current) {
 	            anchor[i].className = "active";
-	            console.log(anchor)
 	        }
     	}
 	})()</script>'

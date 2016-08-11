@@ -132,10 +132,6 @@ CTPS.demoApp.generateChart = function(congestion) {
 		return d.properties.ROUTE_NUM + " " + directionKey;})
 	.entries(interstateRoads)
 
-	console.log(nested_directions)
-
-	
-
 	var routes = []; 
 	var maxmins = [];
 
@@ -615,15 +611,12 @@ CTPS.demoApp.generateTimes = function(interstateRoads) {
 		.attr("transform", "rotate(-90)")
 		.attr("text-anchor", "start")
 		.text("Travelling at Speed Limit")
-
-
 }
 
 CTPS.demoApp.generateTraveller = function(cities, congestion) { 
 	//Map of free flow
 	// SVG Viewport
 	var interstateRoads = topojson.feature(congestion, congestion.objects.collection).features;
-	console.log(interstateRoads);
 
 	interstateRoads.sort(function(a,b){
 		var nameA = a.properties.ROUTE_NUM;

@@ -20,7 +20,6 @@ queue()
 
 ////////////////* GENERATE MAP *////////////////////
 CTPS.demoApp.generateSidewalk = function(allData) {	
-  console.log(allData)
 // Show name of MAPC Sub Region
 // Define Zoom Behavior
 // SVG Viewport
@@ -45,8 +44,6 @@ allData.forEach(function(i){
     towns.push(i.town);
   }
 })
-
-console.log(capitalized);
 
 var colorToYear = d3.scale.linear()
                   .domain([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015])

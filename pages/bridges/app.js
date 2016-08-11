@@ -105,7 +105,6 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		})
 
 		i.dataArray = structdefs;
-		console.log("<button class='" + i.key.toUpperCase() + " townpicker'><i class='fa fa-map-marker' aria-hidden='true'></i> " + i.key + "</button>")
 	})
 
 	var towns = [];
@@ -113,7 +112,6 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		if (towns.indexOf(d.town) == -1) { towns.push(d.town)}
 	})
 	towns.sort();
-	console.log(towns);
 
 	nested_struct_def = d3.nest() 
 	.key(function(i) { return i.year })

@@ -331,3 +331,13 @@ var colorScale = d3.scale.linear()
   })
 
 }
+
+d3.selectAll(".selection").on("mouseenter", function() { 
+  var routeName = this.getAttribute("class").split(" ")[0];
+  console.log(routeName);
+  
+  d3.selectAll("." + routeName).filter("text")
+    .style("font-weight", 700)
+    .style("fill", "orange")
+
+}

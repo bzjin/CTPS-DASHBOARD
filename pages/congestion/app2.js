@@ -114,7 +114,6 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
             	var mystring = this.getAttribute("class");
 				var arr = mystring.split(" ");
 				var thirdWord = arr[1]; 
-				console.log(thirdWord)
 				
 				d3.selectAll(".interstate")
 					.style("stroke-width", 1)
@@ -134,7 +133,6 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 			var mystring = this.getAttribute("class");
 				var arr = mystring.split(" ");
 				var thirdWord = arr[1]; 
-				console.log(thirdWord)
 				
 				d3.selectAll(".interstate")
 					.style("stroke-width", 1)
