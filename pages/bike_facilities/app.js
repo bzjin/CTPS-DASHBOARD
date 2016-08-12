@@ -219,59 +219,45 @@ function plot() {
       return d3.round(d.PERCENT_ONROAD*100, 1) + "% On-Road (" + d.TOTAL_ONROAD + " Miles)<br>" + d3.round(d.PERCENT_OFFROAD*100, 1) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
     })
 
+
+  var stacks = d3.select("#facilities").append("svg")
+    .attr("class", "plots")
+    .attr("width", "100%")
+    .attr("height", 500)
+
+  var bikeCities = [];
   bikeData.forEach(function(i){
-    var width = 80;
-    var height = 70;
-    var padding = 20;
-
     if (i.PERCENT_ONROAD != 0 || i.PERCENT_OFFROAD != 0) { 
-
-      var stacks = d3.select("#facilities").append("svg")
-        .attr("class", "plots")
-        .attr("width", width)
-        .attr("height", height)
-        .style("overflow", "visible")
-
-      stacks.call(tip);
-
-      stacks.append("circle")
-        .attr("cx", width/2)
-        .attr("cy", height/2 + 15)
-        .attr("r", Math.sqrt(i.TOTAL_ONROAD*20))
-        .style("stroke", colorScaleBars(i.PERCENT_ONROAD))
-        .style("fill", colorScaleBars(i.PERCENT_ONROAD))
-        .style("fill-opacity", .5)
-        .on("mouseenter", function() { 
-          tip.show(i)
-        })
-        .on("mouseleave", function() { 
-          tip.hide(i)
-        })
-
-      stacks.append("circle")
-        .attr("cx", width/2)
-        .attr("cy", height/2 + 15)
-        .attr("r", Math.sqrt(i.TOTAL_OFFROAD*20))
-        .style("stroke", colorScaleBars(i.PERCENT_OFFROAD))
-        .style("fill", colorScaleBars(i.PERCENT_OFFROAD))
-        .style("fill-opacity", .5)
-        .on("mouseenter", function() { 
-          tip.show(i)
-        }) 
-        .on("mouseleave", function() { 
-          tip.hide(i)
-        })
-
-      stacks.append("text")
-        .attr("x", width/2)
-        .attr("y", padding)
-        .text(i.TOWN)
-        .style("font-size", 12)
-        .style("fill", "#ddd")
-        .style("text-anchor", "middle")
+      bikeCities.push(i.TOWN);
     }
   })
-}
+
+  var onRoadPercent = d3.scale.linear()
+              .domain([0, .2])
+              .range([50, 200]);
+
+  var onRoadMiles = d3.scale.linear()
+              .domain([0, 30])
+              .range([220, 370]);
+
+  var yScale = d3.scale.ordinal()
+          .domain(bikeCities)
+          .rangePoints([30, 480]);
+  
+  var xAxis = d3.svg.axis().scale(onRoadPercent).orient("top").ticks(10).tickFormat(d3.format("d")); 
+
+  stacks.selectAll(".onRoad")
+    .data(bikeData)
+    .enter()
+    .append("rect")
+      .attr("class", "onRoad")
+      .attr("x", onRoadPercent(0))
+      .attr("y", function(d) { return yScale(d.TOWN)})
+      .attr("width", function(d) { return onRoadPercent(d.PERCENT_ONROAD) - 50 })
+      .style("fill", function(d) { return colorScaleBars(d.PERCENT_ONROAD)})
+    
+
+    }
    
 d3.select("#alphabetize").on("click", function(){
   d3.selectAll(".plots").remove();

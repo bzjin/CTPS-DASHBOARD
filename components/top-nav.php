@@ -9,8 +9,8 @@
 		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../bridges/index.php" alt="Go to bridges page">Bridges</a></li>
 		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../sidewalks/index.php" alt="Go to sidewalks page">Sidewalks</a></li>		
 		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../bike_facilities/index.php" alt="Go to bike_facilities page">Bike Facilities</a></li>
-		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../funding/index.php" alt="Go to funding page">Funding</a></li>
 		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../demographics/index.php" alt="Go to demographics page">Demographics</a></li>
+		<li><i class="fa fa-circle-o" aria-hidden="true"></i> <a href="../about/index.php" alt="Go to about page">About</a></li>
 
 	</ul>
 

@@ -56,8 +56,8 @@
 		<li><div><a href="pages/congestion/index.php" title="Go to congestion page">Congestion</a></li>
 		<li><div><a href="pages/sidewalks/index.php" title="Go to sidewalk coverage page">Sidewalks</a></li>
 		<li><div><a href="pages/bike_facilities/index.php" title="Go to bike facilities page">Bike Facilities</a></li>
-		<li><div><a href="pages/funding/index.php" title="Go to funding page">Funding</a></li>
 		<li><div><a href="pages/demographics/index.php" title="Go to demographics page">Demographics</a></li>
+		<li><div><a href="pages/about/index.php" title="Go to about page">About</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
       </div> <!-- /.container-fluid -->
@@ -85,10 +85,12 @@
 				<p>Congested arterial routes</p>
 				<p class="meter"> <span style="width: 72%"></span></p>			
 		</div>
-		<div class="page_link"><a href="pages/funding/index.php" title="Go to funding page" id="funding">
-			<i class="fa fa-circle-o" aria-hidden="true"></i> Funding </a>
-			<p>TIP funding 2014-2021<br><b class="good">$785M</b><br>
-				Change since 2008-2013<br><b class="good">+$421M</b> </p>
+		<div class="page_link"><a href="pages/demographics/index.php" title="Go to demographics page" id="demographics">
+			<i class="fa fa-circle-o" aria-hidden="true"></i> Demographics </a>
+			<p><b class="demo">27.8%</b> minority population<br>
+			<b class="demo">6.8%</b> unemployment rate<br>
+			<b class="demo">1.49</b> average vehicles per household<br>
+			<b class="demo">$70,829</b> median household income<br></p>
 		</div>
 	</div>
 
@@ -113,12 +115,9 @@
 				<p class="meter"> <span style="width: 91.5%"></span></p>
 				<p>Change since 2015<br><b>-0.2%</b></p>
 		</div>
-		<div class="page_link"><a href="pages/demographics/index.php" title="Go to demographics page" id="demographics">
-			<i class="fa fa-circle-o" aria-hidden="true"></i> Demographics </a>
-			<p><b class="demo">27.8%</b> minority population<br>
-			<b class="demo">6.8%</b> unemployment rate<br>
-			<b class="demo">1.49</b> average vehicles per household<br>
-			<b class="demo">$70,829</b> median household income<br></p>
+		<div class="page_link"><a href="pages/about/index.php" title="Go to about page" id="funding">
+			<i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+			<p>Purpose, data sources, data development methodology</p>
 		</div>
 	</div>
 </div>

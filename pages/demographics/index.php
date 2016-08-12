@@ -27,20 +27,11 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
-.axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
+.axis line { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
+.yaxis line { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
 text {fill: #ddd; font-size: 14px;} 
-form {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-.node {
-  border: none;
-  font: 10px sans-serif;
-  line-height: 12px;
-  overflow: hidden;
-  position: absolute;
-  text-indent: 2px;
+.tick line { stroke-dasharray: 2, 5; }
+.axis path, .yaxis path { opacity: 0;} 
 }
 </style> 
 </head>
@@ -54,7 +45,7 @@ form {
 
 <h1>Demographics</h1>
 
-<h3> A Closer Look at Municipality Demographics </h3>
+<h3> A Closer Look at Boston Households </h3>
 
 	<!-- <button class='allMetrics bigbutton col-md-2' autofocus> All Households </button> -->
 	<button class='minority bigbutton col-md-3 I-90' autofocus> Minority </button>
@@ -65,6 +56,16 @@ form {
 	<div class="col-md-5" id="map3"></div>
 
 	<div class="col-md-7" id="chartDemographics"></div>
+
+<h3> A Closer Look at the Boston Population </h3>
+
+	<button class='employed bigbutton col-md-3 I-93'> Unemployment </button>
+	<button class='lepPop bigbutton col-md-3 I-95'> Limited English Proficiency </button>
+	<button class='over65 bigbutton col-md-3 I290'> Over Age 65 </button>
+
+	<div class="col-md-5" id="map4"></div>
+
+	<div class="col-md-7" id="chartDemographics2"></div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
