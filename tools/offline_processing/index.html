@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head lang="en">
+<meta charset="utf-8">
+<title>Interstate Pavement Condition n the Boston MPO Region</title>
+<link rel="stylesheet" href="app.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<!-- TopoJSON -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
+
+<script src="http://cdn.jsdelivr.net/jstat/latest/jstat.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<style> .axis line, .axis path { fill: none; stroke-width: 1px; stroke: black;} 
+.yaxis line, .yaxis path { fill: none; stroke-width: 0px; } </style> 
+</head>
+
+<body>
+<div id="header"><h3>Boston Region MPO</h3>
+<h1>System Preservation: Pavement Condition</h1>
+<p>[Attention Getter] Blurb on Pavement Condition. Why is it important? Why do we care?</p>
+<p> Define IRI and PSI (metrics)<p>
+</div>
+
+<div id="map"></div>
+<div id="chart"></div>
+<div id="cities"></div>
+<div id="total"></div>
+
+
+<script src="app.js"></script>
+<script src="jquery.accessibleGrid-0.09.js"></script>
+
+
+</body>
+</html>

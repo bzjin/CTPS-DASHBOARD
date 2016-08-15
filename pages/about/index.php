@@ -41,26 +41,32 @@
 		<p> Hordes of raw and processed data collected over the past decades have been curated to fit the visual displays in this dashboard. The following text describes the data collection process, raw data structure, and offline processing/calculations that were done to parse through hundreds of megabytes of features and attributes. </p>
 
 		<h2> Crashes </h2>
-		<p></p>
+		<p> Data not yet available to the public. Offline preprocessing can be found in the "tools" folder of the dashboard repo.</p>
 
 		<h2> Pavement </h2>
 		<p> Data extracted from the Road Inventory clipped to the MPO region and exported to GeoJSON. Some basic database-level processing [documentation inserted here] of this stuff before exporting it to GeoJSON But the source of the raw data is 100% off-the-shelf. Road Inventories (2007 - 2015) </p>
 
 		<h2> Bridges </h2>
-		<p> Incoming. </p>
+		<p> Data not yet available to the public. Offline preprocessing can be found in the "tools" folder of the dashboard repo.</p>
 
 		<h2> Congestion </h2>
-		<p> Data extracted from the 2012 CMP project, clipped to the MPO region and exported to GeoJSON. </p>
+		<p> Congestion data was extracted  directly from the 2012 Congestion Management Program (CMP) project, which can be found at the CTPS data catalogue. The data was simply clipped to the MPO region and exported to GeoJSON. </p>
+		<a href="http://www.ctps.org/datacatalog_share/content/express-highway-performance-data-2012"> Express Highway Performance Data 2012 </a><br>
+		<a href="http://www.ctps.org/datacatalog_share/content/arterial-highway-performance-data-2012"> Arterial Highway Performance Data 2012 </a>
 
 		<h2> Sidewalks </h2>
-		<p> </p>
+		<p> Data extracted from the Road Inventory clipped to the MPO region and exported to GeoJSON. Some basic database-level processing [documentation inserted here] of this stuff before exporting it to GeoJSON But the source of the raw data is 100% off-the-shelf. Road Inventories (2007 - 2015) </p>
 
 		<h2> Bike Facilities </h2>
-		<p> From Anne. </p>
+		<p> Bike facility data was taken directly from the CTPS Data Catalogue. In coding, two choices of "binning" were made - one to group off-road miles (bicycle-lane miles, cycle-track miles, shared-used path miles) together and one to group on-road miles (marked-shared-lane miles, sign-posted-on-road miles, minimum-four-feet wide shoulders) together.</p>
+		<a href="http://www.ctps.org/datacatalog_share/content/bicycle-facilities-municipality"> Bike Facilities Original Data Set </a>
 
 		<h2> Demographics</h2>
-		<p> 2010 Census by muncipality and tract</p>
+		<p> All demographic data was taken from the 2010 Census and then sorted geographically by muncipality and tract. Demographic data specific to the MPO region can be found in the CTPS data catalogue and is linked below.</p>
+		<a href="http://www.ctps.org/datacatalog_share/content/boston-region-mpo-2010-census-demographic-profile">Boston Region MPO 2010 Census Demographic Profile</a>
 
+		<h3> A Quick Note on Geometries </h3>
+		<p> For the most part, mapping on this dashboard was done by exporting data in GeoJSON format from ArcMap. This allows various data structures and properties to be encoded into geographies and to be represented and displayed on this dashboard. For the purposes of this dashboard, most GeoJSONs were then turned into <a href="https://github.com/mbostock/topojson">TopoJSONs</a>, a topology-preserving data format that allows for simplification and faster loading speeds.</p>
 		
 	</div>
 		

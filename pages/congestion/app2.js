@@ -233,15 +233,16 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 			.append("text")
 				.attr("class", "textlabels")
 				.text(function(d) { 
-					if (d.properties.ROAD_NAME == "NULL") { return ""}
-					else { return d.properties.ROAD_NAME;}})
+					if (Math.abs(d.properties.TO_MEAS - d.properties.FROM_MEAS) < 1000) { return ""}
+					else if (d.properties.SEG_END == "NULL") { return ""}
+					else { return d.properties.SEG_END;}})
 				.attr("x", function(d) { 
 					if (d.properties.DIRECTION == "Northbound" || d.properties.DIRECTION == "Eastbound") {
 						return 75;
 					} else {
 						return 120;
 					}})
-				.attr("y", function(d) { return yScale(d.properties.NORMALIZEDSTART - (Math.abs(d.properties.TO_MEAS - d.properties.FROM_MEAS)/2)) ; })
+				.attr("y", function(d) { return yScale(d.properties.NORMALIZEDSTART) ; })
 				.style("fill", "#fff")
 				.style("font-size", 10)
 				.style("font-weight", 300)

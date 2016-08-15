@@ -568,7 +568,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 		.attr("height", 15)
 		.attr("width", 50)
 		.attr("x", xScaleRoad(30))
-		.attr("y", yScale("I-90") - 2)
+		.attr("y", yScale("I-90") + 10)
 		.style("stroke", "none")
 		.style("fill", "grey")
 		.style("opacity", .5)
@@ -585,7 +585,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 		.attr("height", 15)
 		.attr("width", 650)
 		.attr("x", xScaleRoad(1))
-		.attr("y", yScale("I495") - 2)
+		.attr("y", yScale("I495") + 10)
 		.style("stroke", "none")
 		.style("fill", "grey")
 				.style("opacity", .5)
@@ -622,8 +622,8 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 				if (d.properties.ROUTEDIRECTION == "EB" || d.properties.ROUTEDIRECTION == "NB") { 
 					return yScale(d.properties.FEDERALAIDROUTENUMBER) - 20;
 				} else {
-					if (!isNaN(yScale(d.values[0].properties.FEDERALAIDROUTENUMBER))){
-						return yScale(d.values[0].properties.FEDERALAIDROUTENUMBER) + 10;
+					if (!isNaN(yScale(d.properties.FEDERALAIDROUTENUMBER))){
+						return yScale(d.properties.FEDERALAIDROUTENUMBER) + 10;
 					} else { 
 						return -100000;
 					}

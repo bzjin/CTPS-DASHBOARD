@@ -351,11 +351,6 @@ CTPS.demoApp.generateMap4 = function(tracts) {
   // SVG Viewport
 
   var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
-  census.forEach(function(i){
-    if (i.properties.LEP_POP_PCT > 1) { 
-      i.properties.LEP_POP_PCT = d3.round(i.properties.LEP_POP_PCT/100, 2);
-    }
-  })
 
   var colorScale = d3.scale.linear()
                   .domain([0, 1, 2, 3, 4, 5, 6, 7])
@@ -482,7 +477,7 @@ var colorScale = d3.scale.linear()
                   .domain([0, 1, 2, 3])
                   .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"])
 
-  var allChart = d3.select("#chartDemographics2").append("svg")
+  var allChart2 = d3.select("#chartDemographics2").append("svg")
     .attr("width", "100%")
     .attr("height", 500)
     .attr("overflow", "visible")
@@ -495,6 +490,8 @@ var colorScale = d3.scale.linear()
     }
     i.properties.PCT_65_PLUS = d3.round(i.properties.PCT_65_PLUS * 100, 2);
     i.properties.PCT_IN_LABOR_FORCE = d3.round((1 - i.properties.PCT_IN_LABOR_FORCE) * 100, 2);
+    i.properties.LABOR_FORCE = i.properties.TOTAL_POP_2010 - i.properties.LABOR_FORCE; 
+
     maxmins.push(i.properties.TOTAL_POP_2010);
   })
 
@@ -519,9 +516,9 @@ var colorScale = d3.scale.linear()
       d.properties.PCT_IN_LABOR_FORCE + "<br>% Over 65 years old: " + d.properties.PCT_65_PLUS + "<br>% Limited English Proficiency: " + d.properties.LEP_POP_PCT;
     })
 
-  allChart.call(tip); 
+  allChart2.call(tip); 
 
-  allChart.append("g").attr("class", "axis")
+  allChart2.append("g").attr("class", "axis")
     .attr("transform", "translate(0, 430)")
     .call(xAxis)
     .selectAll("text")
@@ -531,21 +528,21 @@ var colorScale = d3.scale.linear()
       .attr("transform", "translate(0, 5)");
 
   
-  allChart.append("g").attr("class", "yaxis")
+  allChart2.append("g").attr("class", "yaxis")
     .attr("transform", "translate(80, 0)")
     .call(yAxis)
     .selectAll("text")
       .style("font-size", "12px")
       .attr("transform", "translate(-5,0)");
 
-  allChart.append("text")
+  allChart2.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", -250)
     .attr("y", 20)
     .style("text-anchor", "middle")
     .text("Population")
 
-  allChart.append("text")
+  allChart2.append("text")
     .attr("x", 340)
     .attr("y", 470)
     .style("text-anchor", "middle")
@@ -562,7 +559,7 @@ var colorScale = d3.scale.linear()
   colorMap("PCT_65_PLUS");*/
 
   function populatePoints(percent, population) { 
-    allChart.selectAll("points")
+    allChart2.selectAll("points")
     .data(census)
     .enter()
     .append("rect")
@@ -602,7 +599,7 @@ var colorScale = d3.scale.linear()
   }
 
   d3.select(".employed").on("click", function(){
-    allChart.selectAll("rect").remove();
+    allChart2.selectAll("rect").remove();
     populatePoints("PCT_IN_LABOR_FORCE", "LABOR_FORCE");
 
     svgContainer.selectAll("path").remove();
@@ -610,7 +607,7 @@ var colorScale = d3.scale.linear()
   })
 
   d3.select(".lepPop").on("click", function(){
-    allChart.selectAll("rect").remove();
+    allChart2.selectAll("rect").remove();
    populatePoints("LEP_POP_PCT", "LEP_POP");
 
     svgContainer.selectAll("path").remove();
@@ -618,7 +615,7 @@ var colorScale = d3.scale.linear()
   })
 
   d3.select(".over65").on("click", function(){
-    allChart.selectAll("rect").remove();
+    allChart2.selectAll("rect").remove();
     populatePoints("PCT_65_PLUS", "POP_65_PLUS");
 
     svgContainer.selectAll("path").remove();
