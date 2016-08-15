@@ -41,21 +41,55 @@
 		<p> Hordes of raw and processed data collected over the past decades have been curated to fit the visual displays in this dashboard. The following text describes the data collection process, raw data structure, and offline processing/calculations that were done to parse through hundreds of megabytes of features and attributes. </p>
 
 		<h2> Crashes </h2>
-		<p> Data not yet available to the public. Offline preprocessing can be found in the "tools" folder of the dashboard repo.</p>
+		<p> Crash data was obtained from the Massachusetts Registry of Motor Vehicles (RMV) Crash Data System.
+		The RMV collects crash data from the Massachusetts State Police, the police departments of individual cities and towns, and from motor vehicle operators.
+		The data submitted by operators has not been entered into the RMV CDS for several (detail needed here) years because of a shortage of staff.
+		The completeness of crash data submitted by the police departments of individual cities and towns, varies widely from municipality to municipality.
+		Offline preprocessing can be found in the "tools" folder of the dashboard repo.
+		</p>
 
 		<h2> Pavement </h2>
-		<p> Data extracted from the Road Inventory clipped to the MPO region and exported to GeoJSON. Some basic database-level processing [documentation inserted here] of this stuff before exporting it to GeoJSON But the source of the raw data is 100% off-the-shelf. Road Inventories (2007 - 2015) </p>
+		<p> Data was extracted from the Massachusetts Road Inventory produced by the Massachusetts Department of Transportation (MassDOT), formerly the Massachusetts
+		    Executive Office of Transporation, for the years 2007 through 2015.
+		    The following processing was performed on each year's Road Inventory:
+			<ol>
+				<li> Clip Road Inventory to the MPO boundary.
+				<li> Select either records with NHSStatus = 1 (for interstate NHS pavement condition) or NHSStatus > 1 (for non-interstate NHS pavement condition.)</li>
+				<li> For Interstate routes, the data was exported in GeoJSON format, from which the visualization was generated directly. </li>
+				<li> For non-Interstate routes:
+					<ol>
+						<li> Select records with PSI field value of NULL, and calculate number of lane-miles.</li>
+						<li> For each PSI "bucket" (i.e., PSI < 2.5, PSI >= 2.5 and PSI < 3.0, PSI >= 3.0 and PSI < 3.5, PSI >= 3.5 and PSI < 4.0, and PSI >= 4.0 and PSI < 5.0),
+							 select records with PSI specified range of PSI values, and calculate number of lane-miles. </li>
+						<li> Use ArcMap "Summary Statistics" tool to generate total number of lane-miles with NULL PSI value and PSI value in each of the 5 "buckets,"
+							 grouped by TOWN (and TOWN_ID.) </li>
+					</ol>
+			</ol>
+		</p>
 
 		<h2> Bridges </h2>
-		<p> Data not yet available to the public. Offline preprocessing can be found in the "tools" folder of the dashboard repo.</p>
+		<p> Bridge data was obtained from the Bridge Division of the Massachusetts Department of Transportation.
+			Offline preprocessing can be found in the "tools" folder of the dashboard repo.
+		</p>
 
 		<h2> Congestion </h2>
-		<p> Congestion data was extracted  directly from the 2012 Congestion Management Program (CMP) project, which can be found at the CTPS data catalogue. The data was simply clipped to the MPO region and exported to GeoJSON. </p>
+		<p> Congestion data was extracted  directly from the 2012 Congestion Management Program (CMP) project, which can be found at the CTPS data catalogue. The data was clipped to the MPO region and exported to GeoJSON. </p>
 		<a href="http://www.ctps.org/datacatalog_share/content/express-highway-performance-data-2012"> Express Highway Performance Data 2012 </a><br>
 		<a href="http://www.ctps.org/datacatalog_share/content/arterial-highway-performance-data-2012"> Arterial Highway Performance Data 2012 </a>
 
 		<h2> Sidewalks </h2>
-		<p> Data extracted from the Road Inventory clipped to the MPO region and exported to GeoJSON. Some basic database-level processing [documentation inserted here] of this stuff before exporting it to GeoJSON But the source of the raw data is 100% off-the-shelf. Road Inventories (2007 - 2015) </p>
+		<p> Data was extracted from the Massachusetts Road Inventory produced by the Massachusetts Department of Transportation (MassDOT), formerly the Massachusetts
+		    Executive Office of Transporation, for the years 2007 through 2015.
+		    The following processing was performed on each year's Road Inventory:		
+			<ol>
+				<li> Clip Road Inventory to the MPO boundary.
+				<li> Calculate the number of centerline miles for each segment: the value of the Shape_LENGTH field divided by 1609.344 (number of meters per mile.) </li>
+				<li> Select records where FUNCTIONALCLASSIFICATION != 0 OR MILEAGECOUNTED =0. This excludes records for interstates and the "secondary direction" of other roads. </li>
+				<li> Select records where (RIGHTSIDEWALKWIDTH IS NOT NULL AND RIGHTSIDEWALKWIDTH > 0) OR (LEFTSIDEWALKWIDTH IS NOT NULL AND LEFTSIDEWALKWIDTH > 0) </li>
+				<li> Calculate the number of miles in these selected records, again dividing the value of the Shape_LENGTH field by 1609.344. </li>
+				<li> Use ArcMap "Summary Statistics" tool to generate total number of centerline miles and number of miles with a sidewalk on either or both side of the road,
+				     grouped by TOWN (and TOWN_ID.)</li>
+		</p>
 
 		<h2> Bike Facilities </h2>
 		<p> Bike facility data was taken directly from the CTPS Data Catalogue. In coding, two choices of "binning" were made - one to group off-road miles (bicycle-lane miles, cycle-track miles, shared-used path miles) together and one to group on-road miles (marked-shared-lane miles, sign-posted-on-road miles, minimum-four-feet wide shoulders) together.</p>
