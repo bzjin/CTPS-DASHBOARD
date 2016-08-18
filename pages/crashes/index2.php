@@ -67,6 +67,10 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 
 	<div class="col-md-12" id="plot"></div>
 
+	<h3>Truck Crashes</h3>
+	<p> Truck crash description. Why do we count trucks specifically? </p>
+	<div class="col-md-12" id="trucks"></div>
+
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>

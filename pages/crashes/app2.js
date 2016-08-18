@@ -16,6 +16,7 @@ queue()
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
 		CTPS.demoApp.generatePlot(results[1]);
+		CTPS.demoApp.generateTruck(results[1]);
 		CTPS.demoApp.generateAccessibleTable(results[1]);
 	}); 
 
@@ -257,6 +258,70 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 				if (x == 130) { x = 1; y--; } else { x++; }
 			}
 		}
+	});	
+}
+
+CTPS.demoApp.generateTruck = function(crashdata) { 
+	var height = 800;
+	var width = 1000;
+	var padding = 100;
+
+	var nested_crashes = d3.nest()
+		.key(function(d) { return d.town})
+		.entries(crashdata);
+
+	var svg = d3.select("#trucks").append("svg")
+				.attr("height", height)
+				.attr("width", width);
+
+	var xScale = d3.scale.linear().domain([2004, 2013]).range([0 + padding, width-padding]);
+	var yScale = d3.scale.linear().domain([201, 0]).range([height - 50, 50]);
+
+	var xAxis = d3.svg.axis().scale(xScale).tickSize(0);
+	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
+
+	svg.append("g")
+	  .attr("class", "taxis")
+	  .attr("transform", "translate(0, " + (height - padding) + ")")
+	  .call(xAxis).selectAll("text").remove();
+
+	svg.append("g")
+		.attr("class", "taxis")
+		.attr("transform", "translate(" + padding + ", 0)")
+		.call(yAxis).selectAll("text").remove();
+
+	crashdata.sort(function(a, b){ return parseInt(a.year) - parseInt(b.year); });
+	var year = 0; 
+	var x = 1; 
+	var y = 90;
+	var tot = 0; 
+
+	crashdata.forEach(function(d){
+		if (year != d.year) { 
+			x = 1; 
+			y = 200; 
+			year = d.year; 
+		}
+	
+		for(var i = 1; i < d.trk_fat + 1; i += 5) { 
+			svg.append("circle")  
+				.attr("cx", xScale(d.year) + x)
+				.attr("cy", yScale(y))
+				.attr("r", 2.8)
+				.attr("fill", "orange")
+			if (x == 71) { x = 1; y--; } else { x += 7; }
+		}
+		for(var i = 1; i < d.trk_inj + 1; i += 5) { 
+			svg.append("circle")  
+				.attr("cx", xScale(d.year) + x)
+				.attr("cy", yScale(y))
+				.attr("r", 2.8)
+				.attr("stroke-width", .5)
+				.attr("stroke", "orange")
+				.attr("fill", "none")
+			if (x == 71) { x = 1; y--; } else { x += 7; }
+		}
+
 	});	
 }
 
