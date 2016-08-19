@@ -55,8 +55,9 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	<h3>Trends Over Time</h3>
 		<p> Click on each city or town to see its injury counts over time. </p> 
 
-		<div id="map" class="col-md-5"></div>
-		<div id="chart" class="col-md-7 key"></div>
+		<div id="map" class="col-md-4"></div>
+		<div id="motChart" class="col-md-4 key"><h4>Motorized Injuries</h4></div>
+		<div id="truckChart" class = "col-md-4 key"><h4>Truck Injuries</h4></div>
 
 	<h3>One Year of Crashes</h3>
 	<p> Boston Region saw <b>14888</b> total vehicle crash injuries in 2013. Each dot represents one crash. <b>68</b> solid, filled dots represent fatalities.</p>
@@ -68,7 +69,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	<div class="col-md-12" id="plot"></div>
 
 	<h3>Truck Crashes</h3>
-	<p> Truck crash description. Why do we count trucks specifically? </p>
+	<p> Truck crash description. Why do we count trucks specifically? Once again, each dot represents one crash. Filled-in dots represent fatalities.</p>
 	<div class="col-md-12" id="trucks"></div>
 
 	<div class="footer col-md-12">

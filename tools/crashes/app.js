@@ -225,7 +225,7 @@ CTPS.demoApp.generateTruck = function(motorized, trucks){
 console.log(motorized, trucks)
 	motorized.forEach(function(i){ 
 		trucks.forEach(function(j){
-			if (i.town.toUpperCase() == j.TOWN){
+			if (i.town.toUpperCase() == j.TOWN || i.town.toUpperCase() == "TOTAL"){
 				if (i.year == 2004) { 
 					i.trk_inj = j['2004_Truck_Number_Injuries']
 					i.trk_fat = j['2004_Truck_Number_Fatalities']
