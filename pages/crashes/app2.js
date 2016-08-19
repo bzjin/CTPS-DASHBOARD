@@ -259,8 +259,8 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 CTPS.demoApp.generatePlot = function (crashdata) {
 
-	var height = 1000;
-	var width = 1000;
+	var height = 750;
+	var width = 1100;
 	var padding = 10;
 
 	var nested_crashes = d3.nest()
@@ -271,8 +271,8 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 				.attr("height", height)
 				.attr("width", width);
 
-	var xScale = d3.scale.linear().domain([0, 131]).range([0 + padding, width-padding]);
-	var yScale = d3.scale.linear().domain([0, 131]).range([height, 10]);
+	var xScale = d3.scale.linear().domain([0, 151]).range([0 + padding, width - 50]);
+	var yScale = d3.scale.linear().domain([0, 131]).range([height + 150, 10]);
 
 	var xAxis = d3.svg.axis().scale(xScale).tickSize(0);
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
@@ -298,7 +298,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 					.attr("cy", yScale(y))
 					.attr("r", 2.8)
 					.attr("fill", "#e7298a")
-				if (x == 130) { x = 1; y--; } else { x++; }
+				if (x == 150) { x = 1; y--; } else { x++; }
 			}
 			for(var i = 1; i < d.mot_inj+1; i++) { 
 				svg.append("circle")  
@@ -308,7 +308,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 					.attr("stroke-width", .5)
 					.attr("stroke", "#e7298a")
 					.attr("fill", "none")
-				if (x == 130) { x = 1; y--; } else { x++; }
+				if (x == 150) { x = 1; y--; } else { x++; }
 			}
 		}
 	});	
@@ -358,14 +358,7 @@ CTPS.demoApp.generateTruck = function(crashdata) {
 		}
 
 		if (d.town == "Total") {
-			for(var i = 1; i < parseInt(d.trk_fat) + 1; i ++) { 
-				svg.append("circle")  
-					.attr("cx", xScale(d.year) + x)
-					.attr("cy", yScale(y))
-					.attr("r", 2.8)
-					.attr("fill", "orange")
-				if (x == xMax) { x = 1; y--; } else { x += 7; }
-			}
+			
 			for(var i = 1; i < parseInt(d.trk_inj) + 1; i ++) { 
 				svg.append("circle")  
 					.attr("cx", xScale(d.year) + x)
@@ -377,6 +370,14 @@ CTPS.demoApp.generateTruck = function(crashdata) {
 				if (x == xMax) { x = 1; y--; } else { x += 7; }
 			}
 
+			for(var i = 1; i < parseInt(d.trk_fat) + 1; i ++) { 
+				svg.append("circle")  
+					.attr("cx", xScale(d.year) + x)
+					.attr("cy", yScale(y))
+					.attr("r", 2.8)
+					.attr("fill", "orange")
+				if (x == xMax) { x = 1; y--; } else { x += 7; }
+			}
 			svg.append("text")  
 				.attr("x", xScale((d.year + d.year + 1)/ 2) - 15)
 				.attr("y", yScale(100) + 45)

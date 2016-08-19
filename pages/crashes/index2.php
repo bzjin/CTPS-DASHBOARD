@@ -56,7 +56,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 		<p> Click on each city or town to see its injury counts over time. </p> 
 
 		<div id="map" class="col-md-4"></div>
-		<div id="motChart" class="col-md-4 key"><h4>Motorized Injuries</h4></div>
+		<div id="motChart" class="col-md-4 key"><h4>All Motorized Injuries</h4></div>
 		<div id="truckChart" class = "col-md-4 key"><h4>Truck Injuries</h4></div>
 
 	<h3>One Year of Crashes</h3>
