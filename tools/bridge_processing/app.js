@@ -4,7 +4,10 @@ CTPS.demoApp = {};
 //Using the queue.js library
 queue()
 	.defer(d3.csv, "bridge_condition_2007.csv")
+	.defer(d3.csv, "bridge_condition_2008.csv")
+	.defer(d3.csv, "bridge_condition_2009.csv")
 	.defer(d3.csv, "bridge_condition_2010.csv")
+	.defer(d3.csv, "bridge_condition_2011.csv")
 	.defer(d3.csv, "bridge_condition_2012.csv")
 	.defer(d3.csv, "bridge_condition_2013.csv")
 	.defer(d3.csv, "bridge_condition_2014.csv")
@@ -13,7 +16,7 @@ queue()
 
 	.awaitAll(function(error, results){ 
 
-	CTPS.demoApp.generateBridgeAverages(results[0], results[1], results[2], results[3], results[4], results[5], results[6]);
+	CTPS.demoApp.generateBridgeAverages(results[0], results[1], results[2], results[3], results[4], results[5], results[6], results[7], results[8], results[9]);
 }); 
 
 /* AN EXPLANATION : The following function prunes each of bridge data sets into one collection of bridge condition data over time. 
@@ -27,7 +30,7 @@ THE "RAW DATA" : Each of the csvs that are loaded in the above queue are include
 THE FINAL PRODUCT : The JSON array "bridge_condition_timeline.JSON" in the JSON folder is the result of this code.
 */
 
-CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2010, yr2012, yr2013, yr2014, yr2015, yr2016){
+CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, yr2011, yr2012, yr2013, yr2014, yr2015, yr2016){
 	var pushed = []; 
 	yr2007.forEach(function(i){
 		pushed.push({
@@ -39,6 +42,32 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2010, yr2012, yr2013, y
 			"year" : 2007,
 			"structDef" : i.allbridgesAug07_Struct_Def,
 			"town": i.allbridgesAug07_Town_Name
+		})
+	})
+
+	yr2008.forEach(function(i){
+		pushed.push({
+			"bridgeId" : i.All_Bridges_2008April_BIN,
+			"healthIndex" : i.All_Bridges_2008April_Health_Index,
+			"overFeature" : i.All_Bridges_2008April_Item_7.replace(/ +(?= )/g, ' '), 
+			"underFeature" : i.All_Bridges_2008April_Item_6A.replace(/ +(?= )/g, ' '),
+			"adt" : i.All_Bridges_2008April_Item_29,
+			"year" : 2008,
+			"structDef" : i.All_Bridges_2008April_Struct_Def,
+			"town": i.All_Bridges_2008April_Town_Name
+		})
+	})
+
+	yr2009.forEach(function(i){
+		pushed.push({
+			"bridgeId" : i.All_Bridges_2009April_BIN,
+			"healthIndex" : i.All_Bridges_2009April_Health_Index,
+			"overFeature" : i.All_Bridges_2009April_Item_7.replace(/ +(?= )/g, ' '), 
+			"underFeature" : i.All_Bridges_2009April_Item_6A.replace(/ +(?= )/g, ' '),
+			"adt" : i.All_Bridges_2009April_Item_29,
+			"year" : 2009,
+			"structDef" : i.All_Bridges_2009April_Struct_Def,
+			"town": i.All_Bridges_2009April_Town_Name
 		})
 	})
 
@@ -55,6 +84,18 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2010, yr2012, yr2013, y
 		})
 	})
 
+	yr2011.forEach(function(i){
+		pushed.push({
+			"bridgeId" : i.AllBridges_2011April_BIN,
+			"healthIndex" : i.AllBridges_2011April_Health_Index,
+			"overFeature" : i.AllBridges_2011April_Item_7.replace(/ +(?= )/g, ' '), 
+			"underFeature" : i.AllBridges_2011April_Item_6A.replace(/ +(?= )/g, ' '),
+			"adt" : i.AllBridges_2011April_Item_29,
+			"year" : 2011,
+			"structDef" : i.AllBridges_2011April_Struct_Def,
+			"town": i.AllBridges_2011April_Town_Name
+		})
+	})
 	yr2012.forEach(function(i){
 		pushed.push({
 			"bridgeId" : i.AllBridges_2012April_1_BIN,
@@ -116,5 +157,9 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2010, yr2012, yr2013, y
 		})
 	})
 
+	d3.select("#text").append('text')
+	.text(JSON.stringify(pushed))
+	.attr("x", 5)
+	.attr("y", 5)
 		console.log(JSON.stringify(pushed));
 }
