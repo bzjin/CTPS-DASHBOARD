@@ -53,7 +53,7 @@
 		    Executive Office of Transporation, for the years 2007 through 2015.
 		    The following processing was performed on each year's Road Inventory:
 			<ol>
-				<li> Clip Road Inventory to the MPO boundary.
+				<li> Clip Road Inventory to the MPO boundary.</li>
 				<li> Select either records with NHSStatus = 1 (for interstate NHS pavement condition) or NHSStatus > 1 (for non-interstate NHS pavement condition.)</li>
 				<li> For Interstate routes, the data was exported in GeoJSON format, from which the visualization was generated directly. </li>
 				<li> For non-Interstate routes:
@@ -64,6 +64,7 @@
 						<li> Use ArcMap "Summary Statistics" tool to generate total number of lane-miles with NULL PSI value and PSI value in each of the 5 "buckets,"
 							 grouped by TOWN (and TOWN_ID.) </li>
 					</ol>
+				</li>
 			</ol>
 		</p>
 
@@ -82,13 +83,14 @@
 		    Executive Office of Transporation, for the years 2007 through 2015.
 		    The following processing was performed on each year's Road Inventory:		
 			<ol>
-				<li> Clip Road Inventory to the MPO boundary.
+				<li> Clip Road Inventory to the MPO boundary. </li>
 				<li> Calculate the number of centerline miles for each segment: the value of the Shape_LENGTH field divided by 1609.344 (number of meters per mile.) </li>
 				<li> Select records where FUNCTIONALCLASSIFICATION != 0 OR MILEAGECOUNTED =0. This excludes records for interstates and the "secondary direction" of other roads. </li>
 				<li> Select records where (RIGHTSIDEWALKWIDTH IS NOT NULL AND RIGHTSIDEWALKWIDTH > 0) OR (LEFTSIDEWALKWIDTH IS NOT NULL AND LEFTSIDEWALKWIDTH > 0) </li>
 				<li> Calculate the number of miles in these selected records, again dividing the value of the Shape_LENGTH field by 1609.344. </li>
 				<li> Use ArcMap "Summary Statistics" tool to generate total number of centerline miles and number of miles with a sidewalk on either or both side of the road,
 				     grouped by TOWN (and TOWN_ID.)</li>
+			</ol>
 		</p>
 
 		<h2> Bike Facilities </h2>
@@ -100,7 +102,7 @@
 		<a href="http://www.ctps.org/datacatalog_share/content/boston-region-mpo-2010-census-demographic-profile">Boston Region MPO 2010 Census Demographic Profile</a>
 
 		<h3> A Quick Note on Geometries </h3>
-		<p> For the most part, mapping on this dashboard was done by exporting data in GeoJSON format from ArcMap. This allows various data structures and properties to be encoded into geographies and to be represented and displayed on this dashboard. For the purposes of this dashboard, most GeoJSONs were then turned into <a href="https://github.com/mbostock/topojson">TopoJSONs</a>, a topology-preserving data format that allows for simplification and faster loading speeds.</p>
+		<p> For the most part, mapping on this dashboard was done by exporting data in GeoJSON format from ArcMap. This allows various data structures and properties to be encoded into geographies and to be represented and displayed on this dashboard. For the purposes of this dashboard, most <a href="http://geojson.org/">GeoJSONs</a> were then turned into <a href="https://github.com/mbostock/topojson">TopoJSONs</a>, a topology-preserving data format that allows for simplification and faster loading speeds.</p>
 		
 	</div>
 		
