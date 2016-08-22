@@ -152,38 +152,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData) {
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .text(">20%");
-
-    //Circle key
-    var xPos = 40;
-    var yPos = 480; 
-    var height = 600; 
-  
-    //text and colors
-    svgContainer.append("circle")
-      .attr("class", "key")
-      .style("fill", "none").style("stroke", "#fff")
-      .attr("cx", xPos).attr("cy", yPos).attr("r", 30)
-    svgContainer.append("text")
-      .style("font-weight", 300).style("text-anchor", "middle")
-      .attr("x", xPos).attr("y", yPos - 40)
-      .style("font-size", 12).html("45 Miles");
-    svgContainer.append("circle")
-      .attr("class", "key")
-      .style("fill", "none").style("stroke", "#fff")
-      .attr("cx", xPos + 80).attr("cy", yPos).attr("r", 20)
-    svgContainer.append("text")
-      .style("font-weight", 300).style("text-anchor", "middle")
-      .attr("x", xPos + 80).attr("y", yPos - 30)
-      .style("font-size", 12).html("20 Miles");
-    svgContainer.append("circle")
-      .attr("class", "key")
-      .style("fill", "none").style("stroke", "#fff")
-      .attr("cx", xPos + 140).attr("cy", yPos).attr("r", 10)
-    svgContainer.append("text")
-      .style("font-weight", 300).style("text-anchor", "middle")
-      .attr("x", xPos + 140).attr("y", yPos - 20)
-      .style("font-size", 12).html("5 Miles");
+      .text(">20%"); 
 
 }
 
@@ -231,7 +200,7 @@ function plot() {
       bikeCities.push(i.TOWN);
     }
   })
-
+ console.log(bikeData)
   var onRoadPercent = d3.scale.linear()
               .domain([0, .2])
               .range([50, 200]);
@@ -257,7 +226,7 @@ function plot() {
       .style("fill", function(d) { return colorScaleBars(d.PERCENT_ONROAD)})
     
 
-    }
+}
    
 d3.select("#alphabetize").on("click", function(){
   d3.selectAll(".plots").remove();

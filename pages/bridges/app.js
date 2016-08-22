@@ -438,7 +438,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 			bridgePoints();
 			makeTimeline(allBridges);
 		} else {
-			timeline2.selectAll("rect")
+			timeline2.selectAll("rect").filter(".individuals")
 				.style("opacity", .1)
 
 			timeline2.selectAll("." + firstWord)

@@ -54,7 +54,8 @@ text {
 	</p><p>The Boston Region MPO monitors the bicycle network available throughout the region. Bicycle facilities include off-road trails that are often shared with pedestrians, as well as on-road lanes and cycle tracks on which people ride alongside motorized vehicles. We measure the total miles of facilities available to people biking and also calculate Bike Facility per Centerline Mile: the percent of road miles that provide designated bike lanes or cycle tracks. 
 	</p>
 
-	<h3> Roadway Coverage </h3>
+	<h2> Roadway Coverage </h2>
+	<h3> On-Road Bike Facilities </h3>
 	<p> This map of Boston Region cities and towns below depicts the percent of road miles that provide bicycle facilities. The circles to the right represent the total number of on-road and off-road miles of available to people biking in each municipality. 
 	</p>
 	
@@ -67,6 +68,7 @@ text {
 	<div class="col-md-3" id="map"></div>
 	<div class="col-md-9" id="facilities"></div>
 	<div class="col-md-12" id="stacks"></div>
+	<h3> Off-Road Bike Facilities </h3>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
