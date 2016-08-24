@@ -131,4 +131,12 @@ button {
   opacity: .5;
   padding-right: 20px;
 }
+ 
+li { 
+  font-weight: 300;
+  font-family: "Open Sans";
+}
 
+ol {
+  padding-left: 40px;
+}

@@ -65,11 +65,11 @@ text {
 		<button class="bigbutton col-md-4" id="byNumber" alt="Sort towns by ascending miles of bike facilities">Sort by Bike Facility Miles</button>
 	</div>
 
-	<div class="col-md-3" id="map"></div>
-	<div class="col-md-9" id="facilities"></div>
-	<div class="col-md-12" id="stacks"></div>
+	<div class="col-md-4" id="map"></div>
+	<div class="col-md-8" id="facilities"></div>
 	<h3> Off-Road Bike Facilities </h3>
-
+		<div class="col-md-4" id="map2"></div>
+		<div class="col-md-8" id="facilities2"></div>
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>
