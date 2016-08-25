@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
-<title>Funding in the Boston MPO Region</title>
+<title>Demographics in the Boston MPO Region</title>
 <link rel="stylesheet" href="app.css"/>
 <link rel="stylesheet" href="../../css/master.css"/>
 
