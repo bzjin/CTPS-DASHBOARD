@@ -364,7 +364,7 @@ var projection = d3.geo.conicConformal()
   
 var geoPath = d3.geo.path().projection(projection); 
 
-  svgContainer = d3.select("#map4").append("svg")
+  svgContainer2 = d3.select("#map4").append("svg")
                     .attr("width", "100%")
                     .attr("height", 500)
                     .style("overflow", "visible")
@@ -379,7 +379,7 @@ var geoPath = d3.geo.path().projection(projection);
       d.properties.PCT_IN_LABOR_FORCE + "<br>% Over 65 years old: " + d.properties.PCT_65_PLUS + "<br>% Limited English Proficiency: " + d.properties.LEP_POP_PCT;
     })
 
-  svgContainer.call(tip); 
+  svgContainer2.call(tip); 
 
   var findIndex = function(town, statistic) { 
     for (var i = 0; i < equity.length; i++) { 
@@ -389,12 +389,12 @@ var geoPath = d3.geo.path().projection(projection);
     }
   }
 
-  colorMap = function(percent) { 
+  colorMap2 = function(percent) { 
   // Create Boston Region MPO map with SVG paths for individual towns.
-  svgContainer.selectAll("rect").remove();
-  svgContainer.selectAll("text").remove(); 
+  svgContainer2.selectAll("rect").remove();
+  svgContainer2.selectAll("text").remove(); 
   
-    var tractMap = svgContainer.selectAll(".tracts")
+    var tractMap = svgContainer2.selectAll(".tracts")
       .data(census)
       .enter()
       .append("path")
@@ -429,43 +429,43 @@ var geoPath = d3.geo.path().projection(projection);
     var yPos = 40; 
     var height = 600; 
     //background
-    svgContainer.append("text")
+    svgContainer2.append("text")
       .style("font-weight", 700)
       .attr("x", xPos).attr("y", yPos -7)
       .text("KEY");
     //text and colors
-    svgContainer.append("rect")
+    svgContainer2.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", .2)
       .attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
-    svgContainer.append("text")
+    svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 7)
       .text("10% households");
-    svgContainer.append("rect")
+    svgContainer2.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", .4)
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
-    svgContainer.append("text")
+    svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
       .text("20% households");
-    svgContainer.append("rect")
+    svgContainer2.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", .6)
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
-    svgContainer.append("text")
+    svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
       .text("30% households");
-    svgContainer.append("rect")
+    svgContainer2.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", .8)
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
-    svgContainer.append("text")
+    svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
       .text("40% households");
-    svgContainer.append("rect")
+    svgContainer2.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", 1)
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
-    svgContainer.append("text")
+    svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
       .text("50% households");
@@ -550,15 +550,15 @@ var colorScale = d3.scale.linear()
     .text("Percent of Population")
 
 
-  populatePoints("PCT_IN_LABOR_FORCE", "LABOR_FORCE");
-  populatePoints("LEP_POP_PCT", "LEP_POP");
-  populatePoints("PCT_65_PLUS", "POP_65_PLUS");
+  populatePoints2("PCT_IN_LABOR_FORCE", "LABOR_FORCE");
+  populatePoints2("LEP_POP_PCT", "LEP_POP");
+  populatePoints2("PCT_65_PLUS", "POP_65_PLUS");
 
-  colorMap("PCT_IN_LABOR_FORCE");
+  colorMap2("PCT_IN_LABOR_FORCE");
   /*colorMap("LEP_POP_PCT");
   colorMap("PCT_65_PLUS");*/
 
-  function populatePoints(percent, population) { 
+  function populatePoints2(percent, population) { 
     allChart2.selectAll("points")
     .data(census)
     .enter()
@@ -600,26 +600,26 @@ var colorScale = d3.scale.linear()
 
   d3.select(".employed").on("click", function(){
     allChart2.selectAll("rect").remove();
-    populatePoints("PCT_IN_LABOR_FORCE", "LABOR_FORCE");
+    populatePoints2("PCT_IN_LABOR_FORCE", "LABOR_FORCE");
 
-    svgContainer.selectAll("path").remove();
-    colorMap("PCT_IN_LABOR_FORCE");
+    svgContainer2.selectAll("path").remove();
+    colorMap2("PCT_IN_LABOR_FORCE");
   })
 
   d3.select(".lepPop").on("click", function(){
     allChart2.selectAll("rect").remove();
-   populatePoints("LEP_POP_PCT", "LEP_POP");
+   populatePoints2("LEP_POP_PCT", "LEP_POP");
 
-    svgContainer.selectAll("path").remove();
-    colorMap("LEP_POP_PCT");
+    svgContainer2.selectAll("path").remove();
+    colorMap2("LEP_POP_PCT");
   })
 
   d3.select(".over65").on("click", function(){
     allChart2.selectAll("rect").remove();
-    populatePoints("PCT_65_PLUS", "POP_65_PLUS");
+    populatePoints2("PCT_65_PLUS", "POP_65_PLUS");
 
-    svgContainer.selectAll("path").remove();
-    colorMap("PCT_65_PLUS");
+    svgContainer2.selectAll("path").remove();
+    colorMap2("PCT_65_PLUS");
   })
 
 }
