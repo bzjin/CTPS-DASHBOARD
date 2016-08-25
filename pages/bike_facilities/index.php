@@ -45,31 +45,38 @@ text {
 <body>
 
 <div id="header" class="col-md-10 col-md-offset-1">
-<div class="top-nav col-md-12">
-	<?php include '../../components/top-nav.php';?>
-</div>
+	<div class="top-nav col-md-12">
+		<?php include '../../components/top-nav.php';?>
+	</div>
+
+	<div class=" col-md-12">
+
 	<h1>Bike Facilities</h1>
 	<p> People bike for fun, exercise, and transportation. They include children on their way to school, commuters in work clothes, athletes training, and seniors out for a relaxing ride. Most people who bike also use cars, transit, and sidewalks as alternate means of transportation. At the same time, when people bike more, they are healthier, have more expendable income, more free time, and more choice in how they move about their lives. 
 	</p><p>People who bike are also vulnerable users of the transportation system and account for a growing share of crashes and a disproportionate share of injuries in the region. The majority of the region still lacks adequate bicycle infrastructure, limiting the likelihood that people choose cycling as transportation option. 
 	</p><p>The Boston Region MPO monitors the bicycle network available throughout the region. Bicycle facilities include off-road trails that are often shared with pedestrians, as well as on-road lanes and cycle tracks on which people ride alongside motorized vehicles. We measure the total miles of facilities available to people biking and also calculate Bike Facility per Centerline Mile: the percent of road miles that provide designated bike lanes or cycle tracks. 
 	</p>
+	</div>
+	<div class=" col-md-12">
 
 	<h2> Roadway Coverage </h2>
 	<h3> On-Road Bike Facilities </h3>
 	<p> This map of Boston Region cities and towns below depicts the percent of road miles that provide bicycle facilities. The circles to the right represent the total number of on-road and off-road miles of available to people biking in each municipality. 
 	</p>
-	
-	<div class="col-md-12">
-		<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
-		<button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending percent bike facilities to centerline miles" autofocus>Sort by Bike Facility Miles to Centerline Miles Ratio</button>
-		<button class="bigbutton col-md-4" id="byNumber" alt="Sort towns by ascending miles of bike facilities">Sort by Bike Facility Miles</button>
-	</div>
-
+	<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
+	<button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending ratio on-road miles to centerline miles">Sort by On-Road Miles to Centerline Miles Ratio</button>
+	<button class="bigbutton col-md-4" id="byNumber" alt="Sort towns by ascending on-road miles">Sort by On-Road Miles</button>
 	<div class="col-md-4" id="map"></div>
 	<div class="col-md-8" id="facilities"></div>
+
 	<h3> Off-Road Bike Facilities </h3>
-		<div class="col-md-4" id="map2"></div>
-		<div class="col-md-8" id="facilities2"></div>
+	<button class="bigbutton col-md-4" id="alphabetize2" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
+	<button class="bigbutton col-md-4" id="byAverages2" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Off-Road Miles to Sq. Miles Ratio</button>
+	<button class="bigbutton col-md-4" id="byNumber2" alt="Sort towns by ascending off-road miles">Sort by Off-Road Miles</button>
+	<div class="col-md-4" id="map2"></div>
+	<div class="col-md-8" id="facilities2"></div>
+	</div>
+	</div>
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>
