@@ -493,15 +493,15 @@ var townsOff = [];
     }
   })
   var OFFROADPercent = d3.scale.linear()
-              .domain([0, 2])
+              .domain([0, 5])
               .range([100, 300]);
 
   var OFFROADLabels = d3.scale.ordinal()
-              .domain([0, .4, .8, 1.2, 1.6, 2.0])
+              .domain([0, 1, 2, 4, 5])
               .rangePoints([100, 300]);
 
   var OFFROADMiles = d3.scale.linear()
-              .domain([0, 30])
+              .domain([0, 50])
               .range([350, 650]);
 
   var yScale = d3.scale.ordinal()
