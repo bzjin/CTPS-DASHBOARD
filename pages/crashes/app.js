@@ -1,7 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([18000]) // N.B. The scale and translation vector were determined empirically.
@@ -20,11 +20,11 @@ queue()
 	}); 
 
 //Color Scale
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
     .domain([0, 5, 10, 20, 40, 240, 900])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
-//var colorScale = d3.scale.linear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
+//var colorScale = d3.scaleLinear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
 
 var tip = d3.tip()
 	  .attr('class', 'd3-tip')
@@ -67,7 +67,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 			.style("stroke-width", "1px")
 		.on("click", function() {
 				var thisreg = this.getAttribute("class");
-				var yScale = d3.scale.linear().domain([0, findTownMax(thisreg)[0]]).range([400, 20]);
+				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[0]]).range([400, 20]);
 				var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-250, 0, 0).tickFormat(d3.format("d"));
 
 				d3.selectAll(".area").transition()
@@ -79,7 +79,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
                     .call(yAxis).selectAll("text").style("fill", colorScale(findTownMax(thisreg)[0]))
                     .attr("transform", "translate(-5,0)");
 
-				var yScale = d3.scale.linear().domain([0, findTownMax(thisreg)[1]]).range([400, 20]);
+				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[1]]).range([400, 20]);
 				var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-250, 0, 0).tickFormat(d3.format("d"));
                 chartContainer2.select(".yaxis").transition()
 					.duration(750)
@@ -136,8 +136,8 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.text("Number of Injuries")
 
 //Assign scales and axes 
-	var xScale = d3.scale.linear().domain([2004, 2013]).range([50, 300]);
-	var yScale = d3.scale.linear().domain([0, findTownMax("Total")[0]]).range([400, 20]);
+	var xScale = d3.scaleLinear().domain([2004, 2013]).range([50, 300]);
+	var yScale = d3.scaleLinear().domain([0, findTownMax("Total")[0]]).range([400, 20]);
 
 	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")); 
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(-250, 0, 0);
@@ -151,7 +151,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.call(yAxis).selectAll("text").style("font-size", "12px")
 		.attr("transform", "translate(-5,0)");
 
-	var yScale = d3.scale.linear().domain([0, findTownMax("Total")[1]]).range([400, 20]);
+	var yScale = d3.scaleLinear().domain([0, findTownMax("Total")[1]]).range([400, 20]);
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(-250, 0, 0);
 
 	chartContainer2.append("g").attr("class", "axis")
@@ -171,9 +171,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		nested_crashes.forEach(function(i) { 
 			i.values.forEach(function(j) { 
 				if (j.town == town) {
-					yScale = d3.scale.linear().domain([0, findTownMax(town)[0]]).range([400, 20]);
+					yScale = d3.scaleLinear().domain([0, findTownMax(town)[0]]).range([400, 20]);
 
-					var areamaker = d3.svg.area() //Bike injuries
+					var areamaker = d3.area() //Bike injuries
 					    .x(function(d) { return xScale(d.year); })
 					    .y1(function(d) { return yScale(d.bike_inj); })
 					    .y0(function(d) { return yScale(0)});
@@ -185,9 +185,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 				      .style("stroke", "none")
 				      .style("opacity", .1);
 
-				     yScale = d3.scale.linear().domain([0, findTownMax(town)[1]]).range([400, 20]);
+				     yScale = d3.scaleLinear().domain([0, findTownMax(town)[1]]).range([400, 20]);
 
-			        var areamaker2 = d3.svg.area() //Bike injuries
+			        var areamaker2 = d3.area() //Bike injuries
 				      .x(function(d) { return xScale(d.year); })
 				      .y1(function(d) { return yScale(d.ped_inj); })
 				      .y0(function(d) { return yScale(0)});
@@ -264,8 +264,8 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 		.entries(crashdata);
 
 	nested_crashes.forEach(function (town) {
-		var xScale = d3.scale.linear().domain([0, 17]).range([0 + padding, width]);
-		var yScale = d3.scale.linear().domain([0, 15]).range([height, 20]);
+		var xScale = d3.scaleLinear().domain([0, 17]).range([0 + padding, width]);
+		var yScale = d3.scaleLinear().domain([0, 15]).range([height, 20]);
 
 		var xAxis = d3.svg.axis().scale(xScale).tickSize(0);
 		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);

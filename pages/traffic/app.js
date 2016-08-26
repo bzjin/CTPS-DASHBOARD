@@ -1,7 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([21000]) // N.B. The scale and translation vector were determined empirically.
@@ -39,7 +39,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
     }
   }
 
-  var colorScale = d3.scale.linear()
+  var colorScale = d3.scaleLinear()
                   .domain([0, 5, 10, 20, 40, 75, 100, 120, 800])
                   .range(["#d73027","#f46d43","#fdae61","#fee08b","#ffffbf","#d9ef8b","#a6d96a","#66bd63","#1a9850"].reverse())
 
@@ -158,9 +158,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
     .style("overflow", "visible")
 
 
-  var xScale = d3.scale.ordinal().domain(towns).rangePoints([50, 600])
- //var xScale = d3.scale.linear().domain([0, 2]).range([50, 500]);
-  var yScale = d3.scale.linear().domain([0, 2.2]).range([380, 30])
+  var xScale = d3.scaleOrdinal().domain(towns).rangePoints([50, 600])
+ //var xScale = d3.scaleLinear().domain([0, 2]).range([50, 500]);
+  var yScale = d3.scaleLinear().domain([0, 2.2]).range([380, 30])
 
   
 chart.selectAll(".lines")

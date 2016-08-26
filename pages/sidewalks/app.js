@@ -2,7 +2,7 @@ var CTPS = {};
 CTPS.demoApp = {};
 
 //Define Color Scale
-var colorScale = d3.scale.linear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
+var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
 
 //Using the queue.js library
 queue()
@@ -45,11 +45,11 @@ allData.forEach(function(i){
   }
 })
 
-var colorToYear = d3.scale.linear()
+var colorToYear = d3.scaleLinear()
                   .domain([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015])
                   .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
-xScaleRatio = d3.scale.linear().domain([0, 1]).range([80, 980]);
-yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1350]);
+xScaleRatio = d3.scaleLinear().domain([0, 1]).range([80, 980]);
+yScale = d3.scaleOrdinal().domain(towns).rangePoints([50, 1350]);
 
 var xAxis = d3.svg.axis().scale(xScaleRatio).orient("top").tickSize(-1300, 0, 0);
 var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-900, 0, 0);
@@ -195,7 +195,7 @@ function dataVizAll() {
       towns.push(i.town);
     })
 
-    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1350]);
+    yScale = d3.scaleOrdinal().domain(towns).rangePoints([50, 1350]);
     var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-900, 0, 0);
     
     timeline.select(".yaxis").transition()
@@ -223,7 +223,7 @@ function dataVizAll() {
       towns.push(i.town);
     })
 
-    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1350]);
+    yScale = d3.scaleOrdinal().domain(towns).rangePoints([50, 1350]);
     var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-970, 0, 0);
     
     timeline.select(".yaxis").transition()
@@ -311,7 +311,7 @@ var margin = {top: 40, right: 10, bottom: 10, left: 10},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var color = d3.scale.linear().domain([0, 100, 800]).range(["#d8b365","#191b1d","#5ab4ac"]);
+var color = d3.scaleLinear().domain([0, 100, 800]).range(["#d8b365","#191b1d","#5ab4ac"]);
 
 var treemap = d3.layout.treemap()
     .size([width, height])

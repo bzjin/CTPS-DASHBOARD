@@ -2,10 +2,10 @@ var CTPS = {};
 CTPS.demoApp = {};
 
 //Define Color Scale
-var colorScale = d3.scale.quantize().domain([1, 5])
+var colorScale = d3.scaleQuantize().domain([1, 5])
     .range(["#d7191c", "#d7191c", "#d7191c", "#fdae61","#ffffbf","#a6d96a","#1a9641"]);
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
@@ -42,8 +42,8 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	timeline.call(tip2); 
 
 	//Assign scales and axes 
-	xScale = d3.scale.linear().domain([2007, 2015]).range([50, 1000]);
-	yScale = d3.scale.linear().domain([0, 5]).range([450, 50]);
+	xScale = d3.scaleLinear().domain([2007, 2015]).range([50, 1000]);
+	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
 	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(-400, 0, 0).tickFormat(d3.format("d"));
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-950, 0, 0).tickFormat(d3.format("d"));
@@ -73,19 +73,19 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	.entries(cityavg_time);
 
 	
-	var valueline = d3.svg.line()
+	var valueline = d3.line()
 		.interpolate("basis")
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.median); });
 
-	var valuearea = d3.svg.area()
+	var valuearea = d3.area()
 		.interpolate("basis")
 	    .x0(function(d) { return xScale(d.year); })
 	    .x1(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(d.firstQuartile); })
 	    .y0(function(d) { return yScale(d.thirdQuartile); })
 
-	var valuerange = d3.svg.area()
+	var valuerange = d3.area()
 		.interpolate("basis")
 	    .x0(function(d) { return xScale(d.year); })
 	    .x1(function(d) { return xScale(d.year); })
@@ -274,16 +274,16 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 		.style("opacity", .8);
 
 	//define axes
-	yScale = d3.scale.ordinal().domain(city_names).rangePoints([83, 1430]);
+	yScale = d3.scaleOrdinal().domain(city_names).rangePoints([83, 1430]);
 
-	xScaleSegment = d3.scale.linear().domain([0, 5]).range([0, 300]);
-	xScaleGraph = d3.scale.linear().domain([0, 5]).range([100, 400]);
+	xScaleSegment = d3.scaleLinear().domain([0, 5]).range([0, 300]);
+	xScaleGraph = d3.scaleLinear().domain([0, 5]).range([100, 400]);
 
-	xScaleSegmentPercent = d3.scale.linear().domain([0, 1]).range([0, 130]);
-	xScaleGraphPercent = d3.scale.linear().domain([0, 1]).range([420, 550])
+	xScaleSegmentPercent = d3.scaleLinear().domain([0, 1]).range([0, 130]);
+	xScaleGraphPercent = d3.scaleLinear().domain([0, 1]).range([420, 550])
 
-	xScaleSegmentBars = d3.scale.linear().domain([0, 360]).range([0, 480]);
-	xScaleGraphBars = d3.scale.linear().domain([0, 360]).range([570, 1050]);
+	xScaleSegmentBars = d3.scaleLinear().domain([0, 360]).range([0, 480]);
+	xScaleGraphBars = d3.scaleLinear().domain([0, 360]).range([570, 1050]);
 
 	var xAxis = d3.svg.axis().scale(xScaleGraph).orient("top").tickSize(-1350, 0, 0).ticks(6).tickPadding(2);
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-300, 0, 0);
@@ -362,7 +362,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 					.style("stroke", "none")
 
 
-			var psiColors = d3.scale.linear()
+			var psiColors = d3.scaleLinear()
 							.domain([0, 1, 2, 3, 4])
 							.range(["#d7191c", "#fdae61", "#ffffbf", "#a6d96a", "#1a9641"])
 
@@ -482,7 +482,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 			city_names.push(i.city);
 		})
 
-		yScale = d3.scale.ordinal().domain(city_names).rangePoints([80, 1430]);
+		yScale = d3.scaleOrdinal().domain(city_names).rangePoints([80, 1430]);
 		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-300, 0, 0);
 		
 		cityContainer.select(".yaxis").transition()
@@ -510,7 +510,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 			city_names.push(i.city);
 		})
 
-		yScale = d3.scale.ordinal().domain(city_names).rangePoints([80, 1430]);
+		yScale = d3.scaleOrdinal().domain(city_names).rangePoints([80, 1430]);
 		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-300, 0, 0);
 		
 		cityContainer.select(".yaxis").transition()

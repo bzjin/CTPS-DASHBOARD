@@ -1,7 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([19000]) // N.B. The scale and translation vector were determined empirically.
@@ -21,24 +21,24 @@ queue()
   }); 
 
 //Color Scale
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
     .domain([0, 500000, 5000000, 10000000, 15000000, 20000000, 25000000])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
 
 //Color Scale
-var colorScalePerson = d3.scale.linear()
+var colorScalePerson = d3.scaleLinear()
   .domain([0, 10, 50, 100, 500, 1000, 3000])
   .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
 ////////////////* GENERATE MAP *////////////////////
 CTPS.demoApp.generateMap3 = function(tracts, equity) {  
   // SVG Viewport
-  var colorScale = d3.scale.linear()
+  var colorScale = d3.scaleLinear()
                   .domain([0, 1, 2, 3, 4, 5, 6, 7])
                   .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02", "#3288bd", "#fee08b","#80cdc1"])
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([25000]) // N.B. The scale and translation vector were determined empirically.
@@ -160,7 +160,7 @@ var geoPath = d3.geo.path().projection(projection);
 CTPS.demoApp.generateStats = function(tracts){
 
 
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
                   .domain([0, 1, 2, 3])
                   .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"])
 
@@ -185,11 +185,11 @@ var colorScale = d3.scale.linear()
 
   var w = $("#chartDemographics").width();
 
-  var xScale = d3.scale.linear() 
+  var xScale = d3.scaleLinear() 
               .domain([0, 100])
               .range([80, w - 50])
 
-  var yScale = d3.scale.linear()
+  var yScale = d3.scaleLinear()
               .domain([d3.min(maxmins), 2400])
               .range([430, 30])
 
@@ -352,11 +352,11 @@ CTPS.demoApp.generateMap4 = function(tracts) {
 
   var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
 
-  var colorScale = d3.scale.linear()
+  var colorScale = d3.scaleLinear()
                   .domain([0, 1, 2, 3, 4, 5, 6, 7])
                   .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02", "#3288bd", "#fee08b","#80cdc1"])
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([25000]) // N.B. The scale and translation vector were determined empirically.
@@ -473,7 +473,7 @@ var geoPath = d3.geo.path().projection(projection);
 }
 
 CTPS.demoApp.generateStats2 = function(tracts){
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
                   .domain([0, 1, 2, 3])
                   .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"])
 
@@ -497,11 +497,11 @@ var colorScale = d3.scale.linear()
 
   var w = $("#chartDemographics2").width();
 
-  var xScale = d3.scale.linear() 
+  var xScale = d3.scaleLinear() 
               .domain([0, 70])
               .range([80, w - 50])
 
-  var yScale = d3.scale.linear()
+  var yScale = d3.scaleLinear()
               .domain([d3.min(maxmins), 6000])
               .range([430, 30])
 

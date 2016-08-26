@@ -1,7 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([24000]) // N.B. The scale and translation vector were determined empirically.
@@ -108,15 +108,15 @@ var opacityMax = d3.max(totals);
 maxmins.sort(function(a, b){return a-b});
 console.log(maxmins);
 
-var opacityScale = d3.scale.linear()
+var opacityScale = d3.scaleLinear()
                 .domain([0, opacityMax/12, opacityMax/6, opacityMax/3, opacityMax])
                 .range([0, .03, .05, .1, .15]);
 
-var flowVolume = d3.scale.linear()
+var flowVolume = d3.scaleLinear()
                 .domain([maxmins[parseInt(maxmins.length/10)], 0, 0, maxmins[parseInt(maxmins.length*9/10)]])
                 .range(["#d53e4f", "grey", "grey", "#3288bd"])
 
-var lineScale = d3.scale.linear()
+var lineScale = d3.scaleLinear()
                 .domain([0, opacityMax/12, opacityMax/6, opacityMax/3, opacityMax])
                 .range([0, 5, 10, 20, 40]);
 
@@ -431,7 +431,7 @@ var lineScale = d3.scale.linear()
   function makeLineChart(selectedDistrict) { 
     sankeyChart.selectAll('*').remove();
 
-    var yScale = d3.scale.linear()
+    var yScale = d3.scaleLinear()
                 .domain([0, 50000])
                 .range([550, 50])
 

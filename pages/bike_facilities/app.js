@@ -1,7 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([22000]) // N.B. The scale and translation vector were determined empirically.
@@ -10,17 +10,17 @@ var projection = d3.geo.conicConformal()
 var geoPath = d3.geo.path().projection(projection);
 
 //Color Scale
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
     .domain([0, 25, 50, 100, 250, 500, 1000])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 //Color Scale for bar chart 
-var colorScaleBars = d3.scale.linear()
+var colorScaleBars = d3.scaleLinear()
     .domain([0, .01, .02, .05, .1, .2])
     .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse())
 
 //Color Scale for bar chart 
-var colorScaleBars2 = d3.scale.linear()
+var colorScaleBars2 = d3.scaleLinear()
     .domain([0, .05, .1, .25, .5, 2.5])
     .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse())
 
@@ -199,19 +199,19 @@ function plot() {
       bikeCities.push(i.TOWN);
     }
   })
-  var onRoadPercent = d3.scale.linear()
+  var onRoadPercent = d3.scaleLinear()
               .domain([0, .1])
               .range([100, 300]);
 
-  var onRoadLabels = d3.scale.ordinal()
+  var onRoadLabels = d3.scaleOrdinal()
               .domain(["0%", "2%", "4%", "6%", "8%", "10%"])
               .rangePoints([100, 300]);
 
-  var onRoadMiles = d3.scale.linear()
+  var onRoadMiles = d3.scaleLinear()
               .domain([0, 30])
               .range([350, 650]);
 
-  var yScale = d3.scale.ordinal()
+  var yScale = d3.scaleOrdinal()
           .domain(townsOn)
           .rangePoints([100, 400]);
   
@@ -492,19 +492,19 @@ var townsOff = [];
       bikeCities.push(i.TOWN);
     }
   })
-  var OFFROADPercent = d3.scale.linear()
+  var OFFROADPercent = d3.scaleLinear()
               .domain([0, 5])
               .range([100, 300]);
 
-  var OFFROADLabels = d3.scale.ordinal()
+  var OFFROADLabels = d3.scaleOrdinal()
               .domain([0, 1, 2, 4, 5])
               .rangePoints([100, 300]);
 
-  var OFFROADMiles = d3.scale.linear()
+  var OFFROADMiles = d3.scaleLinear()
               .domain([0, 50])
               .range([350, 650]);
 
-  var yScale = d3.scale.ordinal()
+  var yScale = d3.scaleOrdinal()
           .domain(townsOn)
           .rangePoints([100, 850]);
   

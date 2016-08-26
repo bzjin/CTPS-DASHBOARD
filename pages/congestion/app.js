@@ -2,7 +2,7 @@ var CTPS = {};
 CTPS.demoApp = {};
 
 //Define Color Scale
-var colorScale = d3.scale.linear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
+var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
 
 //Using the queue.js library
 queue()
@@ -20,7 +20,7 @@ queue()
 CTPS.demoApp.generateMap = function(cities, congestion) {	
 	// Show name of MAPC Sub Region
 	// Define Zoom Behavior
-	var projection = d3.geo.conicConformal()
+	var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([22000]) // N.B. The scale and translation vector were determined empirically.
@@ -142,9 +142,9 @@ CTPS.demoApp.generateChart = function(congestion) {
 	routes.sort(); 
 	var routesByTotal = ["I-95", "I-495", "I-93", "I-90", "MA-3", "MA-2", "MA-128", "US-1", "MA-24", "US-3", "I-290"];
 	//Assign scales and axes 
-	xScaleRoad = d3.scale.linear().domain([d3.max(maxmins), 0]).range([5, 300]);
-	xScaleSegment = d3.scale.linear().domain([0, d3.max(maxmins)]).range([0, 295]);
-	yScale = d3.scale.ordinal().domain(routesByTotal).rangePoints([90, 520]);
+	xScaleRoad = d3.scaleLinear().domain([d3.max(maxmins), 0]).range([5, 300]);
+	xScaleSegment = d3.scaleLinear().domain([0, d3.max(maxmins)]).range([0, 295]);
+	yScale = d3.scaleOrdinal().domain(routesByTotal).rangePoints([90, 520]);
 
 	var xAxis = d3.svg.axis().scale(xScaleRoad).orient("bottom").ticks(7);
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
@@ -317,8 +317,8 @@ pmchartContainer.selectAll(".labels")
 			}
 		}); 
 	//Assign scales and axes 
-	xScaleRoad = d3.scale.linear().domain([0,d3.max(maxmins)]).range([75, 370]);
-	xScaleSegment = d3.scale.linear().domain([0,d3.max(maxmins)]).range([0, 295]);
+	xScaleRoad = d3.scaleLinear().domain([0,d3.max(maxmins)]).range([75, 370]);
+	xScaleSegment = d3.scaleLinear().domain([0,d3.max(maxmins)]).range([0, 295]);
 
 	var xAxis = d3.svg.axis().scale(xScaleRoad).orient("bottom").ticks(7);
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
@@ -491,8 +491,8 @@ CTPS.demoApp.generateTimes = function(interstateRoads) {
 	routes.sort(); 
 
 	//Assign scales and axes 
-	xScale = d3.scale.linear().domain([0, 3.5]).range([50, 1050]);
-	yScale = d3.scale.linear().domain([0, 6]).range([550, 60]);
+	xScale = d3.scaleLinear().domain([0, 3.5]).range([50, 1050]);
+	yScale = d3.scaleLinear().domain([0, 6]).range([550, 60]);
 
 	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(7);
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
@@ -632,7 +632,7 @@ CTPS.demoApp.generateTraveller = function(cities, congestion) {
 		}
 	})
 
-	var projection = d3.geo.conicConformal()
+	var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([18000]) // N.B. The scale and translation vector were determined empirically.

@@ -1,7 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([19000]) // N.B. The scale and translation vector were determined empirically.
@@ -22,13 +22,13 @@ queue()
   }); 
 
 //Color Scale
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
     .domain([0, 500000, 5000000, 10000000, 15000000, 20000000, 25000000])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
 
 //Color Scale
-var colorScalePerson = d3.scale.linear()
+var colorScalePerson = d3.scaleLinear()
   .domain([0, 10, 50, 100, 500, 1000, 3000])
   .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
@@ -196,15 +196,15 @@ generateStats = function(attribute, divID) {
     })
 
 
-    var xScale = d3.scale.ordinal()
+    var xScale = d3.scaleOrdinal()
                 .domain(townOrder)
                 .rangePoints([padding, width - (2*padding)])
 
-    var yScale = d3.scale.linear()
+    var yScale = d3.scaleLinear()
                 .domain([0, d3.max(maxmins)])
                 .range([height, padding])
 
-    var yScaleHeight = d3.scale.linear()
+    var yScaleHeight = d3.scaleLinear()
                 .domain([0, d3.max(maxmins)])
                 .range([0, height - padding])
 
@@ -327,7 +327,7 @@ generateStats("SINGLE_FEMALE_HOH_PCT", "chartFemale")
         }
       }
   })
-  var xScale = d3.scale.linear()
+  var xScale = d3.scaleLinear()
               .domain([2007.5, 2021.5])
               .range([0, width - 2*padding])
 
@@ -340,7 +340,7 @@ generateStats("SINGLE_FEMALE_HOH_PCT", "chartFemale")
     .style("text-anchor", "middle")
     .attr("transform", "translate(10, 3)");
 
-  var yScale = d3.scale.linear()
+  var yScale = d3.scaleLinear()
               .domain([0, d3.max(maxFunding)])
               .range([height*1.8, 1.5*padding])
 
@@ -536,7 +536,7 @@ CTPS.demoApp.generatePerPerson = function(equity) {
       }
   })
 
-  var xScale = d3.scale.linear()
+  var xScale = d3.scaleLinear()
               .domain([2007.5, 2021.5])
               .range([60, 650])
 
@@ -549,7 +549,7 @@ CTPS.demoApp.generatePerPerson = function(equity) {
     .style("text-anchor", "middle")
     .attr("transform", "translate(10, 3)");
 
-  var yScale = d3.scale.linear()
+  var yScale = d3.scaleLinear()
               .domain([0, d3.max(maxFunding)])
               .range([470, 100])
 

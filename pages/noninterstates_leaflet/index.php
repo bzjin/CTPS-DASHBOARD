@@ -9,7 +9,7 @@
 <!-- Font Awesome -->
 <script src="https://use.fontawesome.com/3b0ffee8ad.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <!-- Tooltip -->

@@ -2,10 +2,10 @@ var CTPS = {};
 CTPS.demoApp = {};
 
 //Define Color Scale
-var colorScale = d3.scale.quantize().domain([1, 5])
+var colorScale = d3.scaleQuantize().domain([1, 5])
     .range(["#EE3B3B", "#EE3B3B", "#EE3B3B", "#FFD53E", "#E3FF30", "#76EE00", "#00B26F", "#00B26F"]);
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.

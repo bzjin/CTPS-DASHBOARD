@@ -2,11 +2,11 @@ var CTPS = {};
 CTPS.demoApp = {};
 
 //Define Color Scale
-var colorScale = d3.scale.quantize().domain([1, 5])
+var colorScale = d3.scaleQuantize().domain([1, 5])
     .range(["#d7191c", "#d7191c", "#d7191c", "#fdae61","#ffffbf","#a6d96a","#1a9641"]);
 var colors = ["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"];
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
@@ -52,8 +52,8 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 	//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
 	//var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
-	xScale= d3.scale.linear().domain([2007, 2015]).range([50, 1000]);
-	yScale = d3.scale.linear().domain([0, 5]).range([450, 50]);
+	xScale= d3.scaleLinear().domain([2007, 2015]).range([50, 1000]);
+	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
 	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(-400, 0, 0).tickFormat(d3.format("d"));
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-950, 0, 0).tickFormat(d3.format("d"));
@@ -74,7 +74,7 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 	.key(function(d) { return d.segmentid;})
 	.entries(psitimeline);
 
-	var valueline = d3.svg.line()
+	var valueline = d3.line()
 		.interpolate("basis")
 	    .x(function(d) { return xScale(d.psiyear); })
 	    .y(function(d) { return yScale(d.psi); });
@@ -230,8 +230,8 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 	})
 
 	//Assign scales and axes 
-	xScale= d3.scale.linear().domain([d3.min(maxminsADT), d3.max(maxminsADT)]).range([50, 1000]);
-	yScale = d3.scale.linear().domain([0, 5]).range([450, 50]);
+	xScale= d3.scaleLinear().domain([d3.min(maxminsADT), d3.max(maxminsADT)]).range([50, 1000]);
+	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
 	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(-400, 0, 0).tickFormat(d3.format("d"));
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-950, 0, 0).tickFormat(d3.format("d"));
@@ -374,7 +374,7 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 				})
 		}
 	})
-	/*var valueline = d3.svg.line()
+	/*var valueline = d3.line()
 	.interpolate("basis")
     .x(function(d) { return xScale(d.adt); })
     .y(function(d) { return yScale(d.psi); });
@@ -443,10 +443,10 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	var routekey = ["I-90", "I-93", "I-95", "I495", "I290"];
 	var unhyphened = ["I90", "I93", "I95", "I495", "I290"];
 	//Assign scales and axes 
-	xScaleRoad = d3.scale.linear().domain([0,62]).range([70, 1000]); // define displacement with respect to origin
-	xScaleSegment = d3.scale.linear().domain([0,62]).range([0, 930]); // define width
-	yScale = d3.scale.ordinal().domain(routekey).rangePoints([80, 550]);
-	yScaleU = d3.scale.ordinal().domain(unhyphened).rangePoints([80, 550]);
+	xScaleRoad = d3.scaleLinear().domain([0,62]).range([70, 1000]); // define displacement with respect to origin
+	xScaleSegment = d3.scaleLinear().domain([0,62]).range([0, 930]); // define width
+	yScale = d3.scaleOrdinal().domain(routekey).rangePoints([80, 550]);
+	yScaleU = d3.scaleOrdinal().domain(unhyphened).rangePoints([80, 550]);
 
 	var xAxis = d3.svg.axis().scale(xScaleRoad).orient("bottom").ticks(15);
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);

@@ -2,10 +2,10 @@ var CTPS = {};
 CTPS.demoApp = {};
 
 //Define Color Scale
-var colorScale = d3.scale.quantize().domain([1, 5])
+var colorScale = d3.scaleQuantize().domain([1, 5])
     .range(["#EE3B3B", "#EE3B3B", "#EE3B3B", "#FFD53E", "#E3FF30", "#76EE00", "#00B26F", "#00B26F"]);
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
@@ -679,9 +679,9 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, crashdata) {
 	//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
 	var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
-	xScaleRoad = d3.scale.linear().domain([0,62]).range([70, 1130]);
-	xScaleSegment = d3.scale.linear().domain([0,62]).range([0, 1060]);
-	yScale = d3.scale.ordinal().domain(routekey).rangePoints([150, 650]);
+	xScaleRoad = d3.scaleLinear().domain([0,62]).range([70, 1130]);
+	xScaleSegment = d3.scaleLinear().domain([0,62]).range([0, 1060]);
+	yScale = d3.scaleOrdinal().domain(routekey).rangePoints([150, 650]);
 
 	var xAxis = d3.svg.axis().scale(xScaleRoad).orient("bottom").ticks(15);
 	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);

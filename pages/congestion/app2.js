@@ -2,7 +2,7 @@ var CTPS = {};
 CTPS.demoApp = {};
 
 //Define Color Scale
-var colorScale = d3.scale.linear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
+var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
 
 //Using the queue.js library
 queue()
@@ -35,19 +35,19 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 		projXPos = 100,
 		projYPos = 1720;
 
-	var projection = d3.geo.conicConformal()
+	var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([projScale]) // N.B. The scale and translation vector were determined empirically.
 	.translate([projXPos, projYPos]);
 
-	var projectionS = d3.geo.conicConformal()
+	var projectionS = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([projScale]) // N.B. The scale and translation vector were determined empirically.
 	.translate([projXPos + 3, projYPos]);
 
-	var projectionW = d3.geo.conicConformal()
+	var projectionW = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([projScale]) // N.B. The scale and translation vector were determined empirically.
@@ -185,8 +185,8 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 			if (j.properties.DIRECTION == "Northbound" || j.properties.DIRECTION == "Southbound") { directions++; }
 		})
 
-		var yScale = d3.scale.linear().domain([0, d3.max(maxmins)]).range([685, 80]);
-		var ySegment = d3.scale.linear().domain([0, d3.max(maxmins)]).range([0, 605]);
+		var yScale = d3.scaleLinear().domain([0, d3.max(maxmins)]).range([685, 80]);
+		var ySegment = d3.scaleLinear().domain([0, d3.max(maxmins)]).range([0, 605]);
 
 		roadWindow.selectAll("rect, text").remove();
 
@@ -316,7 +316,7 @@ CTPS.demoApp.generateTraveller = function(towns, arterials) {
 		
 	})
 
-	var projection = d3.geo.conicConformal()
+	var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([18000]) // N.B. The scale and translation vector were determined empirically.
