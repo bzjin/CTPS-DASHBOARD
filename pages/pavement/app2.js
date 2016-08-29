@@ -11,16 +11,16 @@ var projection = d3.geoConicConformal()
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([100,1000]);
 	
-var geoPath = d3.geo.path().projection(projection);	
+var geoPath = d3.geoPath().projection(projection);	
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "../../JSON/noninterstate_psi_avg_timeline_by_city.JSON")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateCityTimeline(results[0]);
 	}); 
 
-queue()
+d3.queue()
 	.defer(d3.json, "../../JSON/city_lane_avgs.JSON")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateCities(results[0]);
@@ -45,8 +45,8 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	xScale = d3.scaleLinear().domain([2007, 2015]).range([50, 1000]);
 	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(-400, 0, 0).tickFormat(d3.format("d"));
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-950, 0, 0).tickFormat(d3.format("d"));
+	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(d3.format("d"));
+	var yAxis = d3.axisLeft(yScale).tickSize(-950, 0, 0).tickFormat(d3.format("d"));
 
 	timeline.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -274,7 +274,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 		.style("opacity", .8);
 
 	//define axes
-	yScale = d3.scaleOrdinal().domain(city_names).rangePoints([83, 1430]);
+	yScale = d3.scalePoint().domain(city_names).range([83, 1430]);
 
 	xScaleSegment = d3.scaleLinear().domain([0, 5]).range([0, 300]);
 	xScaleGraph = d3.scaleLinear().domain([0, 5]).range([100, 400]);
@@ -286,7 +286,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	xScaleGraphBars = d3.scaleLinear().domain([0, 360]).range([570, 1050]);
 
 	var xAxis = d3.svg.axis().scale(xScaleGraph).orient("top").tickSize(-1350, 0, 0).ticks(6).tickPadding(2);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-300, 0, 0);
+	var yAxis = d3.axisLeft(yScale).tickSize(-300, 0, 0);
 	var xAxis2 = d3.svg.axis().scale(xScaleGraphBars).orient("top").tickSize(-1350, 0, 0).ticks(6).tickPadding(2);
 
 
@@ -482,8 +482,8 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 			city_names.push(i.city);
 		})
 
-		yScale = d3.scaleOrdinal().domain(city_names).rangePoints([80, 1430]);
-		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-300, 0, 0);
+		yScale = d3.scalePoint().domain(city_names).range([80, 1430]);
+		var yAxis = d3.axisLeft(yScale).tickSize(-300, 0, 0);
 		
 		cityContainer.select(".yaxis").transition()
 			.call(yAxis)
@@ -510,8 +510,8 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 			city_names.push(i.city);
 		})
 
-		yScale = d3.scaleOrdinal().domain(city_names).rangePoints([80, 1430]);
-		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-300, 0, 0);
+		yScale = d3.scalePoint().domain(city_names).range([80, 1430]);
+		var yAxis = d3.axisLeft(yScale).tickSize(-300, 0, 0);
 		
 		cityContainer.select(".yaxis").transition()
 			.duration(750)

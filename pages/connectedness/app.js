@@ -7,9 +7,9 @@ var projection = d3.geoConicConformal()
   .scale([24000]) // N.B. The scale and translation vector were determined empirically.
   .translate([150, 1000]);
   
-  var geoPath = d3.geo.path().projection(projection);
-//Using the queue.js library
-queue()
+  var geoPath = d3.geoPath().projection(projection);
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
 	.defer(d3.csv, "../../JSON/flow_highway_coming.csv")
   .defer(d3.csv, "../../JSON/flow_highway_going.csv")
@@ -23,7 +23,7 @@ queue()
 d3.select(".highwayFlow").on("click", function(){
       d3.selectAll("svg").remove();
 
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_highway_coming.csv")
     .defer(d3.csv, "../../JSON/flow_highway_going.csv")
@@ -36,7 +36,7 @@ d3.select(".highwayFlow").on("click", function(){
 //BIKE BUTTON
 d3.select(".bikeFlow").on("click", function(){
   d3.selectAll("svg").remove();
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_bike_coming.csv")
     .defer(d3.csv, "../../JSON/flow_bike_going.csv")
@@ -49,7 +49,7 @@ d3.select(".bikeFlow").on("click", function(){
 d3.selectAll(".pedFlow").on("click", function(){
       d3.selectAll("svg").remove();
 
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_walk_coming.csv")
     .defer(d3.csv, "../../JSON/flow_walk_going.csv")
@@ -63,7 +63,7 @@ d3.selectAll(".pedFlow").on("click", function(){
 d3.select(".truckFlow").on("click", function(){
       d3.selectAll("svg").remove();
 
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_truck_coming.csv")
     .defer(d3.csv, "../../JSON/flow_truck_going.csv")
@@ -77,7 +77,7 @@ d3.select(".truckFlow").on("click", function(){
 d3.select(".transitFlow").on("click", function(){
       d3.selectAll("svg").remove();
 
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_transit_coming.csv")
     .defer(d3.csv, "../../JSON/flow_transit_going.csv")

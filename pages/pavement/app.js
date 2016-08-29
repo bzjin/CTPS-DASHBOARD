@@ -12,10 +12,10 @@ var projection = d3.geoConicConformal()
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([100,1000]);
 	
-var geoPath = d3.geo.path().projection(projection);	
+var geoPath = d3.geoPath().projection(projection);	
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "../../JSON/psi_timeline.JSON")
 	.defer(d3.json, "../../JSON/interstate_pavement_2015.topojson")
 	.defer(d3.json, "../../JSON/townregion.json")
@@ -55,8 +55,8 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 	xScale= d3.scaleLinear().domain([2007, 2015]).range([50, 1000]);
 	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(-400, 0, 0).tickFormat(d3.format("d"));
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-950, 0, 0).tickFormat(d3.format("d"));
+	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(d3.format("d"));
+	var yAxis = d3.axisLeft(yScale).tickSize(-950, 0, 0).tickFormat(d3.format("d"));
 
 	timeline.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -233,8 +233,8 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 	xScale= d3.scaleLinear().domain([d3.min(maxminsADT), d3.max(maxminsADT)]).range([50, 1000]);
 	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(-400, 0, 0).tickFormat(d3.format("d"));
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-950, 0, 0).tickFormat(d3.format("d"));
+	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(d3.format("d"));
+	var yAxis = d3.axisLeft(yScale).tickSize(-950, 0, 0).tickFormat(d3.format("d"));
 
 	adtgraph.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -445,11 +445,11 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	//Assign scales and axes 
 	xScaleRoad = d3.scaleLinear().domain([0,62]).range([70, 1000]); // define displacement with respect to origin
 	xScaleSegment = d3.scaleLinear().domain([0,62]).range([0, 930]); // define width
-	yScale = d3.scaleOrdinal().domain(routekey).rangePoints([80, 550]);
-	yScaleU = d3.scaleOrdinal().domain(unhyphened).rangePoints([80, 550]);
+	yScale = d3.scalePoint().domain(routekey).range([80, 550]);
+	yScaleU = d3.scalePoint().domain(unhyphened).range([80, 550]);
 
-	var xAxis = d3.svg.axis().scale(xScaleRoad).orient("bottom").ticks(15);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
+	var xAxis = d3.axisBottom(xScaleRoad).ticks(15);
+	var yAxis = d3.axisLeft(yScale).tickSize(0);
 	var yAxisU = d3.svg.axis().scale(yScaleU).orient("left").tickSize(0);
 
 	chartContainer.append("g").attr("class", "axis")

@@ -7,10 +7,10 @@ var projection = d3.geoConicConformal()
   .scale([19000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,790]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
   .defer(d3.json, "../../json/tract_census.topojson")
 
   .awaitAll(function(error, results){ 
@@ -44,7 +44,7 @@ var projection = d3.geoConicConformal()
   .scale([25000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,1015]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
   svgContainer = d3.select("#map3").append("svg")
                     .attr("width", "100%")
@@ -193,8 +193,8 @@ var colorScale = d3.scaleLinear()
               .domain([d3.min(maxmins), 2400])
               .range([430, 30])
 
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(- w + 130, 0, 0);
+  var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
+  var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(- w + 130, 0, 0);
 //D3 Tooltip
   var tip = d3.tip()
     .attr('class', 'd3-tip')
@@ -362,7 +362,7 @@ var projection = d3.geoConicConformal()
   .scale([25000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,1015]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
   svgContainer2 = d3.select("#map4").append("svg")
                     .attr("width", "100%")
@@ -505,8 +505,8 @@ var colorScale = d3.scaleLinear()
               .domain([d3.min(maxmins), 6000])
               .range([430, 30])
 
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(- w + 130, 0, 0);
+  var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
+  var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(- w + 130, 0, 0);
 //D3 Tooltip
   var tip = d3.tip()
     .attr('class', 'd3-tip')

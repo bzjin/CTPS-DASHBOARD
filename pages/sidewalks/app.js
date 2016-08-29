@@ -4,8 +4,8 @@ CTPS.demoApp = {};
 //Define Color Scale
 var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "../../JSON/sidewalks_over_time.json")
 	//.defer(d3.json, "JSON/road_inv_mpo_nhs_noninterstate_2015.geojson")
 	.awaitAll(function(error, results){ 
@@ -49,10 +49,10 @@ var colorToYear = d3.scaleLinear()
                   .domain([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015])
                   .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
 xScaleRatio = d3.scaleLinear().domain([0, 1]).range([80, 980]);
-yScale = d3.scaleOrdinal().domain(towns).rangePoints([50, 1350]);
+yScale = d3.scalePoint().domain(towns).range([50, 1350]);
 
-var xAxis = d3.svg.axis().scale(xScaleRatio).orient("top").tickSize(-1300, 0, 0);
-var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-900, 0, 0);
+var xAxis = d3.axisTop(xScaleRatio).tickSize(-1300, 0, 0);
+var yAxis = d3.axisLeft(yScale).tickSize(-900, 0, 0);
 
 timeline.append("text")
     .attr("x", 80)
@@ -195,8 +195,8 @@ function dataVizAll() {
       towns.push(i.town);
     })
 
-    yScale = d3.scaleOrdinal().domain(towns).rangePoints([50, 1350]);
-    var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-900, 0, 0);
+    yScale = d3.scalePoint().domain(towns).range([50, 1350]);
+    var yAxis = d3.axisLeft(yScale).tickSize(-900, 0, 0);
     
     timeline.select(".yaxis").transition()
       .duration(750)
@@ -223,8 +223,8 @@ function dataVizAll() {
       towns.push(i.town);
     })
 
-    yScale = d3.scaleOrdinal().domain(towns).rangePoints([50, 1350]);
-    var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-970, 0, 0);
+    yScale = d3.scalePoint().domain(towns).range([50, 1350]);
+    var yAxis = d3.axisLeft(yScale).tickSize(-970, 0, 0);
     
     timeline.select(".yaxis").transition()
       .duration(750)

@@ -1,5 +1,8 @@
 var CTPS = {};
-CTPS.demoApp = {};
+CTPS.demoApp ={};
+var f = d3.format(".2");
+var e = d3.format(".1");
+
 
 var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
@@ -7,7 +10,7 @@ var projection = d3.geoConicConformal()
   .scale([22000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,930]);
   
-var geoPath = d3.geo.path().projection(projection);
+var geoPath = d3.geoPath().projection(projection);
 
 //Color Scale
 var colorScale = d3.scaleLinear()
@@ -24,8 +27,8 @@ var colorScaleBars2 = d3.scaleLinear()
     .domain([0, .05, .1, .25, .5, 2.5])
     .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse())
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
   .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
   //.defer(d3.json, "../../json/mpo_existing_bike_facilities_2016.topojson")
   .defer(d3.csv, "../../json/bike_facilities_by_town.csv")
@@ -50,7 +53,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData) {
       var miles_onroad = findIndex(capTown, "TOTAL_ONROAD");
       var miles_offroad = findIndex(capTown, "TOTAL_OFFROAD");
 
-      return "<p>" + capTown + "</p>" + d3.round(percent_onroad, 1) + "% On-Road (" + miles_onroad + " Miles)<br>" + d3.round(percent_offroad, 1) + "% Off-Road (" + miles_offroad + " Miles)" ;
+      return "<p>" + capTown + "</p>" + e(percent_onroad) + "% On-Road (" + miles_onroad + " Miles)<br>" + e(percent_offroad) + "% Off-Road (" + miles_offroad + " Miles)" ;
     })
 
   var svgContainer = d3.select("#map").append("svg")
@@ -184,7 +187,7 @@ function plot() {
     .attr('class', 'd3-tip')
     .offset([90, 0])
     .html(function(d) {
-      return d3.round(d.PERCENT_ONROAD * 100, 1) + "% On-Road (" + d.TOTAL_ONROAD + " Miles)<br>" + d3.round(d.PERCENT_OFFROAD*100, 1) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
+      return e(d.PERCENT_ONROAD * 100) + "% On-Road (" + d.TOTAL_ONROAD + " Miles)<br>" + e(d.PERCENT_OFFROAD*100) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
     })
 
 
@@ -203,20 +206,20 @@ function plot() {
               .domain([0, .1])
               .range([100, 300]);
 
-  var onRoadLabels = d3.scaleOrdinal()
+  var onRoadLabels = d3.scalePoint()
               .domain(["0%", "2%", "4%", "6%", "8%", "10%"])
-              .rangePoints([100, 300]);
+              .range([100, 300]);
 
   var onRoadMiles = d3.scaleLinear()
               .domain([0, 30])
               .range([350, 650]);
 
-  var yScale = d3.scaleOrdinal()
+  var yScale = d3.scalePoint()
           .domain(townsOn)
-          .rangePoints([100, 400]);
+          .range([100, 400]);
   
   var xAxis = d3.svg.axis().scale(onRoadLabels).orient("top").ticks(5); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left");
+  var yAxis = d3.axisLeft(yScale);
   var yAxisM = d3.svg.axis().scale(onRoadMiles).orient("top").ticks(5).tickFormat(d3.format("d"));
 
 //Labels
@@ -334,7 +337,7 @@ CTPS.demoApp.generateMap2 = function(mpoTowns, bikeData) {
       var miles_OFFROAD = findIndex(capTown, "TOTAL_OFFROAD");
       var miles_offroad = findIndex(capTown, "TOTAL_OFFROAD");
 
-      return "<p>" + capTown + "</p>" + d3.round(percent_OFFROAD, 1) + "% On-Road (" + miles_OFFROAD + " Miles)<br>" + d3.round(percent_offroad, 1) + "% Off-Road (" + miles_offroad + " Miles)" ;
+      return "<p>" + capTown + "</p>" + e(percent_OFFROAD) + "% On-Road (" + miles_OFFROAD + " Miles)<br>" + e(percent_offroad) + "% Off-Road (" + miles_offroad + " Miles)" ;
     })
 
   var svgContainer = d3.select("#map2").append("svg")
@@ -477,7 +480,7 @@ var townsOff = [];
     .attr('class', 'd3-tip')
     .offset([90, 0])
     .html(function(d) {
-      return d3.round(d.PERCENT_OFFROAD * 100, 1) + "% On-Road (" + d.TOTAL_OFFROAD + " Miles)<br>" + d3.round(d.PERCENT_OFFROAD*100, 1) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
+      return e(d.PERCENT_OFFROAD * 100) + "% On-Road (" + d.TOTAL_OFFROAD + " Miles)<br>" + e(d.PERCENT_OFFROAD*100) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
     })
 
 
@@ -496,20 +499,20 @@ var townsOff = [];
               .domain([0, 5])
               .range([100, 300]);
 
-  var OFFROADLabels = d3.scaleOrdinal()
+  var OFFROADLabels = d3.scalePoint()
               .domain([0, 1, 2, 4, 5])
-              .rangePoints([100, 300]);
+              .range([100, 300]);
 
   var OFFROADMiles = d3.scaleLinear()
               .domain([0, 50])
               .range([350, 650]);
 
-  var yScale = d3.scaleOrdinal()
+  var yScale = d3.scalePoint()
           .domain(townsOn)
-          .rangePoints([100, 850]);
+          .range([100, 850]);
   
   var xAxis = d3.svg.axis().scale(OFFROADLabels).orient("top").ticks(5); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left");
+  var yAxis = d3.axisLeft(yScale);
   var yAxisM = d3.svg.axis().scale(OFFROADMiles).orient("top").ticks(5).tickFormat(d3.format("d"));
 
 //Labels

@@ -4,8 +4,8 @@ CTPS.demoApp = {};
 //Define Color Scale
 var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "../../JSON/boston_region_mpo_towns.topo.json")
 	.defer(d3.json, "../../JSON/CMP_2014_ART_ROUTES.topojson")
 	.defer(d3.csv, "../../JSON/arterial_route_id_table.csv")
@@ -53,9 +53,9 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 	.scale([projScale]) // N.B. The scale and translation vector were determined empirically.
 	.translate([projXPos, projYPos - 3]);
 	
-	var geoPath = d3.geo.path().projection(projection);
-	var geoPathS = d3.geo.path().projection(projectionS);
-	var geoPathW = d3.geo.path().projection(projectionW);
+	var geoPath = d3.geoPath().projection(projection);
+	var geoPathS = d3.geoPath().projection(projectionS);
+	var geoPathW = d3.geoPath().projection(projectionW);
 
 	// SVG Viewport
 	var svgContainer = d3.select("#mapNonInterstate").append("svg")
@@ -322,7 +322,7 @@ CTPS.demoApp.generateTraveller = function(towns, arterials) {
 	.scale([18000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([40,750]);
 	
-	var geoPath = d3.geo.path().projection(projection);
+	var geoPath = d3.geoPath().projection(projection);
 
 	var freeFlow = d3.select("#freeFlow2").append("svg")
 		.attr("width", "100%")

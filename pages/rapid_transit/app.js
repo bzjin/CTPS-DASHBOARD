@@ -5,8 +5,8 @@ CTPS.demoApp = {};
 var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
 
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	//.defer(d3.json, "../../JSON/boston_region_mpo_towns.topo.json")
 	//.defer(d3.json, "../../JSON/MBTA_NODE.geojson")
 	//.defer(d3.json, "../../JSON/red_line_boardings.json")
@@ -43,7 +43,7 @@ var projection = d3.geoConicConformal()
 .scale([projScale]) // N.B. The scale and translation vector were determined empirically.
 .translate([projXPos, projYPos]);
 
-var geoPath = d3.geo.path().projection(projection);
+var geoPath = d3.geoPath().projection(projection);
 var toParse = [red, green, blue, orange];
 var allLines = [];
 
@@ -149,8 +149,8 @@ var mbtaGraph = d3.select("#graphMBTA").append("svg")
 
 var xScale = d3.scaleLinear().domain([1999, 2010]).range([100, 450]);
 var yScale = d3.scaleLinear().domain([0, 25000]).range([450, 50]);
-var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(5).tickFormat(d3.format("d")); 
-var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
+var xAxis = d3.axisBottom(xScale).ticks(5).tickFormat(d3.format("d")); 
+var yAxis = d3.axisLeft(yScale).ticks(10);
 
 mbtaGraph.append("g").attr("class", "axis")
 	.attr("transform", "translate(0," + yScale(0) + ")")
@@ -482,8 +482,8 @@ route1.forEach(function(i){
 var width = 500,
     height = 600;
 
-var stopScale = d3.scaleOrdinal().domain(stopKey).rangePoints([50, 450]);
-var stopScaleNames = d3.scaleOrdinal().domain(stopKeyFull).rangePoints([50, 450]);
+var stopScale = d3.scalePoint().domain(stopKey).range([50, 450]);
+var stopScaleNames = d3.scalePoint().domain(stopKeyFull).range([50, 450]);
 var dayScale = d3.scaleLinear().domain([new Date("Mon Jan 01 1900 04:30:00 GMT-0500 (EST)"),new Date("Mon Jan 01 1900 14:00:00 GMT-0500 (EST)"), new Date("Mon Jan 01 1900 23:59:59 GMT-0500 (EST)")]).range(["#edf8b1","#41b6c4","#253494"]);
 var yScale = d3.scaleLinear().domain([d3.min(minmax), d3.max(minmax)]).range([550, 50]);
 
@@ -506,7 +506,7 @@ var outboundStops = d3.select("#outboundStops").append("svg")
     .attr("height", height)
 
 var xAxis = d3.svg.axis().scale(stopScaleNames).orient("bottom").ticks(10); 
-var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
+var yAxis = d3.axisLeft(yScale).ticks(10);
 
 inboundStops.append("g").attr("class", "axis")
 	.attr("transform", "translate(0, " + yScale(0) + ")").style("stroke-width", "1px")

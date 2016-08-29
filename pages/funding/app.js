@@ -7,10 +7,10 @@ var projection = d3.geoConicConformal()
   .scale([19000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,790]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
   .defer(d3.json, "../../json/town_census.topojson")
   .defer(d3.json, "../../json/equity.json")
 
@@ -196,9 +196,9 @@ generateStats = function(attribute, divID) {
     })
 
 
-    var xScale = d3.scaleOrdinal()
+    var xScale = d3.scalePoint()
                 .domain(townOrder)
-                .rangePoints([padding, width - (2*padding)])
+                .range([padding, width - (2*padding)])
 
     var yScale = d3.scaleLinear()
                 .domain([0, d3.max(maxmins)])
@@ -331,7 +331,7 @@ generateStats("SINGLE_FEMALE_HOH_PCT", "chartFemale")
               .domain([2007.5, 2021.5])
               .range([0, width - 2*padding])
 
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d")).ticks(14);
+  var xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d")).ticks(14);
 
   tipFunding.append("g").attr("class", "axis")
     .attr("transform", "translate(0," + height*1.8 + ")")
@@ -540,7 +540,7 @@ CTPS.demoApp.generatePerPerson = function(equity) {
               .domain([2007.5, 2021.5])
               .range([60, 650])
 
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d")).ticks(14);
+  var xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d")).ticks(14);
 
   fundPerson.append("g").attr("class", "axis")
     .attr("transform", "translate(0, 470)")
@@ -553,7 +553,7 @@ CTPS.demoApp.generatePerPerson = function(equity) {
               .domain([0, d3.max(maxFunding)])
               .range([470, 100])
 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left")
+  var yAxis = d3.axisLeft(yScale)
               .tickFormat(function(d) { return "$" + d; });
 
   fundPerson.append("g").attr("class", "yaxis")

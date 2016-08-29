@@ -11,10 +11,10 @@ var projection = d3.geoConicConformal()
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([100,1000]);
 	
-var geoPath = d3.geo.path().projection(projection);	
+var geoPath = d3.geoPath().projection(projection);	
 
 //Using the queue.js library
-queue()
+d3.queue()
 	
 	//.defer(d3.csv, "bridge_condition_2007.csv")
 	//.defer(d3.csv, "bridge_condition_2012.csv")
@@ -59,7 +59,7 @@ queue()
 			"overFeature" : i.AllBridges_2012April_1_Item_7, 
 			"underFeature" : i.AllBridges_2012April_1_Item_6A,
 			"adt" : i.AllBridges_2012April_1_Item_29,
-			"year" : 2012,
+			"year" : 2012,z
 			"structDef" : i.AllBridges_2012April_1_Struct_Def,
 			"town": i.AllBridges_2012April_1_Town_Name
 		})
@@ -572,10 +572,10 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, crashdata) {
 	//Assign scales and axes 
 	xScaleRoad = d3.scaleLinear().domain([0,62]).range([70, 1130]);
 	xScaleSegment = d3.scaleLinear().domain([0,62]).range([0, 1060]);
-	yScale = d3.scaleOrdinal().domain(routekey).rangePoints([150, 650]);
+	yScale = d3.scalePoint().domain(routekey).range([150, 650]);
 
-	var xAxis = d3.svg.axis().scale(xScaleRoad).orient("bottom").ticks(15);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
+	var xAxis = d3.axisBottom(xScaleRoad).ticks(15);
+	var yAxis = d3.axisLeft(yScale).tickSize(0);
 
 	chartContainer.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 680)").style("stroke-width", "1px")

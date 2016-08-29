@@ -1,8 +1,8 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.csv, "bridge_condition_2007.csv")
 	.defer(d3.csv, "bridge_condition_2008.csv")
 	.defer(d3.csv, "bridge_condition_2009.csv")
@@ -25,7 +25,7 @@ to change any of the attributes that are currently being selected.s
 
 The console will print out the array that is used in dashboard page. 
 
-THE "RAW DATA" : Each of the csvs that are loaded in the above queue are included in the same folder as this app code. 
+THE "RAW DATA" : Each of the csvs that are loaded in the above d3.queue are included in the same folder as this app code. 
 
 THE FINAL PRODUCT : The JSON array "bridge_condition_timeline.JSON" in the JSON folder is the result of this code.
 */

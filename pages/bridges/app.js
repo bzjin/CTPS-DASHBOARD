@@ -13,10 +13,10 @@ var projection = d3.geoConicConformal()
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([100,1000]);
 	
-var geoPath = d3.geo.path().projection(projection);	
+var geoPath = d3.geoPath().projection(projection);	
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "../../JSON/bridge_condition_timeline.JSON")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateBridgeTimeline(results[0]);
@@ -173,8 +173,8 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	xScale = d3.scaleLinear().domain([2007, 2016]).range([70, 400]);
 	yScale = d3.scaleLinear().domain([0, 100]).range([450, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));
-	var yAxis = d3.svg.axis().scale(yScale).orient("left");
+	var xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
+	var yAxis = d3.axisLeft(yScale);
 
 	timeline.append("text")
 		.attr("x", -350)
@@ -496,8 +496,8 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 	xScale = d3.scaleLinear().domain([2007, 2016]).range([50, 250]);
 	yScale = d3.scaleLinear().domain([0, 1]).range([450, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d")).ticks(3);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickFormat(d3.format("d"));
+	var xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d")).ticks(3);
+	var yAxis = d3.axisLeft(yScale).tickFormat(d3.format("d"));
 
 	bridgeContainer.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -577,8 +577,8 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 		var xScale = d3.scaleLinear().domain([2007, 2016]).range([0 + padding, width]);
 		var yScale = d3.scaleLinear().domain([0, 1]).range([height, 0]);
 
-		var xAxis = d3.svg.axis().scale(xScale).tickSize(0);
-		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
+		var xAxis = d3.axisBottom(xScale).tickSize(0);
+		var yAxis = d3.axisLeft(yScale).tickSize(0);
 
 		var svg = d3.select("#chart").append("svg")
 				.attr("height", height)

@@ -1,8 +1,8 @@
 var CTPS = {};
 CTPS.demoApp = {};
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	//.defer(d3.json, "nonmotorized_crashes.JSON") //Raw Data
 	//.defer(d3.csv, "crashes_injuries_by_year.csv") //"All" Injuries and Fatalities stored here
 	//.defer(d3.csv, "crashdata.JSON") //generated from first function CTPS.demoApp.generateNonmotorized

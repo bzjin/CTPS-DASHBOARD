@@ -7,10 +7,10 @@ var projection = d3.geoConicConformal()
 	.scale([18000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([40,770]);
 	
-var geoPath = d3.geo.path().projection(projection);	
+var geoPath = d3.geoPath().projection(projection);	
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
 	.defer(d3.json, "../../json/nonmotorized_crashes.json")
 	.awaitAll(function(error, results){ 
@@ -68,22 +68,20 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.on("click", function() {
 				var thisreg = this.getAttribute("class");
 				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[0]]).range([400, 20]);
-				var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-250, 0, 0).tickFormat(d3.format("d"));
+				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(d3.format("d"));
 
 				d3.selectAll(".area").transition()
 					.style("fill", "none");
 
 				chartContainer.select(".yaxis").transition()
 					.duration(750)
-					.ease("sin-in-out")  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
                     .call(yAxis).selectAll("text").style("fill", colorScale(findTownMax(thisreg)[0]))
                     .attr("transform", "translate(-5,0)");
 
 				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[1]]).range([400, 20]);
-				var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-250, 0, 0).tickFormat(d3.format("d"));
+				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(d3.format("d"));
                 chartContainer2.select(".yaxis").transition()
 					.duration(750)
-					.ease("sin-in-out")  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
                     .call(yAxis).selectAll("text").style("fill", colorScale(findTownMax(thisreg)[1]))
                     .attr("transform", "translate(-5,0)");
 
@@ -91,6 +89,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	        }) 
 		.on("mouseenter", function(d) { 
 			tip.show(d); 
+		})
+		.on("mouseleave", function(d) { 
+			tip.hide(d);
 		})
 
 	var chartContainer = d3.select("#bikeChart").append("svg")
@@ -139,8 +140,8 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	var xScale = d3.scaleLinear().domain([2004, 2013]).range([50, 300]);
 	var yScale = d3.scaleLinear().domain([0, findTownMax("Total")[0]]).range([400, 20]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")); 
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(-250, 0, 0);
+	var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")); 
+	var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(-250, 0, 0);
 
 	chartContainer.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 400)").style("stroke-width", "1px")
@@ -152,7 +153,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.attr("transform", "translate(-5,0)");
 
 	var yScale = d3.scaleLinear().domain([0, findTownMax("Total")[1]]).range([400, 20]);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(-250, 0, 0);
+	var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(-250, 0, 0);
 
 	chartContainer2.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 400)").style("stroke-width", "1px")
@@ -267,8 +268,8 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 		var xScale = d3.scaleLinear().domain([0, 17]).range([0 + padding, width]);
 		var yScale = d3.scaleLinear().domain([0, 15]).range([height, 20]);
 
-		var xAxis = d3.svg.axis().scale(xScale).tickSize(0);
-		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
+		var xAxis = d3.axisBottom(xScale).tickSize(0);
+		var yAxis = d3.axisLeft(yScale).tickSize(0);
 
 		var svg = d3.select("#plot").append("svg")
 				.attr("height", height)

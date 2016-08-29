@@ -12,10 +12,10 @@ var projection = d3.geoConicConformal()
 .scale([projScale]) 
 .translate([projXPos, projYPos]);
 
-var geoPath = d3.geo.path().projection(projection);
+var geoPath = d3.geoPath().projection(projection);
 	
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "json/boston_region_mpo_towns.topo.json")
 	.defer(d3.json, "js/arterials_summary.json")
 	.defer(d3.csv, "js/front_page_summaries.csv")

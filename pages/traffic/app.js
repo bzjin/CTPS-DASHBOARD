@@ -7,10 +7,10 @@ var projection = d3.geoConicConformal()
   .scale([21000]) // N.B. The scale and translation vector were determined empirically.
   .translate([30,830]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
   .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
   .defer(d3.json, "../../json/traffic_signals.topojson")
   .defer(d3.csv, "../../json/miles_per_town.csv")
@@ -158,7 +158,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
     .style("overflow", "visible")
 
 
-  var xScale = d3.scaleOrdinal().domain(towns).rangePoints([50, 600])
+  var xScale = d3.scalePoint().domain(towns).range([50, 600])
  //var xScale = d3.scaleLinear().domain([0, 2]).range([50, 500]);
   var yScale = d3.scaleLinear().domain([0, 2.2]).range([380, 30])
 

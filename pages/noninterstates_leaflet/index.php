@@ -11,9 +11,9 @@
 <!-- D3 Library --> 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
-<script src="http://d3js.org/queue.v1.min.js"></script>
+
 <!-- Tooltip -->
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="../../js/d3-tip.js"></script>
 <!-- TopoJSON -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
 <!-- Google Fonts -->

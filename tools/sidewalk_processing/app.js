@@ -11,10 +11,10 @@ var projection = d3.geoConicConformal()
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([100,1000]);
 	
-var geoPath = d3.geo.path().projection(projection);	
+var geoPath = d3.geoPath().projection(projection);	
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.csv, "sidewalk_data_2006.csv")
 	.defer(d3.csv, "sidewalk_data_2007.csv")
 	.defer(d3.csv, "sidewalk_data_2008.csv")
