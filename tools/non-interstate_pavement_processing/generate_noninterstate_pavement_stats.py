@@ -3,11 +3,15 @@
 # script: generate_non_interstate_pavement_stats.py
 #  
 # Usage:
-#   Parameter 1: INPUT Road Inventory clipped to Boston MPO boundary,
-#                fileterd to contain only records with 
-#                (NHSSTATUS != 0 AND NHSSTATUS != 1)
-#                i.e., only non-interstate NHS roads.
-#   Parameter 2: OUTPUT name of statistics table
+#   This script is to be added to an "ArcToolbox" in ESRI's "ArcMap" product,
+#   and run from within an ESRI "map document" containing a layer for the
+#   Road Inventory.
+#   It takes 2 parameters, both of which are required:
+#   	Parameter 1: INPUT Road Inventory clipped to Boston MPO boundary,
+#                	 fileterd to contain only records with 
+#                	 NHSSTATUS != 0 AND NHSSTATUS != 1)
+#                    i.e., only non-interstate NHS roads.
+#   	Parameter 2: OUTPUT name of statistics table
 #
 # Description:
 #   Given a copy of the Road Inventory for a given year clipped to the Boston

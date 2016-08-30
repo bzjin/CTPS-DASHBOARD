@@ -3,8 +3,12 @@
 # script: generate_sidewalk_stats.py
 #  
 # Usage:
-#   Parameter 1: INPUT Road Inventory clipped to Boston MPO boundary
-#   Parameter 2: OUTPUT name of statistics table
+#   This script is to be added to an "ArcToolbox" in ESRI's "ArcMap" product,
+#   and run from within an ESRI "map document" containing a layer for the
+#   Road Inventory and for the MassGIS TOWNSSURVEY_POLYM feature class.
+#   It takes 2 parameters, both of which are required:
+#   	Parameter 1: INPUT Road Inventory clipped to Boston MPO boundary
+#   	Parameter 2: OUTPUT name of statistics table
 #
 # Description:
 #   Given a copy of the Road Inventory for a given year clipped to the Boston
