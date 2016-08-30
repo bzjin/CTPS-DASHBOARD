@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
 var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	

@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
 var colorScale = d3.scaleQuantize().domain([1, 5])
@@ -628,7 +630,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, crashdata) {
 	  .attr('class', 'd3-tip')
 	  .offset([-10, 0])
 	  .html(function(d) {
-	    return "<b>" + d.properties.TOWN + "</b><br>PSI: " + d3.round(d.properties.PSI, 2);
+	    return "<b>" + d.properties.TOWN + "</b><br>PSI: " + f(d.properties.PSI);
 	  })
 
 	chartContainer.call(tip2); 

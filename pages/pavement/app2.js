@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
 var colorScale = d3.scaleQuantize().domain([1, 5])
@@ -74,19 +76,19 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 
 	
 	var valueline = d3.line()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.median); });
 
 	var valuearea = d3.area()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x0(function(d) { return xScale(d.year); })
 	    .x1(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(d.firstQuartile); })
 	    .y0(function(d) { return yScale(d.thirdQuartile); })
 
 	var valuerange = d3.area()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x0(function(d) { return xScale(d.year); })
 	    .x1(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(d.minimum); })
@@ -319,7 +321,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	  .attr('class', 'd3-tip')
 	  .offset([0, 10])
 	  .html(function(d) {
-	    return "Average PSI: " + d3.round(d.cityavg, 2) ;
+	    return "Average PSI: " + f(d.cityavg) ;
 	  })
 
 	cityContainer.call(tip3); 

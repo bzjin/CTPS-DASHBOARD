@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
 var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
@@ -110,7 +112,7 @@ for (var i = 0; i < 9; i++) {
 	nodesSVG.transition()
 		.delay(i*1000)
 		.duration(1000)
-		.ease("linear")
+		.ease(d3.easeLinear)
 		.attr("r", function(d) { return d.boardings[i]/1000})
 }
 
@@ -163,7 +165,7 @@ mbtaGraph.append("g").attr("class", "axis")
 	.call(yAxis).selectAll("text").style("font-weight", 300);
 
 var valueline = d3.line()
-.interpolate("basis")
+.curve(d3.curveBasis)
 .x(function(d, i) { return xScale(i + 1999)})
 .y(function(d, i) { return yScale(d)});
 

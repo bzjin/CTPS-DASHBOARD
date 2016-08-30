@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
 var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
@@ -66,7 +68,7 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 	  .attr('class', 'd3-tip')
 	  .offset([0, 150])
 	  .html(function(d) {
-	    return d.properties.RTE_NAME_ID.substring(0, d.properties.RTE_NAME_ID.lastIndexOf(" ")) + "<br>Speed Limit: " + d.properties.SPD_LIMIT + "<br>Speed Index: " + d3.round(d.properties.AM_SPD_IX, 3);
+	    return d.properties.RTE_NAME_ID.substring(0, d.properties.RTE_NAME_ID.lastIndexOf(" ")) + "<br>Speed Limit: " + d.properties.SPD_LIMIT + "<br>Speed Index: " + e(d.properties.AM_SPD_IX);
 	  })
 
 	svgContainer.call(tip); 

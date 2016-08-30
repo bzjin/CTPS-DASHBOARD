@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
 var colorScale = d3.scaleQuantize().domain([1, 5])
@@ -75,7 +77,7 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 	.entries(psitimeline);
 
 	var valueline = d3.line()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.psiyear); })
 	    .y(function(d) { return yScale(d.psi); });
 
@@ -207,202 +209,6 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 		});
 }
 
-//generate graph of PSI v. ADT 
-/*CTPS.demoApp.generateADTgraph = function(interstateRoads) { 
-	console.log(interstateRoads.features);
-	var adtgraph = d3.select("#adtgraph").append("svg")
-		.attr("width", 1200)
-		.attr("height", 500);
-
-	//mouseover function	
-	var tip2 = d3.tip()
-	  .attr('class', 'd3-tip')
-	  .offset([-10, 0])
-	  .html(function(d) {
-	    return d.properties.FEDERALAIDROUTENUMBER + ": " + d.properties.STREETNAME + "<br><b>ADT:</b> " + d.properties.ADT + "<br><b>PSI:</b> " + d3.round(d.properties.PSI, 2);
-	  })
-
-	adtgraph.call(tip2); 
-
-	var maxminsADT = [];
-	interstateRoads.features.forEach(function(i){
-		maxminsADT.push(i.properties.ADT);
-	})
-
-	//Assign scales and axes 
-	xScale= d3.scaleLinear().domain([d3.min(maxminsADT), d3.max(maxminsADT)]).range([50, 1000]);
-	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
-
-	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(d3.format("d"));
-	var yAxis = d3.axisLeft(yScale).tickSize(-950, 0, 0).tickFormat(d3.format("d"));
-
-	adtgraph.append("g").attr("class", "axis")
-		.attr("transform", "translate(0, 450)")
-		.call(xAxis)
-		.selectAll("text")
-		.attr("transform", "translate(0, 5)");
-	
-	adtgraph.append("g").attr("class", "axis")
-		.attr("transform", "translate(50, 0)")
-		.call(yAxis)
-		.selectAll("text")
-		.attr("transform", "translate(-5, 0)");
-
-	var values = [];
-	var avgADTandPSI = [];
-	interstateRoads.features.forEach(function(i) { 
-		if (i.properties.FEDERALAIDROUTENUMBER == "I-90" ||	i.properties.FEDERALAIDROUTENUMBER == "I-93" || i.properties.FEDERALAIDROUTENUMBER == "I-95" || i.properties.FEDERALAIDROUTENUMBER == "I290" || i.properties.FEDERALAIDROUTENUMBER == "I495") {
-			if (i.properties.ADT != undefined && i.properties.PSI != undefined && i.properties.ROUTETO != undefined && i.properties.ROUTEFROM != undefined) {
-				values.push({
-					"route" : i.properties.FEDERALAIDROUTENUMBER,
-					"adt" : i.properties.ADT, 
-					"psi" : i. properties.PSI,
-					"roadlength" : i.properties.ROUTETO - i.properties.ROUTEFROM,
-					"lanes" : i.properties.NUMBEROFTRAVELLANES
-				})
-			}
-		}
-	})
-
-	var nested_routes = d3.nest()
-	.key(function(d){ return d.route;})
-	.entries(values);
-
-	nested_routes.forEach(function(i){
-		avgADTandPSI.push({
-			"route" : i.key,
-			"totalroad" : d3.sum(i.values, function(d){ return d.roadlength * d.lanes;}),
-			"totalpsi" : d3.sum(i.values, function(d){ return d.roadlength * d.lanes * d.psi;}),
-			"totaladt" : d3.sum(i.values, function(d){ return d.roadlength * d.lanes * d.adt;})
-		})
-	})
-
-	avgADTandPSI.sort(function(a, b){
-		var nameA = a.totaladt/a.totalroad;
-		var nameB = b.totaladt/b.totalroad;
-		if (nameA < nameB) { return -1 ; }
-		if (nameA > nameB) { return 1 ; }
-		return 0; 
-	})
-
-	xPos = 120;
-	yPos = 400; 
-	//graph averages
-	avgADTandPSI.forEach(function(i){
-		adtgraph.append("circle")
-				.attr("class", i.route + " avgcircle")
-				.attr("cx", xScale(i.totaladt/i.totalroad))
-				.attr("cy", yScale(i.totalpsi/i.totalroad))
-				.attr("r", Math.sqrt(i.totalroad)*6)
-				.style("opacity", .1)
-				.style("fill", function() { 
-					if (i.route == "I-90") { return colors[2];}
-					if (i.route == "I-93") { return colors[1];}
-					if (i.route == "I-95") { return colors[0];}
-					if (i.route == "I290") { return colors[3];}
-					if (i.route == "I495") { return colors[4];}	
-				})
-		adtgraph.append("text")
-				.attr("x", xPos)
-				.attr("y", yPos - 10)
-				.text(i.route) 
-				.style("text-anchor", "middle")
-				.style("fill", function() { 
-					if (i.route == "I-90") { return colors[2];}
-					if (i.route == "I-93") { return colors[1];}
-					if (i.route == "I-95") { return colors[0];}
-					if (i.route == "I290") { return colors[3];}
-					if (i.route == "I495") { return colors[4];}	
-				})
-		adtgraph.append("text")
-				.attr("x", xPos)
-				.attr("y", yPos + 5)
-				.text("Average ADT: " + d3.round(i.totaladt/i.totalroad, 0)) 
-				.style("text-anchor", "middle")
-				.style("font-weight", 300)
-				.style("font-size", 12);
-		adtgraph.append("text")
-				.attr("x", xPos)
-				.attr("y", yPos + 20)
-				.text("Average PSI: " + d3.round(i.totalpsi/i.totalroad, 2)) 
-				.style("text-anchor", "middle")
-				.style("font-weight", 300)
-				.style("font-size", 12);
-		xPos += 200;
-	})
-
-	interstateRoads.features.forEach(function(i) { 
-		if (i.properties.ADT != undefined && i.properties.PSI != undefined){
-			adtgraph.append("circle")
-				.attr("class", i.properties.FEDERALAIDROUTENUMBER)
-				.attr("cx", xScale(i.properties.ADT))
-				.attr("cy", yScale(i.properties.PSI))
-				.attr("r", i.properties.NUMBEROFTRAVELLANES*(i.properties.ROUTETO-i.properties.ROUTEFROM)*5)
-				.style("opacity", 1)
-				.style("fill", "rgba(0, 0, 0, 0)")
-				.style("stroke-width", .5)
-				.style("stroke", function() { 
-					if (i.properties.FEDERALAIDROUTENUMBER == "I-90") { return colors[2];}
-					if (i.properties.FEDERALAIDROUTENUMBER == "I-93") { return colors[1];}
-					if (i.properties.FEDERALAIDROUTENUMBER == "I-95") { return colors[0];}
-					if (i.properties.FEDERALAIDROUTENUMBER == "I290") { return colors[3];}
-					if (i.properties.FEDERALAIDROUTENUMBER == "I495") { return colors[4];}	
-				})
-				.on("mouseenter", function(){
-					tip2.show(i);
-					var thisreg = this.getAttribute("class");
-
-					adtgraph.selectAll("circle")
-						.style("opacity", .1);
-
-					adtgraph.selectAll("." + thisreg)
-						.style("opacity", .5)
-						.style("stroke-width", 1);
-
-					d3.select(this)
-						.style("opacity", 1)
-						.style("stroke-width", 2);
-				})
-				.on("mouseleave", function(){ 
-					tip2.hide(i);
-					adtgraph.selectAll("circle")
-						.style("opacity", .5)
-						.style("stroke-width", .5);
-					adtgraph.selectAll(".avgcircle")
-						.style("opacity", .1)
-						.style("stroke-width", 0);
-				})
-		}
-	})
-	/*var valueline = d3.line()
-	.interpolate("basis")
-    .x(function(d) { return xScale(d.adt); })
-    .y(function(d) { return yScale(d.psi); });
-
-    nested_routes.forEach(function(i){
-    	i.values.sort(function(a, b){
-    		var nameA = a.adt; 
-    		var nameB = b.adt; 
-    		if (nameA < nameB) {return -1;}
-    		if (nameA > nameB) {return 1;}
-    		return 0;
-    	})
-    	adtgraph.append("path")
-    		.attr("class", i.key)
-    		.attr("d", valueline(i.values))
-    		.style("fill", function(){
-    			if (i.values[0].route == "I-90") { return colors[2];}
-				if (i.values[0].route == "I-93") { return colors[1];}
-				if (i.values[0].route == "I-95") { return colors[0];}
-				if (i.values[0].route == "I290") { return colors[3];}
-				if (i.values[0].route == "I495") { return colors[4];}	
-    		})
-    		.style("opacity", .5)
-    })
-
-    console.log(nested_routes);
-} //end of generating ADTgraph
-*/
 
 CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {	
 

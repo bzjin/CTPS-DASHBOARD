@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
 var colorScale = d3.scaleLinear()
@@ -196,19 +198,19 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 
 	//Line for average health index
 	var valueline = d3.line()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.healthavg); });
 
 	//Areas for structural deficient and not so
 	var goodline = d3.area()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(100 * d.structDef/d.totalCount); })
 	    .y0(yScale(100));
 
 	var badline = d3.area()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(100 * d.structDef/d.totalCount); })
 	    .y0(yScale(0));
@@ -328,8 +330,8 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	var xScaleT = d3.scaleLinear().domain([2007, 2016]).range([20, 500]);
 	var yScaleT = d3.scaleLinear().domain([0, 100]).range([450, 50]);
 
-	var xAxisT = d3.svg.axis().scale(xScaleT).orient("bottom").tickFormat(d3.format("d"));//.tickSize(-400, 0, 0)
-	var yAxisT = d3.svg.axis().scale(yScaleT).orient("left")//.tickSize(-600, 0, 0);
+	var xAxisT = d3.axisBottom(xScaleT).tickFormat(d3.format("d"));//.tickSize(-400, 0, 0)
+	var yAxisT = d3.axisLeft(yScaleT);//.tickSize(-600, 0, 0);
 
 	timeline2.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -350,7 +352,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		cleanedbridges.forEach(function(i){
 
 			timeline2.append("rect")
-				.attr("class", "yr" + i.year + " bin" + d3.round(d3.round(i.healthIndex/5, 2)*100) + " individuals " + i.town.toUpperCase())
+				.attr("class", "yr" + i.year + " bin" + e(e(i.healthIndex/5)*100) + " individuals " + i.town.toUpperCase())
 				.attr("x", function() { 
 					return xScaleT(i.year) + 8 + 8 * Math.floor(Math.random() * 5)
 				})
@@ -647,18 +649,18 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 			})
 
 		var valueline = d3.area()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.healthIndex); });
 
 		var goodline = d3.area()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(1-d.structDefNOT); })
 	    .y0(yScale(1));
 
 		var badline = d3.area()
-		.interpolate("basis")
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(d.structDef); })
 	    .y0(yScale(0));

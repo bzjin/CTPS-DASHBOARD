@@ -218,9 +218,9 @@ function plot() {
           .domain(townsOn)
           .range([100, 400]);
   
-  var xAxis = d3.svg.axis().scale(onRoadLabels).orient("top").ticks(5); 
+  var xAxis = d3.axisTop(onRoadLabels).ticks(5); 
   var yAxis = d3.axisLeft(yScale);
-  var yAxisM = d3.svg.axis().scale(onRoadMiles).orient("top").ticks(5).tickFormat(d3.format("d"));
+  var yAxisM = d3.axisTop(onRoadMiles).ticks(5).tickFormat(d3.format("d"));
 
 //Labels
 
@@ -511,9 +511,9 @@ var townsOff = [];
           .domain(townsOn)
           .range([100, 850]);
   
-  var xAxis = d3.svg.axis().scale(OFFROADLabels).orient("top").ticks(5); 
+  var xAxis = d3.axisTop(OFFROADLabels).ticks(5); 
   var yAxis = d3.axisLeft(yScale);
-  var yAxisM = d3.svg.axis().scale(OFFROADMiles).orient("top").ticks(5).tickFormat(d3.format("d"));
+  var yAxisM = d3.axisTop(OFFROADMiles).ticks(5).tickFormat(d3.format("d"));
 
 //Labels
 
@@ -552,8 +552,9 @@ stacks.append("text")
         else { return OFFROADPercent(d.properties.ratio) }})
       .attr("y", function(d) {
         var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-       return yScale(capTown) - 3; 
-     })
+        if (isNaN(yScale(capTown))) { return -1000000;}
+          else { return yScale(capTown) - 3; }
+      })
       .attr("width", 5)
       .attr("height", 7)
       .style("fill", function(d) { return colorScaleBars2(d.properties.ratio)})
@@ -565,7 +566,12 @@ stacks.append("text")
     .append("rect")
       .attr("class", "OFFROADM")
       .attr("x", OFFROADMiles(0))
-      .attr("y", function(d) { return yScale(d.TOWN) - 3})
+      .attr("y", function(d) { 
+        if (isNaN(yScale(d.TOWN))) { 
+          return -100000;
+        } else { 
+          return yScale(d.TOWN) - 3}
+        })
       .attr("width", function(d) { 
           if (d.PERCENT_OFFROAD == 0){ return 0 } 
           else {return OFFROADMiles(d.TOTAL_OFFROAD) - 345 }})

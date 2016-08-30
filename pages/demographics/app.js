@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
@@ -172,11 +174,11 @@ var colorScale = d3.scaleLinear()
   var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
   var maxmins = [];
   census.forEach(function(i){
-    i.properties.MINORITY_HH_PCT = d3.round(i.properties.MINORITY_HH_PCT * 100, 2);
-    i.properties.SINGLE_FEMALE_HOH_PCT = d3.round(i.properties.SINGLE_FEMALE_HOH_PCT * 100, 2);
-    i.properties.LEP_POP_PCT = d3.round(i.properties.LEP_POP_PCT * 100, 2);
-    i.properties.ZERO_VEH_HH_PCT = d3.round(i.properties.ZERO_VEH_HH_PCT * 100, 2);
-    i.properties.LOW_INC_HH_PCT = d3.round(i.properties.LOW_INC_HH_PCT * 100, 2);
+    i.properties.MINORITY_HH_PCT = f(i.properties.MINORITY_HH_PCT * 100);
+    i.properties.SINGLE_FEMALE_HOH_PCT = f(i.properties.SINGLE_FEMALE_HOH_PCT * 100);
+    i.properties.LEP_POP_PCT = f(i.properties.LEP_POP_PCT * 100);
+    i.properties.ZERO_VEH_HH_PCT = f(i.properties.ZERO_VEH_HH_PCT * 100);
+    i.properties.LOW_INC_HH_PCT = f(i.properties.LOW_INC_HH_PCT * 100);
     maxmins.push(i.properties.MINORITY_HH);
     maxmins.push(i.properties.SINGLE_FEMALE_HOH);
     maxmins.push(i.properties.LOW_INC_HH);
@@ -486,10 +488,10 @@ var colorScale = d3.scaleLinear()
   var maxmins = [];
   census.forEach(function(i){
     if (i.properties.LEP_POP_PCT < 1) { 
-      i.properties.LEP_POP_PCT = d3.round(100 * i.properties.LEP_POP_PCT, 2);
+      i.properties.LEP_POP_PCT = f(100 * i.properties.LEP_POP_PCT);
     }
-    i.properties.PCT_65_PLUS = d3.round(i.properties.PCT_65_PLUS * 100, 2);
-    i.properties.PCT_IN_LABOR_FORCE = d3.round((1 - i.properties.PCT_IN_LABOR_FORCE) * 100, 2);
+    i.properties.PCT_65_PLUS = f(i.properties.PCT_65_PLUS * 100);
+    i.properties.PCT_IN_LABOR_FORCE = f((1 - i.properties.PCT_IN_LABOR_FORCE) * 100);
     i.properties.LABOR_FORCE = i.properties.TOTAL_POP_2010 - i.properties.LABOR_FORCE; 
 
     maxmins.push(i.properties.TOTAL_POP_2010);

@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
 var colorScale = d3.scaleQuantize().domain([1, 5])
@@ -96,10 +98,10 @@ CTPS.demoApp.generateSidewalks = function(yr2006, yr2007, yr2008, yr2009, yr2010
 		i.forEach(function(j){
 			printOut.push({
 				"year": counter + 2005,
-				"center_line_miles": d3.round(j.SUM_CENTERLINE_MILES, 5),
-				"sidewalk_miles": d3.round(j.SUM_SIDEWALK_EITHER_MILES, 5),
-				"sidewalk_to_miles": d3.round(j.SUM_SIDEWALK_EITHER_MILES/j.SUM_CENTERLINE_MILES, 5),
-				"sidewalk_any_miles": d3.round(j.SUM_SIDEWALK_MILES, 5),
+				"center_line_miles": f(j.SUM_CENTERLINE_MILES),
+				"sidewalk_miles": f(j.SUM_SIDEWALK_EITHER_MILES),
+				"sidewalk_to_miles": f(j.SUM_SIDEWALK_EITHER_MILES/j.SUM_CENTERLINE_MILES),
+				"sidewalk_any_miles": f(j.SUM_SIDEWALK_MILES),
 				"town": j.TOWN
 			})
 		})
@@ -846,7 +848,7 @@ CTPS.demoApp.generateChart = function(crashdata, all_data) {
 	  .attr('class', 'd3-tip')
 	  .offset([-10, 0])
 	  .html(function(d) {
-	    return "<b>" + d.properties.TOWN + "</b><br>PSI: " + d3.round(d.properties.PSI, 2);
+	    return "<b>" + d.properties.TOWN + "</b><br>PSI: " + f(d.properties.PSI);
 	  })
 
 	chartContainer.call(tip2); 

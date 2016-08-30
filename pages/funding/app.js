@@ -1,5 +1,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
@@ -167,11 +169,11 @@ CTPS.demoApp.generateStats = function(mpoTowns, equity){
   var census = topojson.feature(mpoTowns, mpoTowns.objects.town_census).features;
 
   census.forEach(function(i){
-    i.properties.MINORITY_HH_PCT = d3.round(i.properties.MINORITY_HH_PCT * 100, 2);
-    i.properties.SINGLE_FEMALE_HOH_PCT = d3.round(i.properties.SINGLE_FEMALE_HOH_PCT * 100, 2);
-    i.properties.LEP_POP_PCT = d3.round(i.properties.LEP_POP_PCT * 100, 2);
-    i.properties.ZERO_VEH_HH_PCT = d3.round(i.properties.ZERO_VEH_HH_PCT * 100, 2);
-    i.properties.LOW_INC_HH_PCT = d3.round(i.properties.LOW_INC_HH_PCT * 100, 2);
+    i.properties.MINORITY_HH_PCT = f(i.properties.MINORITY_HH_PCT * 100);
+    i.properties.SINGLE_FEMALE_HOH_PCT = f(i.properties.SINGLE_FEMALE_HOH_PCT * 100);
+    i.properties.LEP_POP_PCT = f(i.properties.LEP_POP_PCT * 100);
+    i.properties.ZERO_VEH_HH_PCT = f(i.properties.ZERO_VEH_HH_PCT * 100);
+    i.properties.LOW_INC_HH_PCT = f(i.properties.LOW_INC_HH_PCT * 100);
   })
 
   var width = 680; 
@@ -373,8 +375,8 @@ generateStats("SINGLE_FEMALE_HOH_PCT", "chartFemale")
             else { return yScale(d.funding)-10;}
           })
           .text(function(d) {
-            if (d.funding > 1000000) { return "$" + d3.round(d.funding/1000000, 2) + "m"}
-            else { return "$" + d3.round(d.funding/100000, 2) + "k"; }
+            if (d.funding > 1000000) { return "$" + e(d.funding/1000000) + "m"}
+            else { return "$" + e(d.funding/100000) + "k"; }
           })
           .style("text-anchor", "middle")
           .style("font-weight", 300)
@@ -405,7 +407,7 @@ CTPS.demoApp.generateMap2 = function(mpoTowns, equity) {
     .offset([-10, 0])
     .html(function(d) {
       var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      return "<h4>" + capTown + "</h4> <br><p>TIP dollars per person 2008-2013: <b>$" + d3.round(findIndex(capTown, "Total_FFY_2008_2013_TIPs")/findIndex(capTown, "Population"),2) + "</b><br>TIP dollars per person 2014-2021: $<b>" + d3.round(findIndex(capTown, "Tota_FFY_2014_2021_TIPs")/findIndex(capTown, "Population"), 2) + "</b></p>";
+      return "<h4>" + capTown + "</h4> <br><p>TIP dollars per person 2008-2013: <b>$" + f(findIndex(capTown, "Total_FFY_2008_2013_TIPs")/findIndex(capTown, "Population")) + "</b><br>TIP dollars per person 2014-2021: $<b>" + f(findIndex(capTown, "Tota_FFY_2014_2021_TIPs")/findIndex(capTown, "Population")) + "</b></p>";
     })
 
   svgContainer.call(tip); 
@@ -614,7 +616,7 @@ CTPS.demoApp.generatePerPerson = function(equity) {
             if (d.year%2 == 1) { return yScale(d.funding)-15;}
             else { return yScale(d.funding)-10;}
           })
-          .text(function(d) { return "$" + d3.round(d.funding,2);})
+          .text(function(d) { return "$" + f(d.funding);})
           .style("text-anchor", "middle")
           .style("font-weight", 300)
           .style("font-size", 12)
