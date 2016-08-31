@@ -3,40 +3,36 @@
 # script: generate_sidewalk_stats.py
 #  
 # Usage:
-#   This script is to be added to an "ArcToolbox" in ESRI's "ArcMap" product,
-#   and run from within an ESRI "map document" containing a layer for the
-#   Road Inventory and for the MassGIS TOWNSSURVEY_POLYM feature class.
-#   It takes 2 parameters, both of which are required:
-#   	Parameter 1: INPUT Road Inventory clipped to Boston MPO boundary
-#   	Parameter 2: OUTPUT name of statistics table
+#   Parameter 1: INPUT Road Inventory clipped to Boston MPO boundary
+#   Parameter 2: OUTPUT name of statistics (database) table
+#   Parameter 3: Output name of statistics CSV file
 #
 # Description:
 #   Given a copy of the Road Inventory for a given year clipped to the Boston
 #   Region MPO area, generate a table with the number of centerline miles
 #   and the number of "sidewalk miles" for each of the 101 towns in the MPO
-#   region.
+#   region, and also save the table as a CSV file.
 #   We define "sidewalk miles" as the number of miles on non-interstate 
 #   roadway on which a sidewalk exists on either or both sides of the road.
 #
-# The output table is a database table, which then should be exported to
-# CSV format for use in the dashboard.
-#
-# -- Ben Krepp 08/08/2016
+# -- Ben Krepp 08/08/2016, 08/31/2016
 # ---------------------------------------------------------------------------
 
 # Import arcpy module
 import arcpy
+import csv
 
 # Script arguments
 ri_name = arcpy.GetParameterAsText(0)
 output_table_name = arcpy.GetParameterAsText(1)
+output_csv_file = arcpy.GetParameterAsText(2)
 
 ri_table_name = ri_name[ri_name.rindex("\\")+1:len(ri_name)]
 ri_layer_name = ri_table_name + "_layer"
 towns_layer_name = "TOWNSSURVEY_POLYM_layer"
 
 # Debug/trace
-arcpy.AddMessage("Processing: Input = " + ri_name + " Output: " + output_table_name)
+arcpy.AddMessage("Processing: Input = " + ri_name + " Output: " + output_table_name + " and " + output_csv_file)
 arcpy.AddMessage("Input layer name = " + ri_layer_name)
 
 # Make feature layer for road inventory clipped to MPO region:
@@ -117,4 +113,18 @@ arcpy.AddMessage("Completed step 17.")
 #                              case fields: TOWN_ID, TOWN
 arcpy.Statistics_analysis(in_table=ri_name,out_table=output_table_name,statistics_fields="CENTERLINE_MILES SUM;SIDEWALK_EITHER_MILES SUM",case_field="TOWN_ID;TOWN")
 arcpy.AddMessage("Completed step 18.")
+
+# Step 19: Export output file GDB table to CSV file.
+# Source: http://gis.stackexchange.com/questions/109008/python-script-to-export-csv-tables-from-gdb
+fields = arcpy.ListFields(output_table_name)
+field_names = [field.name for field in fields]
+
+with open(output_csv_file,'wb') as f:
+    w = csv.writer(f)
+    w.writerow(field_names)
+    for row in arcpy.SearchCursor(output_table_name):
+        field_vals = [row.getValue(field.name) for field in fields]
+        w.writerow(field_vals)
+    del row
+arcpy.AddMessage("Completed step 19.")
 arcpy.AddMessage("Tool completed execution.")
