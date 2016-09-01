@@ -48,7 +48,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 			.style("fill", "black")
 			.style("stroke", "#212127")
 			.style("stroke-width", 4)
-			.style("opacity", 0);
+			.style("opacity", .2);
 
 	//Congestion Map
 	var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);
@@ -60,11 +60,11 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 			.attr("class", "interstate")
 			.attr("d", function(d) {return geoPath(d)})
 			.style("fill", "none")
-			.style("stroke-width", 0)
+			.style("stroke-width", 1)
 			.style("stroke-linecap", "round")
 			.style("stroke", "#ff6347")
 			//.style("opacity", function(d) { return (1 - d.properties.AM_SPD_IX/1.8);})//function(d) { return (d.properties.AM_SPD_IX-.5);})
-			.style("opacity", 0)
+			.style("opacity", 0);
 
 	var pavements = svgContainer.selectAll(".pavement")
 			.data(topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_interstate_2015).features)
@@ -76,18 +76,13 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 				.style("stroke-width", 1)
 				.style("stroke", "#191b1d")
 				.style("stroke-linecap", "round")
-				.style("opacity", 0)
-
-	d3.selectAll(".subregion").transition()
-		.style("opacity", .2)
+				.style("opacity", 0);
 
 	d3.selectAll(".interstate").transition()
-		.delay(function(d, i) { return Math.floor(i/100)*100})
+		.delay(function(d, i) { return Math.floor(i/500)*500})
 		.duration(3000)
-		.style("fill", "none")
-		.style("stroke-width", 1)
 		.style("stroke", "#191b1d")
-		.style("opacity", 1)
+		.style("opacity", 1);
 
 	//Hover over Crashes link
 	d3.select("#crashes").on("mouseenter", function(){
@@ -107,7 +102,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
    							.range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 			d3.selectAll(".subregion").transition()
-				.delay(function (d, i) { return Math.floor(i/10)*100})
+				.delay(function (d, i) { return Math.floor(i/10)*10})
 				.duration(3000)
 				.ease(d3.easeElasticInOut)
 				.style("fill", function(d){ 
@@ -129,8 +124,8 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 									.domain([0, 5])
 									.range(["#d7191c", "#d7191c", "#d7191c", "#fdae61","#ffffbf","#a6d96a","#1a9641"])
 
-		d3.selectAll(".pavement").transition()
-				.delay(function(d) { return d.properties.PSI*500})
+		d3.selectAll(".pavement")//.transition()
+				.delay(function(d) { return d.properties.PSI*100})
 				.ease(d3.easeElasticInOut)
 				.duration(3000)
 				.style("stroke", function(d) { return colorPavement(d.properties.PSI)})
@@ -147,10 +142,10 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 	//Hover over CONGESTION link
 	d3.select("#congestion").on("mouseenter", function(){
 		//load crashdata
-			var colorCong = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);
+			var colorCong = d3.scaleLinear().domain([.5, 1.25]).range(["#D73027", "#00B26F"]);
 
 			d3.selectAll(".interstate").transition()
-				.delay(function (d, i) { return Math.floor(i/100)*100})
+				.delay(function (d, i) { return Math.floor(i/10)*10})
 				.duration(3000)
 				.style("stroke", function(d){ 
 					return colorCong(d.properties.AM_SPD_IX);
@@ -179,7 +174,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 		var colorBridge = d3.scaleLinear().domain([1, .03, 0]).range(["#D73027", "#fee08b", "#00B26F"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*100})
+			.delay(function (d, i) { return Math.floor(i/10)*10})
 			.duration(3000)
 			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
@@ -203,7 +198,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 		var colorSidewalks = d3.scaleLinear().domain([0, .8, 1.5]).range(["#fff7bc","#fec44f","#d95f0e"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*100})
+			.delay(function (d, i) { return Math.floor(i/10)*10})
 			.duration(3000)
 			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
@@ -223,7 +218,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 		var colorBikes = d3.scaleLinear().domain([0, .02, .3]).range(["#e0ecf4","#9ebcda","#8856a7"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*100})
+			.delay(function (d, i) { return Math.floor(i/10)*10})
 			.duration(3000)
 			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
@@ -249,7 +244,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 		    .range(["#ffffcc","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#005a32"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*100})
+			.delay(function (d, i) { return Math.floor(i/10)*10})
 			.duration(3000)
 			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
