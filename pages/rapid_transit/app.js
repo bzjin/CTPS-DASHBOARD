@@ -77,7 +77,7 @@ svgContainer.call(tip);
 console.log(cities.objects.collection.geometries)
 // Create Boston Region MPO map with SVG paths for individual towns.
 var mapcSVG = svgContainer.selectAll(".subregion")
-	.data(topojson.feature(cities, cities.objects.collection).features)
+	.data(topojson.feature(cities, cities.objects.boston_region_mpo_towns).features)
 	.enter()
 	.append("path")
 		.attr("class", "subregion")

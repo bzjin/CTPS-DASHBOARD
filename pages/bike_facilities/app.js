@@ -71,7 +71,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData) {
   }
 
   var findTownIndex = function(townID) { 
-    var towns = topojson.feature(mpoTowns, mpoTowns.objects.collection).features;
+    var towns = topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features;
     for (var i = 0; i < towns.length; i++) { 
       if (towns[i].properties.TOWN_ID == townID) {
           var capTown = towns[i].properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -83,7 +83,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData) {
 
   // Create Boston Region MPO map with SVG paths for individual towns.
   var mapcSVG = svgContainer.selectAll(".mpo")
-    .data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
+    .data(topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features)
     .enter()
     .append("path")
       .attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
@@ -354,7 +354,7 @@ CTPS.demoApp.generateMap2 = function(mpoTowns, bikeData) {
     }
   }
 
-  towns = topojson.feature(mpoTowns, mpoTowns.objects.collection).features;
+  towns = topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features;
 
   var findTownIndex = function(townID) { 
     for (var i = 0; i < towns.length; i++) { 

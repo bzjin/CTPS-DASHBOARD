@@ -8,7 +8,7 @@ var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee0
 
 //Using the d3.queue.js library
 d3.queue()
-	.defer(d3.json, "../../JSON/sidewalks_over_time.json")
+	.defer(d3.csv, "../../JSON/sidewalks_over_time.csv")
 	//.defer(d3.json, "JSON/road_inv_mpo_nhs_noninterstate_2015.geojson")
 	.awaitAll(function(error, results){ 
 

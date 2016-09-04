@@ -14,7 +14,7 @@ d3.queue()
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1], results[2]);
 		//CTPS.demoApp.generateChart(results[1]);
-		CTPS.demoApp.generateTraveller(results[0], results[1]);
+		//CTPS.demoApp.generateTraveller(results[0], results[1]);
 	}); 
 	//CTPS.demoApp.generateViz);
 
@@ -22,17 +22,8 @@ d3.queue()
 CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {	
 	// Show name of MAPC Sub Region
 	// Define Zoom Behavior
-	var arterialRoads = topojson.feature(arterials, arterials.objects.collection).features;
-	
-	arterialRoads.forEach(function(i){
-		route_ids.forEach(function(j){
-			if (i.properties.RID == j.RID) { 
-				i.properties.RTE_NAME_ID = j.ROUTE;
-				i.properties.RTE_DIR_ID = j.DIRECTON;
-			}
-		})
-	})
-	
+	var arterialRoads = topojson.feature(arterials, arterials.objects.CMP_2014_ART_ROUTES_EXT_MPO).features;
+
 	var projScale = 45000,
 		projXPos = 100,
 		projYPos = 1720;
@@ -75,7 +66,7 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 
 	// Create Boston Region MPO map with SVG paths for individual towns.
 	var mapcSVG = svgContainer.selectAll(".subregion")
-		.data(topojson.feature(cities, cities.objects.collection).features)
+		.data(topojson.feature(cities, cities.objects.boston_region_mpo_towns).features)
 		.enter()
 		.append("path")
 			.attr("class", "subregion")
@@ -144,27 +135,6 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 					.style("stroke-width", 2.5)
 					.style("opacity", 1)
 		})
-	
-	function findFlipFrom(d) { 
-		var storage = []; 
-		var shift = [];
-		arterialRoads.forEach(function(j){ 
-			if (j.properties.RID == d.properties.RID) { 
-				storage.push(j.properties.TO_MEAS); 
-				shift.push(j.properties.FROM_MEAS);
-			}
-		})
-		return [d3.max(storage), d3.min(shift)]; 
-	}
-
-	//Normalize ROUTEFROM for display (flip westbounds and southbounds to match eastbound and north bound)
-	arterialRoads.forEach(function(i){ 
-		if ((i.properties.DIRECTION == "Westbound" || i.properties.DIRECTION == "Southbound")) { 
-			i.properties.NORMALIZEDSTART = Math.abs(Math.abs(-(i.properties.FROM_MEAS - findFlipFrom(i)[0]))) ;
-		} else {
-			i.properties.NORMALIZEDSTART = Math.abs(i.properties.TO_MEAS - findFlipFrom(i)[1]);
-		}
-	}); 
 
 	var roadWindow = d3.select("#crossSection").append("svg")
 		.attr("width", "100%")
@@ -305,6 +275,7 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 } // CTPS.demoApp.generateViz()
 
 //Animation
+/*
 CTPS.demoApp.generateTraveller = function(towns, arterials) { 
 	//Map of free flow
 	// SVG Viewport
@@ -416,7 +387,7 @@ CTPS.demoApp.generateTraveller = function(towns, arterials) {
 				return colorScale(d.properties.PM_SPD_IX);
 			})
 			.style("opacity", 0)
-
+*/
 	//Minute counters
 	/*freeFlow.append("text")
 		.attr("class", "freeFlow")
@@ -425,6 +396,7 @@ CTPS.demoApp.generateTraveller = function(towns, arterials) {
 		.style("font-weight", 300)
 		.text("Time spent in congestion:" + minutes + " min")*/
 
+/*
 	//Click button to start animation
 	d3.selectAll("#congAnim2").on("click", function() { 
 	//Freeflow Animation
@@ -465,4 +437,4 @@ CTPS.demoApp.generateTraveller = function(towns, arterials) {
 			.style("opacity", 1)
 	})
 
-}
+}*/

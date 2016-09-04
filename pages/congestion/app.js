@@ -14,7 +14,7 @@ d3.queue()
 		CTPS.demoApp.generateMap(results[0],results[1]);
 		CTPS.demoApp.generateChart(results[1]);
 		//CTPS.demoApp.generateTimes(results[1]);
-		CTPS.demoApp.generateTraveller(results[0], results[1]);
+		//CTPS.demoApp.generateTraveller(results[0], results[1]);
 	}); 
 	//CTPS.demoApp.generateViz);
 
@@ -32,7 +32,7 @@ CTPS.demoApp.generateMap = function(cities, congestion) {
 
 	var maxmin = []; 
 
-	var interstateRoads = topojson.feature(congestion, congestion.objects.collection).features;
+	var interstateRoads = topojson.feature(congestion, congestion.objects.CMP_2014_EXP_ROUTES_MPO_ONLY).features;
 
 	interstateRoads.forEach(function(i) { 
 		maxmin.push(i.properties.AM_SPD_IX);
@@ -54,7 +54,7 @@ CTPS.demoApp.generateMap = function(cities, congestion) {
 
 	// Create Boston Region MPO map with SVG paths for individual towns.
 	var mapcSVG = svgContainer.selectAll(".subregion")
-		.data(topojson.feature(cities, cities.objects.collection).features)
+		.data(topojson.feature(cities, cities.objects.boston_region_mpo_towns).features)
 		.enter()
 		.append("path")
 			.attr("class", "subregion")
@@ -90,7 +90,7 @@ CTPS.demoApp.generateMap = function(cities, congestion) {
 CTPS.demoApp.generateChart = function(congestion) {	
 //Create chart comparing interstate roads by coordinates
 	//Create AM chart
-	var interstateRoads = topojson.feature(congestion, congestion.objects.collection).features;
+	var interstateRoads = topojson.feature(congestion, congestion.objects.CMP_2014_EXP_ROUTES_MPO_ONLY).features;
 
 	var twoCharts = d3.select("#speedindex").append("svg")
 		.attr("id", "twoCharts")
@@ -461,6 +461,7 @@ pmchartContainer.selectAll(".labels")
 
 }
 
+/*
 CTPS.demoApp.generateTimes = function(interstateRoads) {	
 
 	var cumulativeTime = d3.select("#cumulativetime").append("svg")
@@ -648,7 +649,7 @@ CTPS.demoApp.generateTraveller = function(cities, congestion) {
 
 	//Free Flow Map
 	var mapcSVG = freeFlow.selectAll(".freeFlow")
-		.data(topojson.feature(cities, cities.objects.collection).features)
+		.data(topojson.feature(cities, cities.objects.boston_region_mpo_towns).features)
 		.enter()
 		.append("path")
 			.attr("class", "freeFlow")
@@ -677,7 +678,7 @@ CTPS.demoApp.generateTraveller = function(cities, congestion) {
 		.attr("height", 400);
 
 	var mapcSVGam = amCong.selectAll(".amCong")
-		.data(topojson.feature(cities, cities.objects.collection).features)
+		.data(topojson.feature(cities, cities.objects.boston_region_mpo_towns).features)
 		.enter()
 		.append("path")
 			.attr("class", "amCong")
@@ -708,7 +709,7 @@ CTPS.demoApp.generateTraveller = function(cities, congestion) {
 		.attr("height", 400);
 
 	var mapcSVGpm = pmCong.selectAll(".pmCong")
-		.data(topojson.feature(cities, cities.objects.collection).features)
+		.data(topojson.feature(cities, cities.objects.boston_region_mpo_towns).features)
 		.enter()
 		.append("path")
 			.attr("class", "pmCong")
@@ -740,7 +741,7 @@ CTPS.demoApp.generateTraveller = function(cities, congestion) {
 		.attr("y", 30)
 		.style("font-weight", 300)
 		.text("Time spent in congestion:" + minutes + " min")*/
-
+/*
 	//Click button to start animation
 	d3.selectAll("#congAnim").on("click", function() { 
 	//Freeflow Animation
@@ -782,3 +783,4 @@ CTPS.demoApp.generateTraveller = function(cities, congestion) {
 	})
 
 }
+*/

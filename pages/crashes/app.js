@@ -14,7 +14,7 @@ var geoPath = d3.geoPath().projection(projection);
 //Using the d3.queue.js library
 d3.queue()
 	.defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
-	.defer(d3.json, "../../json/nonmotorized_crashes.json")
+	.defer(d3.csv, "../../json/nonmotorized_crashes.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
 		CTPS.demoApp.generatePlot(results[1]);
@@ -55,7 +55,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 	// Create Boston Region MPO map with SVG paths for individual towns.
 	var mapcSVG = svgContainer.selectAll(".mpo")
-		.data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
+		.data(topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features)
 		.enter()
 		.append("path")
 			.attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
@@ -70,7 +70,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.on("click", function() {
 				var thisreg = this.getAttribute("class");
 				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[0]]).range([400, 20]);
-				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(d3.format("d"));
+				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(function(e){
+			        if(Math.floor(e) != e)
+			        { return; } else { return e; }});
 
 				d3.selectAll(".area").transition()
 					.style("fill", "none");
@@ -81,7 +83,10 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
                     .attr("transform", "translate(-5,0)");
 
 				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[1]]).range([400, 20]);
-				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(d3.format("d"));
+				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(function(e){
+			        if(Math.floor(e) != e)
+			        { return; } else { return e; }});
+
                 chartContainer2.select(".yaxis").transition()
 					.duration(750)
                     .call(yAxis).selectAll("text").style("fill", colorScale(findTownMax(thisreg)[1]))
@@ -116,8 +121,8 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		nested_crashes.forEach(function(i) { 
 			if (i.key == town) {
 				i.values.forEach(function(j){
-					crashvalues[0].push(j.bike_inj);
-					crashvalues[1].push(j.ped_inj);
+					crashvalues[0].push(+j.bike_inj);
+					crashvalues[1].push(+j.ped_inj);
 				})
 			}
 		})
@@ -171,6 +176,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 	function circleMaker (town) {
 		//graph connecting lines
+		chartContainer.selectAll("path").remove();
+		chartContainer2.selectAll("path").remove();
+
 		nested_crashes.forEach(function(i) { 
 			i.values.forEach(function(j) { 
 				if (j.town == town) {
@@ -258,24 +266,27 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 CTPS.demoApp.generatePlot = function (crashdata) {
 
-	var height = 120;
-	var width = 115;
+	var height = 250;
+	var width = 280;
 	var padding = 10;
+	var xMax = 50;
+	var yMax = 50;
 
 	var nested_crashes = d3.nest()
 		.key(function(d) { return d.town})
 		.entries(crashdata);
 
 	nested_crashes.forEach(function (town) {
-		var xScale = d3.scaleLinear().domain([0, 17]).range([0 + padding, width]);
-		var yScale = d3.scaleLinear().domain([0, 15]).range([height, 20]);
+		var xScale = d3.scaleLinear().domain([0, xMax]).range([0 + padding, width]);
+		var yScale = d3.scaleLinear().domain([0, yMax]).range([height, 20]);
 
 		var xAxis = d3.axisBottom(xScale).tickSize(0);
 		var yAxis = d3.axisLeft(yScale).tickSize(0);
 
 		var svg = d3.select("#plot").append("svg")
 				.attr("height", height)
-				.attr("width", width);
+				.attr("width", width)
+				.attr("id", "plot" + town.key);
 
 		svg.append("g")
 		  .attr("class", "taxis")
@@ -289,7 +300,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 		
 		svg.append("text")
 			.attr("x", padding + 5)
-			.attr("y", height * 0.1)
+			.attr("y", 10)
 			.style("text-anchor", "start")
 			.style("font-size", 14)
 			.text(function(){
@@ -300,42 +311,45 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 		town.values.forEach(function(d){
 			if (d.year == 2013 && d.town != "Total") { 
 				var x = 1; 
-				var y = 15; 
+				var y = yMax - 1; 
 				for(var i = 1; i < d.bike_inj+1; i++) { 
 					svg.append("circle")  
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
-						.attr("r", 3)
+						.attr("r", 2)
 						.attr("stroke-width", .5)
 						.attr("stroke", "#e7298a")
 						.attr("fill", "none")
-					if (x == 16) { x = 1; y--; } else { x++; }
+					if (x == xMax - 1) { x = 1; y--; } else { x++; }
 				}
 				for(var i = 1; i < d.bike_fat+1; i++) { 
 					svg.append("circle")  
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
-						.attr("r", 3)
+						.attr("r", 2)
 						.attr("fill", "#e7298a")
-					if (x == 16) { x = 1; y--; } else { x++; }
+					if (x == xMax - 1) { x = 1; y--; } else { x++; }
 				}
 				for(var i = 1; i < d.ped_inj+1; i++) { 
 					svg.append("circle")  
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
-						.attr("r", 3)
+						.attr("r", 2)
 						.attr("stroke-width", .5)
 						.attr("stroke", "#7570b3")
 						.attr("fill", "none")
-					if (x == 16) { x = 1; y--; } else { x++; }
+					if (x == xMax - 1) { x = 1; y--; } else { x++; }
 				}
 				for(var i = 1; i < d.ped_fat+1; i++) { 
 					svg.append("circle")  
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
-						.attr("r", 3)
+						.attr("r", 2)
 						.style("fill", "#7570b3")
-					if (x == 16) { x = 1; y--; } else { x++; }
+					if (x == xMax - 1) { x = 1; y--; } else { x++; }
+				}
+				if ((d.bike_inj + d.ped_inj + d.bike_fat + d.ped_fat) == 0) {
+					d3.select("#plot" + town.key).remove();
 				}
 			}
 		})

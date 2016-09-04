@@ -38,9 +38,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.allbridgesAug07_BIN,
 			"healthIndex" : i.allbridgesAug07_Health_Index,
-			"overFeature" : i.allbridgesAug07_Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.allbridgesAug07_Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.allbridgesAug07_Item_29,
 			"year" : 2007,
 			"structDef" : i.allbridgesAug07_Struct_Def,
 			"town": i.allbridgesAug07_Town_Name
@@ -51,9 +48,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.All_Bridges_2008April_BIN,
 			"healthIndex" : i.All_Bridges_2008April_Health_Index,
-			"overFeature" : i.All_Bridges_2008April_Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.All_Bridges_2008April_Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.All_Bridges_2008April_Item_29,
 			"year" : 2008,
 			"structDef" : i.All_Bridges_2008April_Struct_Def,
 			"town": i.All_Bridges_2008April_Town_Name
@@ -64,9 +58,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.All_Bridges_2009April_BIN,
 			"healthIndex" : i.All_Bridges_2009April_Health_Index,
-			"overFeature" : i.All_Bridges_2009April_Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.All_Bridges_2009April_Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.All_Bridges_2009April_Item_29,
 			"year" : 2009,
 			"structDef" : i.All_Bridges_2009April_Struct_Def,
 			"town": i.All_Bridges_2009April_Town_Name
@@ -77,9 +68,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.AllBridgesMay10_BIN,
 			"healthIndex" : i.AllBridgesMay10_Health_Index,
-			"overFeature" : i.AllBridgesMay10_Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.AllBridgesMay10_Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.AllBridgesMay10_Item_29,
 			"year" : 2010,
 			"structDef" : i.AllBridgesMay10_Struct_Def,
 			"town": i.AllBridgesMay10_Town_Name
@@ -90,9 +78,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.AllBridges_2011April_BIN,
 			"healthIndex" : i.AllBridges_2011April_Health_Index,
-			"overFeature" : i.AllBridges_2011April_Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.AllBridges_2011April_Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.AllBridges_2011April_Item_29,
 			"year" : 2011,
 			"structDef" : i.AllBridges_2011April_Struct_Def,
 			"town": i.AllBridges_2011April_Town_Name
@@ -102,9 +87,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.AllBridges_2012April_1_BIN,
 			"healthIndex" : i.AllBridges_2012April_1_Health_Index,
-			"overFeature" : i.AllBridges_2012April_1_Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.AllBridges_2012April_1_Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.AllBridges_2012April_1_Item_29,
 			"year" : 2012,
 			"structDef" : i.AllBridges_2012April_1_Struct_Def,
 			"town": i.AllBridges_2012April_1_Town_Name
@@ -114,9 +96,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.AllBridges_2013April_BIN,
 			"healthIndex" : i.AllBridges_2013April_Health_Index,
-			"overFeature" : i.AllBridges_2013April_Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.AllBridges_2013April_Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.AllBridges_2013April_Item_29,
 			"year" : 2013,
 			"structDef" : i.AllBridges_2013April_Struct_Def,
 			"town": i.AllBridges_2013April_Town_Name
@@ -126,9 +105,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.AllBridges_2014April_BIN,
 			"healthIndex" : i.AllBridges_2014April_Health_Index,
-			"overFeature" : i.AllBridges_2014April_Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.AllBridges_2014April_Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.AllBridges_2014April_Item_29,
 			"year" : 2014,
 			"structDef" : i.AllBridges_2014April_Struct_Def,
 			"town": i.AllBridges_2014April_Town_Name
@@ -138,9 +114,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.BIN,
 			"healthIndex" : i.AllBridges_2015April_Health_Index,
-			"overFeature" : i.Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.AllBridges_2015April_Item_29,
 			"year" : 2015,
 			"structDef" : i.AllBridges_2015April_Struct_Def,
 			"town": i.AllBridges_2015April_Town_Name
@@ -150,9 +123,6 @@ CTPS.demoApp.generateBridgeAverages = function(yr2007, yr2008, yr2009, yr2010, y
 		pushed.push({
 			"bridgeId" : i.AllBridges_2016April_BIN,
 			"healthIndex" : i.AllBridges_2016April_Health_Index,
-			"overFeature" : i.AllBridges_2016April_Item_7.replace(/ +(?= )/g, ' '), 
-			"underFeature" : i.AllBridges_2016April_Item_6A.replace(/ +(?= )/g, ' '),
-			"adt" : i.AllBridges_2016April_Item_29,
 			"year" : 2016,
 			"structDef" : i.AllBridges_2016April_Struct_Def,
 			"town": i.AllBridges_2016April_Town_Name

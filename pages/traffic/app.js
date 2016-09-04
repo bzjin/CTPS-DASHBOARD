@@ -50,7 +50,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
   var signalCount = [];
 
   var signalArray = topojson.feature(traffic, traffic.objects.mpo_traffic_signals).features;
-  var mpoTownsArray = topojson.feature(mpoTowns, mpoTowns.objects.collection).features;
+  var mpoTownsArray = topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features;
 
   mpoTownsArray.forEach(function(i){ 
     miles.forEach(function(j){
@@ -80,7 +80,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
   })
   // Create Boston Region MPO map with SVG paths for individual towns.
   var mapcSVG = svgContainer.selectAll(".mpo")
-    .data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
+    .data(topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features)
     .enter()
     .append("path")
       .attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})

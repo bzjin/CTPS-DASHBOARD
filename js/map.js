@@ -19,8 +19,8 @@ var geoPath = d3.geoPath().projection(projection);
 //Using the d3.queue.js library
 d3.queue()
 	.defer(d3.json, "json/boston_region_mpo_towns.topo.json")
-	.defer(d3.json, "js/arterials_summary.json")
-	.defer(d3.csv, "js/front_page_summaries.csv")
+	.defer(d3.json, "js/arterials_summary.topojson")
+	.defer(d3.csv, 	"js/front_page_summaries.csv")
 	.defer(d3.json, "js/pavement_summary.json")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1], results[2], results[3]);
@@ -39,7 +39,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 
 	// Create Boston Region MPO map with SVG paths for individual towns.
 	var mapcSVG = svgContainer.selectAll(".subregion")
-		.data(topojson.feature(cities, cities.objects.collection).features)
+		.data(topojson.feature(cities, cities.objects.boston_region_mpo_towns).features)
 		.enter()
 		.append("path")
 			.attr("class", function(d){ return "subregion " + d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
@@ -54,7 +54,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 	var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);
 
 	var interstateSVG = svgContainer.selectAll(".interstate")
-		.data(topojson.feature(congestion, congestion.objects.collection).features)
+		.data(topojson.feature(congestion, congestion.objects.CMP_2014_ART_ROUTES_EXT_MPO).features)
 		.enter()
 		.append("path")
 			.attr("class", "interstate")
@@ -98,12 +98,11 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 			} // end findIndex
 
 			var colorScale = d3.scaleLinear()
-    						.domain([0, 50, 100, 200, 400, 800, 1600])
-   							.range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
+    						.domain([0, 600, 1600])
+   							.range(["#FF6347", "#FF6347", "black"].reverse());
 
 			d3.selectAll(".subregion").transition()
-				.delay(function (d, i) { return Math.floor(i/10)*10})
-				.duration(3000)
+				.delay(function (d, i) { return Math.floor(i/100)*100 - 100})
 				.ease(d3.easeElasticInOut)
 				.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -124,10 +123,9 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 									.domain([0, 5])
 									.range(["#d7191c", "#d7191c", "#d7191c", "#fdae61","#ffffbf","#a6d96a","#1a9641"])
 
-		d3.selectAll(".pavement")//.transition()
-				.delay(function(d) { return d.properties.PSI*100})
+		d3.selectAll(".pavement").transition()
+				.delay(function(d) { return d.properties.PSI*100 - 100})
 				.ease(d3.easeElasticInOut)
-				.duration(3000)
 				.style("stroke", function(d) { return colorPavement(d.properties.PSI)})
 				.style("opacity", 1)
 	});
@@ -145,8 +143,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 			var colorCong = d3.scaleLinear().domain([.5, 1.25]).range(["#D73027", "#00B26F"]);
 
 			d3.selectAll(".interstate").transition()
-				.delay(function (d, i) { return Math.floor(i/10)*10})
-				.duration(3000)
+				.delay(function (d, i) { return Math.floor(i/100)*100})
 				.style("stroke", function(d){ 
 					return colorCong(d.properties.AM_SPD_IX);
 				})
@@ -171,11 +168,10 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 //Hover over BRIDGES link
 	d3.select("#bridges").on("mouseenter", function(){
 		//load crashdata
-		var colorBridge = d3.scaleLinear().domain([1, .03, 0]).range(["#D73027", "#fee08b", "#00B26F"]);
+		var colorBridge = d3.scaleLinear().domain([.07, 0]).range(["#9ACD32", "black"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*10})
-			.duration(3000)
+			.delay(function (d, i) { return Math.floor(i/100)*100 - 100})
 			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -195,11 +191,10 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 //Hover over SIDEWALKS link
 	d3.select("#sidewalks").on("mouseenter", function(){
 		//load crashdata
-		var colorSidewalks = d3.scaleLinear().domain([0, .8, 1.5]).range(["#fff7bc","#fec44f","#d95f0e"]);
+		var colorSidewalks = d3.scaleLinear().domain([0, .8, 1.5]).range(["black","#fec44f","#d95f0e"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*10})
-			.duration(3000)
+			.delay(function (d, i) { return Math.floor(i/100)*100 - 100})
 			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -215,11 +210,10 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 //Hover over BIKES link
 	d3.select("#bikes").on("mouseenter", function(){
 		//load crashdata
-		var colorBikes = d3.scaleLinear().domain([0, .02, .3]).range(["#e0ecf4","#9ebcda","#8856a7"]);
+		var colorBikes = d3.scaleLinear().domain([0, .02, .3]).range(["black","#9ebcda","#8856a7"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*10})
-			.duration(3000)
+			.delay(function (d, i) { return Math.floor(i/100)*100 - 100})
 			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -244,8 +238,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 		    .range(["#ffffcc","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#005a32"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*10})
-			.duration(3000)
+			.delay(function (d, i) { return Math.floor(i/1000)*1000 - 100})
 			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});

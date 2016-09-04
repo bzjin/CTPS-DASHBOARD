@@ -54,7 +54,7 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 	//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
 	//var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
-	xScale= d3.scaleLinear().domain([2007, 2015]).range([50, 1000]);
+	xScale = d3.scaleLinear().domain([2007, 2015]).range([50, 1000]);
 	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
 	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(d3.format("d"));
@@ -256,7 +256,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 
 	var xAxis = d3.axisBottom(xScaleRoad).ticks(15);
 	var yAxis = d3.axisLeft(yScale).tickSize(0);
-	var yAxisU = d3.svg.axis().scale(yScaleU).orient("left").tickSize(0);
+	var yAxisU = d3.axisLeft(yScaleU).tickSize(0);
 
 	chartContainer.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 620)")
