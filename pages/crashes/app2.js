@@ -17,10 +17,15 @@ d3.queue()
 	.defer(d3.csv, "../../json/motorized_crashes.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
-		CTPS.demoApp.generatePlot(results[1]);
-		CTPS.demoApp.generateTruck(results[1]);
-		CTPS.demoApp.generateAccessibleTable(results[1]);
 	}); 
+
+d3.queue()
+	.defer(d3.csv, "../../json/motorized_crashes.csv")
+	.awaitAll(function(error, results){ 
+		CTPS.demoApp.generatePlot(results[0]);
+		CTPS.demoApp.generateTruck(results[0]);
+		CTPS.demoApp.generateAccessibleTable(results[0]);
+	});
 
 //Color Scale
 var colorScale = d3.scaleLinear()
@@ -266,7 +271,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 CTPS.demoApp.generatePlot = function (crashdata) {
 
-	var height = 200;
+	var height = 600;
 	var width = 1100;
 	var padding = 10;
 
@@ -278,44 +283,73 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 				.attr("height", height)
 				.attr("width", width);
 
-	var xScale = d3.scaleLinear().domain([0, 30]).range([0 + padding, width - 50]);
-	var yScale = d3.scaleLinear().domain([0, 5]).range([height-10, 10]);
+	var xScale = d3.scaleLinear().domain([0, padding]).range([padding, width - padding]);
+	var yScale = d3.scaleLinear().domain([0, 5]).range([height - padding, padding]);
 
 	var xAxis = d3.axisBottom(xScale).tickSize(0);
 	var yAxis = d3.axisLeft(yScale).tickSize(0);
 
 	svg.append("g")
 	  .attr("class", "taxis")
-	  .attr("transform", "translate(0, " + (height - padding) + ")")
+	  .attr("transform", "translate(0, " + (height - 30) + ")")
 	  .call(xAxis).selectAll("text").remove();
 
 	svg.append("g")
 		.attr("class", "taxis")
-		.attr("transform", "translate(" + padding + ", 0)")
+		.attr("transform", "translate(" + 30 + ", 0)")
 		.call(yAxis).selectAll("text").remove();
 
 	crashdata.forEach(function(d){
 		if (d.year == 2013 && d.town == "Total") { 
 			var x = 1; 
 			var y = 5; 
-			
-			for(var i = 1; i < d.mot_fat+1; i += 100) { 
+
+			for(var i = 1; i < d.mot_inj+1; i += 1) { 
 				svg.append("circle")  
-					.attr("cx", xScale(x))
-					.attr("cy", yScale(y))
-					.attr("r", 10)
-					.attr("fill", "#e7298a")
-				if (x == 30) { x = 1; y--; } else { x++; }
+					.attr("id", "idi" + i + " " + x + "xPos " + y + "yPos") 
+					.attr("cx", padding + (width - (2 * padding)) * Math.random())
+					.attr("cy", padding + (height - (2 * padding)) * Math.random()) 
+					.attr("r", 1)
+					.style("fill", "#e7298a")
+					.style("opacity", .2)
+
+					/*.on("mouseenter", function() { 
+						var xPos = this.getAttribute("id").split(' ')[1];
+						var yPos = this.getAttribute("id").split(' ')[2];
+
+						for (var j = 1; j < 100; j++) { 
+							svg.append("circle")
+								.attr("cx", xScale(parseInt(xPos)) - 25 + 50 * Math.random())
+								.attr("cy", yScale(parseInt(yPos)) - 25 + 50 * Math.random())
+								.attr("r", 1)
+								.style("stroke", "#e7298a")
+								.style("stroke-width", .5)
+						}
+					})*/
+				if (x == 29) { x = 1; y--; } else { x++; }
 			}
-			for(var i = 1; i < d.mot_inj+1; i += 100) { 
-				svg.append("circle")  
-					.attr("cx", xScale(x))
-					.attr("cy", yScale(y))
-					.attr("r", 10)
-					.attr("stroke-width", .5)
-					.attr("stroke", "#e7298a")
-					.attr("fill", "none")
-				if (x == 300) { x = 1; y--; } else { x++; }
+
+
+			for(var i = 1; i < d.mot_fat+1; i += 1) { 
+				svg.append("circle") 
+					.attr("id", "id" + i + " " + x + "xPos " + y + "yPos") 
+					.attr("cx", padding + (width - (2 * padding)) * Math.random())
+					.attr("cy", padding + (height - (2 * padding)) * Math.random()) 
+					.attr("r", 2)
+					.style("fill", "#e7298a")
+					/*.on("mouseenter", function() { 
+						var xPos = this.getAttribute("id").split(' ')[1];
+						var yPos = this.getAttribute("id").split(' ')[2];
+
+						for (var j = 1; j < 100; j++) { 
+							svg.append("circle")
+								.attr("cx", xScale(parseInt(xPos)) - 25 + 50 * Math.random())
+								.attr("cy", yScale(parseInt(yPos)) - 25 + 50 * Math.random())
+								.attr("r", 1)
+								.style("fill", "#e7298a")
+						}
+					})*/
+				if (x == 29) { x = 1; y--; } else { x++; }
 			}
 		}
 	});	

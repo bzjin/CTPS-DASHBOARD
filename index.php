@@ -85,7 +85,7 @@
 				<p>Congested arterial routes</p>
 				<p class="meter"> <span style="width: 72%"></span></p>			
 		</div>
-		<div class="page_link"><a href="pages/demographics/index.php" title="Go to demographics page" id="demographics">
+		<div class="page_link"><a href="pages/demographics/index.php" title="Go to demographics page" id="equity">
 			<i class="fa fa-circle-o" aria-hidden="true"></i> Demographics </a>
 			<p><b class="demo">27.8%</b> minority population<br>
 			<b class="demo">6.8%</b> unemployment rate<br>
@@ -115,7 +115,7 @@
 				<p class="meter"> <span style="width: 91.5%"></span></p>
 				<p>Change since 2015<br><b>-0.2%</b></p>
 		</div>
-		<div class="page_link"><a href="pages/about/index.php" title="Go to about page" id="funding">
+		<div class="page_link"><a href="pages/about/index.php" title="Go to about page" id="about">
 			<i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
 			<p>Purpose, data sources, data development methodology</p>
 		</div>

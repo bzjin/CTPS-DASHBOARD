@@ -87,7 +87,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 	//Hover over Crashes link
 	d3.select("#crashes").on("mouseenter", function(){
 		//load crashdata
-		d3.json("json/motorized_crashes.json", function(crashdata){ 
+		d3.csv("json/motorized_crashes.csv", function(crashdata){ 
 			//find corresponding town values in crash
 			var findIndex = function(town, statistic) { 
 				for (var i = 0; i < crashdata.length; i++) { 
@@ -98,8 +98,8 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 			} // end findIndex
 
 			var colorScale = d3.scaleLinear()
-    						.domain([0, 600, 1600])
-   							.range(["#FF6347", "#FF6347", "black"].reverse());
+    						.domain([0, 20000, 90000])
+   							.range(["black", "#FF6347", "#FF6347"]);
 
 			d3.selectAll(".subregion").transition()
 				.delay(function (d, i) { return Math.floor(i/100)*100 - 100})
@@ -231,7 +231,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 	})
 
 //Hover over BIKES link
-	d3.select("#funding").on("mouseenter", function(){
+	d3.select("#equity").on("mouseenter", function(){
 		//load crashdata
 		var colorEquity = d3.scaleLinear()
 		    .domain([0, 500000, 5000000, 10000000, 15000000, 20000000, 25000000])
