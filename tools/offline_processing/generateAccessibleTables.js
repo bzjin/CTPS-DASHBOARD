@@ -1,20 +1,23 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
-var colorScale = d3.scale.quantize().domain([1, 5])
+var colorScale = d3.scaleQuantize().domain([1, 5])
     .range(["#EE3B3B", "#EE3B3B", "#EE3B3B", "#FFD53E", "#E3FF30", "#76EE00", "#00B26F", "#00B26F"]);
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([100,1000]);
 	
-var geoPath = d3.geo.path().projection(projection);	
+var geoPath = d3.geoPath().projection(projection);	
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "nonmotorized_crashes.JSON")
 	/*.defer(d3.csv, "bridge_condition_2007.csv")
 	.defer(d3.csv, "bridge_condition_2010.csv")
@@ -705,7 +708,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, crashdata) {
 	  .attr('class', 'd3-tip')
 	  .offset([-10, 0])
 	  .html(function(d) {
-	    return "<b>" + d.properties.TOWN + "</b><br>PSI: " + d3.round(d.properties.PSI, 2);
+	    return "<b>" + d.properties.TOWN + "</b><br>PSI: " + f(d.properties.PSI);
 	  })
 
 	chartContainer.call(tip2); 
@@ -713,12 +716,12 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, crashdata) {
 	//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
 	var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
-	xScaleRoad = d3.scale.linear().domain([0,62]).range([70, 1130]);
-	xScaleSegment = d3.scale.linear().domain([0,62]).range([0, 1060]);
-	yScale = d3.scale.ordinal().domain(routekey).rangePoints([150, 650]);
+	xScaleRoad = d3.scaleLinear().domain([0,62]).range([70, 1130]);
+	xScaleSegment = d3.scaleLinear().domain([0,62]).range([0, 1060]);
+	yScale = d3.scalePoint().domain(routekey).range([150, 650]);
 
-	var xAxis = d3.svg.axis().scale(xScaleRoad).orient("bottom").ticks(15);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
+	var xAxis = d3.axisBottom(xScaleRoad).ticks(15);
+	var yAxis = d3.axisLeft(yScale).tickSize(0);
 
 	chartContainer.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 680)").style("stroke-width", "1px")

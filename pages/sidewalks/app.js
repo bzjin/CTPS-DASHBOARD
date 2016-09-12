@@ -1,12 +1,15 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
-var colorScale = d3.scale.linear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
+var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
 
-//Using the queue.js library
-queue()
-	.defer(d3.json, "../../JSON/sidewalks_over_time.json")
+//Using the d3.queue.js library
+d3.queue()
+	.defer(d3.csv, "../../JSON/sidewalks_over_time.csv")
 	//.defer(d3.json, "JSON/road_inv_mpo_nhs_noninterstate_2015.geojson")
 	.awaitAll(function(error, results){ 
 
@@ -28,8 +31,8 @@ var timeline = d3.select("#sidewalks").append("svg")
     .attr("height", 1400)
 
 allData.sort(function(a, b){
-  var nameA = a.sidewalk_to_miles;
-  var nameB = b.sidewalk_to_miles;
+  var nameA = a.town;
+  var nameB = b.town;
   if (nameA < nameB) { return -1;}
   if (nameA > nameB) { return 1;}
   return 0;
@@ -45,14 +48,14 @@ allData.forEach(function(i){
   }
 })
 
-var colorToYear = d3.scale.linear()
+var colorToYear = d3.scaleLinear()
                   .domain([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015])
                   .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
-xScaleRatio = d3.scale.linear().domain([0, 1]).range([80, 980]);
-yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1350]);
+xScaleRatio = d3.scaleLinear().domain([0, 1]).range([80, 1080]);
+yScale = d3.scalePoint().domain(towns).range([50, 1350]);
 
-var xAxis = d3.svg.axis().scale(xScaleRatio).orient("top").tickSize(-1300, 0, 0);
-var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-900, 0, 0);
+var xAxis = d3.axisTop(xScaleRatio).tickSize(-1300, 0, 0);
+var yAxis = d3.axisLeft(yScale).tickSize(-1000, 0, 0);
 
 timeline.append("text")
     .attr("x", 80)
@@ -195,8 +198,8 @@ function dataVizAll() {
       towns.push(i.town);
     })
 
-    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1350]);
-    var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-900, 0, 0);
+    yScale = d3.scalePoint().domain(towns).range([50, 1350]);
+    var yAxis = d3.axisLeft(yScale).tickSize(-1000, 0, 0);
     
     timeline.select(".yaxis").transition()
       .duration(750)
@@ -223,8 +226,8 @@ function dataVizAll() {
       towns.push(i.town);
     })
 
-    yScale = d3.scale.ordinal().domain(towns).rangePoints([50, 1350]);
-    var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(-970, 0, 0);
+    yScale = d3.scalePoint().domain(towns).range([50, 1350]);
+    var yAxis = d3.axisLeft(yScale).tickSize(-1000, 0, 0);
     
     timeline.select(".yaxis").transition()
       .duration(750)
@@ -257,7 +260,7 @@ function dataVizAll() {
   })
 
   //Color key
-    var xPos = 820;
+    var xPos = 950;
     var yPos = 120; 
     var height = 600; 
     //background
@@ -311,7 +314,7 @@ var margin = {top: 40, right: 10, bottom: 10, left: 10},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var color = d3.scale.linear().domain([0, 100, 800]).range(["#d8b365","#191b1d","#5ab4ac"]);
+var color = d3.scaleLinear().domain([0, 100, 800]).range(["#d8b365","#191b1d","#5ab4ac"]);
 
 var treemap = d3.layout.treemap()
     .size([width, height])

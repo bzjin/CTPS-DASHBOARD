@@ -9,10 +9,10 @@
 <!-- Font Awesome -->
 <script src="https://use.fontawesome.com/3b0ffee8ad.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
 <!-- Tooltip -->
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="../../js/d3-tip.js"></script>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700" rel="stylesheet">
 <!-- Jquery -->
@@ -48,8 +48,8 @@
 	<h3>Conditions in 2013</h3>
 	<p> Scroll down to compare pavement conditions between municipalities. The first column presents the overall distribution of pavement segments by their PSI score, with the average value highlighted. The second column and third columns display the percent of pavement and the total lane miles of pavement with acceptable PSI scores, respectively.
 	</p>
-		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
-		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI" autofocus>Sort by Average PSI</button>
+		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
+		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
 
 	<div id="citygradients" class="col-md-12"></div>
 

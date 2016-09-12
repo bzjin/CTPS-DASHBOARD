@@ -1,20 +1,23 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
-var colorScale = d3.scale.quantize().domain([1, 5])
+var colorScale = d3.scaleQuantize().domain([1, 5])
     .range(["#EE3B3B", "#EE3B3B", "#EE3B3B", "#FFD53E", "#E3FF30", "#76EE00", "#00B26F", "#00B26F"]);
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([100,1000]);
 	
-var geoPath = d3.geo.path().projection(projection);	
+var geoPath = d3.geoPath().projection(projection);	
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.csv, "sidewalk_data_2006.csv")
 	.defer(d3.csv, "sidewalk_data_2007.csv")
 	.defer(d3.csv, "sidewalk_data_2008.csv")
@@ -46,10 +49,10 @@ CTPS.demoApp.generateSidewalks = function(yr2006, yr2007, yr2008, yr2009, yr2010
 		i.forEach(function(j){
 			printOut.push({
 				"year": counter + 2005,
-				"center_line_miles": d3.round(j.SUM_CENTERLINE_MILES, 5),
-				"sidewalk_miles": d3.round(j.SUM_SIDEWALK_EITHER_MILES, 5),
-				"sidewalk_to_miles": d3.round(j.SUM_SIDEWALK_EITHER_MILES/j.SUM_CENTERLINE_MILES, 5),
-				"sidewalk_any_miles": d3.round(j.SUM_SIDEWALK_MILES, 5),
+				"center_line_miles": f(j.SUM_CENTERLINE_MILES),
+				"sidewalk_miles": f(j.SUM_SIDEWALK_EITHER_MILES),
+				"sidewalk_to_miles": f(j.SUM_SIDEWALK_EITHER_MILES/j.SUM_CENTERLINE_MILES),
+				"sidewalk_any_miles": f(j.SUM_SIDEWALK_MILES),
 				"town": j.TOWN
 			})
 		})

@@ -1,16 +1,19 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([21000]) // N.B. The scale and translation vector were determined empirically.
   .translate([30,830]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
   .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
   .defer(d3.json, "../../json/traffic_signals.topojson")
   .defer(d3.csv, "../../json/miles_per_town.csv")
@@ -39,7 +42,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
     }
   }
 
-  var colorScale = d3.scale.linear()
+  var colorScale = d3.scaleLinear()
                   .domain([0, 5, 10, 20, 40, 75, 100, 120, 800])
                   .range(["#d73027","#f46d43","#fdae61","#fee08b","#ffffbf","#d9ef8b","#a6d96a","#66bd63","#1a9850"].reverse())
 
@@ -48,7 +51,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
   var signalCount = [];
 
   var signalArray = topojson.feature(traffic, traffic.objects.mpo_traffic_signals).features;
-  var mpoTownsArray = topojson.feature(mpoTowns, mpoTowns.objects.collection).features;
+  var mpoTownsArray = topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features;
 
   mpoTownsArray.forEach(function(i){ 
     miles.forEach(function(j){
@@ -78,7 +81,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
   })
   // Create Boston Region MPO map with SVG paths for individual towns.
   var mapcSVG = svgContainer.selectAll(".mpo")
-    .data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
+    .data(topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features)
     .enter()
     .append("path")
       .attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
@@ -158,9 +161,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, traffic, miles) {
     .style("overflow", "visible")
 
 
-  var xScale = d3.scale.ordinal().domain(towns).rangePoints([50, 600])
- //var xScale = d3.scale.linear().domain([0, 2]).range([50, 500]);
-  var yScale = d3.scale.linear().domain([0, 2.2]).range([380, 30])
+  var xScale = d3.scalePoint().domain(towns).range([50, 600])
+ //var xScale = d3.scaleLinear().domain([0, 2]).range([50, 500]);
+  var yScale = d3.scaleLinear().domain([0, 2.2]).range([380, 30])
 
   
 chart.selectAll(".lines")

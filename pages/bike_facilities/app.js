@@ -1,31 +1,35 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
-CTPS.demoApp = {};
+CTPS.demoApp ={};
+var f = d3.format(".2");
+var e = d3.format(".1");
 
-var projection = d3.geo.conicConformal()
+
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([22000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,930]);
   
-var geoPath = d3.geo.path().projection(projection);
+var geoPath = d3.geoPath().projection(projection);
 
 //Color Scale
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
     .domain([0, 25, 50, 100, 250, 500, 1000])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 //Color Scale for bar chart 
-var colorScaleBars = d3.scale.linear()
+var colorScaleBars = d3.scaleLinear()
     .domain([0, .01, .02, .05, .1, .2])
     .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse())
 
 //Color Scale for bar chart 
-var colorScaleBars2 = d3.scale.linear()
+var colorScaleBars2 = d3.scaleLinear()
     .domain([0, .05, .1, .25, .5, 2.5])
     .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse())
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
   .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
   //.defer(d3.json, "../../json/mpo_existing_bike_facilities_2016.topojson")
   .defer(d3.csv, "../../json/bike_facilities_by_town.csv")
@@ -50,7 +54,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData) {
       var miles_onroad = findIndex(capTown, "TOTAL_ONROAD");
       var miles_offroad = findIndex(capTown, "TOTAL_OFFROAD");
 
-      return "<p>" + capTown + "</p>" + d3.round(percent_onroad, 1) + "% On-Road (" + miles_onroad + " Miles)<br>" + d3.round(percent_offroad, 1) + "% Off-Road (" + miles_offroad + " Miles)" ;
+      return "<p>" + capTown + "</p>" + e(percent_onroad) + "% On-Road (" + miles_onroad + " Miles)<br>" + e(percent_offroad) + "% Off-Road (" + miles_offroad + " Miles)" ;
     })
 
   var svgContainer = d3.select("#map").append("svg")
@@ -68,7 +72,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData) {
   }
 
   var findTownIndex = function(townID) { 
-    var towns = topojson.feature(mpoTowns, mpoTowns.objects.collection).features;
+    var towns = topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features;
     for (var i = 0; i < towns.length; i++) { 
       if (towns[i].properties.TOWN_ID == townID) {
           var capTown = towns[i].properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -80,7 +84,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bikeData) {
 
   // Create Boston Region MPO map with SVG paths for individual towns.
   var mapcSVG = svgContainer.selectAll(".mpo")
-    .data(topojson.feature(mpoTowns, mpoTowns.objects.collection).features)
+    .data(topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features)
     .enter()
     .append("path")
       .attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
@@ -184,7 +188,7 @@ function plot() {
     .attr('class', 'd3-tip')
     .offset([90, 0])
     .html(function(d) {
-      return d3.round(d.PERCENT_ONROAD * 100, 1) + "% On-Road (" + d.TOTAL_ONROAD + " Miles)<br>" + d3.round(d.PERCENT_OFFROAD*100, 1) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
+      return e(d.PERCENT_ONROAD * 100) + "% On-Road (" + d.TOTAL_ONROAD + " Miles)<br>" + e(d.PERCENT_OFFROAD*100) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
     })
 
 
@@ -199,25 +203,25 @@ function plot() {
       bikeCities.push(i.TOWN);
     }
   })
-  var onRoadPercent = d3.scale.linear()
+  var onRoadPercent = d3.scaleLinear()
               .domain([0, .1])
               .range([100, 300]);
 
-  var onRoadLabels = d3.scale.ordinal()
+  var onRoadLabels = d3.scalePoint()
               .domain(["0%", "2%", "4%", "6%", "8%", "10%"])
-              .rangePoints([100, 300]);
+              .range([100, 300]);
 
-  var onRoadMiles = d3.scale.linear()
+  var onRoadMiles = d3.scaleLinear()
               .domain([0, 30])
               .range([350, 650]);
 
-  var yScale = d3.scale.ordinal()
+  var yScale = d3.scalePoint()
           .domain(townsOn)
-          .rangePoints([100, 400]);
+          .range([100, 400]);
   
-  var xAxis = d3.svg.axis().scale(onRoadLabels).orient("top").ticks(5); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left");
-  var yAxisM = d3.svg.axis().scale(onRoadMiles).orient("top").ticks(5).tickFormat(d3.format("d"));
+  var xAxis = d3.axisTop(onRoadLabels).ticks(5); 
+  var yAxis = d3.axisLeft(yScale);
+  var yAxisM = d3.axisTop(onRoadMiles).ticks(5).tickFormat(d3.format("d"));
 
 //Labels
 
@@ -334,7 +338,7 @@ CTPS.demoApp.generateMap2 = function(mpoTowns, bikeData) {
       var miles_OFFROAD = findIndex(capTown, "TOTAL_OFFROAD");
       var miles_offroad = findIndex(capTown, "TOTAL_OFFROAD");
 
-      return "<p>" + capTown + "</p>" + d3.round(percent_OFFROAD, 1) + "% On-Road (" + miles_OFFROAD + " Miles)<br>" + d3.round(percent_offroad, 1) + "% Off-Road (" + miles_offroad + " Miles)" ;
+      return "<p>" + capTown + "</p>" + e(percent_OFFROAD) + "% On-Road (" + miles_OFFROAD + " Miles)<br>" + e(percent_offroad) + "% Off-Road (" + miles_offroad + " Miles)" ;
     })
 
   var svgContainer = d3.select("#map2").append("svg")
@@ -351,7 +355,7 @@ CTPS.demoApp.generateMap2 = function(mpoTowns, bikeData) {
     }
   }
 
-  towns = topojson.feature(mpoTowns, mpoTowns.objects.collection).features;
+  towns = topojson.feature(mpoTowns, mpoTowns.objects.boston_region_mpo_towns).features;
 
   var findTownIndex = function(townID) { 
     for (var i = 0; i < towns.length; i++) { 
@@ -460,6 +464,14 @@ function plot2() {
 var townsOn = [];
 var townsOff = [];
 
+  bikeData.sort(function(a, b) { 
+    var nameA = a.TOWN;
+    var nameB = b.TOWN; 
+    if (nameA < nameB) { return -1; }
+    if (nameA > nameB) { return 1; }
+    return 0; 
+  })
+  
   bikeData.forEach(function(i){
     i.PERCENT_OFFROAD = +i.PERCENT_OFFROAD;
     i.PERCENT_OFFROAD = +i.PERCENT_OFFROAD;
@@ -472,12 +484,13 @@ var townsOff = [];
     }
   })
 
-  bikeData.sort();
+
+
   var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([90, 0])
     .html(function(d) {
-      return d3.round(d.PERCENT_OFFROAD * 100, 1) + "% On-Road (" + d.TOTAL_OFFROAD + " Miles)<br>" + d3.round(d.PERCENT_OFFROAD*100, 1) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
+      return e(d.PERCENT_OFFROAD * 100) + "% On-Road (" + d.TOTAL_OFFROAD + " Miles)<br>" + e(d.PERCENT_OFFROAD*100) + "% Off-Road (" + d.TOTAL_OFFROAD + " Miles)" ;
     })
 
 
@@ -492,25 +505,25 @@ var townsOff = [];
       bikeCities.push(i.TOWN);
     }
   })
-  var OFFROADPercent = d3.scale.linear()
+  var OFFROADPercent = d3.scaleLinear()
               .domain([0, 5])
               .range([100, 300]);
 
-  var OFFROADLabels = d3.scale.ordinal()
+  var OFFROADLabels = d3.scalePoint()
               .domain([0, 1, 2, 4, 5])
-              .rangePoints([100, 300]);
+              .range([100, 300]);
 
-  var OFFROADMiles = d3.scale.linear()
+  var OFFROADMiles = d3.scaleLinear()
               .domain([0, 50])
               .range([350, 650]);
 
-  var yScale = d3.scale.ordinal()
+  var yScale = d3.scalePoint()
           .domain(townsOn)
-          .rangePoints([100, 850]);
+          .range([100, 850]);
   
-  var xAxis = d3.svg.axis().scale(OFFROADLabels).orient("top").ticks(5); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left");
-  var yAxisM = d3.svg.axis().scale(OFFROADMiles).orient("top").ticks(5).tickFormat(d3.format("d"));
+  var xAxis = d3.axisTop(OFFROADLabels).ticks(5); 
+  var yAxis = d3.axisLeft(yScale);
+  var yAxisM = d3.axisTop(OFFROADMiles).ticks(5).tickFormat(d3.format("d"));
 
 //Labels
 
@@ -549,8 +562,9 @@ stacks.append("text")
         else { return OFFROADPercent(d.properties.ratio) }})
       .attr("y", function(d) {
         var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-       return yScale(capTown) - 3; 
-     })
+        if (isNaN(yScale(capTown))) { return -1000000;}
+          else { return yScale(capTown) - 3; }
+      })
       .attr("width", 5)
       .attr("height", 7)
       .style("fill", function(d) { return colorScaleBars2(d.properties.ratio)})
@@ -562,7 +576,12 @@ stacks.append("text")
     .append("rect")
       .attr("class", "OFFROADM")
       .attr("x", OFFROADMiles(0))
-      .attr("y", function(d) { return yScale(d.TOWN) - 3})
+      .attr("y", function(d) { 
+        if (isNaN(yScale(d.TOWN))) { 
+          return -100000;
+        } else { 
+          return yScale(d.TOWN) - 3}
+        })
       .attr("width", function(d) { 
           if (d.PERCENT_OFFROAD == 0){ return 0 } 
           else {return OFFROADMiles(d.TOTAL_OFFROAD) - 345 }})

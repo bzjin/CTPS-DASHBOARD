@@ -1,149 +1,201 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
-//Using the queue.js library
-queue()
-	//.defer(d3.json, "nonmotorized_crashes.JSON") //Raw Data
-	//.defer(d3.csv, "crashes_injuries_by_year.csv") //"All" Injuries and Fatalities stored here
-	//.defer(d3.csv, "crashdata.JSON") //generated from first function CTPS.demoApp.generateNonmotorized
-	.defer(d3.json, "motorized_crashes.JSON") //generated from first function CTPS.demoApp.generateNonmotorized
-	.defer(d3.csv, "truckdata.csv") //generated from first function CTPS.demoApp.generateNonmotorized
+d3.queue()
+	.defer(d3.csv, "appended_crashes.csv")
 
 	.awaitAll(function(error, results){ 
-		//CTPS.demoApp.generateNonmotorized(results[0], results[1]); //generates nonmotorized data
-		//CTPS.demoApp.generateTotals(results[2], results[1]); //appends non-motorized data
-		CTPS.demoApp.generateTruck(results[0], results[1]);
+		CTPS.demoApp.generateNonmotorized(results[0]); //generates nonmotorized data
 	}); 
 
 /* 
-AN EXPLANATION: The data processing comes in two parts because the data came in two parts (over the span of a month). 
-Ideally, we could append the two datasets together and have only one offline processing chunk of code, but this is how
-the data was received for now. For the sake of "rapid prototyping", the code is left as it was before. 
-
-THE RESULT: First function produces crash_data.JSON. Second produces nonmotorized_crashes.JSON. Both can be found in
-the JSON folder.
+AN EXPLANATION: The data used is a csv that contains all of the motorized and nonmotorized crash data.
 */
-CTPS.demoApp.generateNonmotorized = function(crashdata, all_data) {	
+CTPS.demoApp.generateNonmotorized = function(crashdata) {	
 	var newarray = [];
+	console.log(crashdata)
 
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2004,
 			"bike_inj" : i["2004_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2004_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2004_All_Bicycle_Crashes"],
 			"ped_inj" : i["2004_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2004_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2004_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2004_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2004_Truck_Number_Injuries'],
+			"trk_fat" : i['2004_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2004,
+			"tot_fat" : i.All_Fatalities_2004,
+			"mot_inj" : i.All_Injuries_2004 - i["2004_Bicycle_Injury_Crashes"] - i["2004_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2004 - i["2004_Bicycle_Fatal_Crashes"] - i["2004_Pedestrian_Fatal_Crashes"]
 		})
 	})
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2005,
 			"bike_inj" : i["2005_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2005_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2005_All_Bicycle_Crashes"],
 			"ped_inj" : i["2005_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2005_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2005_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2005_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2005_Truck_Number_Injuries'],
+			"trk_fat" : i['2005_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2005,
+			"tot_fat" : i.All_Fatalities_2005,
+			"mot_inj" : i.All_Injuries_2005 - i["2005_Bicycle_Injury_Crashes"] - i["2005_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2005 - i["2005_Bicycle_Fatal_Crashes"] - i["2005_Pedestrian_Fatal_Crashes"]
 		})
 	})
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2006,
 			"bike_inj" : i["2006_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2006_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2006_All_Bicycle_Crashes"],
 			"ped_inj" : i["2006_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2006_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2006_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2006_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2006_Truck_Number_Injuries'],
+			"trk_fat" : i['2006_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2006,
+			"tot_fat" : i.All_Fatalities_2006,
+			"mot_inj" : i.All_Injuries_2006 - i["2006_Bicycle_Injury_Crashes"] - i["2006_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2006 - i["2006_Bicycle_Fatal_Crashes"] - i["2006_Pedestrian_Fatal_Crashes"]
 		})
 	})
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2007,
 			"bike_inj" : i["2007_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2007_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2007_All_Bicycle_Crashes"],
 			"ped_inj" : i["2007_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2007_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2007_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2007_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2007_Truck_Number_Injuries'],
+			"trk_fat" : i['2007_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2007,
+			"tot_fat" : i.All_Fatalities_2007,
+			"mot_inj" : i.All_Injuries_2007 - i["2007_Bicycle_Injury_Crashes"] - i["2007_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2007 - i["2007_Bicycle_Fatal_Crashes"] - i["2007_Pedestrian_Fatal_Crashes"] 
 		})
 	})
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2008,
 			"bike_inj" : i["2008_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2008_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2008_All_Bicycle_Crashes"],
 			"ped_inj" : i["2008_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2008_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2008_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2008_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2008_Truck_Number_Injuries'],
+			"trk_fat" : i['2008_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2008,
+			"tot_fat" : i.All_Fatalities_2008,
+			"mot_inj" : i.All_Injuries_2008 - i["2008_Bicycle_Injury_Crashes"] - i["2008_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2008 - i["2008_Bicycle_Fatal_Crashes"] - i["2008_Pedestrian_Fatal_Crashes"]
 		})
 	})
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2009,
 			"bike_inj" : i["2009_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2009_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2009_All_Bicycle_Crashes"],
 			"ped_inj" : i["2009_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2009_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2009_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2009_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2009_Truck_Number_Injuries'],
+			"trk_fat" : i['2009_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2009,
+			"tot_fat" : i.All_Fatalities_2009,
+			"mot_inj" : i.All_Injuries_2009 - i["2009_Bicycle_Injury_Crashes"] - i["2009_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2009 - i["2009_Bicycle_Fatal_Crashes"] - i["2009_Pedestrian_Fatal_Crashes"] 
 		})
 	})
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2010,
 			"bike_inj" : i["2010_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2010_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2010_All_Bicycle_Crashes"],
 			"ped_inj" : i["2010_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2010_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2010_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2010_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2010_Truck_Number_Injuries'],
+			"trk_fat" : i['2010_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2010,
+			"tot_fat" : i.All_Fatalities_2010,
+			"mot_inj" : i.All_Injuries_2010 - i["2010_Bicycle_Injury_Crashes"] - i["2010_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2010 - i["2010_Bicycle_Fatal_Crashes"] - i["2010_Pedestrian_Fatal_Crashes"]
 		})
 	})
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2011,
 			"bike_inj" : i["2011_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2011_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2011_All_Bicycle_Crashes"],
 			"ped_inj" : i["2011_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2011_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2011_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2011_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2011_Truck_Number_Injuries'],
+			"trk_fat" : i['2011_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2011,
+			"tot_fat" : i.All_Fatalities_2011,
+			"mot_inj" : i.All_Injuries_2011 - i["2011_Bicycle_Injury_Crashes"] - i["2011_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2011 - i["2011_Bicycle_Fatal_Crashes"] - i["2011_Pedestrian_Fatal_Crashes"]
 		})
 	})
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2012,
 			"bike_inj" : i["2012_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2012_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2012_All_Bicycle_Crashes"],
 			"ped_inj" : i["2012_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2012_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2012_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2012_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2012_Truck_Number_Injuries'],
+			"trk_fat" : i['2012_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2012,
+			"tot_fat" : i.All_Fatalities_2012,
+			"mot_inj" : i.All_Injuries_2012 - i["2012_Bicycle_Injury_Crashes"] - i["2012_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2012 - i["2012_Bicycle_Fatal_Crashes"] - i["2012_Pedestrian_Fatal_Crashes"]
 		})
 	})
 	crashdata.forEach(function(i){
 		newarray.push({
-			"town" : i.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
+			"town" : i.Town_Name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
 			"year" : 2013,
 			"bike_inj" : i["2013_Bicycle_Injury_Crashes"],
 			"bike_fat" : i["2013_Bicycle_Fatal_Crashes"],
 			"bike_tot" : i["2013_All_Bicycle_Crashes"],
 			"ped_inj" : i["2013_Pedestrian_Injury_Crashes"],
 			"ped_fat" : i["2013_Pedestrian_Fatal_Crashes"],
-			"ped_tot" : i["2013_All_Pedestrian_Crashes"] 
+			"ped_tot" : i["2013_All_Pedestrian_Crashes"],
+			"trk_inj" : i['2013_Truck_Number_Injuries'],
+			"trk_fat" : i['2013_Truck_Number_Fatalities'],
+			"tot_inj" : i.All_Injuries_2013,
+			"tot_fat" : i.All_Fatalities_2013,
+			"mot_inj" : i.All_Injuries_2013 - i["2013_Bicycle_Injury_Crashes"] - i["2013_Pedestrian_Injury_Crashes"],
+			"mot_fat" : i.All_Fatalities_2013 - i["2013_Bicycle_Fatal_Crashes"] - i["2013_Pedestrian_Fatal_Crashes"]
 		})
 	})
 
@@ -225,7 +277,7 @@ CTPS.demoApp.generateTruck = function(motorized, trucks){
 console.log(motorized, trucks)
 	motorized.forEach(function(i){ 
 		trucks.forEach(function(j){
-			if (i.town.toUpperCase() == j.TOWN || i.town.toUpperCase() == "TOTAL"){
+			if (i.Town_Name.toUpperCase() == j.TOWN || i.Town_Name.toUpperCase() == "TOTAL"){
 				if (i.year == 2004) { 
 					i.trk_inj = j['2004_Truck_Number_Injuries']
 					i.trk_fat = j['2004_Truck_Number_Fatalities']

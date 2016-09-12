@@ -9,11 +9,11 @@
 <!-- Font Awesome -->
 <script src="https://use.fontawesome.com/3b0ffee8ad.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 
-<script src="http://d3js.org/queue.v1.min.js"></script>
+
 <!-- Tooltip -->
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="../../js/d3-tip.js"></script>
 <!-- TopoJSON -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
 <!-- Google Fonts -->
@@ -24,7 +24,11 @@
 <!-- Bootstrap-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<style> text {fill: #ddd;} .axis {fill: none; stroke-width: .1; stroke: #ddd;} .xaxis {fill: none; stroke-width: .5; stroke: #ddd;} </style>
+<style> 
+	text {fill: #ddd;} 
+	.axis {fill: none; stroke-width: .1; stroke: #ddd;}
+	.yaxis {fill: none; stroke-width: 0; stroke: none;}  
+	.xaxis {fill: none; stroke-width: .5; stroke: #ddd;} </style>
 
 </head>
 

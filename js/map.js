@@ -1,24 +1,27 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 var projScale = 50000,
 		projXPos = 400,
 		projYPos = 1900;
 
 //For projecting the map and municipality boundaries, NB and EB roads
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
 .parallels([41 + 43 / 60, 42 + 41 / 60])
 .rotate([71 + 30 / 60, -41 ])
 .scale([projScale]) 
 .translate([projXPos, projYPos]);
 
-var geoPath = d3.geo.path().projection(projection);
+var geoPath = d3.geoPath().projection(projection);
 	
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "json/boston_region_mpo_towns.topo.json")
-	.defer(d3.json, "js/arterials_summary.json")
-	.defer(d3.csv, "js/front_page_summaries.csv")
+	.defer(d3.json, "js/arterials_summary.topojson")
+	.defer(d3.csv, 	"js/front_page_summaries.csv")
 	.defer(d3.json, "js/pavement_summary.json")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1], results[2], results[3]);
@@ -37,7 +40,7 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 
 	// Create Boston Region MPO map with SVG paths for individual towns.
 	var mapcSVG = svgContainer.selectAll(".subregion")
-		.data(topojson.feature(cities, cities.objects.collection).features)
+		.data(topojson.feature(cities, cities.objects.boston_region_mpo_towns).features)
 		.enter()
 		.append("path")
 			.attr("class", function(d){ return "subregion " + d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
@@ -46,23 +49,23 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 			.style("fill", "black")
 			.style("stroke", "#212127")
 			.style("stroke-width", 4)
-			.style("opacity", 0);
+			.style("opacity", .2);
 
 	//Congestion Map
-	var colorScale = d3.scale.linear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);
+	var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);
 
 	var interstateSVG = svgContainer.selectAll(".interstate")
-		.data(topojson.feature(congestion, congestion.objects.collection).features)
+		.data(topojson.feature(congestion, congestion.objects.CMP_2014_ART_ROUTES_EXT_MPO).features)
 		.enter()
 		.append("path")
 			.attr("class", "interstate")
 			.attr("d", function(d) {return geoPath(d)})
 			.style("fill", "none")
-			.style("stroke-width", 0)
+			.style("stroke-width", 1)
 			.style("stroke-linecap", "round")
 			.style("stroke", "#ff6347")
 			//.style("opacity", function(d) { return (1 - d.properties.AM_SPD_IX/1.8);})//function(d) { return (d.properties.AM_SPD_IX-.5);})
-			.style("opacity", 0)
+			.style("opacity", 0);
 
 	var pavements = svgContainer.selectAll(".pavement")
 			.data(topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_interstate_2015).features)
@@ -74,24 +77,18 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 				.style("stroke-width", 1)
 				.style("stroke", "#191b1d")
 				.style("stroke-linecap", "round")
-				.style("opacity", 0)
-
-	d3.selectAll(".subregion").transition()
-		.duration(3000)
-		.style("opacity", .2)
+				.style("opacity", 0);
 
 	d3.selectAll(".interstate").transition()
-		.delay(function(d, i) { return Math.floor(i/100)*100})
+		.delay(function(d, i) { return Math.floor(i/500)*500})
 		.duration(3000)
-		.style("fill", "none")
-		.style("stroke-width", 1)
 		.style("stroke", "#191b1d")
-		.style("opacity", 1)
+		.style("opacity", 1);
 
 	//Hover over Crashes link
 	d3.select("#crashes").on("mouseenter", function(){
 		//load crashdata
-		d3.json("json/motorized_crashes.json", function(crashdata){ 
+		d3.csv("json/motorized_crashes.csv", function(crashdata){ 
 			//find corresponding town values in crash
 			var findIndex = function(town, statistic) { 
 				for (var i = 0; i < crashdata.length; i++) { 
@@ -101,14 +98,13 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 				}
 			} // end findIndex
 
-			var colorScale = d3.scale.linear()
-    						.domain([0, 50, 100, 200, 400, 800, 1600])
-   							.range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
+			var colorScale = d3.scaleLinear()
+    						.domain([0, 20000, 90000])
+   							.range(["black", "#FF6347", "#FF6347"]);
 
 			d3.selectAll(".subregion").transition()
-				.delay(function (d, i) { return Math.floor(i/10)*100})
-				.duration(3000)
-				.ease("elastic")
+				.delay(function (d, i) { return Math.floor(i/100)*100 - 100})
+				.ease(d3.easeElasticInOut)
 				.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 				return colorScale(findIndex(capTown, "mot_inj")+findIndex(capTown, "mot_inj")); 	
@@ -124,14 +120,13 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 	//Hover over PAVEMENT link
 
 	d3.select("#pavement").on("mouseenter", function() {
-		var colorPavement = d3.scale.quantize()
+		var colorPavement = d3.scaleQuantize()
 									.domain([0, 5])
 									.range(["#d7191c", "#d7191c", "#d7191c", "#fdae61","#ffffbf","#a6d96a","#1a9641"])
 
 		d3.selectAll(".pavement").transition()
-				.delay(function(d) { return d.properties.PSI*500})
-				.ease("elastic")
-				.duration(3000)
+				.delay(function(d) { return d.properties.PSI*100 - 100})
+				.ease(d3.easeElasticInOut)
 				.style("stroke", function(d) { return colorPavement(d.properties.PSI)})
 				.style("opacity", 1)
 	});
@@ -146,11 +141,10 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 	//Hover over CONGESTION link
 	d3.select("#congestion").on("mouseenter", function(){
 		//load crashdata
-			var colorCong = d3.scale.linear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);
+			var colorCong = d3.scaleLinear().domain([.5, 1.25]).range(["#D73027", "#00B26F"]);
 
 			d3.selectAll(".interstate").transition()
 				.delay(function (d, i) { return Math.floor(i/100)*100})
-				.duration(3000)
 				.style("stroke", function(d){ 
 					return colorCong(d.properties.AM_SPD_IX);
 				})
@@ -175,12 +169,11 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 //Hover over BRIDGES link
 	d3.select("#bridges").on("mouseenter", function(){
 		//load crashdata
-		var colorBridge = d3.scale.linear().domain([1, .03, 0]).range(["#D73027", "#fee08b", "#00B26F"]);
+		var colorBridge = d3.scaleLinear().domain([.07, 0]).range(["#9ACD32", "black"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*100})
-			.duration(3000)
-			.ease("elastic")
+			.delay(function (d, i) { return Math.floor(i/100)*100 - 100})
+			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 				if (isNaN(parseInt(findSummary(capTown, "Bridges")))){ 
@@ -199,12 +192,11 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 //Hover over SIDEWALKS link
 	d3.select("#sidewalks").on("mouseenter", function(){
 		//load crashdata
-		var colorSidewalks = d3.scale.linear().domain([0, .8, 1.5]).range(["#fff7bc","#fec44f","#d95f0e"]);
+		var colorSidewalks = d3.scaleLinear().domain([0, .8, 1.5]).range(["black","#fec44f","#d95f0e"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*100})
-			.duration(3000)
-			.ease("elastic")
+			.delay(function (d, i) { return Math.floor(i/100)*100 - 100})
+			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 					return colorSidewalks(findSummary(capTown, "Sidewalks"));
@@ -219,12 +211,11 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 //Hover over BIKES link
 	d3.select("#bikes").on("mouseenter", function(){
 		//load crashdata
-		var colorBikes = d3.scale.linear().domain([0, .02, .3]).range(["#e0ecf4","#9ebcda","#8856a7"]);
+		var colorBikes = d3.scaleLinear().domain([0, .02, .3]).range(["black","#9ebcda","#8856a7"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*100})
-			.duration(3000)
-			.ease("elastic")
+			.delay(function (d, i) { return Math.floor(i/100)*100 - 100})
+			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 				if (findSummary(capTown, "Bike") == 0){ 
@@ -241,16 +232,15 @@ var simplify = topojson.feature(pavement, pavement.objects.road_inv_mpo_nhs_inte
 	})
 
 //Hover over BIKES link
-	d3.select("#funding").on("mouseenter", function(){
+	d3.select("#equity").on("mouseenter", function(){
 		//load crashdata
-		var colorEquity = d3.scale.linear()
+		var colorEquity = d3.scaleLinear()
 		    .domain([0, 500000, 5000000, 10000000, 15000000, 20000000, 25000000])
 		    .range(["#ffffcc","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#005a32"]);
 
 		d3.selectAll(".subregion").transition()
-			.delay(function (d, i) { return Math.floor(i/10)*100})
-			.duration(3000)
-			.ease("elastic")
+			.delay(function (d, i) { return Math.floor(i/1000)*1000 - 100})
+			.ease(d3.easeElasticInOut)
 			.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 				if (findSummary(capTown, "Equity") == 0){ 
