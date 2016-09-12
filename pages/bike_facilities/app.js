@@ -1,3 +1,4 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp ={};
 var f = d3.format(".2");
@@ -463,6 +464,14 @@ function plot2() {
 var townsOn = [];
 var townsOff = [];
 
+  bikeData.sort(function(a, b) { 
+    var nameA = a.TOWN;
+    var nameB = b.TOWN; 
+    if (nameA < nameB) { return -1; }
+    if (nameA > nameB) { return 1; }
+    return 0; 
+  })
+  
   bikeData.forEach(function(i){
     i.PERCENT_OFFROAD = +i.PERCENT_OFFROAD;
     i.PERCENT_OFFROAD = +i.PERCENT_OFFROAD;
@@ -475,7 +484,8 @@ var townsOff = [];
     }
   })
 
-  bikeData.sort();
+
+
   var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([90, 0])

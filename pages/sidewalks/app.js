@@ -1,3 +1,4 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
 var f = d3.format(".2")
@@ -30,8 +31,8 @@ var timeline = d3.select("#sidewalks").append("svg")
     .attr("height", 1400)
 
 allData.sort(function(a, b){
-  var nameA = a.sidewalk_to_miles;
-  var nameB = b.sidewalk_to_miles;
+  var nameA = a.town;
+  var nameB = b.town;
   if (nameA < nameB) { return -1;}
   if (nameA > nameB) { return 1;}
   return 0;

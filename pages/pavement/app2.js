@@ -1,3 +1,4 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
 var f = d3.format(".2")
@@ -213,8 +214,8 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	var city_names = [];
 	//Sort cities into an array by MAPC Subregion for x-axis
 	avgpsi.sort(function(a,b) { 
-		var nameA = a.CITY_AVG;
-		var nameB = b.CITY_AVG; 
+		var nameA = a.TOWN;
+		var nameB = b.TOWN; 
 		if (nameA < nameB) { return -1; }
 		if (nameA > nameB) { return 1; }
 		return 0; 
@@ -428,7 +429,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	cityContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 7)
-		.text("0.0-2.5: Dismal");
+		.text("0.0-2.5: Poor");
 	cityContainer.append("rect")
 		.style("fill", "#fdae61").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);

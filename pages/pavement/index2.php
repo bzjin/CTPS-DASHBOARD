@@ -48,8 +48,8 @@
 	<h3>Conditions in 2013</h3>
 	<p> Scroll down to compare pavement conditions between municipalities. The first column presents the overall distribution of pavement segments by their PSI score, with the average value highlighted. The second column and third columns display the percent of pavement and the total lane miles of pavement with acceptable PSI scores, respectively.
 	</p>
-		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
-		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI" autofocus>Sort by Average PSI</button>
+		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
+		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
 
 	<div id="citygradients" class="col-md-12"></div>
 

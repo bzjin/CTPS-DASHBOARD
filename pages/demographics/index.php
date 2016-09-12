@@ -42,8 +42,21 @@ text {fill: #ddd; font-size: 14px;}
 <div class="top-nav col-md-12">
 	<?php include '../../components/top-nav.php';?>
 </div>
-
 <h1>Demographics</h1>
+
+
+<h3> A Closer Look at the Boston Population </h3>
+
+	<button class='employed bigbutton col-md-3 I-93'> Unemployment </button>
+	<button class='lepPop bigbutton col-md-3 I-95'> Limited English Proficiency </button>
+	<button class='over65 bigbutton col-md-3 I290'> Over Age 65 </button>
+
+	<div class="col-md-5" id="map4"></div>
+
+	<div class="col-md-7" id="chartDemographics2"></div>
+
+
+
 
 <h3> A Closer Look at Boston Households </h3>
 
@@ -57,17 +70,7 @@ text {fill: #ddd; font-size: 14px;}
 
 	<div class="col-md-7" id="chartDemographics"></div>
 
-<h3> A Closer Look at the Boston Population </h3>
-
-	<button class='employed bigbutton col-md-3 I-93'> Unemployment </button>
-	<button class='lepPop bigbutton col-md-3 I-95'> Limited English Proficiency </button>
-	<button class='over65 bigbutton col-md-3 I290'> Over Age 65 </button>
-
-	<div class="col-md-5" id="map4"></div>
-
-	<div class="col-md-7" id="chartDemographics2"></div>
-
-	<div class="footer col-md-12">
+		<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>
 </div>
