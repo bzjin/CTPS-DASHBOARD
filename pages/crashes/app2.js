@@ -23,7 +23,7 @@ d3.queue()
 d3.queue()
 	.defer(d3.csv, "../../json/motorized_crashes.csv")
 	.awaitAll(function(error, results){ 
-		CTPS.demoApp.generatePlot(results[0]);
+		//CTPS.demoApp.generatePlot(results[0]);
 		CTPS.demoApp.generateTruck(results[0]);
 		CTPS.demoApp.generateAccessibleTable(results[0]);
 	});
