@@ -1,15 +1,18 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([24000]) // N.B. The scale and translation vector were determined empirically.
   .translate([150, 1000]);
   
-  var geoPath = d3.geo.path().projection(projection);
-//Using the queue.js library
-queue()
+  var geoPath = d3.geoPath().projection(projection);
+//Using the d3.queue.js library
+d3.queue()
 	.defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
 	.defer(d3.csv, "../../JSON/flow_highway_coming.csv")
   .defer(d3.csv, "../../JSON/flow_highway_going.csv")
@@ -23,7 +26,7 @@ queue()
 d3.select(".highwayFlow").on("click", function(){
       d3.selectAll("svg").remove();
 
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_highway_coming.csv")
     .defer(d3.csv, "../../JSON/flow_highway_going.csv")
@@ -36,7 +39,7 @@ d3.select(".highwayFlow").on("click", function(){
 //BIKE BUTTON
 d3.select(".bikeFlow").on("click", function(){
   d3.selectAll("svg").remove();
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_bike_coming.csv")
     .defer(d3.csv, "../../JSON/flow_bike_going.csv")
@@ -49,7 +52,7 @@ d3.select(".bikeFlow").on("click", function(){
 d3.selectAll(".pedFlow").on("click", function(){
       d3.selectAll("svg").remove();
 
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_walk_coming.csv")
     .defer(d3.csv, "../../JSON/flow_walk_going.csv")
@@ -63,7 +66,7 @@ d3.selectAll(".pedFlow").on("click", function(){
 d3.select(".truckFlow").on("click", function(){
       d3.selectAll("svg").remove();
 
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_truck_coming.csv")
     .defer(d3.csv, "../../JSON/flow_truck_going.csv")
@@ -77,7 +80,7 @@ d3.select(".truckFlow").on("click", function(){
 d3.select(".transitFlow").on("click", function(){
       d3.selectAll("svg").remove();
 
-  queue()
+  d3.queue()
     .defer(d3.json, "../../JSON/PLAN_2035_DISTRICTS_EXTENDED.topojson")
     .defer(d3.csv, "../../JSON/flow_transit_coming.csv")
     .defer(d3.csv, "../../JSON/flow_transit_going.csv")
@@ -108,15 +111,15 @@ var opacityMax = d3.max(totals);
 maxmins.sort(function(a, b){return a-b});
 console.log(maxmins);
 
-var opacityScale = d3.scale.linear()
+var opacityScale = d3.scaleLinear()
                 .domain([0, opacityMax/12, opacityMax/6, opacityMax/3, opacityMax])
                 .range([0, .03, .05, .1, .15]);
 
-var flowVolume = d3.scale.linear()
+var flowVolume = d3.scaleLinear()
                 .domain([maxmins[parseInt(maxmins.length/10)], 0, 0, maxmins[parseInt(maxmins.length*9/10)]])
                 .range(["#d53e4f", "grey", "grey", "#3288bd"])
 
-var lineScale = d3.scale.linear()
+var lineScale = d3.scaleLinear()
                 .domain([0, opacityMax/12, opacityMax/6, opacityMax/3, opacityMax])
                 .range([0, 5, 10, 20, 40]);
 
@@ -431,7 +434,7 @@ var lineScale = d3.scale.linear()
   function makeLineChart(selectedDistrict) { 
     sankeyChart.selectAll('*').remove();
 
-    var yScale = d3.scale.linear()
+    var yScale = d3.scaleLinear()
                 .domain([0, 50000])
                 .range([550, 50])
 

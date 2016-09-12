@@ -1,23 +1,26 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
 //Define Color Scale
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
 	.domain([0, .5, 1])
 	.range(["#ff6347","#ffffbf","#1a9850"])
 
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([25000]) // N.B. The scale and translation vector were determined empirically.
 	.translate([100,1000]);
 	
-var geoPath = d3.geo.path().projection(projection);	
+var geoPath = d3.geoPath().projection(projection);	
 
-//Using the queue.js library
-queue()
-	.defer(d3.json, "../../JSON/bridge_condition_timeline.JSON")
+//Using the d3.queue.js library
+d3.queue()
+	.defer(d3.csv, "../../JSON/bridge_condition_timeline.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateBridgeTimeline(results[0]);
 		//CTPS.demoApp.generateBridgePlots(results[0]);
@@ -170,11 +173,11 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	.attr("height", 600)
 
 	//Assign scales and axes 
-	xScale = d3.scale.linear().domain([2007, 2016]).range([70, 400]);
-	yScale = d3.scale.linear().domain([0, 100]).range([450, 50]);
+	xScale = d3.scaleLinear().domain([2007, 2016]).range([70, 400]);
+	yScale = d3.scaleLinear().domain([0, 100]).range([450, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d"));
-	var yAxis = d3.svg.axis().scale(yScale).orient("left");
+	var xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
+	var yAxis = d3.axisLeft(yScale);
 
 	timeline.append("text")
 		.attr("x", -350)
@@ -195,20 +198,20 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		.attr("transform", "translate(-5, 0)");
 
 	//Line for average health index
-	var valueline = d3.svg.line()
-		.interpolate("basis")
+	var valueline = d3.line()
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.healthavg); });
 
 	//Areas for structural deficient and not so
-	var goodline = d3.svg.area()
-		.interpolate("basis")
+	var goodline = d3.area()
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(100 * d.structDef/d.totalCount); })
 	    .y0(yScale(100));
 
-	var badline = d3.svg.area()
-		.interpolate("basis")
+	var badline = d3.area()
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(100 * d.structDef/d.totalCount); })
 	    .y0(yScale(0));
@@ -325,11 +328,11 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	.attr("height", 600)
 	.style("overflow", "visible");
 
-	var xScaleT = d3.scale.linear().domain([2007, 2016]).range([20, 500]);
-	var yScaleT = d3.scale.linear().domain([0, 100]).range([450, 50]);
+	var xScaleT = d3.scaleLinear().domain([2007, 2016]).range([20, 500]);
+	var yScaleT = d3.scaleLinear().domain([0, 100]).range([450, 50]);
 
-	var xAxisT = d3.svg.axis().scale(xScaleT).orient("bottom").tickFormat(d3.format("d"));//.tickSize(-400, 0, 0)
-	var yAxisT = d3.svg.axis().scale(yScaleT).orient("left")//.tickSize(-600, 0, 0);
+	var xAxisT = d3.axisBottom(xScaleT).tickFormat(d3.format("d"));//.tickSize(-400, 0, 0)
+	var yAxisT = d3.axisLeft(yScaleT);//.tickSize(-600, 0, 0);
 
 	timeline2.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -350,7 +353,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 		cleanedbridges.forEach(function(i){
 
 			timeline2.append("rect")
-				.attr("class", "yr" + i.year + " bin" + d3.round(d3.round(i.healthIndex/5, 2)*100) + " individuals " + i.town.toUpperCase())
+				.attr("class", "yr" + i.year + " bin" + e(e(i.healthIndex/5)*100) + " individuals " + i.town.toUpperCase())
 				.attr("x", function() { 
 					return xScaleT(i.year) + 8 + 8 * Math.floor(Math.random() * 5)
 				})
@@ -493,11 +496,11 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 	//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
 	//var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
-	xScale = d3.scale.linear().domain([2007, 2016]).range([50, 250]);
-	yScale = d3.scale.linear().domain([0, 1]).range([450, 50]);
+	xScale = d3.scaleLinear().domain([2007, 2016]).range([50, 250]);
+	yScale = d3.scaleLinear().domain([0, 1]).range([450, 50]);
 
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d")).ticks(3);
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").tickFormat(d3.format("d"));
+	var xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d")).ticks(3);
+	var yAxis = d3.axisLeft(yScale).tickFormat(d3.format("d"));
 
 	bridgeContainer.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -515,7 +518,7 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 	.key(function(d) { return d.bridgeId;})
 	.entries(cleanedbridges);
 
-	var valueline = d3.svg.line()
+	var valueline = d3.line()
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.healthIndex); });
 
@@ -574,11 +577,11 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 	})
 
 	nested_towns.forEach(function(i) {
-		var xScale = d3.scale.linear().domain([2007, 2016]).range([0 + padding, width]);
-		var yScale = d3.scale.linear().domain([0, 1]).range([height, 0]);
+		var xScale = d3.scaleLinear().domain([2007, 2016]).range([0 + padding, width]);
+		var yScale = d3.scaleLinear().domain([0, 1]).range([height, 0]);
 
-		var xAxis = d3.svg.axis().scale(xScale).tickSize(0);
-		var yAxis = d3.svg.axis().scale(yScale).orient("left").tickSize(0);
+		var xAxis = d3.axisBottom(xScale).tickSize(0);
+		var yAxis = d3.axisLeft(yScale).tickSize(0);
 
 		var svg = d3.select("#chart").append("svg")
 				.attr("height", height)
@@ -646,19 +649,19 @@ CTPS.demoApp.generateBridgePlots = function(bridges) {
 				return 0; 
 			})
 
-		var valueline = d3.svg.area()
-		.interpolate("basis")
+		var valueline = d3.area()
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y(function(d) { return yScale(d.healthIndex); });
 
-		var goodline = d3.svg.area()
-		.interpolate("basis")
+		var goodline = d3.area()
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(1-d.structDefNOT); })
 	    .y0(yScale(1));
 
-		var badline = d3.svg.area()
-		.interpolate("basis")
+		var badline = d3.area()
+		.curve(d3.curveBasis)
 	    .x(function(d) { return xScale(d.year); })
 	    .y1(function(d) { return yScale(d.structDef); })
 	    .y0(yScale(0));

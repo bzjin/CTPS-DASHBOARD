@@ -9,10 +9,10 @@
 <!-- Font Awesome -->
 <script src="https://use.fontawesome.com/3b0ffee8ad.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
 <!-- Tooltip -->
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="../../js/d3-tip.js"></script>
 <!-- TopoJSON -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
 
@@ -50,8 +50,8 @@ text {fill: #ddd; font-size: 14px;}
 	<p> The graphic below displays Sidewalk per Centerlane Mile for each municipality over decade. The size of the outer circles and inner circles are proportional to the miles of roadway (“centerline miles”) and miles of sidewalk, respectively, within each municipality. Hover over the circles to discover how many miles each circle represents. 
 	</p>
 
-		<button class="bigbutton col-md-6" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button> 
-		<button class="bigbutton col-md-6" id="byAverages" alt="Sort towns by ascending average PSI" autofocus>Sort by Sidewalk Miles to Centerline Miles Ratio</button>
+		<button class="bigbutton col-md-6" id="alphabetize" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button> 
+		<button class="bigbutton col-md-6" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Sidewalk Miles to Centerline Miles Ratio</button>
 		<button class='allyrs yrpicker col-md-1' autofocus> All</button>
 		<button class='yr2006 yrpicker col-md-1'> 2006</button>
 		<button class='yr2007 yrpicker col-md-1'> 2007</button>

@@ -10,10 +10,10 @@
 <!-- Font Awesome -->
 <script src="https://use.fontawesome.com/3b0ffee8ad.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
 <!-- Tooltip -->
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="../../js/d3-tip.js"></script>
 <!-- TopoJSON -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
 <!-- Google Fonts -->
@@ -60,7 +60,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 		<div id="truckChart" class = "col-md-4 key"><h4>Truck Injuries</h4></div>
 
 	<h3>One Year of Crashes</h3>
-	<p> Boston Region saw <b>14888</b> total vehicle crash injuries in 2013. Each dot represents one crash. <b>68</b> solid, filled dots represent fatalities.</p>
+	<p> Boston Region saw <b>14888</b> total vehicle crash injuries in 2013. Each dot represents 100 crashes. <b>7</b> solid, filled dots represent 680 fatalities.</p>
 		<div class="col-md-12 key">
 			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Vehicle Fatalities </p>

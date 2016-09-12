@@ -9,10 +9,10 @@
 <!-- Font Awesome -->
 <script src="https://use.fontawesome.com/3b0ffee8ad.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
 <!-- Tooltip -->
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="../../js/d3-tip.js"></script>
 <!-- TopoJSON -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
 
@@ -42,8 +42,21 @@ text {fill: #ddd; font-size: 14px;}
 <div class="top-nav col-md-12">
 	<?php include '../../components/top-nav.php';?>
 </div>
-
 <h1>Demographics</h1>
+
+
+<h3> A Closer Look at the Boston Population </h3>
+
+	<button class='employed bigbutton col-md-3 I-93'> Unemployment </button>
+	<button class='lepPop bigbutton col-md-3 I-95'> Limited English Proficiency </button>
+	<button class='over65 bigbutton col-md-3 I290'> Over Age 65 </button>
+
+	<div class="col-md-5" id="map4"></div>
+
+	<div class="col-md-7" id="chartDemographics2"></div>
+
+
+
 
 <h3> A Closer Look at Boston Households </h3>
 
@@ -57,17 +70,7 @@ text {fill: #ddd; font-size: 14px;}
 
 	<div class="col-md-7" id="chartDemographics"></div>
 
-<h3> A Closer Look at the Boston Population </h3>
-
-	<button class='employed bigbutton col-md-3 I-93'> Unemployment </button>
-	<button class='lepPop bigbutton col-md-3 I-95'> Limited English Proficiency </button>
-	<button class='over65 bigbutton col-md-3 I290'> Over Age 65 </button>
-
-	<div class="col-md-5" id="map4"></div>
-
-	<div class="col-md-7" id="chartDemographics2"></div>
-
-	<div class="footer col-md-12">
+		<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>
 </div>

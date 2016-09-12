@@ -1,6 +1,6 @@
 # CTPS Dashboard Description/Thoughts
 
-Every MPO in the US is being required by the Federal Government to define performance metrics and goals for their transportation system, and track progress with respect to those goals over time. This repository holds every commit of the Boston MPO dashboard from July 2016 to its final release in January 2018.
+Every MPO in the US is being required by the Federal Government to define performance metrics and goals for their transportation system, and track progress with respect to those goals over time. This repository holds every commit of the Boston MPO dashboard from July 2016 to its final release(d3.easeElasticInOut) in January 2018.
 
 Beatrice Jin is the primarily developer in this project. The raw datasets come from various groups at the Central Transportation Planning Staff, but the code is almost entirely developed by her (which will be more apparent when you see how messy it is). The commit as of today is of state of the dashboard presented at this afternoon's brown bag. People are mostly happy about it, I think, although some of the excitement must be accredited to the pretty pictures. 
 

@@ -1,16 +1,19 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([19000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,790]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
   .defer(d3.json, "../../json/tract_census.topojson")
 
   .awaitAll(function(error, results){ 
@@ -21,30 +24,30 @@ queue()
   }); 
 
 //Color Scale
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
     .domain([0, 500000, 5000000, 10000000, 15000000, 20000000, 25000000])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
 
 //Color Scale
-var colorScalePerson = d3.scale.linear()
+var colorScalePerson = d3.scaleLinear()
   .domain([0, 10, 50, 100, 500, 1000, 3000])
   .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
 ////////////////* GENERATE MAP *////////////////////
 CTPS.demoApp.generateMap3 = function(tracts, equity) {  
   // SVG Viewport
-  var colorScale = d3.scale.linear()
+  var colorScale = d3.scaleLinear()
                   .domain([0, 1, 2, 3, 4, 5, 6, 7])
                   .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02", "#3288bd", "#fee08b","#80cdc1"])
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([25000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,1015]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
   svgContainer = d3.select("#map3").append("svg")
                     .attr("width", "100%")
@@ -160,7 +163,7 @@ var geoPath = d3.geo.path().projection(projection);
 CTPS.demoApp.generateStats = function(tracts){
 
 
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
                   .domain([0, 1, 2, 3])
                   .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"])
 
@@ -172,11 +175,11 @@ var colorScale = d3.scale.linear()
   var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
   var maxmins = [];
   census.forEach(function(i){
-    i.properties.MINORITY_HH_PCT = d3.round(i.properties.MINORITY_HH_PCT * 100, 2);
-    i.properties.SINGLE_FEMALE_HOH_PCT = d3.round(i.properties.SINGLE_FEMALE_HOH_PCT * 100, 2);
-    i.properties.LEP_POP_PCT = d3.round(i.properties.LEP_POP_PCT * 100, 2);
-    i.properties.ZERO_VEH_HH_PCT = d3.round(i.properties.ZERO_VEH_HH_PCT * 100, 2);
-    i.properties.LOW_INC_HH_PCT = d3.round(i.properties.LOW_INC_HH_PCT * 100, 2);
+    i.properties.MINORITY_HH_PCT = f(i.properties.MINORITY_HH_PCT * 100);
+    i.properties.SINGLE_FEMALE_HOH_PCT = f(i.properties.SINGLE_FEMALE_HOH_PCT * 100);
+    i.properties.LEP_POP_PCT = f(i.properties.LEP_POP_PCT * 100);
+    i.properties.ZERO_VEH_HH_PCT = f(i.properties.ZERO_VEH_HH_PCT * 100);
+    i.properties.LOW_INC_HH_PCT = f(i.properties.LOW_INC_HH_PCT * 100);
     maxmins.push(i.properties.MINORITY_HH);
     maxmins.push(i.properties.SINGLE_FEMALE_HOH);
     maxmins.push(i.properties.LOW_INC_HH);
@@ -185,16 +188,16 @@ var colorScale = d3.scale.linear()
 
   var w = $("#chartDemographics").width();
 
-  var xScale = d3.scale.linear() 
+  var xScale = d3.scaleLinear() 
               .domain([0, 100])
               .range([80, w - 50])
 
-  var yScale = d3.scale.linear()
+  var yScale = d3.scaleLinear()
               .domain([d3.min(maxmins), 2400])
               .range([430, 30])
 
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(- w + 130, 0, 0);
+  var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
+  var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(- w + 130, 0, 0);
 //D3 Tooltip
   var tip = d3.tip()
     .attr('class', 'd3-tip')
@@ -352,17 +355,17 @@ CTPS.demoApp.generateMap4 = function(tracts) {
 
   var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
 
-  var colorScale = d3.scale.linear()
+  var colorScale = d3.scaleLinear()
                   .domain([0, 1, 2, 3, 4, 5, 6, 7])
                   .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02", "#3288bd", "#fee08b","#80cdc1"])
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([25000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,1015]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
   svgContainer2 = d3.select("#map4").append("svg")
                     .attr("width", "100%")
@@ -473,7 +476,7 @@ var geoPath = d3.geo.path().projection(projection);
 }
 
 CTPS.demoApp.generateStats2 = function(tracts){
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
                   .domain([0, 1, 2, 3])
                   .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"])
 
@@ -486,10 +489,10 @@ var colorScale = d3.scale.linear()
   var maxmins = [];
   census.forEach(function(i){
     if (i.properties.LEP_POP_PCT < 1) { 
-      i.properties.LEP_POP_PCT = d3.round(100 * i.properties.LEP_POP_PCT, 2);
+      i.properties.LEP_POP_PCT = f(100 * i.properties.LEP_POP_PCT);
     }
-    i.properties.PCT_65_PLUS = d3.round(i.properties.PCT_65_PLUS * 100, 2);
-    i.properties.PCT_IN_LABOR_FORCE = d3.round((1 - i.properties.PCT_IN_LABOR_FORCE) * 100, 2);
+    i.properties.PCT_65_PLUS = f(i.properties.PCT_65_PLUS * 100);
+    i.properties.PCT_IN_LABOR_FORCE = f((1 - i.properties.PCT_IN_LABOR_FORCE) * 100);
     i.properties.LABOR_FORCE = i.properties.TOTAL_POP_2010 - i.properties.LABOR_FORCE; 
 
     maxmins.push(i.properties.TOTAL_POP_2010);
@@ -497,16 +500,16 @@ var colorScale = d3.scale.linear()
 
   var w = $("#chartDemographics2").width();
 
-  var xScale = d3.scale.linear() 
+  var xScale = d3.scaleLinear() 
               .domain([0, 70])
               .range([80, w - 50])
 
-  var yScale = d3.scale.linear()
+  var yScale = d3.scaleLinear()
               .domain([d3.min(maxmins), 6000])
               .range([430, 30])
 
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickSize(- w + 130, 0, 0);
+  var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
+  var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(- w + 130, 0, 0);
 //D3 Tooltip
   var tip = d3.tip()
     .attr('class', 'd3-tip')

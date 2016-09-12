@@ -1,16 +1,19 @@
+//Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
+var f = d3.format(".2")
+var e = d3.format(".1");
 
-var projection = d3.geo.conicConformal()
+var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
   .scale([19000]) // N.B. The scale and translation vector were determined empirically.
   .translate([40,790]);
   
-var geoPath = d3.geo.path().projection(projection); 
+var geoPath = d3.geoPath().projection(projection); 
 
-//Using the queue.js library
-queue()
+//Using the d3.queue.js library
+d3.queue()
   .defer(d3.json, "../../json/town_census.topojson")
   .defer(d3.json, "../../json/equity.json")
 
@@ -22,13 +25,13 @@ queue()
   }); 
 
 //Color Scale
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
     .domain([0, 500000, 5000000, 10000000, 15000000, 20000000, 25000000])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
 
 //Color Scale
-var colorScalePerson = d3.scale.linear()
+var colorScalePerson = d3.scaleLinear()
   .domain([0, 10, 50, 100, 500, 1000, 3000])
   .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ddd"].reverse());
 
@@ -167,11 +170,11 @@ CTPS.demoApp.generateStats = function(mpoTowns, equity){
   var census = topojson.feature(mpoTowns, mpoTowns.objects.town_census).features;
 
   census.forEach(function(i){
-    i.properties.MINORITY_HH_PCT = d3.round(i.properties.MINORITY_HH_PCT * 100, 2);
-    i.properties.SINGLE_FEMALE_HOH_PCT = d3.round(i.properties.SINGLE_FEMALE_HOH_PCT * 100, 2);
-    i.properties.LEP_POP_PCT = d3.round(i.properties.LEP_POP_PCT * 100, 2);
-    i.properties.ZERO_VEH_HH_PCT = d3.round(i.properties.ZERO_VEH_HH_PCT * 100, 2);
-    i.properties.LOW_INC_HH_PCT = d3.round(i.properties.LOW_INC_HH_PCT * 100, 2);
+    i.properties.MINORITY_HH_PCT = f(i.properties.MINORITY_HH_PCT * 100);
+    i.properties.SINGLE_FEMALE_HOH_PCT = f(i.properties.SINGLE_FEMALE_HOH_PCT * 100);
+    i.properties.LEP_POP_PCT = f(i.properties.LEP_POP_PCT * 100);
+    i.properties.ZERO_VEH_HH_PCT = f(i.properties.ZERO_VEH_HH_PCT * 100);
+    i.properties.LOW_INC_HH_PCT = f(i.properties.LOW_INC_HH_PCT * 100);
   })
 
   var width = 680; 
@@ -196,15 +199,15 @@ generateStats = function(attribute, divID) {
     })
 
 
-    var xScale = d3.scale.ordinal()
+    var xScale = d3.scalePoint()
                 .domain(townOrder)
-                .rangePoints([padding, width - (2*padding)])
+                .range([padding, width - (2*padding)])
 
-    var yScale = d3.scale.linear()
+    var yScale = d3.scaleLinear()
                 .domain([0, d3.max(maxmins)])
                 .range([height, padding])
 
-    var yScaleHeight = d3.scale.linear()
+    var yScaleHeight = d3.scaleLinear()
                 .domain([0, d3.max(maxmins)])
                 .range([0, height - padding])
 
@@ -327,11 +330,11 @@ generateStats("SINGLE_FEMALE_HOH_PCT", "chartFemale")
         }
       }
   })
-  var xScale = d3.scale.linear()
+  var xScale = d3.scaleLinear()
               .domain([2007.5, 2021.5])
               .range([0, width - 2*padding])
 
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d")).ticks(14);
+  var xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d")).ticks(14);
 
   tipFunding.append("g").attr("class", "axis")
     .attr("transform", "translate(0," + height*1.8 + ")")
@@ -340,7 +343,7 @@ generateStats("SINGLE_FEMALE_HOH_PCT", "chartFemale")
     .style("text-anchor", "middle")
     .attr("transform", "translate(10, 3)");
 
-  var yScale = d3.scale.linear()
+  var yScale = d3.scaleLinear()
               .domain([0, d3.max(maxFunding)])
               .range([height*1.8, 1.5*padding])
 
@@ -373,8 +376,8 @@ generateStats("SINGLE_FEMALE_HOH_PCT", "chartFemale")
             else { return yScale(d.funding)-10;}
           })
           .text(function(d) {
-            if (d.funding > 1000000) { return "$" + d3.round(d.funding/1000000, 2) + "m"}
-            else { return "$" + d3.round(d.funding/100000, 2) + "k"; }
+            if (d.funding > 1000000) { return "$" + e(d.funding/1000000) + "m"}
+            else { return "$" + e(d.funding/100000) + "k"; }
           })
           .style("text-anchor", "middle")
           .style("font-weight", 300)
@@ -405,7 +408,7 @@ CTPS.demoApp.generateMap2 = function(mpoTowns, equity) {
     .offset([-10, 0])
     .html(function(d) {
       var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      return "<h4>" + capTown + "</h4> <br><p>TIP dollars per person 2008-2013: <b>$" + d3.round(findIndex(capTown, "Total_FFY_2008_2013_TIPs")/findIndex(capTown, "Population"),2) + "</b><br>TIP dollars per person 2014-2021: $<b>" + d3.round(findIndex(capTown, "Tota_FFY_2014_2021_TIPs")/findIndex(capTown, "Population"), 2) + "</b></p>";
+      return "<h4>" + capTown + "</h4> <br><p>TIP dollars per person 2008-2013: <b>$" + f(findIndex(capTown, "Total_FFY_2008_2013_TIPs")/findIndex(capTown, "Population")) + "</b><br>TIP dollars per person 2014-2021: $<b>" + f(findIndex(capTown, "Tota_FFY_2014_2021_TIPs")/findIndex(capTown, "Population")) + "</b></p>";
     })
 
   svgContainer.call(tip); 
@@ -536,11 +539,11 @@ CTPS.demoApp.generatePerPerson = function(equity) {
       }
   })
 
-  var xScale = d3.scale.linear()
+  var xScale = d3.scaleLinear()
               .domain([2007.5, 2021.5])
               .range([60, 650])
 
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format("d")).ticks(14);
+  var xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d")).ticks(14);
 
   fundPerson.append("g").attr("class", "axis")
     .attr("transform", "translate(0, 470)")
@@ -549,11 +552,11 @@ CTPS.demoApp.generatePerPerson = function(equity) {
     .style("text-anchor", "middle")
     .attr("transform", "translate(10, 3)");
 
-  var yScale = d3.scale.linear()
+  var yScale = d3.scaleLinear()
               .domain([0, d3.max(maxFunding)])
               .range([470, 100])
 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left")
+  var yAxis = d3.axisLeft(yScale)
               .tickFormat(function(d) { return "$" + d; });
 
   fundPerson.append("g").attr("class", "yaxis")
@@ -614,7 +617,7 @@ CTPS.demoApp.generatePerPerson = function(equity) {
             if (d.year%2 == 1) { return yScale(d.funding)-15;}
             else { return yScale(d.funding)-10;}
           })
-          .text(function(d) { return "$" + d3.round(d.funding,2);})
+          .text(function(d) { return "$" + f(d.funding);})
           .style("text-anchor", "middle")
           .style("font-weight", 300)
           .style("font-size", 12)
