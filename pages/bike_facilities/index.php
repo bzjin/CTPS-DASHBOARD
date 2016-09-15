@@ -23,7 +23,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <!-- Bootstrap-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
@@ -43,6 +43,9 @@ text {
 </head>
 
 <body>
+<div class="accessible" id="accessibleTable">
+	<p> The following table is readable only to screen readers. </p>
+</div>
 
 <div id="header" class="col-md-10 col-md-offset-1">
 	<div class="top-nav col-md-12">
@@ -82,6 +85,7 @@ text {
 	</div>
 </div>
 <script src="app.js"></script>
+<script src="../../js/jquery.accessibleGrid-0.09.js"></script>
 
 </body>
 </html>

@@ -34,6 +34,10 @@
 </head>
 
 <body>
+<div class="accessible" id="accessibleTable">
+	<p> The following information is readable only to screen readers: Data for expressway congestion is available on the CTPS Data 
+	Catalogue. You can download the spreadsheet after following this link: <a href="http://www.ctps.org/datacatalog_share/content/express-highway-performance-data-2012"> Expressway Congestion Spreadsheet </a> </p>
+</div>
 
 <div id="header" class="col-md-10 col-md-offset-1">
 <div class="top-nav col-md-12">
@@ -76,6 +80,7 @@
 	</div>
 </div>
 <script src="app.js"></script>
+<script src="../../js/jquery.accessibleGrid-0.09.js"></script>
 
 </body>
 </html>

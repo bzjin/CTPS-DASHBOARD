@@ -75,5 +75,6 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 </div>
 <script src="app.js"></script>
 <script src="../../js/jquery.accessibleGrid-0.09.js"></script>
+<script src="../../js/jquery.accessibleGrid-0.09.js"></script>
 </body>
 </html>

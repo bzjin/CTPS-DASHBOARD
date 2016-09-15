@@ -23,7 +23,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <!-- Bootstrap-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
@@ -43,13 +43,16 @@ text {fill: #ddd; font-size: 14px;}
 	<?php include '../../components/top-nav.php';?>
 </div>
 <h1>Demographics</h1>
-
+<div class="accessible" id="accessibleTable">
+	<p> The following information is readable only to screen readers: Data for demographics is available on the CTPS Data 
+	Catalogue. You can download the spreadsheet after following this link: <a href="http://www.ctps.org/datacatalog_share/content/boston-region-mpo-2010-census-demographic-profile"> Demographics Spreadsheet </a> </p>
+</div>
 
 <h3> A Closer Look at the Boston Population </h3>
 
-	<button class='employed bigbutton col-md-3 I-93'> Unemployment </button>
-	<button class='lepPop bigbutton col-md-3 I-95'> Limited English Proficiency </button>
-	<button class='over65 bigbutton col-md-3 I290'> Over Age 65 </button>
+	<button class='employed bigbutton col-md-4 I-93'> Unemployment </button>
+	<button class='lepPop bigbutton col-md-4 I-95'> Limited English Proficiency </button>
+	<button class='over65 bigbutton col-md-4 I290'> Over Age 65 </button>
 
 	<div class="col-md-5" id="map4"></div>
 
@@ -70,11 +73,12 @@ text {fill: #ddd; font-size: 14px;}
 
 	<div class="col-md-7" id="chartDemographics"></div>
 
-		<div class="footer col-md-12">
+	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>
 </div>
 <script src="app.js"></script>
+<script src="../../js/jquery.accessibleGrid-0.09.js"></script>
 
 </body>
 </html>

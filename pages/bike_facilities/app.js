@@ -38,7 +38,7 @@ d3.queue()
     CTPS.demoApp.generatePlot(results[1]);
     CTPS.demoApp.generateMap2(results[0],results[1]);
     CTPS.demoApp.generatePlot2(results[1]);
-    //CTPS.demoApp.generateAccessibleTable(results[1]);
+    CTPS.demoApp.generateAccessibleTable(results[1]);
   }); 
 
 ////////////////* GENERATE MAP *////////////////////
@@ -650,31 +650,25 @@ d3.select("#byAverages2").on("click", function(){
 })
 }
 
-CTPS.demoApp.generateAccessibleTable = function(crashjson){
-  var colDesc = [{ // array of objects
-    "dataIndex" : "year",
-    "header" : "Year"
-  },{ 
-    "dataIndex" : "town",
+CTPS.demoApp.generateAccessibleTable = function(bikejson){
+  var colDesc = [{
+    "dataIndex" : "TOWN",
     "header" : "Town"
   },{ 
-    "dataIndex" : "bike_inj",
-    "header" : "Bike Injuries"
+    "dataIndex" : "TOTAL_ONROAD",
+    "header" : "On-Road Miles"
   },{ 
-    "dataIndex" : "bike_fat",
-    "header" : "Bike Fatalities"
+    "dataIndex" : "PERCENT_ONROAD",
+    "header" : "On-Road Miles to Centerline Miles"
   },{ 
-    "dataIndex" : "ped_inj",
-    "header" : "Pedestrian Injuries"
-  },{ 
-    "dataIndex" : "ped_fat",
-    "header" : "Pedestrian Fatalities"
+    "dataIndex" : "TOTAL_OFFROAD",
+    "header" : "Off-Road Miles"
   }];
 
   var options = {
-    "divId" : "crashTableDiv",
-    "caption": "Nonmotorized Crash Data over Time: Bicycle and Pedestrian Injuries and Fatalities from 2004 to 2013",
+    "divId" : "bikeTableDiv",
+    "caption": "On Road and Off Road Bike Facilities",
   };
 
-  $("#crashTable").accessibleGrid(colDesc, options, crashjson);
+  $("#accessibleTable").accessibleGrid(colDesc, options, bikejson);
 }

@@ -87,5 +87,6 @@
 
 </body>
 <script src="app.js"></script>
+<script src="../../js/jquery.accessibleGrid-0.09.js"></script>
 
 </html>

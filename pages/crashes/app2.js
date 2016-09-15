@@ -447,15 +447,21 @@ CTPS.demoApp.generateAccessibleTable = function(crashjson){
 		"header" : "Town"
 	},{ 
 		"dataIndex" : "mot_inj",
-		"header" : "mot Injuries"
+		"header" : "Motorized Injuries"
 	},{ 
 		"dataIndex" : "mot_fat",
-		"header" : "mot Fatalities"
+		"header" : "Motorized Fatalities"
+	},{ 
+		"dataIndex" : "trk_inj",
+		"header" : "Truck Injuries"
+	},{ 
+		"dataIndex" : "trk_fat",
+		"header" : "Truck Fatalities"
 	}];
 
 	var options = {
 		"divId" : "crashTableDiv",
-		"caption": "Nonmotorized Crash Data over Time: Bicycle and trkestrian Injuries and Fatalities from 2004 to 2013",
+		"caption": "Motorized Crash Data over Time: Motorized Vehicles and Truck Injuries and Fatalities from 2004 to 2013",
 	};
 
 	$("#crashTable").accessibleGrid(colDesc, options, crashjson);
