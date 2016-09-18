@@ -170,7 +170,7 @@ var colorScale = d3.scaleLinear()
   var allChart = d3.select("#chartDemographics").append("svg")
     .attr("width", "100%")
     .attr("height", 500)
-    .attr("overflow", "visible")
+    .style("overflow", "visible")
 
   var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
   var maxmins = [];
@@ -483,7 +483,7 @@ var colorScale = d3.scaleLinear()
   var allChart2 = d3.select("#chartDemographics2").append("svg")
     .attr("width", "100%")
     .attr("height", 500)
-    .attr("overflow", "visible")
+    .style("overflow", "visible")
 
   var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
   var maxmins = [];

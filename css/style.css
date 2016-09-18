@@ -4,9 +4,6 @@
   color: #ddd;
   font-weight: 300; 
 }
-.navbar-custom {
-  position: absolute;
-}
 
 html { 
   background-color: #191b1d; 
@@ -73,7 +70,6 @@ div {
   }
 
   #header { 
-    position: absolute;
     text-align: left;
     text-transform: uppercase;
   }
@@ -88,10 +84,6 @@ div {
     float: right;
   }
 
-  .navbar-header { 
-    float: right;
-  }
-
   .navbar-custom .navbar-nav > li > a {
     color: #fff;
     padding: 20px;
@@ -102,7 +94,7 @@ div {
 
   .navbar-custom .navbar-nav > li > a:hover,
   .navbar-custom .navbar-nav > li > a:focus {
-      background-color: black;
+    background-color: black;
   }
 
   .navbar-collapse { 

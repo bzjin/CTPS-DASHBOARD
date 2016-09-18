@@ -29,13 +29,6 @@
 <body>
 <div id="map"></div>
 
-<div id="header" class="col-md-4">
-	<h3>The State of</h3>
-	<h1>Boston </h1>
-	<h1>Region</h1>
-	<h2>Transportation</h2>
-</div>
-
 <nav class="navbar navbar-custom">
 	<div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -46,22 +39,30 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 		</button>
-	</div>
+		</div>
 <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><div><a href="pages/crashes/index.php" title="Go to crashes page">Crashes</a></li>
-		<li><div><a href="pages/pavement/index.php" title="Go to pavement condition page">Pavement</a></li>
-		<li><div><a href="pages/bridges/index.php" title="Go to bridge condition page">Bridges</a></li>
-		<li><div><a href="pages/congestion/index.php" title="Go to congestion page">Congestion</a></li>
-		<li><div><a href="pages/sidewalks/index.php" title="Go to sidewalk coverage page">Sidewalks</a></li>
-		<li><div><a href="pages/bike_facilities/index.php" title="Go to bike facilities page">Bike Facilities</a></li>
-		<li><div><a href="pages/demographics/index.php" title="Go to demographics page">Demographics</a></li>
-		<li><div><a href="pages/about/index.php" title="Go to about page">About</a></li>
+      	<li><a href="#">Home</a></li>
+        <li><a href="pages/crashes/index.php" title="Go to crashes page">Crashes</a></li>
+		<li><a href="pages/pavement/index.php" title="Go to pavement condition page">Pavement</a></li>
+		<li><a href="pages/bridges/index.php" title="Go to bridge condition page">Bridges</a></li>
+		<li><a href="pages/congestion/index.php" title="Go to congestion page">Congestion</a></li>
+		<li><a href="pages/sidewalks/index.php" title="Go to sidewalk coverage page">Sidewalks</a></li>
+		<li><a href="pages/bike_facilities/index.php" title="Go to bike facilities page">Bike Facilities</a></li>
+		<li><a href="pages/demographics/index.php" title="Go to demographics page">Demographics</a></li>
+		<li><a href="pages/about/index.php" title="Go to about page">About</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
       </div> <!-- /.container-fluid -->
 </nav>
+
+<div id="header" class="col-md-4">
+	<h3>The State of</h3>
+	<h1>Boston </h1>
+	<h1>Region</h1>
+	<h2>Transportation</h2>
+</div>
 
 <!-- Desktop nav --> 
 <div class="col-md-5 desktop-nav">

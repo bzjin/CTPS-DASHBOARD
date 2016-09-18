@@ -30,6 +30,9 @@ h2 {
   font-weight: 700; 
   font-size: 20px;
 }
+#header h1 {
+  padding-top: 50px;
+}
 
 #header h2 {
   font-weight: 700; 
@@ -102,12 +105,12 @@ button:active, button:hover, button:focus,  {
 }
 
 .top-nav { 
-  position: fixed;
-  top: 0px;
+  position: fixed !important;
+  z-index: 9999;
+  padding-top: 10px;
   width: 100%;
   text-align: left;
   text-transform: uppercase;
-  padding: 20px 0px 10px 0px;
 }
 
 .top-nav li  { 
@@ -211,4 +214,46 @@ button:active, button:hover, button:focus,  {
   color: #e26a6a;
   opacity: 1;
   text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+ .navbar-custom {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+/* Hide desktop navigation for mobile PHONE (small) screens */ 
+  .top-nav{
+    display: none;
+  }
+
+  .icon-bar { 
+    background-color: white;
+    text-align: right;
+  }
+
+  .navbar-custom {
+    font-size: 18px;
+    float: right;
+  }
+
+  .navbar-custom .navbar-nav > li > a {
+    font-weight: 300;
+    color: #fff;
+    background-color: #212127;
+    width: 100%;
+    text-align:left;
+    padding-left: 40px;
+  }
+
+  .navbar-custom .navbar-nav > li > a:hover,
+  .navbar-custom .navbar-nav > li > a:focus {
+    background-color: black;
+  }
+
+  .navbar-collapse { 
+    width: 100vw;
+  }
 }

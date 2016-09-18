@@ -171,6 +171,7 @@ CTPS.demoApp.generateBridgeTimeline = function(bridges) {
 	var timeline = d3.select("#timeline").append("svg")
 	.attr("width", "100%")
 	.attr("height", 600)
+	.style("overflow", "visible")
 
 	//Assign scales and axes 
 	xScale = d3.scaleLinear().domain([2007, 2016]).range([70, 400]);

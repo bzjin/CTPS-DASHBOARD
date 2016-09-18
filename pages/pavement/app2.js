@@ -237,7 +237,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	var cityContainer = d3.select("#citygradients").append("svg")
 		.attr("width", "100%")
 		.attr("height", 1500)
-		.style("overflow", "scroll")
+		.style("overflow", "visible")
 	
 	//Title labels
 	cityContainer.append("text")

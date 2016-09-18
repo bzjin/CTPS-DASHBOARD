@@ -79,7 +79,6 @@ text {
 	<div class="col-md-4" id="map2"></div>
 	<div class="col-md-8" id="facilities2"></div>
 	</div>
-	</div>
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>

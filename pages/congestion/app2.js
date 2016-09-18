@@ -54,7 +54,8 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 	// SVG Viewport
 	var svgContainer = d3.select("#mapNonInterstate").append("svg")
 		.attr("width", "100%")
-		.attr("height", 800);
+		.attr("height", 800)
+		.style("overflow", "visible");
 
 	var tip = d3.tip()
 	  .attr('class', 'd3-tip')
