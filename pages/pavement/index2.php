@@ -27,6 +27,12 @@
 
 <body>
 <div id="header" class="col-md-10 col-md-offset-1">
+
+	<div class="accessible" id="accessibleTable">
+		<p> The following table is readable only to screen readers. </p>
+	</div>
+	
+	<?php include '../../components/responsive-nav.php';?>
 	<div class="top-nav col-md-12">
 		<?php include '../../components/top-nav.php';?>
 	</div>	
@@ -170,6 +176,7 @@
 </div>
 
 <script src="app2.js"></script>
+<script src="../../js/jquery.accessibleGrid-0.09.js"></script>
 
 </body>
 </html>

@@ -29,6 +29,7 @@
 <body>
 
 <div id="header" class="col-md-10 col-md-offset-1">
+	<?php include '../../components/responsive-nav.php';?>
 	<div class="top-nav col-md-12">
 		<?php include '../../components/top-nav.php';?>
 	</div>

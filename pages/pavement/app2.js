@@ -21,6 +21,7 @@ d3.queue()
 	.defer(d3.csv, "../../JSON/noninterstate_pavement_bins_2015.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateCities(results[0]);
+		CTPS.demoApp.generateAccessibleTable(results[0]);
 });
 
 d3.queue()
@@ -523,5 +524,37 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 
 		dataVizAll();
 	})
+}
+
+CTPS.demoApp.generateAccessibleTable = function(noninterstateBins){
+  var colDesc = [{
+    "dataIndex" : "TOWN",
+    "header" : "Town"
+  },{ 
+    "dataIndex" : "BIN_0",
+    "header" : "PSI values 0.0 to 2.5 (Poor)"
+  },{ 
+    "dataIndex" : "BIN_1",
+    "header" : "PSI values 2.5 to 3.0 ("
+  },{ 
+    "dataIndex" : "BIN_2",
+    "header" : "PSI values 3.0 to 3.5"
+  },{ 
+    "dataIndex" : "BIN_3",
+    "header" : "PSI values 3.5 to 4.0"
+  },{ 
+    "dataIndex" : "BIN_4",
+    "header" : "PSI values 4.0 to 5.0"
+  },{ 
+    "dataIndex" : "BIN_5",
+    "header" : "No Data"
+  }];
+
+  var options = {
+    "divId" : "nonInterstatePSIbinsTableDiv",
+    "caption": "Centerline Miles of Non-Interstate Pavement in Each PSI Range",
+  };
+
+  $("#accessibleTable").accessibleGrid(colDesc, options, noninterstateBins);
 }
 
