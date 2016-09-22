@@ -9,8 +9,8 @@ var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee0
 
 //Using the d3.queue.js library
 d3.queue()
-	.defer(d3.json, "../../JSON/boston_region_mpo_towns.topo.json")
-	.defer(d3.json, "../../JSON/CMP_2014_EXP_ROUTES.topojson")
+	.defer(d3.json, "../../data/json/boston_region_mpo_towns.topo.json")
+	.defer(d3.json, "../../data/json/CMP_2014_EXP_ROUTES.topojson")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
 		CTPS.demoApp.generateChart(results[1]);
@@ -106,7 +106,7 @@ CTPS.demoApp.generateChart = function(congestion) {
 
 	//axis label
 	amchartContainer.append("text")
-		.style("font-size", "14px")
+		.style("font-size", "1.0em")
 		.attr("x", "180px")
 		.attr("y", "45px")
 		.html("AM Speed Index");
@@ -329,7 +329,7 @@ pmchartContainer.selectAll(".labels")
 	pmchartContainer.append("text")
 	.attr("x", 75)
 	.attr("y", 45)
-	.style("font-size", "14px")
+	.style("font-size", "1.0em")
 	.style("text-align", "center")
 	.html("PM Speed Index");
 
@@ -503,12 +503,12 @@ CTPS.demoApp.generateTimes = function(interstateRoads) {
 
 	cumulativeTime.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 550)").style("stroke-width", "1px")
-		.style("font-size", "14px")
+		.style("font-size", "1.0em")
 		.call(xAxis);
 	
 	cumulativeTime.append("g").attr("class", "axis")
 		.attr("transform", "translate(50, 0)")
-		.style("font-size", "14px")
+		.style("font-size", "1.0em")
 		.call(yAxis); 
 
 	cumulativeTime.append("line")

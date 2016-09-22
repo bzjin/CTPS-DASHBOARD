@@ -46,7 +46,7 @@ h2 {
 
 #header p {
  font-weight: 300; 
-  font-size: 14px;
+  font-size: 1.0em;
 }
 
 h3, h4 { 
@@ -69,7 +69,7 @@ p > b {
   font-family: "Open Sans";
   font-weight: 700; 
   color: #ddd;
-  font-size: 14px;
+  font-size: 1.0em;
 }
 
 button { 
@@ -118,7 +118,7 @@ button:active, button:hover, button:focus,  {
   display: inline-block;
   padding-left: 10px;
   padding-right: 10px;
-  font-size: 14px;
+  font-size: 1.0em;
 }
 
 .top-nav li i { 

@@ -9,7 +9,7 @@ var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee0
 
 //Using the d3.queue.js library
 d3.queue()
-	.defer(d3.csv, "../../JSON/sidewalks_over_time.csv")
+	.defer(d3.csv, "../../data/csv/sidewalks_over_time.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateSidewalk(results[0]);
     CTPS.demoApp.generateAccessibleTable(results[0]);

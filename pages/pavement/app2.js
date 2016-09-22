@@ -18,14 +18,14 @@ var geoPath = d3.geoPath().projection(projection);
 
 //Using the d3.queue.js library
 d3.queue()
-	.defer(d3.csv, "../../JSON/noninterstate_pavement_bins_2015.csv")
+	.defer(d3.csv, "../../data/csv/noninterstate_pavement_bins_2015.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateCities(results[0]);
 		CTPS.demoApp.generateAccessibleTable(results[0]);
 });
 
 d3.queue()
-	.defer(d3.csv, "../../JSON/noninterstate_psi_avg_timeline_by_city.csv")
+	.defer(d3.csv, "../../data/csv/noninterstate_psi_avg_timeline_by_city.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateCityTimeline(results[0]);
 	}); 

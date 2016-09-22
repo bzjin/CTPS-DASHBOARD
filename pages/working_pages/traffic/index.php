@@ -7,28 +7,26 @@
 
 
 <!-- Font Awesome -->
-<script src="https://use.fontawesome.com/3b0ffee8ad.js"></script>
+<script src="../../libs/font-awesome.js"></script>
 <!-- D3 Library --> 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <!-- Tooltip -->
-<script src="../../js/d3-tip.js"></script>
+<script src="../../libs/d3-tip.js"></script>
 <!-- TopoJSON -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
+<script src="../../libs/topojson.min.js"></script>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700" rel="stylesheet">
+<link href="../../libs/google-fonts.css" rel="stylesheet">
 <!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="../../libs/jquery-2.2.4.min.js"></script>
 <!-- Bootstrap-->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="../../libs/bootstrap.min.js"></script>
+<link rel="stylesheet" href=libs/bootstrap.min.css>
 
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <style> 
 .axis line, .axis path { fill: none; stroke-width: 0; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 
-text {fill: #ddd; font-size: 14px;} 
+text {fill: #ddd; font-size: 1.0em;} 
 form {
   position: absolute;
   right: 10px;

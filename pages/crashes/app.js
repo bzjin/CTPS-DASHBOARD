@@ -14,8 +14,8 @@ var geoPath = d3.geoPath().projection(projection);
 
 //Using the d3.queue.js library
 d3.queue()
-	.defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
-	.defer(d3.csv, "../../json/nonmotorized_crashes.csv")
+	.defer(d3.json, "../../data/json/boston_region_mpo_towns.topo.json")
+	.defer(d3.csv, "../../data/csv/nonmotorized_crashes.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateMap(results[0],results[1]);
 		CTPS.demoApp.generatePlot(results[1]);

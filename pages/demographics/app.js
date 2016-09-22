@@ -14,7 +14,7 @@ var geoPath = d3.geoPath().projection(projection);
 
 //Using the d3.queue.js library
 d3.queue()
-  .defer(d3.json, "../../json/tract_census.topojson")
+  .defer(d3.json, "../../data/json/tract_census.topojson")
 
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap3(results[0]);

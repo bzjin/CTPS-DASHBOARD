@@ -19,7 +19,7 @@ var geoPath = d3.geoPath().projection(projection);
 	
 //Using the d3.queue.js library
 d3.queue()
-	.defer(d3.json, "json/boston_region_mpo_towns.topo.json")
+	.defer(d3.json, "data/json/boston_region_mpo_towns.topo.json")
 	.defer(d3.json, "js/arterials_summary.topojson")
 	.defer(d3.csv, 	"js/front_page_summaries.csv")
 	.defer(d3.json, "js/pavement_summary.json")

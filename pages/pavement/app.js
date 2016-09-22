@@ -19,15 +19,15 @@ var geoPath = d3.geoPath().projection(projection);
 
 //Using the d3.queue.js library
 d3.queue()
-	.defer(d3.csv, "../../JSON/interstate_pavement_2015.csv")
-	.defer(d3.csv, "../../JSON/townregion.csv")
-	.defer(d3.csv, "../../JSON/notable_exits_interstates.csv")
+	.defer(d3.csv, "../../data/csv/interstate_pavement_2015.csv")
+	.defer(d3.csv, "../../data/csv/townregion.csv")
+	.defer(d3.csv, "../../data/csv/notable_exits_interstates.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateChart(results[0], results[1], results[2]); //Route Coordinate Map
 	}); 
 
 d3.queue()
-	.defer(d3.csv, "../../JSON/psi_timeline.csv")
+	.defer(d3.csv, "../../data/csv/psi_timeline.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateTimeline(results[0]); //Line chart
 	}); 
@@ -74,7 +74,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	
 	chartContainer.append("g").attr("class", "yaxis")
 		.attr("transform", "translate(40, 0)")
-		.style("font-size", "14px")
+		.style("font-size", "1.0em")
 		.call(yAxis);
 
 	chartContainer.append("g").attr("class", "yaxis")

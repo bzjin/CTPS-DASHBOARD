@@ -11,14 +11,14 @@ div h3 {
 }
 
 #header h1 {
-  font-size: 72px;
+  font-size: 4.5em;
   font-weight: 700;
   font-family: "Raleway";
   text-transform: uppercase;
 }
 
 #header h3 {
-  font-size: 24px;
+  font-size: 1.75em;
   font-weight: 700;
   font-family: "Raleway";
   padding-bottom: -20px;
@@ -36,7 +36,7 @@ div h3 {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
+    font-size: 1.0em;
     font-weight: 300;
 }
 
@@ -86,7 +86,7 @@ button {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1.125em;
 }
 
 .timeline { 
@@ -97,7 +97,7 @@ button {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1.125em;
 }
 
 

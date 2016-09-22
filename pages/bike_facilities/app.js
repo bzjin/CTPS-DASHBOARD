@@ -30,9 +30,9 @@ var colorScaleBars2 = d3.scaleLinear()
 
 //Using the d3.queue.js library
 d3.queue()
-  .defer(d3.json, "../../json/boston_region_mpo_towns.topo.json")
+  .defer(d3.json, "../../data/json/boston_region_mpo_towns.topo.json")
   //.defer(d3.json, "../../json/mpo_existing_bike_facilities_2016.topojson")
-  .defer(d3.csv, "../../json/bike_facilities_by_town.csv")
+  .defer(d3.csv, "../../data/csv/bike_facilities_by_town.csv")
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0],results[1]);
     CTPS.demoApp.generatePlot(results[1]);
