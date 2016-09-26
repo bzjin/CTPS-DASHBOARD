@@ -1,0 +1,87 @@
+div {
+  color: #fff;
+  float: left;
+}
+
+div h3 {
+  font-weight: 700;
+  font-family: "Raleway";
+}
+
+#header h1 {
+  font-size: 4.5em;
+  font-weight: 700;
+  font-family: "Raleway";
+  text-transform: uppercase;
+}
+
+#header h3 {
+  font-size: 1.75em;
+  font-weight: 700;
+  font-family: "Raleway";
+  padding-bottom: -20px;
+}
+
+#citygradients { 
+  position: relative;
+  height: 60vh;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-weight: 100;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+.subregion { 
+  fill: #e0e0e0;
+    stroke: #fff;
+    stroke-width: 1px;
+}
+
+.subregion:hover {
+    fill: #666;
+}
+
+.townpicker { 
+    clear: both;
+    border: 0px;
+    color: white;
+    font-weight: 300;
+    text-align: left;
+    margin: 3px 1px 3px 1px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.townpicker:hover, .townpicker:focus, .townpicker:active { 
+    outline:none;
+    font-weight: 700;
+    color: #e26a6a;
+    border-bottom: dotted 1px white;
+
+}
+
+.third, .cont { 
+  padding: 0px !important;
+ }
+
+.badCond { 
+  color: #ff6347;
+}
+.goodCond { 
+ color: #26a65b; 
+}
+
+.weeny { 
+  font-size: 35%;
+}
+
+i { 
+  vertical-align: center;
+}

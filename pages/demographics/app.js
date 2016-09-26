@@ -443,35 +443,35 @@ var geoPath = d3.geoPath().projection(projection);
     svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 7)
-      .text("10% households");
+      .text("10% population");
     svgContainer2.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", .4)
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
-      .text("20% households");
+      .text("20% population");
     svgContainer2.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", .6)
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
-      .text("30% households");
+      .text("30% population");
     svgContainer2.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", .8)
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
-      .text("40% households");
+      .text("40% population");
     svgContainer2.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", 1)
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer2.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .text("50% households");
+      .text("50% population");
     }
 }
 
