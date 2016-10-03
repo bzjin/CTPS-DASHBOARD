@@ -256,7 +256,7 @@ CTPS.demoApp.generateVMTVHT = function(emissions) {
 			.style("text-anchor", "middle").style("font-weight", 700).style("font-size", 16)
 			.text("VMT")
 
-	chart.append("g").attr("class", "xaxis")
+	chart.append("g").attr("class", "xaxis towns")
 		.attr("transform", "translate(20, 555)")
 		.call(xAxis)
 			.selectAll("text").style("font-size", "12px").style("text-anchor", "end").attr("transform", "rotate(-45)");
@@ -323,6 +323,50 @@ CTPS.demoApp.generateVMTVHT = function(emissions) {
 	      .style("fill", colorTime[3]).style("stroke-width", 0)
 	 } //end makeBars
 
+	d3.selectAll("#alphabetize").on("click", function(){
+	  emissions.sort(function(a, b) { 
+	    var nameA = a.TOWN;
+	    var nameB = b.TOWN;
+	    if (nameA < nameB) { return -1}
+	    if (nameA > nameB) { return 1 }
+	    return 0; 
+	  })
+
+	  var towns = [];
+	  emissions.forEach(function(i){ towns.push(i.TOWN)});
+
+	  xScale = d3.scalePoint().domain(towns).range([50, w-50]);
+	  xAxis = d3.axisBottom(xScale);
+	  chart.select(".towns").transition()
+				.duration(750)
+                .call(xAxis);
+
+	  d3.selectAll("#VMTVHT .rectangle").remove();
+	  makeBars("VMT", tag);
+	})
+
+	d3.selectAll("#byAverages").on("click", function(){
+	  emissions.sort(function(a, b) { 
+	    var nameA = +a["VMT_" + tag + "_AM"];
+	    var nameB = +b["VMT_" + tag + "_AM"];
+	    if (nameA < nameB) { return -1}
+	    if (nameA > nameB) { return 1 }
+	    return 0; 
+	  })
+
+	  var towns = [];
+	  emissions.forEach(function(i){ towns.push(i.TOWN)});
+
+	  xScale = d3.scalePoint().domain(towns).range([50, w-50]);
+	  xAxis = d3.axisBottom(xScale);
+	  chart.select(".towns").transition()
+				.duration(750)
+                .call(xAxis);
+
+	  d3.selectAll("#VMTVHT .rectangle").remove();
+	  makeBars("VMT", tag);
+	})
+
 	d3.selectAll("#bySOV").on("click", function(){
 			yScale = d3.scaleLinear().domain([0, 400000]).range([550, 80]);
 			yScaleH = d3.scaleLinear().domain([0, 400000]).range([0, 470]);
@@ -377,27 +421,5 @@ CTPS.demoApp.generateVMTVHT = function(emissions) {
 
 	})
 
-	d3.select("#alphabetize").on("click", function(){
-      d3.selectAll("#VMTVHT .rectangle").remove();
-	  emissions.sort(function(a, b) { 
-	    var nameA = a.TOWN;
-	    var nameB = b.TOWN;
-	    if (nameA < nameB) { return -1}
-	    if (nameA > nameB) { return 1 }
-	    return 0; 
-	  })
-	  makeBars("VMT", tag);
-	})
 
-	d3.select("#byAverages").on("click", function(){
-	  d3.selectAll(".plots2").remove();
-	  emissions.sort(function(a, b) { 
-	    var nameA = +a["VMT_" + tag + "_AM"];
-	    var nameB = +b["VMT_" + tag + "_AM"];
-	    if (nameA < nameB) { return -1}
-	    if (nameA > nameB) { return 1 }
-	    return 0; 
-	  })
-	  makeBars("VMT", tag);
-	})
 }
