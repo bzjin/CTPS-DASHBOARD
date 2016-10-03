@@ -50,7 +50,7 @@
 
 <div class="col-md-3 cont">
 	<div class="col-md-4 third">
-		<button class='ALL townpicker' autofocus><i class="fa fa-map-marker" aria-hidden="true"></i> All </button><br>
+		<button class='ALL townpicker' autofocus><i class="fa fa-map-marker" aria-hidden="true"></i> All </button>
 		<button class='ACTON townpicker'><i class='fa fa-map-marker' aria-hidden='true'></i> Acton</button>
 		 <button class='ARLINGTON townpicker'><i class='fa fa-map-marker' aria-hidden='true'></i> Arlington</button>
 		 <button class='ASHLAND townpicker'><i class='fa fa-map-marker' aria-hidden='true'></i> Ashland</button>

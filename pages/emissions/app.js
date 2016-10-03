@@ -28,10 +28,17 @@ d3.queue()
 	}); 
 
 CTPS.demoApp.generateEmissions = function(emissions) {
-	generateLineGraph("VOC", "BOSTON");
-	generateLineGraph("NOX", "BOSTON");
-	generateLineGraph("CO", "BOSTON");
-	generateLineGraph("CO2", "BOSTON");
+	
+	var towns = [];
+	emissions.forEach(function(i){
+		i.TOWN = i.TOWN.replace(/\w\S*/g, function(txt){ return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()});
+		towns.push(i.TOWN);
+	})
+
+	generateLineGraph("VOC", "Boston");
+	generateLineGraph("NOX", "Boston");
+	generateLineGraph("CO", "Boston");
+	generateLineGraph("CO2", "Boston");
 
 	function generateLineGraph(emittant, city) {
 
@@ -47,11 +54,8 @@ CTPS.demoApp.generateEmissions = function(emissions) {
 			.append("circle")
 				.attr("class", function(d) { return d.TOWN;})
 
-		var towns = [];
 
 		emissions.forEach(function(i){
-		    towns.push(i.TOWN);
-
 			var VOC_SOV_array = [];
 		    VOC_SOV_array.push(
 		    	{ "time": "AM",
@@ -195,14 +199,15 @@ d3.selectAll(".townpicker").on("click", function(){
 		var mystring = this.getAttribute("class");
 		var arr = mystring.split(" ", 2);
 		var firstWord = arr[0]; 
+		firstWord = firstWord.replace(/\w\S*/g, function(txt){ return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()});
 
-		if (firstWord == "ALL") { 
+		if (firstWord == "All") { 
 			d3.selectAll(".emissions svg").remove();
 
-			generateLineGraph("VOC", "BOSTON");
-			generateLineGraph("NOX", "BOSTON");
-			generateLineGraph("CO", "BOSTON");
-			generateLineGraph("CO2", "BOSTON");
+			generateLineGraph("VOC", "Boston");
+			generateLineGraph("NOX", "Boston");
+			generateLineGraph("CO", "Boston");
+			generateLineGraph("CO2", "Boston");
 
 			d3.selectAll(".area")
 				.style("opacity", 1)

@@ -92,6 +92,7 @@ div h3 {
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
+    width: 100%;
 }
 
 .townpicker:hover, .townpicker:focus, .townpicker:active { 
@@ -100,6 +101,13 @@ div h3 {
     color: #e26a6a;
     border-bottom: dotted 1px white;
 
+}
+
+@media (max-width:992px) {
+/* Desktop styling buttons */
+  .townpicker { 
+      width: 20%;
+  }
 }
 
 .third, .cont { 

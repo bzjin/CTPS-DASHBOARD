@@ -31,14 +31,19 @@ var colorScaleBars2 = d3.scaleLinear()
 //Using the d3.queue.js library
 d3.queue()
   .defer(d3.json, "../../data/json/boston_region_mpo_towns.topo.json")
-  //.defer(d3.json, "../../json/mpo_existing_bike_facilities_2016.topojson")
   .defer(d3.csv, "../../data/csv/bike_facilities_by_town.csv")
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0],results[1]);
     CTPS.demoApp.generatePlot(results[1]);
+    CTPS.demoApp.generateAccessibleTable(results[1]);
+  }); 
+
+d3.queue()
+  .defer(d3.json, "../../data/json/boston_region_mpo_towns.topo.json")
+  .defer(d3.csv, "../../data/csv/off_road_bike_facilities_by_town.csv")
+  .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap2(results[0],results[1]);
     CTPS.demoApp.generatePlot2(results[1]);
-    CTPS.demoApp.generateAccessibleTable(results[1]);
   }); 
 
 ////////////////* GENERATE MAP *////////////////////
@@ -332,13 +337,10 @@ CTPS.demoApp.generateMap2 = function(mpoTowns, bikeData) {
     .attr('class', 'd3-tip')
     .offset([90, 0])
     .html(function(d) {
-      var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      var percent_onroad = findIndex(capTown, "PERCENT_OFFROAD") * 100;
-      var percent_offroad = findIndex(capTown, "PERCENT_OFFROAD") * 100;
-      var miles_OFFROAD = findIndex(capTown, "TOTAL_OFFROAD");
-      var miles_offroad = findIndex(capTown, "TOTAL_OFFROAD");
-
-      return "<p>" + capTown + "</p>" + e(percent_OFFROAD) + "% On-Road (" + miles_OFFROAD + " Miles)<br>" + e(percent_offroad) + "% Off-Road (" + miles_offroad + " Miles)" ;
+      var existing = findIndex(d.TOWN, "PERCENT_OFFROAD") * 100;
+      var constructing = findIndex(d.TOWN, "PERCENT_OFFROAD") * 100;
+      var projected = findIndex(d.TOWN, "TOTAL_OFFROAD") * 100;
+      return "<p>" + d.TOWN + "</p>" + e(percent_OFFROAD) + "% On-Road (" + miles_OFFROAD + " Miles)<br>" + e(percent_offroad) + "% Off-Road (" + miles_offroad + " Miles)" ;
     })
 
   var svgContainer = d3.select("#map2").append("svg")
