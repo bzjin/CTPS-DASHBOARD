@@ -22,7 +22,7 @@
 <script src="../../libs/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../../libs/bootstrap.min.css">
 <style> .axis line, .axis path { fill: none; opacity: .2; stroke: #ddd; shape-rendering: crispEdges;} 
- text {fill: white;} .tick line, .tick path {stroke-width: 1px; opacity: .3;}
+ text {fill: white;} .tick line, .tick path {stroke-width: 1px; opacity: .3;} .xaxis path, .xaxis line { stroke-width: 0; }
 </style> 
 </style> 
 </head>
@@ -37,7 +37,13 @@
 <h1>Air Quality</h1>
 <h3>Vehicle Miles Travelled Throughout the Day</h3>
 <p> The following graph presents how many miles are travelled by vehicles every day, where "AM" is the period between 6 and 9 AM, "MD" is the period between 9 AM and 3PM, "PM" is the period between 3 and 6 PM, and "NT" is the period between 6 PM and 6 AM.</p>
-<div class="col-md-12" id="VMTVHT"></div>
+<button class="bigbutton col-md-6" id="alphabetize" alt="Sort towns by alphabetical order">Sort by Alphabetical Order</button>
+<button class="bigbutton col-md-6" id="byAverages" alt="Sort towns by ascending VMT">Sort by Aggregate Vehicle Mile Hours</button>
+<button class="bigbutton col-md-4" id="bySOV" alt="Show VMT for single occupancy vehicles" autofocus>Show VMT for SOV</button>
+<button class="bigbutton col-md-4" id="byHOV" alt="Show VMT for high occupancy vehicles">Show VMT for HOV</button>
+<button class="bigbutton col-md-4" id="byTRK" alt="Show trucks">Show VMT for trucks</button>
+
+<div id="VMTVHT"></div>
 
 <h3>Emissions Throughout the Day</h3>
 <p> How do all of these vehicles affect our air quality? The following graphs present vehicle emissions throughout the day, where "AM" is the period between 6 and 9 AM, "MD" is the period between 9 AM and 3PM, "PM" is the period between 3 and 6 PM, and "NT" is the period between 6 PM and 6 AM.</p>
@@ -132,10 +138,10 @@
 	</div>
 </div>
 <div class="col-md-9">
-	<div id="emissionsVOC" class="col-md-3"></div>
-	<div id="emissionsNOX" class="col-md-3"></div>
-	<div id="emissionsCO" class="col-md-3"></div>
-	<div id="emissionsCO2" class="col-md-3"></div>
+	<div id="emissionsVOC" class="col-md-3 emissions"></div>
+	<div id="emissionsNOX" class="col-md-3 emissions"></div>
+	<div id="emissionsCO" class="col-md-3 emissions"></div>
+	<div id="emissionsCO2" class="col-md-3 emissions"></div>
 </div>
 
 

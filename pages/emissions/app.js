@@ -197,7 +197,7 @@ d3.selectAll(".townpicker").on("click", function(){
 		var firstWord = arr[0]; 
 
 		if (firstWord == "ALL") { 
-			d3.selectAll("svg").remove();
+			d3.selectAll(".emissions svg").remove();
 
 			generateLineGraph("VOC", "BOSTON");
 			generateLineGraph("NOX", "BOSTON");
@@ -209,7 +209,7 @@ d3.selectAll(".townpicker").on("click", function(){
 				.style("fill-opacity", 0)
 			 	.style("stroke-width", .5)
 		} else {
-			d3.selectAll("svg").remove();
+			d3.selectAll(".emissions svg").remove();
 
 			generateLineGraph("VOC", firstWord);
 			generateLineGraph("NOX", firstWord);
@@ -224,44 +224,46 @@ d3.selectAll(".townpicker").on("click", function(){
 				.style("fill-opacity", .2)
 		}
 }) //end click function
-	}
+
+} //end generateEmissions
 
 CTPS.demoApp.generateVMTVHT = function(emissions) {
 	var chart = d3.select("#VMTVHT").append("svg")
-		    .attr("width", "100%")
+		    .attr("width", 3000)
 		    .attr("height", 650)
+		    .style("overflow", "scroll !important")
 
-    var w = $("#VMTVHT").width();
-	generateLineGraph("VMT", "AM");
-
-	function generateLineGraph(emittant, datatime) {
+    var w = 3000;
 
 	var towns = [];
 	emissions.forEach(function(i){
+		i.TOWN = i.TOWN.replace(/\w\S*/g, function(txt){ return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()});
 		towns.push(i.TOWN);
 	})
 
 
-	var xScale = d3.scalePoint().domain(towns).range([50, w - 10]);
-	var yScale = d3.scaleLinear().domain([0, 300000]).range([600, 80]);
+	var xScale = d3.scalePoint().domain(towns).range([50, w-50]);
+	yScale = d3.scaleLinear().domain([0, 400000]).range([550, 80]);
+	yScaleH = d3.scaleLinear().domain([0, 400000]).range([0, 470]);
 
 	var xAxis = d3.axisBottom(xScale);
-	var yAxis = d3.axisLeft(yScale).tickSize(-(w-60), 0, 0).tickFormat(function(g){
+	yAxis = d3.axisLeft(yScale).tickSize(-(w-100), 0, 0).tickFormat(function(g){
 		        if(Math.floor(g) != g)
-		        { return; } else { return g; }});;
+		        { return; } else { return g; }});
 
 	chart.append("text")
-			.attr("x", w/2).attr("y", 20)
+			.attr("x", 575).attr("y", 20)
 			.style("text-anchor", "middle").style("font-weight", 700).style("font-size", 16)
-			.text(emittant)
+			.text("VMT")
 
-	chart.append("g").attr("class", "axis")
-		.attr("transform", "translate(0, 600)")
-		.call(xAxis).selectAll("text").style("font-size", "12px").style("text-anchor", "end");
+	chart.append("g").attr("class", "xaxis")
+		.attr("transform", "translate(20, 555)")
+		.call(xAxis)
+			.selectAll("text").style("font-size", "12px").style("text-anchor", "end").attr("transform", "rotate(-45)");
 	
-	chart.append("g").attr("class", "axis")
-		.attr("transform", "translate(50, 0)")
-		.call(yAxis).selectAll("text").style("font-size", "12px")
+	chart.append("g").attr("class", "axis yaxis")
+		.attr("transform", "translate(60, 0)")
+		.call(yAxis).selectAll("text").style("font-size", "12px").attr("transform", "translate(-10,0)");
 
 	var VOC_line = d3.area()
 		.curve(d3.curveBasis)
@@ -269,45 +271,133 @@ CTPS.demoApp.generateVMTVHT = function(emissions) {
 	    .y1(function(i) { if (!isNaN(yScale(i.stat))) { return yScale(i.stat) }})
 	    .y0(yScale(0))
 
-	/*var tip = d3.tip()
-	    .attr('class', 'd3-tip')
-	    .offset([0, 10])
-	    .html(function(d) {
-	      return d.town + "<br>" + d.year + "<br>Sidewalk Miles: " + d.sidewalk_miles + "<br>Centerline Miles: " + d.center_line_miles;
-	    })*/
-	//chart.call(tip); 
-	  chart.selectAll(".VMT_SOV")
+	var colorTime = ["#edf8b1","#7fcdbb","#1d91c0","#253494"]
+	var bW = 4; 
+	var sP = 15; 
+
+	makeBars("VMT", "SOV");
+	tag = "SOV";
+	function makeBars(emittant, vehicle){
+	chart.selectAll(".VMT_AM")
 	    .data(emissions)
 	    .enter()
-	    .append("circle")
-	      .attr("class", function(d) { return d.TOWN + " circle"})
-	      .attr("cx", function(d) { return xScale(d.TOWN);})
-	      .attr("cy", function(d) { return yScale(d[emittant + "_SOV_" + datatime])})
-	      .attr("r", 5)
-	      .style("fill", "white").style("stroke", "white").style("stroke-width", .5)
-	      .style("fill-opacity", .01)
+	    .append("rect")
+	      .attr("class", function(d) { return d.TOWN + " rectangle"})
+	      .attr("x", function(d) { return xScale(d.TOWN) + sP;})
+	      .attr("y", function(d) { return yScale(d[emittant + "_" + vehicle + "_AM"])})
+	      .attr("width", bW)
+	      .attr("height", function(d) { return yScaleH(d[emittant + "_" + vehicle + "_AM"])})
+	      .style("fill", colorTime[0]).style("stroke-width", 0)
 
-	chart.selectAll(".VMT_HOV")
+	chart.selectAll(".VMT_MD")
 	    .data(emissions)
 	    .enter()
-	    .append("circle")
-	      .attr("class", function(d) { return d.TOWN + " circle"})
-	      .attr("cx", function(d) { return xScale(d.TOWN);})
-	      .attr("cy", function(d) { return yScale(d[emittant + "_HOV_" + datatime])})
-	      .attr("r", 5)
-	      .style("fill", "yellow").style("stroke", "yellow").style("stroke-width", .5)
-	      .style("fill-opacity", .01)
+	    .append("rect")
+	      .attr("class", function(d) { return d.TOWN + " rectangle"})
+	      .attr("x", function(d) { return xScale(d.TOWN) + sP + bW;})
+	      .attr("y", function(d) { return yScale(d[emittant + "_" + vehicle + "_MD"])})
+	      .attr("width", bW)
+	      .attr("height", function(d) { return yScaleH(d[emittant + "_" + vehicle + "_MD"])})
+	      .style("fill", colorTime[1]).style("stroke-width", 0)
 
-	chart.selectAll(".VMT_TRK")
+	chart.selectAll(".VMT_PM")
 	    .data(emissions)
 	    .enter()
-	    .append("circle")
-	      .attr("class", function(d) { return d.TOWN + " circle"})
-	      .attr("cx", function(d) { return xScale(d.TOWN);})
-	      .attr("cy", function(d) { return yScale(d[emittant + "_TRK_" + datatime])})
-	      .attr("r", 5)
-	      .style("fill", "pink").style("stroke", "pink").style("stroke-width", .5)
-	      .style("fill-opacity", .01)
+	    .append("rect")
+	      .attr("class", function(d) { return d.TOWN + " rectangle"})
+	      .attr("x", function(d) { return xScale(d.TOWN) + sP + (2 * bW);})
+	      .attr("y", function(d) { return yScale(d[emittant + "_" + vehicle + "_PM"])})
+	      .attr("width", bW)
+	      .attr("height", function(d) { return yScaleH(d[emittant + "_" + vehicle + "_PM"])})
+	      .style("fill", colorTime[2]).style("stroke-width", 0)
 
-}
+	chart.selectAll(".VMT_NT")
+	    .data(emissions)
+	    .enter()
+	    .append("rect")
+	      .attr("class", function(d) { return d.TOWN + " rectangle"})
+	      .attr("x", function(d) { return xScale(d.TOWN) + sP + (3 * bW);})
+	      .attr("y", function(d) { return yScale(d[emittant + "_" + vehicle + "_NT"])})
+	      .attr("width", bW)
+	      .attr("height", function(d) { return yScaleH(d[emittant + "_" + vehicle + "_NT"])})
+	      .style("fill", colorTime[3]).style("stroke-width", 0)
+	 } //end makeBars
+
+	d3.selectAll("#bySOV").on("click", function(){
+			yScale = d3.scaleLinear().domain([0, 400000]).range([550, 80]);
+			yScaleH = d3.scaleLinear().domain([0, 400000]).range([0, 470]);
+
+			yAxis = d3.axisLeft(yScale).tickSize(-(w-100), 0, 0).tickFormat(function(g){
+		        if(Math.floor(g) != g)
+		        { return; } else { return g; }});
+
+			chart.select(".yaxis").transition()
+				.duration(750)
+                .call(yAxis);
+
+            d3.selectAll("#VMTVHT .rectangle").remove();
+			makeBars("VMT", "SOV");
+			tag = "SOV"
+
+	})
+
+	d3.selectAll("#byHOV").on("click", function(){
+			yScale = d3.scaleLinear().domain([0, 130000]).range([550, 80]);
+			yScaleH = d3.scaleLinear().domain([0, 130000]).range([0, 470]);
+
+			yAxis = d3.axisLeft(yScale).tickSize(-(w-100), 0, 0).tickFormat(function(g){
+		        if(Math.floor(g) != g)
+		        { return; } else { return g; }});
+
+			chart.select(".yaxis").transition()
+				.duration(750)
+                .call(yAxis);
+
+            d3.selectAll("#VMTVHT .rectangle").remove();
+			makeBars("VMT", "HOV");
+			tag = "HOV";
+
+	})
+
+	d3.selectAll("#byTRK").on("click", function(){
+			yScale = d3.scaleLinear().domain([0, 150000]).range([550, 80]);
+			yScaleH = d3.scaleLinear().domain([0, 150000]).range([0, 470]);
+
+			yAxis = d3.axisLeft(yScale).tickSize(-(w-100), 0, 0).tickFormat(function(g){
+		        if(Math.floor(g) != g)
+		        { return; } else { return g; }});
+
+			chart.select(".yaxis").transition()
+				.duration(750)
+                .call(yAxis);
+
+            d3.selectAll("#VMTVHT .rectangle").remove();
+			makeBars("VMT", "TRK");
+			tag = "TRK";
+
+	})
+
+	d3.select("#alphabetize").on("click", function(){
+      d3.selectAll("#VMTVHT .rectangle").remove();
+	  emissions.sort(function(a, b) { 
+	    var nameA = a.TOWN;
+	    var nameB = b.TOWN;
+	    if (nameA < nameB) { return -1}
+	    if (nameA > nameB) { return 1 }
+	    return 0; 
+	  })
+	  makeBars("VMT", tag);
+	})
+
+	d3.select("#byAverages").on("click", function(){
+	  d3.selectAll(".plots2").remove();
+	  emissions.sort(function(a, b) { 
+	    var nameA = +a["VMT_" + tag + "_AM"];
+	    var nameB = +b["VMT_" + tag + "_AM"];
+	    if (nameA < nameB) { return -1}
+	    if (nameA > nameB) { return 1 }
+	    return 0; 
+	  })
+	  makeBars("VMT", tag);
+	})
 }

@@ -22,9 +22,44 @@ div h3 {
   padding-bottom: -20px;
 }
 
-#citygradients { 
-  position: relative;
-  height: 60vh;
+#VMTVHT { 
+  width: 1150px !important;
+  overflow-x: scroll;
+  margin-bottom: 40px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, .2); 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, .2); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+
+.bigbutton {
+    border: .5px dotted white;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.0em;
+    font-weight: 300;
+}
+
+.bigbutton:hover, .bigbutton:active, .bigbutton:focus {
+    background-color: rgba(255, 255, 255, .1);
+    font-weight: 700;
+    outline:none;
 }
 
 .d3-tip {
