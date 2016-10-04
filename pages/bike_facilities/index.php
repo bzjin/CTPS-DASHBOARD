@@ -75,8 +75,8 @@ text {
 
 	<h3> Off-Road Bike Facilities </h3>
 	<button class="bigbutton col-md-4" id="alphabetize2" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
-	<button class="bigbutton col-md-4" id="byAverages2" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Off-Road Miles to Sq. Miles Ratio</button>
-	<button class="bigbutton col-md-4" id="byNumber2" alt="Sort towns by ascending off-road miles">Sort by Off-Road Miles</button>
+	<button class="bigbutton col-md-4" id="byPercent" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Percent Existing Off-Road Miles </button>
+	<button class="bigbutton col-md-4" id="byCount" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Number Existing Off-Road Miles </button>
 	<div class="col-md-4" id="map2"></div>
 	<div class="col-md-8" id="facilities2"></div>
 	</div>
