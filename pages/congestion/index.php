@@ -9,7 +9,7 @@
 <!-- Font Awesome -->
 <script src="../../libs/font-awesome.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="../../libs/d3.v4.min.js"></script>
 
 <!-- Tooltip -->
 <script src="../../libs/d3-tip.js"></script>
@@ -39,18 +39,12 @@
 	Catalogue. You can download the spreadsheet after following this link: <a href="http://www.ctps.org/datacatalog_share/content/express-highway-performance-data-2012"> Expressway Congestion Spreadsheet </a> </p>
 </div>
 
-<div id="header" class="col-md-10 col-md-offset-1">
-	<?php include '../../components/responsive-nav.php';?>
 <div class="top-nav col-md-12">
-	<?php include '../../components/top-nav.php';?>
-</div>
+		<?php include '../../components/top-nav.php';?>
+	</div> 
+<div id="header" class="col-md-10 col-md-offset-1">
 	
-	<h1>Congestion</h1>
-
-	<h3 class="inner-nav col-md-12">
-		<a href="#" title="Go to express highways congestion"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Express Highways</a>
-		<a href="index2.php" title="Go to arterial routes congestion"><i class="fa fa-circle-o" aria-hidden="true"></i>Arterial Routes</a>
-	</h3>	
+	<h1>Congestion</h1>	
 
 	<p> One of the main ways congestion is measured is by speed index, which is a ratio giving the average, observed speed of travel during congestion hours to the posted speed limit.</p>
 	<p> Speed Index = (Observed speed during AM/PM congested hours) / (Posted speed limit) </p>

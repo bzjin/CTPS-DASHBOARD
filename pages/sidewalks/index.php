@@ -9,7 +9,7 @@
 <!-- Font Awesome -->
 <script src="../../libs/font-awesome.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="../../libs/d3.v4.min.js"></script>
 <!-- Tooltip -->
 <script src="../../libs/d3-tip.js"></script>
 <!-- TopoJSON -->
@@ -32,11 +32,11 @@
 	<p> The following table is readable only to screen readers. </p>
 </div>
 
-<div id="header" class="col-md-10 col-md-offset-1">
-	<?php include '../../components/responsive-nav.php';?>
 	<div class="top-nav col-md-12">
 		<?php include '../../components/top-nav.php';?>
-	</div>
+	</div> 
+<div id="header" class="col-md-10 col-md-offset-1">
+	
 
 	<h1>Sidewalks</h1>
 	<p> Walking is the basic form of transportation for most people. For those who are able, every trip, even by car, begins and ends with walking. Many people do not have access to cars or even bicycles and rely upon walking to get to school, work, doctor’s appointments, the grocery store, and other important destinations. In areas with public transit, people must walk to, between and from transit stops. Those unable to walk unassisted require pedestrian infrastructure that is suited to their mobility needs. Fortunately, well-designed sidewalks accommodate all types of pedestrians. 

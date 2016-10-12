@@ -9,7 +9,7 @@
 <!-- Font Awesome -->
 <script src="../../libs/font-awesome.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="../../libs/d3.v4.min.js"></script>
 <!-- Tooltip -->
 <script src="../../libs/d3-tip.js"></script>
 <!-- TopoJSON -->
@@ -31,21 +31,13 @@
 
 <body>
 
-<div id="header" class="col-md-10 col-md-offset-1">
-	<?php include '../../components/responsive-nav.php';?>
-
 	<div class="top-nav col-md-12">
 		<?php include '../../components/top-nav.php';?>
-	</div>
+	</div> 
+<div id="header" class="col-md-10 col-md-offset-1">
 
 	<h1>Pavement Condition</h1>
 
-	<h3 class="inner-nav col-md-12">
-		<a href="#" title="Go to interstate pavement condition"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-	Interstate Roads</a>
-		<a href="index2.php" title="go to noninterstate pavement condition"><i class="fa fa-circle-o" aria-hidden="true"></i> Non-Interstate Roads</a>
-	</h3>	
-	
 	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. The MPO invests in regular roadway maintenance to extend pavement life, keeping rides smooth and users safe while saving public tax dollars. 
 		We measure pavement condition using the Present Serviceability Index (PSI), a measure of an road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
 	</p>

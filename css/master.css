@@ -4,6 +4,7 @@
   font-weight: 700; 
   margin: 0;
   padding:0;
+  border-color: none !important;
 }
 
 html{ 
@@ -29,9 +30,6 @@ h1 {
 h2 {
   font-weight: 700; 
   font-size: 20px;
-}
-#header h1 {
-  padding-top: 50px;
 }
 
 #header h2 {
@@ -105,34 +103,20 @@ button:active, button:hover, button:focus,  {
 }
 
 .top-nav { 
-  position: fixed !important;
-  z-index: 9999;
-  padding-top: 10px;
-  width: 100%;
-  text-align: left;
-  text-transform: uppercase;
-}
+  text-align: center;
+  background-color: none !important;
+  padding-top: 20px !important;
+  margin: 0px !important;
 
-.top-nav li  { 
-  list-style: none;
-  display: inline-block;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 1.0em;
-}
-
-.top-nav li i { 
-  padding-right: 10px;
 }
 
 .top-nav a  { 
   color: white;
-  opacity: .5;
+  opacity: 1;
 }
 
 .top-nav a:hover, .top-nav a:focus, .top-nav a:active, .top-nav a.active  { 
   text-decoration: none;
-  color: white;
   opacity: .8;
   font-weight: 700;
   border-bottom: 2px dotted white;
@@ -196,64 +180,8 @@ button:active, button:hover, button:focus,  {
   overflow:hidden;
 }
 
-.inner-nav { 
-  text-align: left;
+.navbar-default {
+    background-color: none !important;
+    border-color: none !important;
 }
 
-.inner-nav i { 
-  padding-right: 20px;
- }
-
-.inner-nav a { 
-  color: white;
-  opacity: .5;
-  padding-right: 20px;
-}
-
-.inner-nav a:hover,  .inner-nav a:focus   .inner-nav a:active{ 
-  color: #e26a6a;
-  opacity: 1;
-  text-decoration: none;
-}
-
-@media screen and (min-width: 768px) {
- .navbar-custom {
-    display: none;
-  }
-
-}
-
-@media screen and (max-width: 768px) {
-/* Hide desktop navigation for mobile PHONE (small) screens */ 
-  .top-nav{
-    display: none;
-  }
-
-  .icon-bar { 
-    background-color: white;
-    text-align: right;
-  }
-
-  .navbar-custom {
-    font-size: 18px;
-    float: right;
-  }
-
-  .navbar-custom .navbar-nav > li > a {
-    font-weight: 300;
-    color: #fff;
-    background-color: #212127;
-    width: 100%;
-    text-align:left;
-    padding-left: 40px;
-  }
-
-  .navbar-custom .navbar-nav > li > a:hover,
-  .navbar-custom .navbar-nav > li > a:focus {
-    background-color: black;
-  }
-
-  .navbar-collapse { 
-    width: 100vw;
-  }
-}

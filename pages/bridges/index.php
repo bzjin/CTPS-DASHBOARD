@@ -9,7 +9,7 @@
 <!-- Font Awesome -->
 <script src="../../libs/font-awesome.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="../../libs/d3.v4.min.js"></script>
 
 <!-- Tooltip -->
 <script src="../../libs/d3-tip.js"></script>
@@ -21,6 +21,7 @@
 <!-- Bootstrap-->
 <script src="../../libs/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../../libs/bootstrap.min.css">
+
 <style> .axis line, .axis path { fill: none; stroke-width: 1px; stroke: #ddd; shape-rendering: crispEdges;} 
  text {fill: white;} .tick line, .tick path {stroke-width: 1px; opacity: .3;}
 </style> 
@@ -28,11 +29,12 @@
 </head>
 
 <body>
-<div id="header" class="col-md-10 col-md-offset-1">
-	<?php include '../../components/responsive-nav.php';?>
+
 	<div class="top-nav col-md-12">
 		<?php include '../../components/top-nav.php';?>
-	</div>
+	</div> 
+<div id="header" class="col-md-10 col-md-offset-1">
+	
 
 <h1>Bridge Condition</h1>
 <p>The 2,866 bridges located in the Boston Region connect places and carry people traveling by automobile, bus, train, bicycle and foot. These bridges have aged faster than they have been replaced or repaired. MassDOT and the MBTA consider 154 bridges (5%) structurally deficient, meaning that one or more major components (deck, substructure, and superstructure) require attention. A backlog of maintenance and construction work has emerged.  

@@ -9,7 +9,7 @@
 <!-- Font Awesome -->
 <script src="../../libs/font-awesome.js"></script>
 <!-- D3 Library --> 
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="../../libs/d3.v4.min.js"></script>
 
 <!-- Tooltip -->
 <script src="../../libs/d3-tip.js"></script>
@@ -47,11 +47,12 @@ form {
 
 <body>
 
-<div id="header" class="col-md-10 col-md-offset-1">
-	<?php include '../../components/responsive-nav.php';?>
+<?php include '../../components/responsive-nav.php';?>
 	<div class="top-nav col-md-12">
 		<?php include '../../components/top-nav.php';?>
-	</div>
+	</div> 
+<div id="header" class="col-md-10 col-md-offset-1">
+	
 
 <h1>Funding</h1>
 <p> Each year, approximately 150 potential transportation infrastructure projects totaling more than one billion dollars are submitted to the Boston Region MPO for possible funding in the MPO’s rolling, five-year capital funding document. Intersection improvements, Complete Streets redesigns, bicycle and pedestrian connections, highway reconstruction, and transit maintenance and expansion projects all are eligible. The MPO selects which transportation infrastructure projects and strategies to fund during the next five years and publishes them in a Transportation Improvement Plan (TIP). 
