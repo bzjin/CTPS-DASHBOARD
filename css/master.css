@@ -1,3 +1,4 @@
+/* This stylesheet is applied to all pages. Many classes from Bootstrap are overridden here */
 * {
   font-family:"Raleway", sans-serif;
   color: #ddd; 
@@ -12,7 +13,7 @@ html{
 }
 
 body {
-  background-color: #191b1d; 
+  background-color: #191b1d !important; 
   margin: 0;
 }
 
@@ -25,6 +26,7 @@ div {
 h1 { 
   font-weight: 700; 
   font-size: 28px;
+  margin-top: 0px !important;
 }
 
 h2 {
@@ -103,9 +105,8 @@ button:active, button:hover, button:focus,  {
 }
 
 .top-nav { 
-  text-align: center;
   background-color: none !important;
-  padding-top: 20px !important;
+  padding: 0px !important;
   margin: 0px !important;
 
 }
@@ -184,4 +185,44 @@ button:active, button:hover, button:focus,  {
     background-color: none !important;
     border-color: none !important;
 }
+
+
+.navbar-brand { 
+  z-index: 9999;
+}
+
+.navbar-header { 
+  z-index: 9999;
+}
+
+button.navbar-toggle {
+  width: 10% !important;
+}
+
+#bs-example-navbar-collapse-2 { 
+  border-color: none !important;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: none !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: none !important;
+    border: none !important;
+    margin: 0px !important;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: rgba(0,0,0,0) !important;
+}
+
+.navbar-toggle { 
+  position: absolute !important;
+  right: 0px !important;
+  padding: 20px !important;
+  z-index: 9999;
+  overflow: visible;
+ }
+
 

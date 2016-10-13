@@ -2,8 +2,8 @@
 <head lang="en">
 <meta charset="utf-8">
 <title>Bike Facilities in the Boston MPO Region</title>
-<link rel="stylesheet" href="app.css"/>
 <link rel="stylesheet" href="../../css/master.css"/>
+<link rel="stylesheet" href="app.css"/>
 
 
 <!-- Font Awesome -->
@@ -23,8 +23,6 @@
 
 <!-- Bootstrap-->
 <script src="../../libs/bootstrap.min.js"></script>
-
-
 <link rel="stylesheet" href="../../libs/bootstrap.min.css">
 <style> 
 
@@ -43,13 +41,14 @@ text {
 </head>
 
 <body>
+<div class="top-nav col-md-12">
+	<?php include '../../components/top-nav.php';?>
+</div> 
+
 <div class="accessible" id="accessibleTable">
 	<p> The following table is readable only to screen readers. </p>
 </div>
 
-	<div class="top-nav col-md-12">
-		<?php include '../../components/top-nav.php';?>
-	</div> 
 <div id="header" class="col-md-10 col-md-offset-1">
 	<div class=" col-md-12">
 

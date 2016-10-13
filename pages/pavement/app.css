@@ -75,19 +75,7 @@ div h3 {
     outline:none;
 }
 
-.inner-nav { 
-  text-align: left;
-}
 
-.inner-nav i { 
-  padding-right: 20px;
- }
-
-.inner-nav a { 
-  color: white;
-  opacity: .5;
-  padding-right: 20px;
-}
 
 .inner-nav a:hover,  .inner-nav a:focus,  .inner-nav a:active{ 
   color: #e26a6a;

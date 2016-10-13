@@ -2,8 +2,8 @@
 <head lang="en">
 <meta charset="utf-8">
 <title>Nonmotorized Crashes in the Boston MPO Region</title>
-<link rel="stylesheet" href="app.css"/>
 <link rel="stylesheet" href="../../css/master.css"/>
+<link rel="stylesheet" href="app.css"/>
 
 
 

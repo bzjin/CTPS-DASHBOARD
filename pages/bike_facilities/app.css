@@ -64,10 +64,6 @@ div h3 {
     fill: #666;
 }
 
-.hidden {
-    display: none;
-}
-
 button {
     border: .5px solid white;
     color: white;
@@ -90,32 +86,4 @@ button {
     font-size: 16px;
 }
 
-#timeVsSpeed{
-  clear: both;
-  float:left;
-}
-#congAnim { 
-  clear: both;
-  margin: 10px 0px;
-}
-
-#congAnim:hover, #congAnim:active, #congAnim:focus {
-    color: #e26a6a;
-    font-weight: 700;
-      outline:none;
-}
-
-.inner-nav { 
-  text-align: left;
-}
-
-.inner-nav i { 
-  padding-right: 20px;
- }
-
-.inner-nav a { 
-  color: white;
-  opacity: .5;
-  padding-right: 20px;
-}
 

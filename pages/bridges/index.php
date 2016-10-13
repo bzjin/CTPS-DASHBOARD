@@ -25,17 +25,14 @@
 <style> .axis line, .axis path { fill: none; stroke-width: 1px; stroke: #ddd; shape-rendering: crispEdges;} 
  text {fill: white;} .tick line, .tick path {stroke-width: 1px; opacity: .3;}
 </style> 
-</style> 
 </head>
 
 <body>
 
-	<div class="top-nav col-md-12">
-		<?php include '../../components/top-nav.php';?>
-	</div> 
+<div class="top-nav col-md-12">
+	<?php include '../../components/top-nav.php';?>
+</div> 
 <div id="header" class="col-md-10 col-md-offset-1">
-	
-
 <h1>Bridge Condition</h1>
 <p>The 2,866 bridges located in the Boston Region connect places and carry people traveling by automobile, bus, train, bicycle and foot. These bridges have aged faster than they have been replaced or repaired. MassDOT and the MBTA consider 154 bridges (5%) structurally deficient, meaning that one or more major components (deck, substructure, and superstructure) require attention. A backlog of maintenance and construction work has emerged.  
 </p>

@@ -23,7 +23,6 @@ d3.queue()
 	.defer(d3.csv, "../../data/csv/bridge_condition_timeline.csv")
 	.awaitAll(function(error, results){ 
 		CTPS.demoApp.generateBridgeTimeline(results[0]);
-		//CTPS.demoApp.generateBridgePlots(results[0]);
 	}); 
 
 CTPS.demoApp.generateBridgeTimeline = function(bridges) {

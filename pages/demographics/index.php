@@ -2,8 +2,8 @@
 <head lang="en">
 <meta charset="utf-8">
 <title>Demographics in the Boston MPO Region</title>
-<link rel="stylesheet" href="app.css"/>
 <link rel="stylesheet" href="../../css/master.css"/>
+<link rel="stylesheet" href="app.css"/>
 
 
 <!-- Font Awesome -->
@@ -38,9 +38,10 @@ text {fill: #ddd; font-size: 1.0em;}
 
 <body>
 
-	<div class="top-nav col-md-12">
-		<?php include '../../components/top-nav.php';?>
-	</div> 
+<div class="top-nav col-md-12">
+<?php include '../../components/top-nav.php';?>
+</div> 
+
 <div id="header" class="col-md-10 col-md-offset-1">
 
 <h1>Demographics</h1>
@@ -50,29 +51,29 @@ text {fill: #ddd; font-size: 1.0em;}
 </div>
 
 <h3> A Closer Look at the Boston Population </h3>
-
+	<button class='allMetrics2 bigbutton col-md-4 I-93'> All </button>
+	<button class='minority_pop bigbutton col-md-4 I-93' autofocus> Minority </button>
 	<button class='employed bigbutton col-md-4 I-93'> Unemployment </button>
 	<button class='lepPop bigbutton col-md-4 I-95'> Limited English Proficiency </button>
-	<button class='over65 bigbutton col-md-4 I290'> Over Age 65 </button>
+	<button class='over75 bigbutton col-md-4 I290'> Over Age 75 </button>
+	<button class='disabled bigbutton col-md-4 I290'> With Disability </button>
 
+	<div class="col-md-12">
 	<div class="col-md-5" id="map4"></div>
-
 	<div class="col-md-7" id="chartDemographics2"></div>
-
-
-
+	</div>
 
 <h3> A Closer Look at Boston Households </h3>
 
-	<!-- <button class='allMetrics bigbutton col-md-2' autofocus> All Households </button> -->
-	<button class='minority bigbutton col-md-3 I-90' autofocus> Minority </button>
+	<button class='allMetrics bigbutton col-md-3' autofocus> All Households </button>
 	<button class='lowIncome bigbutton col-md-3 I-93'> Low Income </button>
 	<button class='singleFemale bigbutton col-md-3 I-95'> Single Female Headed </button>
 	<button class='zeroVehicle bigbutton col-md-3 I290'> Zero Vehicle </button>
 
+	<div class="col-md-12">
 	<div class="col-md-5" id="map3"></div>
-
 	<div class="col-md-7" id="chartDemographics"></div>
+	</div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>

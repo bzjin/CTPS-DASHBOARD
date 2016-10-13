@@ -7,7 +7,7 @@
 <!-- Font Awesome -->
 <script src="libs/font-awesome.js"></script>
 <!-- D3 Library --> 
-<script src="../../libs/d3.v4.min.js"></script>
+<script src="libs/d3.v4.min.js"></script>
 
 <!-- Tooltip -->
 <script src="libs/d3-tip.js"></script>
