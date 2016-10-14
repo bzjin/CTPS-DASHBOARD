@@ -125,8 +125,10 @@
  <button class='WOBURN townpicker'><i class='fa fa-map-marker' aria-hidden='true'></i> Woburn</button>
  <button class='WRENTHAM townpicker'><i class='fa fa-map-marker' aria-hidden='true'></i> Wrentham</button>
 </div>
-<div id="timeline" class="col-md-5"></div>
-<div id="timeline2" class="col-md-7"></div>
+<!--<div id="timeline" class="col-md-5"></div>
+<div id="timeline2" class="col-md-7"></div>-->
+<div id="deck_timeline" class="col-md-5"></div>
+<div id="timeline2_area" class="col-md-7"></div>
 
 <!--<div id="chart" class="col-md-12"></div>-->
 <div class="footer col-md-12">

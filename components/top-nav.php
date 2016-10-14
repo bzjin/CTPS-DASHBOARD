@@ -43,9 +43,15 @@
         </li>
 
         <li><a href="../bridges/index.php">Bridges</a></li>
-        <li><a href="../sidewalks/index.php">Sidewalk</a></li>
+        <li><a href="../sidewalks/index.php">Sidewalks</a></li>
         <li><a href="../bike_facilities/index.php">Bike Facilities</a></li>
-        <li><a href="../demographics/index.php">Demographics</a></li>
+		<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Demographics <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../demographics/index.php">Population Statistics</a></li>
+            <li><a href="../demographics/index2.php">Household Statistics</a></li>
+          </ul>
+        </li>        
         <li><a href="../about/index.php">About</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
