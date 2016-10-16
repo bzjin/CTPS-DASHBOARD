@@ -52,8 +52,8 @@ text {fill: #ddd; font-size: 1.0em;}
 
 <h3> A Closer Look at Boston Households </h3>
 
-	<button class='allMetrics bigbutton col-md-3' autofocus> All Households </button>
-	<button class='lowIncome bigbutton col-md-3 I-93'> Low Income </button>
+	<button class='allMetrics bigbutton col-md-3'> All Households </button>
+	<button class='lowIncome bigbutton col-md-3 I-93' autofocus> Low Income </button>
 	<button class='singleFemale bigbutton col-md-3 I-95'> Single Female Headed </button>
 	<button class='zeroVehicle bigbutton col-md-3 I290'> Zero Vehicle </button>
 

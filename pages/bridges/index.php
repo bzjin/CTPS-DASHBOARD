@@ -23,7 +23,8 @@
 <link rel="stylesheet" href="../../libs/bootstrap.min.css">
 
 <style> .axis line, .axis path { fill: none; stroke-width: 1px; stroke: #ddd; shape-rendering: crispEdges;} 
- text {fill: white;} .tick line, .tick path {stroke-width: 1px; opacity: .3;}
+ text {fill: white;} .tick line, .tick path {stroke-width: 1px; opacity: .3;} .overlay { fill: none; pointer-events: all;}
+
 </style> 
 </head>
 

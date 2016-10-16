@@ -101,7 +101,7 @@ CTPS.demoApp.generateMap = function(tracts) {
          tip.hide(d);
         })
 
-    if (percent == "MINORITY_HH_PCT") { var keyColor = colorScale(2)}
+    if (percent == "MINORITY_HH_PCT") { var keyColor = colorScale(2) }
     if (percent == "LOW_INC_HH_PCT") { var keyColor = colorScale(1)}
     if (percent == "SINGLE_FEMALE_HOH_PCT") { var keyColor = colorScale(0)}
     if (percent == "ZERO_VEH_HH_PCT") { var keyColor = colorScale(3)}
@@ -245,8 +245,6 @@ var colorScale = d3.scaleLinear()
       .attr("class", function(d){ return "t" + d.properties.TRACT; })
       .attr("x", function(d) { return xScale(Math.floor(d.properties[percent]/1.75)*1.75)})
       .attr("y", function(d) { return yScale(Math.floor(d.properties[households]/50) * 50) - 6 })
-      //.attr("x", function(d) { return xScale(d.properties[percent])})
-      //.attr("y", function(d) { return yScale(d.properties[households]) - 6 })
       .attr("width", 6)
       .attr("height", 6)
       .style("fill-opacity", function(d) { return d.properties[percent]/100; } )
