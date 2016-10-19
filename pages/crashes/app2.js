@@ -101,6 +101,11 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	        }) 
 		.on("mouseenter", function(d) { 
 			tip.show(d); 
+			d3.select(this).style("opacity", .5).style("cursor", "pointer");
+		})
+		.on("mouseleave", function(d) { 
+			d3.select(this).style("opacity", 1);
+			tip.hide(d);
 		})
 	
 	var chartContainer = d3.select("#motChart").append("svg")

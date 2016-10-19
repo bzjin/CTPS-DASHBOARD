@@ -61,7 +61,7 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 	  .attr('class', 'd3-tip')
 	  .offset([0, 150])
 	  .html(function(d) {
-	    return d.properties.RTE_NAME_ID.substring(0, d.properties.RTE_NAME_ID.lastIndexOf(" ")) + "<br>Speed Limit: " + d.properties.SPD_LIMIT + "<br>Speed Index: " + e(d.properties.AM_SPD_IX);
+	    return "<p><b>" + d.properties.RTE_NAME_ID.substring(0, d.properties.RTE_NAME_ID.lastIndexOf(" ")) + "</b></p><br>Speed Limit: " + d.properties.SPD_LIMIT + "<br>Speed Index: " + e(d.properties.AM_SPD_IX);
 	  })
 
 	svgContainer.call(tip); 
@@ -104,7 +104,7 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 			.style("stroke", function(d) { 
 				return colorScale(d.properties.AM_SPD_IX);
 			})
-			.style("opacity", .2)//function(d) { return (d.properties.AM_SPD_IX-.5);})
+			.style("opacity", .2)
 		.on("mouseenter", function(d) {
             	var mystring = this.getAttribute("class");
 				var arr = mystring.split(" ");
@@ -117,6 +117,8 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 				d3.selectAll("." + thirdWord)
 					.style("stroke-width", 2.5)
 					.style("opacity", 1)
+					.style("cursor", "pointer");
+
 				tip.show(d); 
 			})
 		.on("mouseleave", function (d) {
@@ -162,8 +164,17 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 		var yScale = d3.scaleLinear().domain([0, d3.max(maxmins)]).range([685, 80]);
 		var ySegment = d3.scaleLinear().domain([0, d3.max(maxmins)]).range([0, 605]);
 
+
 		roadWindow.selectAll("rect, text").remove();
 
+		var tip2 = d3.tip()
+		  .attr('class', 'd3-tip')
+		  .offset([0, -10])
+		  .html(function(d) {
+		    return "<b>" + d.properties.RTE_NAME_ID.substring(0, d.properties.RTE_NAME_ID.lastIndexOf(" ")) + "</b><br><br>Speed Limit: " + d.properties.SPD_LIMIT + "<br>Speed Index: " + e(d.properties.AM_SPD_IX);
+		  })
+
+		svgContainer.call(tip2); 
 		//Append labels
 		roadWindow.append("text")
 			.text(function(){
@@ -200,6 +211,14 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 					}})
 				.attr("y", function(d) { return yScale(d.properties.NORMALIZEDSTART); })
 				.style("fill", function(d) { return colorScale(d.properties.AM_SPD_IX)})
+				.on("mouseenter", function(d) {
+					d3.select(this).style("stroke", "white")
+					tip2.show(d); 
+				})
+				.on("mouseleave", function (d) {
+					d3.select(this).style("stroke", "none")
+					tip2.hide(d);
+				})
 
 		roadWindow.selectAll(".textlabels")
 			.data(crossGraph)
@@ -275,168 +294,3 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 			.text("1.2 : Above speed limit");
 	
 } // CTPS.demoApp.generateViz()
-
-//Animation
-/*
-CTPS.demoApp.generateTraveller = function(towns, arterials) { 
-	//Map of free flow
-	// SVG Viewport
-	topojson.feature(arterials, arterials.objects.collection).features.sort(function(a,b){
-		var nameA = a.properties.ROAD_NAME;
-		var nameB = b.properties.ROAD_NAME;
-		if (nameA < nameB) { return -1}
-		if (nameA > nameB) { return 1}
-	
-			return 0;
-		
-	})
-
-	var projection = d3.geoConicConformal()
-	.parallels([41 + 43 / 60, 42 + 41 / 60])
-    .rotate([71 + 30 / 60, -41 ])
-	.scale([18000]) // N.B. The scale and translation vector were determined empirically.
-	.translate([40,750]);
-	
-	var geoPath = d3.geoPath().projection(projection);
-
-	var freeFlow = d3.select("#freeFlow2").append("svg")
-		.attr("width", "100%")
-		.attr("height", 400);
-
-	//Free Flow Map
-	var mapcSVG = freeFlow.selectAll(".freeFlow")
-		.data(topojson.feature(towns, towns.objects.collection).features)
-		.enter()
-		.append("path")
-			.attr("class", "freeFlow")
-			.attr("id", function(d, i) { return d.properties.BORDER_LINK_ID; })
-			.attr("d", function(d, i) {return geoPath(d); })
-			.style("fill", "#ddd")
-			.style("stroke", "#191b1d")
-			.style("stroke-width", "1px")
-			.style("opacity", .1);
-
-	var interstateSVG = freeFlow.selectAll(".freeFlowRoad")
-		.data(topojson.feature(arterials, arterials.objects.collection).features)
-		.enter()
-		.append("path")
-			.attr("class", function(d) { return "freeFlowRoad mapsegment" + d.id;})
-			.attr("d", function(d) { return geoPath(d);})
-			.style("fill", "none")
-			.style("stroke-width", 0)
-			.style("stroke-linejoin", "round")
-			.style("stroke", "#ddd")
-			.style("opacity", 0)
-
-	//AM Congestion Road
-	var amCong = d3.select("#amCong2").append("svg")
-		.attr("width", "100%")
-		.attr("height", 400);
-
-	var mapcSVGam = amCong.selectAll(".amCong")
-		.data(topojson.feature(towns, towns.objects.collection).features)
-		.enter()
-		.append("path")
-			.attr("class", "amCong")
-			.attr("id", function(d, i) { return d.properties.BORDER_LINK_ID; })
-			.attr("d", function(d, i) {return geoPath(d); })
-			.style("fill", "#ddd")
-			.style("stroke", "#191b1d")
-			.style("stroke-width", "1px")
-			.style("opacity", .1);
-
-	var interstateSVGam = amCong.selectAll(".amCongRoad")
-		.data(topojson.feature(arterials, arterials.objects.collection).features)
-		.enter()
-		.append("path")
-			.attr("class", function(d) { return "amCongRoad mapsegment" + d.id;})
-			.attr("d", function(d) { return geoPath(d);})
-			.style("fill", "none")
-			.style("stroke-width", 0)
-			.style("stroke-linejoin", "round")
-			.style("stroke", function(d) { 
-				return colorScale(d.properties.AM_SPD_IX);
-			})
-			.style("opacity", 0)
-
-	//PM Congestion Road
-	var pmCong = d3.select("#pmCong2").append("svg")
-		.attr("width", "100%")
-		.attr("height", 400);
-
-	var mapcSVGpm = pmCong.selectAll(".pmCong")
-		.data(topojson.feature(towns, towns.objects.collection).features)
-		.enter()
-		.append("path")
-			.attr("class", "pmCong")
-			.attr("id", function(d, i) { return d.properties.BORDER_LINK_ID; })
-			.attr("d", function(d, i) {return geoPath(d); })
-			.style("fill", "#ddd")
-			.style("stroke", "#191b1d")
-			.style("stroke-width", "1px")
-			.style("opacity", .1);
-
-	var interstateSVGpm = pmCong.selectAll(".pmCongRoad")
-		.data(topojson.feature(arterials, arterials.objects.collection).features)
-		.enter()
-		.append("path")
-			.attr("class", function(d) { return "pmCongRoad mapsegment" + d.id;})
-			.attr("d", function(d) { return geoPath(d);})
-			.style("fill", "none")
-			.style("stroke-width", 0)
-			.style("stroke-linejoin", "round")
-			.style("stroke", function(d) { 
-				return colorScale(d.properties.PM_SPD_IX);
-			})
-			.style("opacity", 0)
-*/
-	//Minute counters
-	/*freeFlow.append("text")
-		.attr("class", "freeFlow")
-		.attr("x", 0)
-		.attr("y", 30)
-		.style("font-weight", 300)
-		.text("Time spent in congestion:" + minutes + " min")*/
-
-/*
-	//Click button to start animation
-	d3.selectAll("#congAnim2").on("click", function() { 
-	//Freeflow Animation
-		var timecounter = 0;
-	    var minutes = 0; 
-
-	    d3.selectAll(".freeFlowRoad")
-			.transition()
-			.delay(function(d) { 
-				timecounter += d.properties.SPD_LIMIT ;
-				return timecounter;
-			})
-			.duration(2400)
-			.style("stroke-width", 3)
-			.style("opacity", 1)
-			
-
-		//AM Animation
-		var timecounteram = 0;
-	    d3.selectAll(".amCongRoad").transition()
-			.delay(function(d) { 
-				timecounteram += (1/d.properties.AM_SPD_IX) * d.properties.SPD_LIMIT ;
-				return timecounteram;
-			})
-			.duration(function(d) { return (1/d.properties.AM_SPD_IX) * 2400; })
-			.style("stroke-width", function(d) { return 1/(d.properties.AM_SPD_IX *d.properties.PM_SPD_IX)* 2; })
-			.style("opacity", 1)
-
-		//PM Animation
-		var timecounterpm = 0;
-	    d3.selectAll(".pmCongRoad").transition()
-			.delay(function(d) { 
-				timecounterpm += (1/d.properties.PM_SPD_IX) * d.properties.SPD_LIMIT ;
-				return timecounterpm;
-			})
-			.duration(function(d) { return (1/d.properties.PM_SPD_IX) * 2400; })
-			.style("stroke-width", function(d) { return 1/(d.properties.PM_SPD_IX*d.properties.PM_SPD_IX) * 2; })
-			.style("opacity", 1)
-	})
-
-}*/

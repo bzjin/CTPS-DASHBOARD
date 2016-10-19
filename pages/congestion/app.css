@@ -118,5 +118,6 @@ button {
       outline:none;
 }
 
-
-
+.mapsegment {
+  cursor: pointer; 
+}

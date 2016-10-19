@@ -95,10 +95,12 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
                 circleMaker(thisreg);
 	        }) 
-		.on("mouseenter", function(d) { 
+		.on("mouseenter", function(d) {
+			d3.select(this).style("opacity", .5).style("cursor", "pointer");
 			tip.show(d); 
 		})
 		.on("mouseleave", function(d) { 
+			d3.select(this).style("opacity", 1);
 			tip.hide(d);
 		})
 

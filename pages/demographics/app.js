@@ -427,6 +427,21 @@ CTPS.demoApp.generateMap_R = function(tracts) {
       var xPos = 5;
       var yPos = 40; 
       var height = 600; 
+
+      if (percent != "HISPANIC_PCT_2010") { 
+         svgContainer_R.append("text")
+          .attr("x", 100)
+          .attr("y", 470)
+          .style("font-weight", 300).style("font-size", 10)
+          .text("*including Hispanic and non-Hispanic origin")
+      } else {
+        svgContainer_R.append("text")
+          .attr("x", 100)
+          .attr("y", 470)
+          .style("font-weight", 300).style("font-size", 10)
+          .text("*including all races")
+      }
+
       //background
       svgContainer_R.append("text")
         .style("font-weight", 700)
@@ -542,7 +557,6 @@ CTPS.demoApp.generateStats_R = function(tracts){
     .style("text-anchor", "middle")
     .style("font-weight", 300)
     .text("Percent of Population")
-
 
   populatePoints_R("WHITE_PCT_2010", "WHITE_POP_2010");
 
