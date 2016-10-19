@@ -1,4 +1,8 @@
 //Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
+ $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
 var CTPS = {};
 CTPS.demoApp = {};
 

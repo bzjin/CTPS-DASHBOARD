@@ -10,7 +10,7 @@
 <script src="libs/d3.v4.min.js"></script>
 
 <!-- Tooltip -->
-<script src="libs/d3-tip.js"></script>
+<script src="libs/tether.min.js"></script>
 <!-- Google Fonts -->
 <link href="libs/google-fonts.css" rel="stylesheet">
 <!-- TopoJSON -->
@@ -117,13 +117,28 @@
 				<p>Non-interstates in good condition</p>
 				<p class="meter"> <span style="width: 78%"></span></p></div></a>
 		</div>
-		<div class="page_link"><a href="pages/congestion/index.php" title="Go to congestion page" id="congestion">
+		<div class="page_link"><a href="pages/congestion/index.php" title="Go to congestion page" id="congestion" >
 			<div class="col-md-12 nav_metric">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Congestion </div>
-			<div class="col-md-6">				
-				<p>Congested express highways</p>
-				<p class="meter"> <span style="width: 78%"></span></p></div>
-			<div class="col-md-6">
+				<div class="col-md-6">				
+					<p>Congested express highways</p>
+					
+					   <div class="progress">
+					    	<div class="progress-bar progress-bar-success" style="width: 67%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2014 Data: 78% uncongested expressways">
+					        	<span class="sr-only">2014 Data: 67% uncongested miles</span>
+					   		</div>
+						  
+						    <div class="progress-bar progress-bar-warning" style="width: 10%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2017 Target: 10% uncongested expressways">
+						        <span class="sr-only"> 2017 Target: +10% uncongested miles</span>
+						    </div>
+							  
+						    <div class="progress-bar progress-bar-danger" style="width: 10%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2020 Target: 10% uncongested expressways">
+						        <span class="sr-only">2020 Target: +10% uncongested miles</span>
+						    </div>
+						</div>
+						
+				</div>		
+				<div class="col-md-6">
 				<p>Congested arterial routes</p>
 				<p class="meter"> <span style="width: 72%"></span></p></div></a>		
 		</div>
