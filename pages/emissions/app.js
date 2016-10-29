@@ -34,6 +34,40 @@ CTPS.demoApp.generateEmissions = function(emissions) {
 		i.TOWN = i.TOWN.replace(/\w\S*/g, function(txt){ return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()});
 		towns.push(i.TOWN);
 	})
+//Color key
+	var xPos = 600;
+	var yPos = 10; 
+	var height = 600; 
+
+	var chartk = d3.select("#key").append("svg")
+				    .attr("width", "100%")
+				    .attr("height", 70)
+	//text and colors
+	chartk.append("text")
+		.style("font-weight", 700)
+		.attr("x", xPos).attr("y", yPos)
+		.text("KEY");
+	chartk.append("rect")
+		.style("fill", "orange").style("stroke", "orange").style("fill-opacity", .5)
+		.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
+	chartk.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 22)
+		.text("Single Occupant Vehicles");
+	chartk.append("rect")
+		.style("fill", "white").style("stroke", "white").style("fill-opacity", .5)
+		.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
+	chartk.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 37)
+		.text("High Occupancy Vehicles");
+	chartk.append("rect")
+		.style("fill", "pink").style("stroke", "pink").style("fill-opacity", .5)
+		.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
+	chartk.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 52)
+		.text("Trucks");
 
 	generateLineGraph("VOC", "Boston");
 	generateLineGraph("NOX", "Boston");
@@ -157,40 +191,32 @@ CTPS.demoApp.generateEmissions = function(emissions) {
 		    .y1(function(i) { if (!isNaN(yScale(i.stat))) { return yScale(i.stat) }})
 		    .y0(yScale(0))
 
-		/*var tip = d3.tip()
-		    .attr('class', 'd3-tip')
-		    .offset([0, 10])
-		    .html(function(d) {
-		      return d.town + "<br>" + d.year + "<br>Sidewalk Miles: " + d.sidewalk_miles + "<br>Centerline Miles: " + d.center_line_miles;
-		    })*/
-		//chart.call(tip); 
-		  chart.selectAll(".VOC_SOV")
-		    .data(emissions)
-		    .enter()
-		    .append("path")
-		      .attr("class", function(d) { return d.TOWN + " area"})
-		      .attr("d", function(d) { return VOC_line(d.VOC_SOV_array)})
-		      .style("fill", "white").style("stroke", "white").style("stroke-width", .5)
-		      .style("fill-opacity", .01)
+	   chart.selectAll(".VOC_SOV")
+	    .data(emissions)
+	    .enter()
+	    .append("path")
+	      .attr("class", function(d) { return d.TOWN + " area"})
+	      .attr("d", function(d) { return VOC_line(d.VOC_SOV_array)})
+	      .style("fill", "white").style("stroke", "white").style("stroke-width", .5)
+	      .style("fill-opacity", .01)
 
-		   chart.selectAll(".VOC_HOV")
-		    .data(emissions)
-		    .enter()
-		    .append("path")
-		      .attr("class", function(d) { return d.TOWN + " area"})
-		      .attr("d", function(d) { return VOC_line(d.VOC_HOV_array)})
-		      .style("fill", "orange").style("stroke", "orange").style("stroke-width", .5)
-		      .style("fill-opacity", .01)
+	   chart.selectAll(".VOC_HOV")
+	    .data(emissions)
+	    .enter()
+	    .append("path")
+	      .attr("class", function(d) { return d.TOWN + " area"})
+	      .attr("d", function(d) { return VOC_line(d.VOC_HOV_array)})
+	      .style("fill", "orange").style("stroke", "orange").style("stroke-width", .5)
+	      .style("fill-opacity", .01)
 
-			chart.selectAll(".VOC_TRK")
-		    .data(emissions)
-		    .enter()
-		    .append("path")
-		      .attr("class", function(d) { return d.TOWN + " area"})
-		      .attr("d", function(d) { return VOC_line(d.VOC_TRK_array)})
-		      .style("fill", "pink").style("stroke", "pink").style("stroke-width", .5)
-		      .style("fill-opacity", .01)
-
+		chart.selectAll(".VOC_TRK")
+	    .data(emissions)
+	    .enter()
+	    .append("path")
+	      .attr("class", function(d) { return d.TOWN + " area"})
+	      .attr("d", function(d) { return VOC_line(d.VOC_TRK_array)})
+	      .style("fill", "pink").style("stroke", "pink").style("stroke-width", .5)
+	      .style("fill-opacity", .01)
 
 } //end generateLineGraph
 
@@ -229,6 +255,7 @@ d3.selectAll(".townpicker").on("click", function(){
 				.style("fill-opacity", .2)
 		}
 }) //end click function
+
 
 } //end generateEmissions
 
@@ -425,6 +452,46 @@ CTPS.demoApp.generateVMTVHT = function(emissions) {
 			tag = "TRK";
 
 	})
+	var colorTime = ["#edf8b1","#7fcdbb","#1d91c0","#253494"]
+
+	//Color key
+	var xPos = 800;
+	var yPos = 70; 
+	var height = 600; 
+
+	//text and colors
+	chart.append("text")
+		.style("font-weight", 700)
+		.attr("x", xPos).attr("y", yPos - 10)
+		.text("KEY");
+	chart.append("rect")
+		.style("fill", colorTime[0]).style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
+	chart.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 7)
+		.text("AM: Emissions from 6AM and 9AM");
+	chart.append("rect")
+		.style("fill", colorTime[1]).style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
+	chart.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 22)
+		.text("Midday: Emissions from 9AM and 3PM");
+	chart.append("rect")
+		.style("fill", colorTime[2]).style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
+	chart.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 37)
+		.text("PM: Emissions from 3PM and 6PM");
+	chart.append("rect")
+		.style("fill", colorTime[3]).style("stroke", "none")
+		.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
+	chart.append("text")
+		.style("font-weight", 300)
+		.attr("x", xPos + 25).attr("y", yPos + 52)
+		.text("Night: Emissions from 6PM and 6AM");
 
 
 }

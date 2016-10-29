@@ -142,6 +142,7 @@
 	<div id="emissionsNOX" class="col-md-3 emissions"></div>
 	<div id="emissionsCO" class="col-md-3 emissions"></div>
 	<div id="emissionsCO2" class="col-md-3 emissions"></div>
+	<div id="key" class="col-md-12 emissions"></div>
 </div>
 
 

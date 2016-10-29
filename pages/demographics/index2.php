@@ -52,10 +52,10 @@ text {fill: #ddd; font-size: 1.0em;}
 
 <h3> A Closer Look at Boston Households </h3>
 
-	<button class='allMetrics bigbutton col-md-3'> All Households </button>
-	<button class='lowIncome bigbutton col-md-3 I-93' autofocus> Low Income </button>
-	<button class='singleFemale bigbutton col-md-3 I-95'> Single Female Headed </button>
-	<button class='zeroVehicle bigbutton col-md-3 I290'> Zero Vehicle </button>
+	<button class='allMetrics bigbutton col-md-2'> All Households </button>
+	<button class='lowIncome bigbutton col-md-2 I-93' autofocus> Low Income </button>
+	<button class='singleFemale bigbutton col-md-4 I-95'>  Female Headed Households with Children </button>
+	<button class='zeroVehicle bigbutton col-md-2 I290'> Zero Vehicle </button>
 
 	<div class="col-md-12">
 	<div class="col-md-5" id="map3"></div>

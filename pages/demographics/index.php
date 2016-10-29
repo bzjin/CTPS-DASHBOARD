@@ -76,7 +76,7 @@ text {fill: #ddd; font-size: 1.0em;}
 	<div class="col-md-5" id="map_race"></div>
 	<div class="col-md-7" id="demographics_race"></div></div>
 
-<h3> LEP Languages Spoken Breakdown </h3>
+<h3> The Five Non-English Languages Most Commonly Spoken at Home </h3>
 	<button class='spanish bigbutton col-md-2' autofocus> Spanish </button>
 	<button class='chinese bigbutton col-md-2'> Chinese </button>
 	<button class='portuguese bigbutton col-md-2'> Portuguese</button>
