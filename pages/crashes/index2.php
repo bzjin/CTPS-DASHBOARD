@@ -64,7 +64,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Vehicle Fatalities </p>
 		</div>
 
-	<div class="col-md-12"><img src="crashes_snapshot.png"></div>
+	<div class="col-md-12"><img src="crashes_screenshot-min.png"></div>
 
 	<h3>Truck Crashes</h3>
 	<p> Truck crash description. Why do we count trucks specifically? Once again, each dot represents one crash. Filled-in dots represent fatalities.</p>

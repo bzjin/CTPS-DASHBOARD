@@ -33,18 +33,17 @@ var colorScale = d3.scaleLinear()
     .domain([0, 25, 50, 100, 200, 400, 800])
     .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
-//var colorScale = d3.scaleLinear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
-
-var tip = d3.tip()
-	  .attr('class', 'd3-tip')
-	  .offset([-10, 0])
-	  .html(function(d) {
-	    return d.properties.TOWN ;
-	  })
-
 ////////////////* GENERATE MAP *////////////////////
 CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {	
 	// SVG Viewport
+	var tip = d3.tip()
+	  .attr('class', 'd3-tip')
+	  .offset([-10, 0])
+	  .html(function(d) {
+		var town = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	    return "<p>" + town + "</p><b>2013 Statistics</b><br>Motorized Injuries: " + findIndex(town, "mot_inj") + "<br>Motorized Fatalities: " + findIndex(town, "mot_fat") + 
+	    "<br>Truck Injuries: " + findIndex(town, "trk_inj") + "<br>Truck Fatalities: " + findIndex(town, "trk_fat");
+	  })
 
 	var svgContainer = d3.select("#map").append("svg")
 		.attr("width", "100%")
@@ -75,6 +74,12 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 			.style("stroke-width", "1px")
 		.on("click", function() {
 				var thisreg = this.getAttribute("class");
+				svgContainer.selectAll("path")
+					.style("opacity", 1)
+
+				d3.selectAll("." + thisreg)
+					.style("opacity", .5)
+
 				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[0]]).range([400, 20]);
 				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(function(e){
 			        if(Math.floor(e) != e)
@@ -101,10 +106,10 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	        }) 
 		.on("mouseenter", function(d) { 
 			tip.show(d); 
-			d3.select(this).style("opacity", .5).style("cursor", "pointer");
+			d3.select(this).style("stroke", "white").style("cursor", "pointer");
 		})
 		.on("mouseleave", function(d) { 
-			d3.select(this).style("opacity", 1);
+			d3.select(this).style("stroke", "#191b1d");
 			tip.hide(d);
 		})
 	
@@ -277,7 +282,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 CTPS.demoApp.generatePlot = function (crashdata) {
 
-	var height = 600;
+	var height = 900;
 	var width = 1100;
 	var padding = 10;
 
@@ -289,73 +294,44 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 				.attr("height", height)
 				.attr("width", width);
 
-	var xScale = d3.scaleLinear().domain([0, padding]).range([padding, width - padding]);
-	var yScale = d3.scaleLinear().domain([0, 5]).range([height - padding, padding]);
+	var xScale = d3.scaleLinear().domain([0, 141]).range([0 + padding, width-padding]);
+	var yScale = d3.scaleLinear().domain([0, 131]).range([height, 10]);
 
 	var xAxis = d3.axisBottom(xScale).tickSize(0);
 	var yAxis = d3.axisLeft(yScale).tickSize(0);
 
 	svg.append("g")
 	  .attr("class", "taxis")
-	  .attr("transform", "translate(0, " + (height - 30) + ")")
+	  .attr("transform", "translate(0, " + (height - padding) + ")")
 	  .call(xAxis).selectAll("text").remove();
 
 	svg.append("g")
 		.attr("class", "taxis")
-		.attr("transform", "translate(" + 30 + ", 0)")
+		.attr("transform", "translate(" + padding + ", 0)")
 		.call(yAxis).selectAll("text").remove();
 
 	crashdata.forEach(function(d){
 		if (d.year == 2013 && d.town == "Total") { 
 			var x = 1; 
-			var y = 5; 
-
-			for(var i = 1; i < d.mot_inj+1; i += 1) { 
+			var y = 130; 
+			
+			for(var i = 1; i < +d.mot_fat+1; i++) { 
 				svg.append("circle")  
-					.attr("id", "idi" + i + " " + x + "xPos " + y + "yPos") 
-					.attr("cx", padding + (width - (2 * padding)) * Math.random())
-					.attr("cy", padding + (height - (2 * padding)) * Math.random()) 
-					.attr("r", 1)
-					.style("fill", "#e7298a")
-					.style("opacity", .2)
-
-					/*.on("mouseenter", function() { 
-						var xPos = this.getAttribute("id").split(' ')[1];
-						var yPos = this.getAttribute("id").split(' ')[2];
-
-						for (var j = 1; j < 100; j++) { 
-							svg.append("circle")
-								.attr("cx", xScale(parseInt(xPos)) - 25 + 50 * Math.random())
-								.attr("cy", yScale(parseInt(yPos)) - 25 + 50 * Math.random())
-								.attr("r", 1)
-								.style("stroke", "#e7298a")
-								.style("stroke-width", .5)
-						}
-					})*/
-				if (x == 29) { x = 1; y--; } else { x++; }
+					.attr("cx", xScale(x))
+					.attr("cy", yScale(y))
+					.attr("r", 2.5)
+					.attr("fill", "#e7298a")
+				if (x == 140) { x = 1; y--; } else { x++; }
 			}
-
-
-			for(var i = 1; i < d.mot_fat+1; i += 1) { 
-				svg.append("circle") 
-					.attr("id", "id" + i + " " + x + "xPos " + y + "yPos") 
-					.attr("cx", padding + (width - (2 * padding)) * Math.random())
-					.attr("cy", padding + (height - (2 * padding)) * Math.random()) 
-					.attr("r", 2)
-					.style("fill", "#e7298a")
-					/*.on("mouseenter", function() { 
-						var xPos = this.getAttribute("id").split(' ')[1];
-						var yPos = this.getAttribute("id").split(' ')[2];
-
-						for (var j = 1; j < 100; j++) { 
-							svg.append("circle")
-								.attr("cx", xScale(parseInt(xPos)) - 25 + 50 * Math.random())
-								.attr("cy", yScale(parseInt(yPos)) - 25 + 50 * Math.random())
-								.attr("r", 1)
-								.style("fill", "#e7298a")
-						}
-					})*/
-				if (x == 29) { x = 1; y--; } else { x++; }
+			for(var i = 1; i < +d.mot_inj+1; i++) { 
+				svg.append("circle")  
+					.attr("cx", xScale(x))
+					.attr("cy", yScale(y))
+					.attr("r", 2.5)
+					.attr("stroke-width", .5)
+					.attr("stroke", "#e7298a")
+					.attr("fill", "none")
+				if (x == 140) { x = 1; y--; } else { x++; }
 			}
 		}
 	});	

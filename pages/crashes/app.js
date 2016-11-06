@@ -29,16 +29,19 @@ var colorScale = d3.scaleLinear()
 
 //var colorScale = d3.scaleLinear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
 
-var tip = d3.tip()
-	  .attr('class', 'd3-tip')
-	  .offset([-10, 0])
-	  .html(function(d) {
-	    return d.properties.TOWN ;
-	  })
-
 ////////////////* GENERATE MAP *////////////////////
 CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {	
 	// SVG Viewport
+
+
+	var tip = d3.tip()
+	  .attr('class', 'd3-tip')
+	  .offset([-10, 0])
+	  .html(function(d) {
+		var town = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	    return "<p>" + town + "</p><b>2013 Statistics</b><br>Bike Injuries: " + findIndex(town, "bike_inj") + "<br>Bike Fatalities: " + findIndex(town, "bike_fat") + 
+	    "<br>Pedestrian Injuries: " + findIndex(town, "ped_inj") + "<br>Pedestrian Fatalities: " + findIndex(town, "ped_fat");
+	  })
 
 	var svgContainer = d3.select("#map").append("svg")
 		.attr("width", "100%")
@@ -67,9 +70,16 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 			})
 			.style("opacity", 1)
 			.style("stroke", "#191b1d")
-			.style("stroke-width", "1px")
+			.style("stroke-width", 1)
 		.on("click", function() {
 				var thisreg = this.getAttribute("class");
+
+				svgContainer.selectAll("path")
+					.style("opacity", 1)
+
+				d3.selectAll("." + thisreg)
+					.style("opacity", .5)
+
 				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[0]]).range([400, 20]);
 				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(function(e){
 			        if(Math.floor(e) != e)
@@ -96,11 +106,11 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
                 circleMaker(thisreg);
 	        }) 
 		.on("mouseenter", function(d) {
-			d3.select(this).style("opacity", .5).style("cursor", "pointer");
+			d3.select(this).style("stroke", "white").style("cursor", "pointer");
 			tip.show(d); 
 		})
 		.on("mouseleave", function(d) { 
-			d3.select(this).style("opacity", 1);
+			d3.select(this).style("stroke", "#191b1d");
 			tip.hide(d);
 		})
 
@@ -269,19 +279,19 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 CTPS.demoApp.generatePlot = function (crashdata) {
 
-	var height = 250;
-	var width = 280;
-	var padding = 10;
-	var xMax = 50;
-	var yMax = 50;
+	var height = 150;
+	var width = 180;
+	var padding = 20;
+	var xMax = 20;
+	var yMax = 20;
 
 	var nested_crashes = d3.nest()
 		.key(function(d) { return d.town})
 		.entries(crashdata);
 
 	nested_crashes.forEach(function (town) {
-		var xScale = d3.scaleLinear().domain([0, xMax]).range([0 + padding, width]);
-		var yScale = d3.scaleLinear().domain([0, yMax]).range([height, 20]);
+		var xScale = d3.scaleLinear().domain([0, xMax]).range([0 + padding, width - 10]);
+		var yScale = d3.scaleLinear().domain([0, yMax]).range([height + 10, 20]);
 
 		var xAxis = d3.axisBottom(xScale).tickSize(0);
 		var yAxis = d3.axisLeft(yScale).tickSize(0);
@@ -315,39 +325,39 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 			if (d.year == 2013 && d.town != "Total") { 
 				var x = 1; 
 				var y = yMax - 1; 
-				for(var i = 1; i < d.bike_inj+1; i++) { 
+				for(var i = 1; i < +d.bike_inj+1; i++) { 
 					svg.append("circle")  
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
-						.attr("r", 2)
+						.attr("r", 3)
 						.attr("stroke-width", .5)
 						.attr("stroke", "#e7298a")
 						.attr("fill", "none")
-					if (x == xMax - 1) { x = 1; y--; } else { x++; }
+					if (x == xMax -1) { x = 1; y--; } else { x++; }
 				}
-				for(var i = 1; i < d.bike_fat+1; i++) { 
+				for(var i = 1; i < +d.bike_fat+1; i++) { 
 					svg.append("circle")  
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
-						.attr("r", 2)
+						.attr("r", 3)
 						.attr("fill", "#e7298a")
 					if (x == xMax - 1) { x = 1; y--; } else { x++; }
 				}
-				for(var i = 1; i < d.ped_inj+1; i++) { 
+				for(var i = 1; i < +d.ped_inj+1; i++) { 
 					svg.append("circle")  
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
-						.attr("r", 2)
+						.attr("r", 3)
 						.attr("stroke-width", .5)
 						.attr("stroke", "#7570b3")
 						.attr("fill", "none")
 					if (x == xMax - 1) { x = 1; y--; } else { x++; }
 				}
-				for(var i = 1; i < d.ped_fat+1; i++) { 
+				for(var i = 1; i < +d.ped_fat+1; i++) { 
 					svg.append("circle")  
 						.attr("cx", xScale(x))
 						.attr("cy", yScale(y))
-						.attr("r", 2)
+						.attr("r", 3)
 						.style("fill", "#7570b3")
 					if (x == xMax - 1) { x = 1; y--; } else { x++; }
 				}
@@ -356,6 +366,46 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 				}
 			}
 		})
+
+		svg.append("text")
+			.attr("x", padding + 5)
+			.attr("y", 100)
+			.style("text-anchor", "start")
+			.style("font-size", 10).style("font-weight", 300)
+			.text(function(){
+				if (town.key != "Total") {
+					return "Bike Injuries: " + town.values[9].bike_inj;
+				}});
+
+		svg.append("text")
+			.attr("x", padding + 5)
+			.attr("y", 112)
+			.style("text-anchor", "start")
+			.style("font-size", 10).style("font-weight", 300)
+			.text(function(){
+				if (town.key != "Total") {
+					return "Bike Fatalities: " + town.values[9].bike_fat;
+				}});
+
+		svg.append("text")
+			.attr("x", padding + 5)
+			.attr("y", 124)
+			.style("text-anchor", "start")
+			.style("font-size", 10).style("font-weight", 300)
+			.text(function(){
+				if (town.key != "Total") {
+					return "Pedestrian Injuries: " + town.values[9].ped_inj;
+				}});
+
+		svg.append("text")
+			.attr("x", padding + 5)
+			.attr("y", 136)
+			.style("text-anchor", "start")
+			.style("font-size", 10).style("font-weight", 300)
+			.text(function(){
+				if (town.key != "Total") {
+					return "Pedestrian Fatalities: " + town.values[9].ped_fat;
+				}});
 
 	});	
 }

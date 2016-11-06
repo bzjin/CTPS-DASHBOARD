@@ -13,18 +13,13 @@
 
 <!-- Tooltip -->
 <script src="../../libs/d3-tip.js"></script>
-<!-- TopoJSON -->
-<script src="../../libs/topojson.min.js"></script>
-
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet">
+<link href="../../libs/google-fonts.css" rel="stylesheet">
 <!-- Jquery -->
 <script src="../../libs/jquery-2.2.4.min.js"></script>
 
 <!-- Bootstrap-->
 <script src="../../libs/bootstrap.min.js"></script>
-
-
 <link rel="stylesheet" href="../../libs/bootstrap.min.css">
 <style> 
 .axis line, .axis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} .yaxis line, .yaxis path { fill: none; stroke-width: 1; stroke: #ddd; opacity: .1;} 

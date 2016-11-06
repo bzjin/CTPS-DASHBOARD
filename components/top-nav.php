@@ -21,8 +21,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Crashes <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="../crashes/index.php">Non-Motorized Crashes</a></li>
             <li><a href="../crashes/index2.php">Motorized Crashes</a></li>
+            <li><a href="../crashes/index.php">Non-Motorized Crashes</a></li>
           </ul>
         </li>
 

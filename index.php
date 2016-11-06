@@ -51,8 +51,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Crashes <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="pages/crashes/index.php">Non-Motorized Crashes</a></li>
             <li><a href="pages/crashes/index2.php">Motorized Crashes</a></li>
+            <li><a href="pages/crashes/index.php">Non-Motorized Crashes</a></li>
           </ul>
         </li>
 
@@ -99,13 +99,13 @@
 <!-- Desktop nav --> 
 <div class="col-md-5 desktop-nav">
 	<div class="col-md-11">
-		<div class="page_link"><a href="pages/crashes/index.php" title="Go to crashes page" id="crashes">
+		<div class="page_link"><a href="pages/crashes/index2.php" title="Go to crashes page" id="crashes">
 			<div class="col-md-12 nav_metric">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Crashes </div>
 			<div class="col-md-6">
-				<p> Non-motorized injuries/deaths<br><b>1470/36</b></p></div>
+				<p> Motorized injuries/deaths <br><b>14888/68</b></p></div>
 			<div class="col-md-6">
-				<p> Motorized injuries/deaths <br><b>14888/68</b></p></div></a>
+				<p> Non-motorized injuries/deaths<br><b>1470/36</b></p></div></a>
 		</div>
 		<div class="page_link"><a href="pages/pavement/index.php" title="Go to pavement condition page" id="pavement">
 			<div class="col-md-12 nav_metric">
