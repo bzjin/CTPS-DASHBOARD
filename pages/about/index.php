@@ -50,6 +50,7 @@
 		</p>
 
 		<h2> Crashes </h2>
+		
 		<p> 
 		Crash data was obtained from the Massachusetts Registry of Motor Vehicles (RMV) Crash Data System (CDS.) 
 		The RMV collects crash data from the Massachusetts State Police, the police departments of individual cities and towns, and from motor vehicle operators. 
@@ -58,6 +59,7 @@
 		</p>
 
 		<h2> Pavement </h2>
+		
 		<p> 
 		Data was extracted from the Massachusetts Road Inventory produced by the Massachusetts Department of Transportation (MassDOT), 
 		formerly the Massachusetts Executive Office of Transportation, for the years 2007 through 2015. 
@@ -97,6 +99,7 @@
 
 
 		<h2> Bridges </h2>
+		
 		<p> Bridge data was obtained from the Bridge Division of the Massachusetts Department of Transportation's Highway Division Bridge Section
 		    for the years 2007 through 2016. The data record for each bridge indicates if the bridge is structurally deficient, is functionally
 			obsolete, and includes a &#34;health index&#34; calcuated by MassDOT.
@@ -110,11 +113,13 @@
 		</p>
 
 		<h2> Congestion </h2>
+		
 		<p> Congestion data was extracted  directly from the 2012 Congestion Management Program (CMP) project, which can be found at the CTPS data catalogue. The data was clipped to the MPO region and exported to GeoJSON. </p>
 		<a href="http://www.ctps.org/datacatalog_share/content/express-highway-performance-data-2012"> Express Highway Performance Data 2012 </a><br>
 		<a href="http://www.ctps.org/datacatalog_share/content/arterial-highway-performance-data-2012"> Arterial Highway Performance Data 2012 </a>
 
 		<h2> Sidewalks </h2>
+		
 		<p> Data was extracted from the Massachusetts Road Inventory produced by the Massachusetts Department of Transportation (MassDOT), formerly the Massachusetts
 		    Executive Office of Transporation, for the years 2007 through 2015.
 		    The following processing was performed on each year's Road Inventory:		
@@ -130,6 +135,7 @@
 		</p>
 
 		<h2> Bicycle Facilities </h2>
+		
 		<p>
 			<strong>
 				The “about” text for the bicycle facilities data will need to be re-written, once we’ve got clarification on exactly what bike facility data we’re using.
@@ -137,6 +143,7 @@
 		</p>
 
 		<h2> Demographics</h2>
+		
 		<p>
 			Demographic data was taken from the 2010 United States Census and the 2014 American Community Survey. 
 		</p>
