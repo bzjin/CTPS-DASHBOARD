@@ -37,21 +37,22 @@
 
 	<h1>Pavement Condition</h1>
 
-	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. The MPO invests in regular roadway maintenance to extend pavement life, keeping rides smooth and users safe while saving public tax dollars. We measure pavement condition using the Present Serviceability Index (PSI), a measure of a road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
+	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. Investments are made in roadway maintenance to extend pavement life, keeping rides smooth and users safe. Pavement condition is measured using the Present Serviceability Index (PSI), a measure of a road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
 	</p>
 
 	<h2> Non-Interstate System </h2>
 
 	<h3>Conditions in 2013</h3>
-	<p> Scroll down to compare pavement conditions between municipalities. The first column presents the overall distribution of pavement segments by their PSI score, with the average value highlighted. The second column and third columns display the percent of pavement and the total lane miles of pavement with acceptable PSI scores, respectively.
-	</p>
+	<p> Scroll down to compare pavement conditions between municipalities. The first column presents the overall distribution of pavement segments by their PSI score, with the average value highlighted. The second and third columns display the percent of pavement and the total lane miles of pavement with acceptable PSI scores, respectively.</p>
+
 		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
 		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
 
 	<div id="citygradients" class="col-md-12"></div>
 
 	<h3> Trends Over Time </h3>
-	<p> Select a city or town from the map to see how the pavement conditions within the municipality have changed. Each line charts the PSI value of a segment of a non-interstate road over the the past decade.</p>
+	<p> Select a city or town from the map to see how the pavement conditions within the municipality have changed over time. Each line charts the PSI value of a segment of a non-interstate road over the past decade.</p>
+	
 	<div class="col-md-12">
 	<button class='ALL townpicker' autofocus><i class="fa fa-map-marker" aria-hidden="true"></i> All</button>
 	<button class='ACTON townpicker'><i class="fa fa-map-marker" aria-hidden="true"></i> Acton</button>

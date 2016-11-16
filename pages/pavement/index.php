@@ -38,19 +38,17 @@
 
 	<h1>Pavement Condition</h1>
 
-	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. The MPO invests in regular roadway maintenance to extend pavement life, keeping rides smooth and users safe while saving public tax dollars. 
-		We measure pavement condition using the Present Serviceability Index (PSI), a measure of an road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
+	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. Investments are made in roadway maintenance to extend pavement life, keeping rides smooth and users safe. Pavement condition is measured using the Present Serviceability Index (PSI), a measure of a road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
 	</p>
 
 	<h2>Interstate Pavement</h2>
 	<h3>Conditions in 2013</h3>
-	<p>Hover over the bars below to see how the pavement condition of our region’s five interstate highways changes as they cross the region from North to South or East to West. 
-	 </p>
+	<p>Hover over the bars below to see the pavement condition of the five interstate highways in the Boston Region as they cross the region from North to South or East to West.</p>
 
 	<div id="chart" class="col-md-12"></div>
 
 	<h3>Trends Over Time</h3>
-	<p> Select an interstate below to learn how its pavement condition has changed. Each line charts the PSI value of a segment of that interstate over the past decade.</p>
+	<p> Select an interstate below to learn how its pavement condition has changed over time. Each vertical line charts the PSI value of a segment of that interstate over the past decade.</p>
 	<p> Click to see only one interstate at a time. </p>
 	<div class="col-md-12">
 		<button class = "all bigbutton timeline col-md-2" autofocus>All</button>

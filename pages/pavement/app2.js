@@ -192,7 +192,7 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 		.attr("x", xPos + 70).attr("y", yPos + 25)
 		.text("75% Quartile");
 	timeline.append("rect")
-		.style("fill", "fff").style("stroke", "none")
+		.style("fill", "#fff").style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 38).attr("height", "4px").attr("width", height/10);
 	timeline.append("text").style("font-size", 12)
 		.style("font-weight", 300)

@@ -53,16 +53,18 @@ text {
 	<div class=" col-md-12">
 
 	<h1>Bike Facilities</h1>
-	<p> People bike for fun, exercise, and transportation. They include children on their way to school, commuters in work clothes, athletes training, and seniors out for a relaxing ride. Most people who bike also use cars, transit, and sidewalks as alternate means of transportation. At the same time, when people bike more, they are healthier, have more expendable income, more free time, and more choice in how they move about their lives. 
-	</p><p>People who bike are also vulnerable users of the transportation system and account for a growing share of crashes and a disproportionate share of injuries in the region. The majority of the region still lacks adequate bicycle infrastructure, limiting the likelihood that people choose cycling as transportation option. 
-	</p><p>The Boston Region MPO monitors the bicycle network available throughout the region. Bicycle facilities include off-road trails that are often shared with pedestrians, as well as on-road lanes and cycle tracks on which people ride alongside motorized vehicles. We measure the total miles of facilities available to people biking and also calculate Bike Facility per Centerline Mile: the percent of road miles that provide designated bike lanes or cycle tracks. 
-	</p>
+	<p>People bike for fun, exercise, and transportation. Cyclists include children on their way to school, commuters heading to work, athletes training, and seniors out for a relaxing ride. Bicycling is an active travel mode that can factor into a healthy lifestyle and it is an economical transportation option because bicycles burn calories instead of pricey fossil fuels. Bicycling as a travel mode is easily combined with walking and transit, which provides cyclists with more choice in how they move about their lives.</p>
+
+	<p>People who bike are vulnerable users of the transportation system, accounting for a growing share of crashes and a disproportionate share of injuries in the region. The majority of the Boston region still lacks adequate bicycle infrastructure, limiting the likelihood that people choose cycling as transportation option.</p>
+
+	<p>The Boston Region MPO monitors the bicycle network available throughout the region. Bicycle facilities include off-road trails that are often shared with pedestrians, as well as on-road lanes and cycle tracks where people ride alongside motorized vehicles. The MPO measures the total miles of facilities available to cyclists. The off- and on-road bicycle facilities in the region combine to create the Boston Region Bike Network. Understanding the Boston Region Bike Network and where it needs to grow is an important part of planning for bicycle transportation in and around Boston today and in the future.</p>
+
 	</div>
 	<div class=" col-md-12">
 
 	<h2> Roadway Coverage </h2>
 	<h3> On-Road Bike Facilities </h3>
-	<p> This map of Boston Region cities and towns below depicts the percent of road miles that provide bicycle facilities. The circles to the right represent the total number of on-road and off-road miles of available to people biking in each municipality. 
+	<p> The map of Boston Region municipalities below depicts “Bike Facility per Centerline Mile” of roadway, which is the percent of road miles that include bicycle facilities. The on-road bicycle facilities include designated bike lanes and cycle tracks. 
 	</p>
 	<button class="bigbutton col-md-4" id="alphabetize" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
 	<button class="bigbutton col-md-4" id="byAverages" alt="Sort towns by ascending ratio on-road miles to centerline miles">Sort by On-Road Miles to Centerline Miles Ratio</button>

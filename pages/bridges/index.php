@@ -35,13 +35,13 @@
 </div> 
 <div id="header" class="col-md-10 col-md-offset-1">
 <h1>Bridge Condition</h1>
-<p>The 2,866 bridges located in the Boston Region connect places and carry people traveling by automobile, bus, train, bicycle and foot. These bridges have aged faster than they have been replaced or repaired. MassDOT and the MBTA consider 154 bridges (5%) structurally deficient, meaning that one or more major components (deck, substructure, and superstructure) require attention. A backlog of maintenance and construction work has emerged.  
-</p>
-<p>Meanwhile, understanding bridge condition across a transportation system requires taking into account more than just structurally deficient components. The Bridge Health Index (BHI) is a weighted average of the health indices of a bridge’s elements (e.g. Trusses, decks, bridge rails), on a scale of 0 to 100. BHI provides a comprehensive overview of bridge condition throughout a network. 
-</p>
+<p>The 2,866 bridges located in the Boston Region connect places and carry people traveling by automobile, bus, train, bicycle and foot. MassDOT and MBTA monitor and classify the condition of all bridges in the Commonwealth on a regular basis. In 2015, 154 bridges (5%) in the Boston Region were classified as structurally deficient, meaning that one or more major bridge components (deck, substructure, and superstructure) require attention.</p>
+
+<p>Meanwhile, understanding bridge condition across a transportation system requires taking into account more than just structurally deficient components. The Bridge Health Index (BHI) is a weighted average of the health indices of a bridge’s elements (e.g. trusses, decks, bridge rails), on a scale of 0 to 100, with a value of zero indicating that all of the bridge elements to be in the worst condition. A score of 85 or greater indicates that the condition of a bridge to be good. BHI provides a comprehensive overview of bridge condition throughout a network.</p>
 
 <h3>Trends Over Time</h3>
-<p> Select a municipality to see how the health and structural integrity of the bridges located within its borders have changed over the past decade. </p>
+<p> Select a municipality to see how the health and structural integrity of the bridges located within its borders have changed over the past decade.</p>
+
 <div class="col-md-12">
 <button class='ALL townpicker' autofocus><i class="fa fa-map-marker" aria-hidden="true"></i> All </button>
 <button class='ACTON townpicker'><i class='fa fa-map-marker' aria-hidden='true'></i> Acton</button>

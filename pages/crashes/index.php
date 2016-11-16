@@ -44,14 +44,11 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 
 	<h1>Crashes</h1>
 
-	<p>The ability to move is crucial to every aspect of our existence. And yet, people face substantial risk getting from place to place in the Boston region. <b> Roads claimed the lives of 53 people in the Boston region last year. 
-	</b> We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. 
-	The MPO aims to keep you safe everywhere and every way that you move. For this reason, we track <b>injuries</b> and <b>fatalities</b> from crashes throughout the region.
-	</p>
+	<p>The ability to move around is crucial to every aspect of our existence. The MPO’s goal is to keep you safe everywhere and every way that you move. <b>That being said, highway crashes claimed the lives of 53 people in the Boston region last year.</b> We are human and make mistakes. For this reason, we must design transportation improvements that keep us moving and protect us at every turn. In situations where a person might fail, the roadway system should not. For this reason, we track injuries and fatalities from crashes throughout the region to monitor the safety of the Boston region’s transportation network.</p>
 
 	<h2> Injuries to People Riding Bikes and Walking </h2>
 	<h3>Trends Over Time</h3>
-		<p> Click on the map to discover how the number of injuries incurred in each city or town has changed over a decade. </p> 
+		<p> Click on the map to discover the number of injuries involving bicycles and pedestrians in each city or town over the last ten years. Hover over each town to see its 2013 statistics on injuries and fatalities. </p> 
 		<div id="map" class="col-md-4"></div>
 		<div id="bikeChart" class="col-md-4 key"><h4>Bicycle Injuries</h4></div>
 		<div id="pedChart" class = "col-md-4 key"><h4>Pedestrian Injuries</h4></div>

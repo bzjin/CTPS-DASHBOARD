@@ -44,30 +44,25 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 
 	<h1>Crashes</h1>
 	
-	<p>The ability to move is crucial to every aspect of our existence. And yet, people face substantial risk getting from place to place in the Boston region. Roads claimed the lives of 53 people in the Boston region last year. 
-	We are human and make mistakes. For this reason, we must design transportation that keeps us moving and protects us at every turn. In situations where a person might fail, the road system should not. 
-	The MPO aims to keep you safe everywhere and every way that you move. For this reason, we track injuries and fatalities from crashes throughout the region.
-	</p>
+	<p>The ability to move around is crucial to every aspect of our existence. The MPO’s goal is to keep you safe everywhere and every way that you move. <b>That being said, highway crashes claimed the lives of 53 people in the Boston region last year.</b> We are human and make mistakes. For this reason, we must design transportation improvements that keep us moving and protect us at every turn. In situations where a person might fail, the roadway system should not. For this reason, we track injuries and fatalities from crashes throughout the region to monitor the safety of the Boston region’s transportation network.</p>
 
 	<h2> Injuries to People Driving </h2> 
 	<h3>Trends Over Time</h3>
-		<p> Click on each city or town to see its injury counts over time. </p> 
-
+		<p> Click on each city or town and see its injury count over time. Hover over each town to see its 2013 statistics on injuries and fatalities.</p> 
 		<div id="map" class="col-md-4"></div>
 		<div id="motChart" class="col-md-4 key"><h4>All Motorized Injuries</h4></div>
 		<div id="truckChart" class = "col-md-4 key"><h4>Truck Injuries</h4></div>
 
 	<h3>One Year of Crashes</h3>
-	<p> Boston Region saw <b>14888</b> total vehicle crash injuries in 2013. Each dot represents 1 crash. Large, solid, filled dots represent 680 fatalities.</p>
+	<p> The Boston Region saw 14,888 total injuries involving motorized vehicles in 2013. Each dot represents one crash. Large solid-filled dots represent 680 fatalities.</p>
 		<div class="col-md-12 key">
 			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Vehicle Fatalities </p>
 		</div>
 
 	<div class="col-md-12"><img src="crashes_screenshot-min.png"></div>
-
 	<h3>Truck Crashes</h3>
-	<p> Truck crash description. Why do we count trucks specifically? Once again, each dot represents one crash. Filled-in dots represent fatalities.</p>
+	<p> Trucks are among the larger and heavier vehicles using the transportation system and account for a greater proportion of crash severity than other modes. Truck-involved crashes are one of the state’s emphasis areas. Each dot represents one crash. Solid dots represent fatalities involving trucks.</p>
 	<div class="col-md-12" id="trucks"></div>
 
 	<div class="footer col-md-12">
