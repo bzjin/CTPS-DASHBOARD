@@ -37,6 +37,7 @@
 	<div id="about" class="col-md-12">
 		<h1>About</h1>
 
+		<h2> Introduction </h2>
 		<p>
 		The Federal Government is requiring every MPO in the United States to define performance metrics and goals for their transportation system, 
 		and to track progress with respect to those goals over time. 
@@ -50,7 +51,6 @@
 		</p>
 
 		<h2> Crashes </h2>
-		
 		<p> 
 		Crash data was obtained from the Massachusetts Registry of Motor Vehicles (RMV) Crash Data System (CDS.) 
 		The RMV collects crash data from the Massachusetts State Police, the police departments of individual cities and towns, and from motor vehicle operators. 
@@ -59,7 +59,6 @@
 		</p>
 
 		<h2> Pavement </h2>
-		
 		<p> 
 		Data was extracted from the Massachusetts Road Inventory produced by the Massachusetts Department of Transportation (MassDOT), 
 		formerly the Massachusetts Executive Office of Transportation, for the years 2007 through 2015. 
@@ -99,27 +98,24 @@
 
 
 		<h2> Bridges </h2>
-		
 		<p> Bridge data was obtained from the Bridge Division of the Massachusetts Department of Transportation's Highway Division Bridge Section
 		    for the years 2007 through 2016. The data record for each bridge indicates if the bridge is structurally deficient, is functionally
 			obsolete, and includes a &#34;health index&#34; calcuated by MassDOT.
-			<br/>
-			Bridge deck area is calculated as follows:
+		</p>
+		<p> Bridge deck area is calculated by MassDOT as follows:
 			<ul>
-				<li>If the bridge is not a culvert, the area is equal to the structure length multiplied by the bridge deck width out-to-out.</li>
-				<li>If the bridge is a culvert, the area is equal to the approach roadway width multiplied by the structure length multiplied
+				<li>If the bridge is not a culvert, the deck area is equal to the structure length multiplied by the bridge deck width out-to-out.</li>
+				<li>If the bridge is a culvert, the deck area is equal to the approach roadway width multiplied by the structure length multiplied
 				    by the cosine of the bridge skew, in degrees.</li>
 			</ul>
 		</p>
 
 		<h2> Congestion </h2>
-		
 		<p> Congestion data was extracted  directly from the 2012 Congestion Management Program (CMP) project, which can be found at the CTPS data catalogue. The data was clipped to the MPO region and exported to GeoJSON. </p>
 		<a href="http://www.ctps.org/datacatalog_share/content/express-highway-performance-data-2012"> Express Highway Performance Data 2012 </a><br>
 		<a href="http://www.ctps.org/datacatalog_share/content/arterial-highway-performance-data-2012"> Arterial Highway Performance Data 2012 </a>
 
 		<h2> Sidewalks </h2>
-		
 		<p> Data was extracted from the Massachusetts Road Inventory produced by the Massachusetts Department of Transportation (MassDOT), formerly the Massachusetts
 		    Executive Office of Transporation, for the years 2007 through 2015.
 		    The following processing was performed on each year's Road Inventory:		
@@ -135,22 +131,21 @@
 		</p>
 
 		<h2> Bicycle Facilities </h2>
-		
 		<p>
-			<strong>
-				The “about” text for the bicycle facilities data will need to be re-written, once we’ve got clarification on exactly what bike facility data we’re using.
-			</strong>
+			The 2011 bicycle facility data was taken from the 2011 MassDOT Road Inventory and Bicycle Accommodation Inventory.
+			The 2016 bicycle facility data was taken from the Metropolitan Area Planning Council's Bicycle and Pedestrian Mapping Index, as of October 2016.
+
 		</p>
 
 		<h2> Demographics</h2>
-		
 		<p>
 			Demographic data was taken from the 2010 United States Census and the 2014 American Community Survey. 
 		</p>
 
-		<h3> A Note on Geometries </h3>
+		<h3> A Note on Spatial Data </h3>
 		<p> 
-		For the most part, mapping on this dashboard was done by exporting spatial data from ArcMap to <a href="http://geojson.org/">GeoJSON</a> format. 
+		The spatial data used in this dashboard was exported from an ESRI ArcSDE, file geodatabase, or personal geodatabase
+		feature class to <a href="http://geojson.org/">GeoJSON</a> format. 
 		Most GeoJSON data was then converted to <a href="https://github.com/mbostock/topojson">TopoJSON</a> format, 
 		a topology-preserving spatial data format, in order to improve page load-time performance.
 		</p>
