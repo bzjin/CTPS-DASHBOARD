@@ -2,7 +2,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 var f = d3.format(".2")
-var e = d3.format(".1");
+var e = d3.format(".1f");
 
 var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])

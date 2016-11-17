@@ -2,7 +2,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 var f = d3.format(".2")
-var e = d3.format(".1");
+var e = d3.format(".1f");
 
 //Define Color Scale
 var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
@@ -42,6 +42,7 @@ allData.forEach(function(i){
 var colorToYear = d3.scaleLinear()
                   .domain([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015])
                   .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
+
 xScaleRatio = d3.scaleLinear().domain([0, 1]).range([80, 1080]);
 yScale = d3.scalePoint().domain(towns).range([50, 1350]);
 
@@ -70,7 +71,7 @@ var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([0, 10])
     .html(function(d) {
-      return d.town + "<br>" + d.year + "<br>Sidewalk Miles: " + d.sidewalk_miles + "<br>Centerline Miles: " + d.center_line_miles;
+      return d.town + "<br>" + d.year + "<br>Sidewalk Miles: " + e(+d.sidewalk_miles) + "<br>Centerline Miles: " + e(+d.center_line_miles);
     })
 
 timeline.call(tip); 

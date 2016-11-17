@@ -2,10 +2,14 @@
 var CTPS = {};
 CTPS.demoApp = {};
 var f = d3.format(".2")
-var e = d3.format(".1");
+var e = d3.format(".1f");
 
 //Define Color Scale
 var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
+
+/*var colorScale = d3.scaleThreshold()
+				.domain([.4, .5, .7, .9])
+				.range(["#D73027", "#EB8859", "#fee08b", "#7FCF7D", "#00B26F"]);*/
 
 //Using the d3.queue.js library
 d3.queue()
@@ -288,8 +292,10 @@ pmchartContainer.selectAll(".labels")
 			.attr("y", function(d) { 
 				if (d.values[0].properties.DIRECTION == "Eastbound" || d.values[0].properties.DIRECTION == "Northbound") { 
 					return yScale(d.values[0].properties.ROUTE_NUM) - 8;
-				} else {
+				} else if (d.values[0].properties.DIRECTION == "Westbound" || d.values[0].properties.DIRECTION == "Southbound"){
 					return yScale(d.values[0].properties.ROUTE_NUM) + 10;
+				} else {
+					return -200;
 				}})
 			.style("stroke", "none")
 			.style("font-size", 11)
@@ -337,11 +343,6 @@ pmchartContainer.selectAll(".labels")
 		.attr("transform", "translate(0, 540)").style("stroke-width", "1px")
 		.style("font-size", "10px")
 		.call(xAxis);
-	
-	pmchartContainer.append("g").attr("class", "yaxis")
-		.attr("transform", "translate(40, 0)")
-		.style("font-size", "12px")
-		.call(yAxis).selectAll("text").remove();
 
 	pmchartContainer.selectAll(".pmbars")
 		.data(interstateRoads)

@@ -2,7 +2,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 var f = d3.format(".2")
-var e = d3.format(".1");
+var e = d3.format(".1f");
 
 var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
@@ -338,7 +338,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 }
 
 CTPS.demoApp.generateTruck = function(crashdata) { 
-	var height = 770;
+	var height = 470;
 	var width = 1100;
 	var padding = 50;
 
@@ -357,13 +357,13 @@ CTPS.demoApp.generateTruck = function(crashdata) {
 				.attr("width", width);
 
 	var xScale = d3.scaleLinear().domain([2004, 2013]).range([0 + padding, width - (2.5 * padding)]);
-	var yScale = d3.scaleLinear().domain([100, 0]).range([height - 100, 10]);
+	var yScale = d3.scaleLinear().domain([90, 0]).range([height-60, -10]);
 
 	var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")); 
 
 	svg.append("g")
 	  .attr("class", "taxis")
-	  .attr("transform", "translate(0, 665)")
+	  .attr("transform", "translate(0, 410)")
 	  .call(xAxis)
 	  .selectAll("text")
 	  .style("font-size", 18)
@@ -376,43 +376,42 @@ CTPS.demoApp.generateTruck = function(crashdata) {
 	crashdata.forEach(function(d){
 		if (year != d.year) { 
 			x = 1; 
-			y = 99; 
+			y = 89; 
 			year = d.year; 
 		}
-
 		if (d.town == "Total") {
-			
 			for(var i = 1; i < parseInt(d.trk_inj) + 1; i ++) { 
 				svg.append("circle")  
 					.attr("cx", xScale(d.year) + x)
 					.attr("cy", yScale(y))
-					.attr("r", 2.8)
+					.attr("r", 2)
 					.attr("stroke-width", .5)
 					.attr("stroke", "orange")
 					.attr("fill", "none")
-				if (x == xMax) { x = 1; y--; } else { x += 7; }
+				if (x >= xMax) { x = 1; y--; } else { x += 6; }
 			}
 
 			for(var i = 1; i < parseInt(d.trk_fat) + 1; i ++) { 
 				svg.append("circle")  
 					.attr("cx", xScale(d.year) + x)
 					.attr("cy", yScale(y))
-					.attr("r", 2.8)
+					.attr("r", 2)
 					.attr("fill", "orange")
-				if (x == xMax) { x = 1; y--; } else { x += 7; }
+				if (x >= xMax) { x = 1; y--; } else { x += 6; }
 			}
+
 			svg.append("text")  
-				.attr("x", xScale((d.year + d.year + 1)/ 2) - 15)
-				.attr("y", yScale(100) + 45)
-				.text(+d.trk_fat + " Fatalities")
-				.style("font-weight", 300)
+				.attr("x", xScale((+d.year + +d.year + 1)/ 2) - 15)
+				.attr("y", yScale(y) - 40)
+				.text(d.trk_fat + " Fatalities")
+				.style("font-weight", 300).style("font-size", 12)
 				.style("text-anchor", "middle")
 
 			svg.append("text")  
-				.attr("x", xScale((d.year + d.year + 1)/ 2) - 15)
-				.attr("y", yScale(100) + 65)
-				.text(+d.trk_inj + " Injuries")
-				.style("font-weight", 300)
+				.attr("x", xScale((+d.year + +d.year + 1)/ 2) - 15)
+				.attr("y", yScale(y) - 20)
+				.text(d.trk_inj + " Injuries")
+				.style("font-weight", 300).style("font-size", 12)
 				.style("text-anchor", "middle")
 		}
 

@@ -2,7 +2,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 var f = d3.format(".2")
-var e = d3.format(".1");
+var e = d3.format(".1f");
 
 //Define Color Scale
 var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
@@ -106,10 +106,18 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 			})
 			.style("opacity", .2)
 		.on("mouseenter", function(d) {
-            	var mystring = this.getAttribute("class");
+				tip.show(d); 
+				crossSection(d);
+				
+				var mystring = this.getAttribute("class");
 				var arr = mystring.split(" ");
 				var thirdWord = arr[1]; 
-				
+
+				d3.selectAll("." + thirdWord)
+					.style("stroke-width", 2.5)
+					.style("opacity", 1)
+					.style("cursor", "pointer");
+
 				d3.selectAll(".interstate")
 					.style("stroke-width", 1)
 					.style("opacity", .2);
@@ -117,9 +125,6 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 				d3.selectAll("." + thirdWord)
 					.style("stroke-width", 2.5)
 					.style("opacity", 1)
-					.style("cursor", "pointer");
-
-				tip.show(d); 
 			})
 		.on("mouseleave", function (d) {
 				tip.hide(d);

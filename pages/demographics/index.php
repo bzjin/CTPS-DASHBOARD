@@ -49,9 +49,13 @@ text {fill: #ddd; font-size: 1.0em;}
 	<p> The following information is readable only to screen readers: Data for demographics is available on the CTPS Data 
 	Catalogue. You can download the spreadsheet after following this link: <a href="http://www.ctps.org/datacatalog_share/content/boston-region-mpo-2010-census-demographic-profile"> Demographics Spreadsheet </a> </p>
 </div>
+<p>From industry in the north down to the beaches in the south, from the picturesque rural farmlands in the west to the cultural hub of Boston in the east—the Boston region is a diverse place, its residents representing a wide range of ages, races, ethnicities, abilities, and languages. The Boston Region MPO has identified several demographics that inform MPO staff about the differing transportation needs of residents and that impact the MPO’s transportation decision-making process. 
+</p>
 
 <h3> A Closer Look at the Boston Population </h3>
-	<button class='all bigbutton col-md-4 I-93'> All </button>
+<p>Click on the tab to show the percent of the demographic in each census tract.
+</p>
+	<div class="col-md-12">
 	<button class='minority bigbutton col-md-4 I-93' autofocus> Minority </button>
 	<button class='employed bigbutton col-md-4 I-93'> Unemployment </button>
 	<button class='lep bigbutton col-md-4 I-95'> Limited English Proficiency </button>
@@ -60,40 +64,52 @@ text {fill: #ddd; font-size: 1.0em;}
 
 	<div class="col-md-12">
 	<div class="col-md-5" id="map_pop"></div>
-	<div class="col-md-7" id="demographics_pop"></div></div>
+	<div class="col-md-7" id="demographics_pop"></div></div></div>
 
-<h3> Races and Ethnicities Breakdown </h3>
+<h3> Races in the Boston Region </h3>
+<p>A minority includes all persons who identify as a race other than White or as two or more races. Click on the tabs to show the percent of races in each census tract. 
+</p>
+	<div class="col-md-12">
 	<button class='white bigbutton col-md-3' autofocus> White </button>
 	<button class='black bigbutton col-md-3'> Black or African American </button>
 	<button class='native bigbutton col-md-3'> American Indian / Alaska native </button>
 	<button class='asian bigbutton col-md-3'> Asian </button>
 	<button class='pacific bigbutton col-md-3'> Native Hawaiian / Pacific islander </button>
-	<button class='hispanic bigbutton col-md-3'> Hispanic origin </button>
 	<button class='other bigbutton col-md-3'> Other race </button>
-	<button class='multiple bigbutton col-md-3'> Two or more races </button>
+	<button class='multiple bigbutton col-md-3'> Two or more races </button></div>
 
 	<div class="col-md-12">
 	<div class="col-md-5" id="map_race"></div>
 	<div class="col-md-7" id="demographics_race"></div></div>
 
+<h3> Hispanic Populations in the Boston Region </h3>
+<p> </p>
+	<div class="col-md-12">
+	<div class="col-md-5" id="map_hisp"></div>
+	<div class="col-md-7" id="demographics_hisp"></div></div>
+
 <h3> The Five Non-English Languages Most Commonly Spoken at Home </h3>
+<p>Click on the tabs to show the percent of the five non-English languages most commonly spoken at home in each census tract. Limited English Proficiency (LEP) includes those residents 5 years or older who report speaking English “less than very well.”</p>
+	<div class="col-md-12">
 	<button class='spanish bigbutton col-md-2' autofocus> Spanish </button>
 	<button class='chinese bigbutton col-md-2'> Chinese </button>
 	<button class='portuguese bigbutton col-md-2'> Portuguese</button>
 	<button class='french bigbutton col-md-2'> French </button>
-	<button class='vietnamese bigbutton col-md-2'>Vietnamese </button>
+	<button class='vietnamese bigbutton col-md-2'>Vietnamese </button></div>
 
 	<div class="col-md-12">
 	<div class="col-md-5" id="map_lep"></div>
 	<div class="col-md-7" id="demographics_lep"></div></div>
 
 <h3> Disabilities Breakdown </h3>
+<p>Click on the tabs to show the percent of persons who have each disability in each census tract. Persons with disabilities include those residents who report having one or more physical or cognitive disability.</p>
+	<div class="col-md-12">
 	<button class='hearing bigbutton col-md-2' autofocus> Hearing Disability </button>
 	<button class='vision bigbutton col-md-2'> Vision Disability </button>
 	<button class='cognitive bigbutton col-md-2'> Cognitive Disability</button>
 	<button class='ambulatory bigbutton col-md-2'> Ambulatory Disability </button>
 	<button class='selfcare bigbutton col-md-2'>Self Care Disability</button>
-	<button class='independent bigbutton col-md-2'>Independent Living Disability</button>
+	<button class='independent bigbutton col-md-2'>Independent Living Disability</button></div>
 
 	<div class="col-md-12">
 	<div class="col-md-5" id="map_disabilities"></div>

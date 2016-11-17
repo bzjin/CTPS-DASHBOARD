@@ -61,6 +61,14 @@ div h3 {
     color: #7570b3;
 }
 
+.yellow {
+  color: orange;
+}
+
+.screenshot {
+  padding-bottom: 40px;
+}
+
 img{
   width: 100%;
 }

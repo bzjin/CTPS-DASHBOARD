@@ -304,7 +304,7 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 	timeline.append("text")
 			.attr("x", xPos + 150)
 			.attr("y", 560)
-			.text("% non structurally deficient bridge deck area")
+			.text("% non-structurally deficient bridge deck area")
 			.style("font-weight", 300)
 			.style("font-size", 12)
 
@@ -437,7 +437,7 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 	timeline2.append("text")
 		.attr("x", xPos + 20)
 		.attr("y", 575)
-		.text("non structurally deficient bridges")
+		.text("non-structurally deficient bridges")
 		.style("font-weight", 300)
 		.style("font-size", 12)
 

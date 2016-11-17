@@ -1,8 +1,8 @@
 //Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
-var f = d3.format("2")
-var e = d3.format("1");
+var f = d3.format(".2")
+var e = d3.format(".1f");
 
 var projection = d3.geoConicConformal()
   .parallels([41 + 43 / 60, 42 + 41 / 60])
@@ -19,8 +19,11 @@ d3.queue()
     CTPS.demoApp.generateMap(results[0]); //Population map
     CTPS.demoApp.generateStats(results[0]);
 
-    CTPS.demoApp.generateMap_R(results[0]); //Races and ethnicities map
+    CTPS.demoApp.generateMap_R(results[0]); //Races map
     CTPS.demoApp.generateStats_R(results[0]);
+
+    CTPS.demoApp.generateMap_H(results[0]); //Hispanic map
+    CTPS.demoApp.generateStats_H(results[0]);
 
     CTPS.demoApp.generateMap_L(results[0]); //Languages map
     CTPS.demoApp.generateStats_L(results[0]);
@@ -428,7 +431,7 @@ CTPS.demoApp.generateMap_R = function(tracts) {
       var yPos = 40; 
       var height = 600; 
 
-      if (percent != "HISPANIC_PCT_2010") { 
+      /*if (percent != "HISPANIC_PCT_2010") { 
          svgContainer_R.append("text")
           .attr("x", 100)
           .attr("y", 470)
@@ -440,7 +443,7 @@ CTPS.demoApp.generateMap_R = function(tracts) {
           .attr("y", 470)
           .style("font-weight", 300).style("font-size", 10)
           .text("*including all races")
-      }
+      }*/
 
       //background
       svgContainer_R.append("text")
@@ -657,6 +660,230 @@ CTPS.demoApp.generateStats_R = function(tracts){
   })
 
 }
+
+CTPS.demoApp.generateMap_H = function(tracts) {  
+  // SVG Viewport
+
+  var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
+
+  var colorScale = d3.scaleLinear()
+                  .domain([0, 1, 2, 3, 4, 5, 6, 7])
+                  .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02", "#3288bd", "#fee08b","#80cdc1"])
+
+  var projection = d3.geoConicConformal()
+  .parallels([41 + 43 / 60, 42 + 41 / 60])
+    .rotate([71 + 30 / 60, -41 ])
+  .scale([25000]) // N.B. The scale and translation vector were determined empirically.
+  .translate([40,1015]);
+  
+  var geoPath = d3.geoPath().projection(projection); 
+
+  svgContainer_H = d3.select("#map_hisp").append("svg")
+                    .attr("width", "100%")
+                    .attr("height", 500)
+                    .style("overflow", "visible")
+
+  //D3 Tooltip
+ var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .style("font-family", "Open Sans")
+    .html(function(d) {
+      return "<p style='font-weight:700'>Tract " + d.properties.TRACT + "</style><br>Town: " + d.properties.TOWN + "<br>% Hispanic Origin: " + e(d.properties.HISPANIC_PCT_2010 * 100);
+    })
+
+  svgContainer_H.call(tip); 
+
+  var findIndex = function(town, statistic) { 
+    for (var i = 0; i < equity.length; i++) { 
+      if (equity[i].MPO_Municipality == town) {
+        return equity[i][statistic]; 
+      } 
+    }
+  }
+
+  colorMap_H = function(percent) { 
+   if (percent == "HISPANIC_PCT_2010") { var keyColor = colorScale(7); var keyMult = 5;}
+  // Create Boston Region MPO map with SVG paths for individual towns.
+    svgContainer_H.selectAll("rect").remove();
+    svgContainer_H.selectAll("text").remove(); 
+  
+    var tractMap = svgContainer_H.selectAll(".tracts")
+      .data(census)
+      .enter()
+      .append("path")
+        .attr("class", function(d){ return "t" + d.properties.TRACT; })
+        .attr("d", function(d, i) {return geoPath(d); })
+        .style("fill", function(d) { 
+          if (percent == "HISPANIC_PCT_2010") { return colorScale(7)}
+        })
+        .style("fill-opacity", function(d) { return d.properties[percent] * 3 / keyMult * 5; } )
+        .style("opacity", 1)
+        .on("mouseenter", function(d){
+          d3.selectAll("." + this.getAttribute("class"))
+              .style("stroke-width", 2)
+              .style("stroke", "#ddd")
+          tip.show(d);
+        })
+        .on("mouseleave", function(d){
+           d3.selectAll("." + this.getAttribute("class"))
+              .style("stroke-width", 0)
+              .style("stroke", "#ddd")
+         tip.hide(d);
+        })
+       
+     //Color key
+      var xPos = 5;
+      var yPos = 40; 
+      var height = 600; 
+
+      //background
+      svgContainer_H.append("text")
+        .style("font-weight", 700)
+        .attr("x", xPos).attr("y", yPos -7)
+        .text("KEY");
+      //text and colors
+      svgContainer_H.append("rect")
+        .style("fill", keyColor).style("stroke", "none").style("opacity", .15)
+        .attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
+      svgContainer_H.append("text")
+        .style("font-weight", 300)
+        .attr("x", xPos + 25).attr("y", yPos + 7)
+        .text(keyMult + "% population");
+      svgContainer_H.append("rect")
+        .style("fill", keyColor).style("stroke", "none").style("opacity", .3)
+        .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
+      svgContainer_H.append("text")
+        .style("font-weight", 300)
+        .attr("x", xPos + 25).attr("y", yPos + 22)
+        .text(2 * keyMult + "% population");
+      svgContainer_H.append("rect")
+        .style("fill", keyColor).style("stroke", "none").style("opacity", .45)
+        .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
+      svgContainer_H.append("text")
+        .style("font-weight", 300)
+        .attr("x", xPos + 25).attr("y", yPos + 37)
+        .text(e(3 * keyMult) + "% population");
+      svgContainer_H.append("rect")
+        .style("fill", keyColor).style("stroke", "none").style("opacity", .6)
+        .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
+      svgContainer_H.append("text")
+        .style("font-weight", 300)
+        .attr("x", xPos + 25).attr("y", yPos + 52)
+        .text(4 * keyMult + "% population");
+      svgContainer_H.append("rect")
+        .style("fill", keyColor).style("stroke", "none").style("opacity", .75)
+        .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
+      svgContainer_H.append("text")
+        .style("font-weight", 300)
+        .attr("x", xPos + 25).attr("y", yPos + 67)
+        .text(5 * keyMult + "% population");
+    }
+}
+
+CTPS.demoApp.generateStats_H = function(tracts){
+   var colorScale = d3.scaleLinear()
+                  .domain([0, 1, 2, 3, 4, 5, 6, 7])
+                  .range(["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02", "#3288bd", "#fee08b","#80cdc1"])
+
+  var allChart = d3.select("#demographics_hisp").append("svg")
+    .attr("width", "100%")
+    .attr("height", 500)
+    .style("overflow", "visible")
+
+  var census = topojson.feature(tracts, tracts.objects.tract_census_2).features;
+  var maxmins = [];
+  census.forEach(function(i){
+    maxmins.push(i.properties.WHITE_POP_2010);
+  })
+
+  var w = $("#demographics_hisp").width();
+
+  var xScale = d3.scaleLinear() 
+              .domain([0, 100])
+              .range([80, w - 50])
+
+  var yScale = d3.scaleLinear()
+              .domain([0, d3.max(maxmins)])
+              .range([430, 30])
+
+  var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")).tickSize(-400, 0, 0); 
+  var yAxis = d3.axisLeft(yScale).ticks(10).tickSize(- w + 130, 0, 0);
+//D3 Tooltip
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .style("font-family", "Open Sans")
+    .html(function(d) {
+      return "<p style='font-weight:700'>Tract " + d.properties.TRACT + "</style><br>Town: " + d.properties.TOWN +
+       "<br>% Hispanic Origin: " + e(d.properties.HISPANIC_PCT_2010 * 100);
+    })
+
+  allChart.call(tip); 
+
+  allChart.append("g").attr("class", "axis")
+    .attr("transform", "translate(0, 430)")
+    .call(xAxis)
+    .selectAll("text")
+      .style("font-size", "12px")
+      .style("font-family", "Open Sans")
+      .style("font-weight", 700)
+      .attr("transform", "translate(0, 5)");
+
+  
+  allChart.append("g").attr("class", "yaxis")
+    .attr("transform", "translate(80, 0)")
+    .call(yAxis)
+    .selectAll("text")
+      .style("font-size", "12px")
+      .attr("transform", "translate(-5,0)");
+
+  allChart.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -250)
+    .attr("y", 20)
+    .style("text-anchor", "middle")
+    .text("Population")
+
+  allChart.append("text")
+    .attr("x", 340)
+    .attr("y", 470)
+    .style("text-anchor", "middle")
+    .style("font-weight", 300)
+    .text("Percent of Population")
+
+  populatePoints_H("HISPANIC_PCT_2010", "HISPANIC_POP_2010");
+
+  colorMap_H("HISPANIC_PCT_2010");
+
+  function populatePoints_H(percent, population) { 
+    allChart.selectAll("points")
+    .data(census)
+    .enter()
+    .append("rect")
+      .attr("class", function(d){ return "t" + d.properties.TRACT; })
+      .attr("x", function(d) {  return xScale(Math.floor(d.properties[percent]/.0175) * 1.75);})
+      .attr("y", function(d) { return yScale(Math.floor(d.properties[population]/150) * 150) - 6 })
+      .attr("width", 6)
+      .attr("height", 6)
+      .style("fill-opacity", .3)
+      .style("opacity", 1)
+      .style("fill",  colorScale(7))
+      .on("mouseenter", function(d){
+          d3.selectAll("." + this.getAttribute("class"))
+              .style("stroke-width", 2)
+              .style("stroke", "#ddd")
+
+          tip.show(d);
+        })
+        .on("mouseleave", function(d){
+           d3.selectAll("." + this.getAttribute("class"))
+              .style("stroke-width", 0)
+              .style("stroke", "#ddd")
+
+          tip.hide(d);
+        })
+  }
+}
+
 
 CTPS.demoApp.generateMap_L = function(tracts) {  
   // SVG Viewport

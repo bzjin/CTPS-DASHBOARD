@@ -50,19 +50,23 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	<h3>Trends Over Time</h3>
 		<p> Click on each city or town and see its injury count over time. Hover over each town to see its 2013 statistics on injuries and fatalities.</p> 
 		<div id="map" class="col-md-4"></div>
-		<div id="motChart" class="col-md-4 key"><h4>All Motorized Injuries</h4></div>
-		<div id="truckChart" class = "col-md-4 key"><h4>Truck Injuries</h4></div>
+		<div id="motChart" class="col-md-4 key"><h4>Injuries Involving Motorized Vehicles</h4></div>
+		<div id="truckChart" class = "col-md-4 key"><h4>Injuries Involving Trucks</h4></div>
 
 	<h3>One Year of Crashes</h3>
-	<p> The Boston Region saw 14,888 total injuries involving motorized vehicles in 2013. Each dot represents one crash. Large solid-filled dots represent 680 fatalities.</p>
+	<p> The Boston Region saw 14,888 total injuries involving motorized vehicles in 2013. Each dot represents one crash. Large solid-filled dots represent 68 fatalities.</p>
 		<div class="col-md-12 key">
 			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Vehicle Fatalities </p>
 		</div>
+	<div class="col-md-12 screenshot"><img src="crashes_screenshot-min.png"></div>
 
-	<div class="col-md-12"><img src="crashes_screenshot-min.png"></div>
 	<h3>Truck Crashes</h3>
 	<p> Trucks are among the larger and heavier vehicles using the transportation system and account for a greater proportion of crash severity than other modes. Truck-involved crashes are one of the state’s emphasis areas. Each dot represents one crash. Solid dots represent fatalities involving trucks.</p>
+	<div class="col-md-12 key">
+			<p><i class="fa fa-circle-o yellow" aria-hidden="true"></i>  Injuries Involving Trucks
+			<i class="fa fa-circle yellow" aria-hidden="true"></i> Fatalities Involving Trucks</p>
+	</div>
 	<div class="col-md-12" id="trucks"></div>
 
 	<div class="footer col-md-12">

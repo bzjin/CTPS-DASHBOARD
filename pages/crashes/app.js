@@ -2,7 +2,7 @@
 var CTPS = {};
 CTPS.demoApp = {};
 var f = d3.format(".2")
-var e = d3.format(".1");
+var e = d3.format(".1f");
 
 var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
@@ -367,45 +367,6 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 			}
 		})
 
-		svg.append("text")
-			.attr("x", padding + 5)
-			.attr("y", 100)
-			.style("text-anchor", "start")
-			.style("font-size", 10).style("font-weight", 300)
-			.text(function(){
-				if (town.key != "Total") {
-					return "Bike Injuries: " + town.values[9].bike_inj;
-				}});
-
-		svg.append("text")
-			.attr("x", padding + 5)
-			.attr("y", 112)
-			.style("text-anchor", "start")
-			.style("font-size", 10).style("font-weight", 300)
-			.text(function(){
-				if (town.key != "Total") {
-					return "Bike Fatalities: " + town.values[9].bike_fat;
-				}});
-
-		svg.append("text")
-			.attr("x", padding + 5)
-			.attr("y", 124)
-			.style("text-anchor", "start")
-			.style("font-size", 10).style("font-weight", 300)
-			.text(function(){
-				if (town.key != "Total") {
-					return "Pedestrian Injuries: " + town.values[9].ped_inj;
-				}});
-
-		svg.append("text")
-			.attr("x", padding + 5)
-			.attr("y", 136)
-			.style("text-anchor", "start")
-			.style("font-size", 10).style("font-weight", 300)
-			.text(function(){
-				if (town.key != "Total") {
-					return "Pedestrian Fatalities: " + town.values[9].ped_fat;
-				}});
 
 	});	
 }

@@ -2,11 +2,13 @@
 var CTPS = {};
 CTPS.demoApp = {};
 var f = d3.format(".2")
-var e = d3.format(".1");
+var e = d3.format(".1f");
 
 //Define Color Scale
-var colorScale = d3.scaleQuantize().domain([1, 5])
-    .range(["#d7191c", "#d7191c", "#d7191c", "#fdae61","#ffffbf","#a6d96a","#1a9641"]);
+var colorScale = d3.scaleThreshold()
+	.domain([2.5, 3.0, 3.5])
+    .range(["#d7191c","#ffffbf","#a6d96a","#1a9641"]);
+
 var colors = ["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"];
 
 var projection = d3.geoConicConformal()
@@ -304,47 +306,45 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 		.style("font-weight", 700)
 		.attr("x", xPos).attr("y", yPos - 10)
 		.text("KEY");
+
 	chartContainer.append("rect")
-		.style("fill", "#d7191c").style("stroke", "none")
+		.style("fill", colorScale(1)).style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 7)
-		.text("0.0-2.5: Poor");
+		.text("0-2.5: Poor");
+
 	chartContainer.append("rect")
-		.style("fill", "#fdae61").style("stroke", "none")
+		.style("fill", colorScale(2.7)).style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 22)
-		.text("2.5-3.0: Minimally Acceptable");
+		.text("2.5-3.0: Fair");
+
 	chartContainer.append("rect")
-		.style("fill", "#ffffbf").style("stroke", "none")
+		.style("fill", colorScale(3.2)).style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 37)
-		.text("3.0-3.5: Acceptable");
+		.text("3.0-3.5: Good");
+
 	chartContainer.append("rect")
-		.style("fill", "#a6d96a").style("stroke", "none")
+		.style("fill", colorScale(3.7)).style("stroke", "none")
 		.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 52)
-		.text("3.5-4.0: Good");
+		.text("3.5-5.0: Excellent");
+
 	chartContainer.append("rect")
-		.style("fill", "#1a9641").style("stroke", "none")
+		.style("fill", "grey").style("stroke", "none").style("opacity", .5)
 		.attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
 	chartContainer.append("text")
 		.style("font-weight", 300)
 		.attr("x", xPos + 25).attr("y", yPos + 67)
-		.text("4.0-5.0: Excellent");
-	chartContainer.append("rect")
-		.style("fill", "grey").style("stroke", "none").style("opacity", .5)
-		.attr("x", xPos).attr("y", yPos + 75).attr("height", "7px").attr("width", height/35);
-	chartContainer.append("text")
-		.style("font-weight", 300)
-		.attr("x", xPos + 25).attr("y", yPos + 82)
 		.text("Outside MPO Region");
 
 } //CTPS.demoApp.generateChart
@@ -361,36 +361,39 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 		.style("text-anchor", "start")
 		.attr("transform", "rotate(-90)")
 		.text("PSI")
+
 	//mouseover function	
 	var tip2 = d3.tip()
 	  .attr('class', 'd3-tip')
 	  .offset([-10, 0])
 	  .html(function(d) {
-	    return d.values[0].FederalAidRouteNumber;
+	    return "<p>" + d.values[0].FederalAidRouteNumber + "</p>";
 	  })
 
 	timeline.call(tip2); 
 
-	//var routekey = ["I90 EB", "I90 WB", "I93 NB", "I93 SB", "I95 NB", "I95 SB", "I495 NB", "I495 SB", "I290 EB", "I290 WB" ];
-	//var routekey = ["I-90", "I-93", "I-95", "I495", "I290"]
 	//Assign scales and axes 
 	xScale = d3.scaleLinear().domain([2007, 2015]).range([50, 1000]);
 	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
-	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(d3.format("d"));
-	var yAxis = d3.axisLeft(yScale).tickSize(-950, 0, 0).tickFormat(d3.format("d"));
+	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(function(e){
+			        													if(Math.floor(e) != e)
+			        													{ return; } else { return e; }});
+	var yAxis = d3.axisLeft(yScale).tickSize(-950, 0, 0).tickFormat(function(e){
+			        													if(Math.floor(e) != e)
+			        													{ return; } else { return e; }});
 
 	timeline.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
 		.call(xAxis)
 		.selectAll("text")
-		.attr("transform", "translate(0, 5)");
+		.attr("transform", "translate(0, 5)").style("font-size", 14);
 	
 	timeline.append("g").attr("class", "axis")
 		.attr("transform", "translate(50, 0)")
 		.call(yAxis)
 		.selectAll("text")
-		.attr("transform", "translate(-5, 0)");
+		.attr("transform", "translate(-5, 0)").style("font-size", 14);
 
 	var nested_routes = d3.nest()
 	.key(function(d) { return d.segmentid;})
@@ -416,7 +419,6 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 			.attr("d", function(d) { return valueline(i.values);})
 			.style("stroke", function(d){
 				var colors = ["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"];
-
 				if (i.values[0].FederalAidRouteNumber == "I-90") { return colors[2];}
 				if (i.values[0].FederalAidRouteNumber == "I-93") { return colors[1];}
 				if (i.values[0].FederalAidRouteNumber == "I-95") { return colors[0];}
@@ -427,29 +429,9 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 			.style("fill", "none")
 			.style("opacity", .5)
 			.on("mouseenter", function(d) {
-				var thisreg = this.getAttribute("class");
-
-				timeline.selectAll("path")
-					.style("opacity", .05);
-
-				timeline.selectAll("circle")
-					.style("opacity", .05);
-
-				timeline.selectAll("." + thisreg)
-					.style("opacity", .5);
-
 				tip2.show(i);
 			})
 			.on("mouseleave", function(d) {
-
-				var thisreg = this.getAttribute("class");
-
-				timeline.selectAll("path")
-					.style("opacity", .5);
-
-				timeline.selectAll("circle")
-					.style("opacity", .5);
-
 				tip2.hide(i);
 			})
 			//.style("stroke-width", .5)
@@ -458,7 +440,7 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 
 	//circles connect points
 
-	timeline.selectAll("circle")
+	/*timeline.selectAll("circle")
 		.data(psitimeline)
 		.enter()
 		.append("circle")
@@ -507,23 +489,23 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 
 			if (firstWord == "all") {
 				timeline.selectAll("path").transition()
-					.duration(750)
+					.duration(250)
 					.style("opacity", .5);
 
 				timeline.selectAll("circle").transition()
-					.duration(750)
+					.duration(250)
 					.style("opacity", .5);
 			} else {
 				timeline.selectAll("path").transition()
-					.duration(750)
+					.duration(250)
 					.style("opacity", 0);
 
 				timeline.selectAll("circle").transition()
-					.duration(750)
+					.duration(250)
 					.style("opacity", 0);
 
 				timeline.selectAll("." + firstWord).transition()
-					.duration(500)
+					.duration(200)
 					.style("opacity", .5);
 			}
 		});
