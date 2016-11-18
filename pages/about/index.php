@@ -132,9 +132,29 @@
 
 		<h2> Bicycle Facilities </h2>
 		<p>
-			The 2011 bicycle facility data was taken from the 2011 MassDOT Road Inventory and Bicycle Accommodation Inventory.
+			The 2011 bicycle facility data was taken from the 2011 MassDOT Road Inventory and 2011 MassDOT Bicycle Accommodation Inventory.
+		</p>
+		<p>
 			The 2016 bicycle facility data was taken from the Metropolitan Area Planning Council's Bicycle and Pedestrian Mapping Index, as of October 2016.
-
+			This data was processed as follows:
+			<ol>
+				<li>Clip the data to the MPO region.</li>
+				<li>Select records for existing on-road facilities, 
+				    i.e., those with fac_stat = 1 and (fac_type = 1 or fac_type = 2 or fac_type =3 or fac_type = 4 or fac_type = 7 or fac_type = 9),
+                    and calculate the total number of miles per town.</li>
+				<li>Select records for on-road facilities under contruction, 
+				    i.e., those with fac_stat = 2 and (fac_type = 1 or fac_type = 2 or fac_type =3 or fac_type = 4 or fac_type = 7 or fac_type = 9),
+                    and calculate the total number of miles per town.</li>
+				<li>Select records for planned/envisioned on-road facilities, 
+				    i.e., those with fac_stat = 3 and (fac_type = 1 or fac_type = 2 or fac_type =3 or fac_type = 4 or fac_type = 7 or fac_type = 9),
+                    and calculate the total number of miles per town.</li>
+				<li>Select records for existing off-road facilities, i.e., those with fac_stat = 1 and fac_type = 5,
+                    and calcuate the total number of miles per town.</li>
+				<li>Select records for off-road facilities under construction, i.e., those with fac_stat = 2 and fac_type = 5,
+                    and calculate the total number of miles per town.</li>
+				<li>Select records for planned/envisioned off-road facilities, i.e., those with fac_stat = 3 and fac_type = 5,
+                    and calcuate the total number of miles per town.</li>
+			</ol>
 		</p>
 
 		<h2> Demographics</h2>
