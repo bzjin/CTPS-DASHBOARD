@@ -62,14 +62,14 @@ text {
 	</div>
 	<div class=" col-md-12">
 
-	<h3> On-Road Bike Facilities </h3>
+	<h3> Off-Road Bike Facilities </h3>
 	<h3> Existing Facilities in 2011 and 2016</h3>
-	<p> The map of Boston Region municipalities below depicts “Bike Facility per Centerline Mile” of roadway, which is the percent of road miles that include bicycle facilities. The on-road bicycle facilities include designated bike lanes and cycle tracks. 
+	<p> The map of Boston Region municipalities below depicts “Bike Facility per Centerline Mile” of roadway, which is the percent of road miles that include bicycle facilities.
 	</p>
 	<div class="col-md-4" id="map"></div>
 	<div class="col-md-8" id="facilities"></div>
 
-	<h3> Current State of On-Road Bike Facilities </h3>
+	<h3> Current State of Off-Road Bike Facilities </h3>
 	<button class="bigbutton col-md-4" id="alphabetize2" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
 	<button class="bigbutton col-md-4" id="byPercent" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Percent Existing Off-Road Miles </button>
 	<button class="bigbutton col-md-4" id="byCount" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Number Existing Off-Road Miles </button>
@@ -80,7 +80,7 @@ text {
 		<?php include '../../components/footer.php';?>
 	</div>
 </div>
-<script src="app.js"></script>
+<script src="app2.js"></script>
 <script src="../../js/jquery.accessibleGrid-0.09.js"></script>
 
 </body>

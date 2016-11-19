@@ -31,8 +31,8 @@ var colorScaleBars2 = d3.scaleLinear()
 //Using the d3.queue.js library
 d3.queue()
   .defer(d3.json, "../../data/json/boston_region_mpo_towns.topo.json")
-  .defer(d3.csv, "../../data/csv/on_road_bike_faciliites_2011.csv")
-  .defer(d3.csv, "../../data/csv/on_road_bike_facilities_2016.csv")
+  .defer(d3.csv, "../../data/csv/off_road_bike_faciliites_2011.csv")
+  .defer(d3.csv, "../../data/csv/off_road_bike_facilities_2016.csv")
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0],results[1],results[2]);
     CTPS.demoApp.generatePlot(results[1], results[2]);
@@ -41,7 +41,7 @@ d3.queue()
 
 d3.queue()
   .defer(d3.json, "../../data/json/boston_region_mpo_towns.topo.json")
-  .defer(d3.csv, "../../data/csv/on_road_bike_facilities_2016.csv")
+  .defer(d3.csv, "../../data/csv/off_road_bike_facilities_2016.csv")
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap2(results[0],results[1]);
     CTPS.demoApp.generatePlot2(results[1]);
@@ -55,7 +55,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bike2011, bike2016) {
     .offset([90, 0])
     .html(function(d) {
       var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      var existing2011 = findIndex2011(capTown, "on_road_miles");
+      var existing2011 = findIndex2011(capTown, "off_road_miles");
       if (isNaN(existing2011)) { existing2011 = 0; }
       var existing2016 = findIndex2016(d.properties.TOWN, "existing_miles");
       return "<p>" + capTown + "</p>" + e(existing2011) + " Existing Miles in 2011 <br>" + e(existing2016) + " Existing Miles in 2016";
@@ -188,11 +188,11 @@ function plot() {
   var stacks = d3.select("#facilities").append("svg")
     .attr("class", "plots")
     .attr("width", 2100)
-    .attr("height", 820)
+    .attr("height", 1220)
     .style("overflow-x", "scroll !important")
 
   stacks.append("text")
-    .text("Existing On-Road Miles from 2011 to 2016")
+    .text("Existing Off-Road Miles from 2011 to 2016")
     .attr("x", 100)
     .attr("y", 55)
 
@@ -221,7 +221,7 @@ function plot() {
 
   var yScale = d3.scalePoint()
           .domain(towns)
-          .range([100, 800]);
+          .range([100, 1200]);
   
   var xAxis = d3.axisTop(xScale).ticks(10); 
   var yAxis = d3.axisLeft(yScale);
@@ -260,7 +260,7 @@ function plot() {
       .attr("y", function(d) { 
           return yScale(d.TOWN) - 3})
       .attr("width", function(d){
-          return xScaleW(d.on_road_miles);
+          return xScaleW(d.off_road_miles);
       })
       .attr("height", 8)
       .style("fill", "#8C3D65")
