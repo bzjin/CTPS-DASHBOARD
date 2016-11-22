@@ -100,9 +100,7 @@
 		<h2> Bridges </h2>
 		<p> Bridge data was obtained from the Bridge Division of the Massachusetts Department of Transportation's Highway Division Bridge Section
 		    for the years 2007 through 2016. The data record for each bridge indicates if the bridge is structurally deficient, is functionally
-			obsolete, and includes a &#34;health index&#34; calcuated by MassDOT.
-		</p>
-		<p> Bridge deck area is calculated by MassDOT as follows:
+			obsolete, and includes a &#34;health index&#34; calcuated by MassDOT. Bridge deck area is calculated by MassDOT as follows:
 			<ul>
 				<li>If the bridge is not a culvert, the deck area is equal to the structure length multiplied by the bridge deck width out-to-out.</li>
 				<li>If the bridge is a culvert, the deck area is equal to the approach roadway width multiplied by the structure length multiplied
@@ -111,9 +109,13 @@
 		</p>
 
 		<h2> Congestion </h2>
-		<p> Congestion data was extracted  directly from the 2012 Congestion Management Program (CMP) project, which can be found at the CTPS data catalogue. The data was clipped to the MPO region and exported to GeoJSON. </p>
-		<a href="http://www.ctps.org/datacatalog_share/content/express-highway-performance-data-2012"> Express Highway Performance Data 2012 </a><br>
-		<a href="http://www.ctps.org/datacatalog_share/content/arterial-highway-performance-data-2012"> Arterial Highway Performance Data 2012 </a>
+		<p> Congestion data was extracted from the 2012 Congestion Management Program (CMP) project, clipped to the MPO region, and exported in GeoJSON format.
+            The tabular form of the congestion data can be found in the CTPS data catalogue:
+			<ul>
+				<li><a href="http://www.ctps.org/datacatalog_share/content/express-highway-performance-data-2012"> Express Highway Performance Data 2012 </a></li>
+				<li><a href="http://www.ctps.org/datacatalog_share/content/arterial-highway-performance-data-2012"> Arterial Highway Performance Data 2012 </a></li>
+			</ul>
+		</p>
 
 		<h2> Sidewalks </h2>
 		<p> Data was extracted from the Massachusetts Road Inventory produced by the Massachusetts Department of Transportation (MassDOT), formerly the Massachusetts
@@ -159,15 +161,15 @@
 
 		<h2> Demographics</h2>
 		<p>
-			Demographic data was taken from the 2010 United States Census and the 2014 American Community Survey. 
+			Demographic data was taken from the 2010 United States Census and the 2009-2014 American Community Survey. 
 		</p>
 
 		<h3> A Note on Spatial Data </h3>
 		<p> 
-		The spatial data used in this dashboard was exported from an ESRI ArcSDE, file geodatabase, or personal geodatabase
-		feature class to <a href="http://geojson.org/">GeoJSON</a> format. 
+		The spatial data used in this dashboard was exported from ESRI ArcSDE, file geodatabase, or personal geodatabase
+		feature classes to <a href="http://geojson.org/">GeoJSON</a> format. 
 		Most GeoJSON data was then converted to <a href="https://github.com/mbostock/topojson">TopoJSON</a> format, 
-		a topology-preserving spatial data format, in order to improve page load-time performance.
+		a compressed, topology-preserving spatial data format, to improve performance.
 		</p>
 
 	</div>
