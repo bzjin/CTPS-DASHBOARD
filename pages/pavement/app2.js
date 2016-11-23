@@ -7,7 +7,7 @@ var e = d3.format(".1f");
 //Define Color Scale
 var colorScale = d3.scaleThreshold()
 	.domain([2.3, 2.8, 3.5])
-    .range(["#d7191c","#ffffbf","#a6d96a","#1a9641"]);
+    .range(["#d7191c","#ffc04c","#a6d96a","#1a9641"]);
 
 var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
@@ -364,7 +364,7 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 		function psiBins () { 
 			var psiColors = d3.scaleThreshold()
 					.domain([2.3, 2.8, 3.5, 5])
-   					.range(["#d7191c","#ffffbf","#a6d96a","#1a9641", "grey"]);
+   					.range(["#d7191c","#ffc04c","#a6d96a","#1a9641", "grey"]);
 
 			for (i = 0; i < 5; i++) { 
 				cityContainer.selectAll(".actual_miles" + i)

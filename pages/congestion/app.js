@@ -5,8 +5,10 @@ var f = d3.format(".2")
 var e = d3.format(".1f");
 
 //Define Color Scale
-var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
-
+var cs = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee08b", "#00B26F"]);	
+var colorScale = d3.scaleThreshold()
+				.domain([.4, .5, .7, .9])
+				.range([cs(0), cs(.55), cs(.7), cs(.9), cs(1.2)])
 /*var colorScale = d3.scaleThreshold()
 				.domain([.4, .5, .7, .9])
 				.range(["#D73027", "#EB8859", "#fee08b", "#7FCF7D", "#00B26F"]);*/
@@ -425,40 +427,40 @@ pmchartContainer.selectAll(".labels")
 			.text("KEY");
 		//text and colors
 		twoCharts.append("rect")
-			.style("fill", colorScale(.5)).style("stroke", "none")
+			.style("fill", colorScale(.25)).style("stroke", "none")
 			.attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
 		twoCharts.append("text")
 			.style("font-weight", 300)
 			.attr("x", xPos + 25).attr("y", yPos + 7)
-			.text("0.5 : Very congested");
+			.text("< 0.40");
 		twoCharts.append("rect")
-			.style("fill", colorScale(.7)).style("stroke", "none")
+			.style("fill", colorScale(.45)).style("stroke", "none")
 			.attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
 		twoCharts.append("text")
 			.style("font-weight", 300)
 			.attr("x", xPos + 25).attr("y", yPos + 22)
-			.text("0.7 : Congested");
+			.text("0.40 to 0.50");
 		twoCharts.append("rect")
-			.style("fill", colorScale(.9)).style("stroke", "none")
+			.style("fill", colorScale(.6)).style("stroke", "none")
 			.attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
 		twoCharts.append("text")
 			.style("font-weight", 300)
 			.attr("x", xPos + 25).attr("y", yPos + 37)
-			.text("0.9 : Not congested");
+			.text("0.50 to 0.70");
 		twoCharts.append("rect")
-			.style("fill", colorScale(1)).style("stroke", "none")
+			.style("fill", colorScale(.8)).style("stroke", "none")
 			.attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
 		twoCharts.append("text")
 			.style("font-weight", 300)
 			.attr("x", xPos + 25).attr("y", yPos + 52)
-			.text("1.0 : At speed limit");
+			.text("0.70 to 0.90");
 		twoCharts.append("rect")
-			.style("fill", colorScale(1.25)).style("stroke", "none")
+			.style("fill", colorScale(1)).style("stroke", "none")
 			.attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
 		twoCharts.append("text")
 			.style("font-weight", 300)
 			.attr("x", xPos + 25).attr("y", yPos + 67)
-			.text("1.2 : Above speed limit");
+			.text("> 0.90");
 
 
 }

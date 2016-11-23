@@ -7,7 +7,7 @@ var e = d3.format(".1f");
 //Define Color Scale
 var colorScale = d3.scaleThreshold()
 	.domain([2.5, 3.0, 3.5])
-    .range(["#d7191c","#ffffbf","#a6d96a","#1a9641"]);
+    .range(["#d7191c","#ffc04c","#a6d96a","#1a9641"]);
 
 var colors = ["#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02"];
 
@@ -428,12 +428,6 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 			.style("stroke-width", .5)
 			.style("fill", "none")
 			.style("opacity", .5)
-			.on("mouseenter", function(d) {
-				tip2.show(i);
-			})
-			.on("mouseleave", function(d) {
-				tip2.hide(i);
-			})
 			//.style("stroke-width", .5)
 		//	.style("stroke", "#ddd")*/
 	})

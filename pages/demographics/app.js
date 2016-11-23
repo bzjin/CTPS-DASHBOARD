@@ -61,9 +61,9 @@ CTPS.demoApp.generateMap = function(tracts) {
     .offset([-10, 0])
     .style("font-family", "Open Sans")
     .html(function(d) {
-      return "<p style='font-weight:700'>Tract " + d.properties.TRACT + "</style><br>Town: " + d.properties.TOWN + "</p><br>% Unemployed: " + 
+      return "<p style='font-weight:700'>Tract " + d.properties.TRACT + "</style><br>Town: " + d.properties.TOWN + "</p><br>% Minority: " + d.properties.MINORITY_PCT + "<br>% Unemployed: " + 
       d.properties.PCT_IN_LABOR_FORCE + "<br>% Over 75 years old: " + d.properties.PCT_75_PLUS + "<br>% Limited English Proficiency: " + d.properties.LEP_POP_PCT + 
-      "<br>% With Any Disability: " + d.properties.ANY_DISABILITY_PCT;
+      "<br>% Persons with a Disability: " + d.properties.ANY_DISABILITY_PCT;
     })
 
   svgContainer.call(tip); 
@@ -131,35 +131,35 @@ CTPS.demoApp.generateMap = function(tracts) {
       svgContainer.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 7)
-        .text("10% population");
+        .text("<10% population");
       svgContainer.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .4)
         .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
       svgContainer.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 22)
-        .text("20% population");
+        .text("10-20% population");
       svgContainer.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .6)
         .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
       svgContainer.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 37)
-        .text("30% population");
+        .text("20-30% population");
       svgContainer.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .8)
         .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
       svgContainer.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 52)
-        .text("40% population");
+        .text("30-40% population");
       svgContainer.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", 1)
         .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
       svgContainer.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 67)
-        .text("50% population");
+        .text(">50% population");
     }
 }
 
@@ -457,35 +457,41 @@ CTPS.demoApp.generateMap_R = function(tracts) {
       svgContainer_R.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 7)
-        .text(keyMult + "% population");
+        .text("<" + keyMult + "% population");
       svgContainer_R.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .3)
         .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
       svgContainer_R.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 22)
-        .text(2 * keyMult + "% population");
+        .text(keyMult + "-" + 2 * keyMult + "% population");
       svgContainer_R.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .45)
         .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
       svgContainer_R.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 37)
-        .text(e(3 * keyMult) + "% population");
+        .text(2 * keyMult + "-" + e(3 * keyMult) + "% population");
       svgContainer_R.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .6)
         .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
       svgContainer_R.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 52)
-        .text(4 * keyMult + "% population");
+        .text(e(3 * keyMult) + "-" + 4 * keyMult + "% population");
       svgContainer_R.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .75)
         .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
       svgContainer_R.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 67)
-        .text(5 * keyMult + "% population");
+        .text(function() {
+          if (5 * keyMult == 100) { 
+            return 5 * keyMult + "% population";
+          } else {
+            return ">" + 5 * keyMult + "% population";
+          }
+        })
     }
 }
 
@@ -748,35 +754,35 @@ CTPS.demoApp.generateMap_H = function(tracts) {
       svgContainer_H.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 7)
-        .text(keyMult + "% population");
+        .text("<" + keyMult + "% population");
       svgContainer_H.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .3)
         .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
       svgContainer_H.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 22)
-        .text(2 * keyMult + "% population");
+        .text(keyMult + "-" + 2 * keyMult + "% population");
       svgContainer_H.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .45)
         .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
       svgContainer_H.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 37)
-        .text(e(3 * keyMult) + "% population");
+        .text(2 * keyMult + "-" + e(3 * keyMult) + "% population");
       svgContainer_H.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .6)
         .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
       svgContainer_H.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 52)
-        .text(4 * keyMult + "% population");
+        .text(e(3 * keyMult) + "-" + 4 * keyMult + "% population");
       svgContainer_H.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .75)
         .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
       svgContainer_H.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 67)
-        .text(5 * keyMult + "% population");
+        .text(">" + 5 * keyMult + "% population");
     }
 }
 
@@ -981,35 +987,35 @@ CTPS.demoApp.generateMap_L = function(tracts) {
       svgContainer_L.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 7)
-        .text("1% population");
+        .text("<1% population");
       svgContainer_L.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .4)
         .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
       svgContainer_L.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 22)
-        .text("2% population");
+        .text("1-2% population");
       svgContainer_L.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .6)
         .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
       svgContainer_L.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 37)
-        .text("3% population");
+        .text("2-3% population");
       svgContainer_L.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .8)
         .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
       svgContainer_L.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 52)
-        .text("4% population");
+        .text("3-4% population");
       svgContainer_L.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", 1)
         .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
       svgContainer_L.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 67)
-        .text("5% population");
+        .text(">5% population");
     }
 }
 
@@ -1259,28 +1265,28 @@ CTPS.demoApp.generateMap_D = function(tracts) {
       svgContainer_D.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 7)
-        .text("2% population");
+        .text("<2% population");
       svgContainer_D.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .4)
         .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
       svgContainer_D.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 22)
-        .text("4% population");
+        .text("2-4% population");
       svgContainer_D.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .6)
         .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
       svgContainer_D.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 37)
-        .text("6% population");
+        .text("4-6% population");
       svgContainer_D.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", .8)
         .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
       svgContainer_D.append("text")
         .style("font-weight", 300)
         .attr("x", xPos + 25).attr("y", yPos + 52)
-        .text("8% population");
+        .text("6-8% population");
       svgContainer_D.append("rect")
         .style("fill", keyColor).style("stroke", "none").style("opacity", 1)
         .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);

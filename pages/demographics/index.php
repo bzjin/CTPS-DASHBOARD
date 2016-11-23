@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
+<link rel="icon" href="goo.gl/xQW9eP">
+
 <title>Demographics in the Boston MPO Region</title>
 <link rel="stylesheet" href="../../css/master.css"/>
 <link rel="stylesheet" href="app.css"/>
@@ -67,7 +69,7 @@ text {fill: #ddd; font-size: 1.0em;}
 	<div class="col-md-7" id="demographics_pop"></div></div></div>
 
 <h3> Races in the Boston Region </h3>
-<p>A minority includes all persons who identify as a race other than White or as two or more races. Click on the tabs to show the percent of races in each census tract. 
+<p>The map and chart below show the percent of the population who are of each race in each census tract as identified by the U.S. Census Bureau, including those who are two or more races. They may be of Hispanic or non-Hispanic ethnicity. 
 </p>
 	<div class="col-md-12">
 	<button class='white bigbutton col-md-3' autofocus> White </button>
@@ -82,8 +84,8 @@ text {fill: #ddd; font-size: 1.0em;}
 	<div class="col-md-5" id="map_race"></div>
 	<div class="col-md-7" id="demographics_race"></div></div>
 
-<h3> Hispanic Populations in the Boston Region </h3>
-<p> </p>
+<h3> Ethnicity in the Boston Region </h3>
+<p>The map and chart below show the percent of the population who are of Hispanic ethnicity, regardless of race, in each census tract. Note that at the Boston Region MPO, the term “minority” includes all persons who are Hispanic (of any race) or non-White, as required by federal law. </p>
 	<div class="col-md-12">
 	<div class="col-md-5" id="map_hisp"></div>
 	<div class="col-md-7" id="demographics_hisp"></div></div>

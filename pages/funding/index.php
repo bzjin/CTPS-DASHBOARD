@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
+<link rel="icon" href="goo.gl/xQW9eP">
+
 <title>Funding in the Boston MPO Region</title>
 <link rel="stylesheet" href="../../css/master.css"/>
 <link rel="stylesheet" href="app.css"/>

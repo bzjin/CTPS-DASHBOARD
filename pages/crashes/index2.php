@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
+<link rel="icon" href="goo.gl/xQW9eP">
+
 <title>Motorized Crashes in the Boston MPO Region</title>
 <link rel="stylesheet" href="../../css/master.css"/>
 <link rel="stylesheet" href="app.css"/>
@@ -44,14 +46,20 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 
 	<h1>Crashes</h1>
 	
-	<p>The ability to move around is crucial to every aspect of our existence. The MPO’s goal is to keep you safe everywhere and every way that you move. <b>That being said, highway crashes claimed the lives of 53 people in the Boston region last year.</b> We are human and make mistakes. For this reason, we must design transportation improvements that keep us moving and protect us at every turn. In situations where a person might fail, the roadway system should not. For this reason, we track injuries and fatalities from crashes throughout the region to monitor the safety of the Boston region’s transportation network.</p>
+	<p>The ability to move around is crucial to every aspect of our existence. The MPO’s goal is to keep you safe everywhere and every way that you move. <b>That being said, highway crashes claimed the lives of 53 people in the Boston region in 2013.</b> We are human and make mistakes. For this reason, we must design transportation improvements that keep us moving <em>and</em> protect us at every turn. In situations where a person might fail, the roadway system should not. For this reason, we track <b>injuries</b> and <b>fatalities</b> from crashes throughout the region to monitor the safety of the Boston region’s transportation network.</p>
 
-	<h2> Injuries to People Driving </h2> 
+	<h2> Injuries Involving Motorized Vehicles </h2> 
 	<h3>Trends Over Time</h3>
-		<p> Click on each city or town and see its injury count over time. Hover over each town to see its 2013 statistics on injuries and fatalities.</p> 
+		<p> Click on each city or town and see its injury count over time. Hover over each town to see its 2013 statistics on total crashes, injuries and fatalities.</p> 
+		<div class="col-md-12">
 		<div id="map" class="col-md-4"></div>
-		<div id="motChart" class="col-md-4 key"><h4>Injuries Involving Motorized Vehicles</h4></div>
-		<div id="truckChart" class = "col-md-4 key"><h4>Injuries Involving Trucks</h4></div>
+		<div id="motChart" class="col-md-4 key">
+		<h4>Injuries Involving Motorized Vehicles</h4>
+		</div>
+		<div id="truckChart" class = "col-md-4 key">
+		<h4>Injuries Involving Trucks</h4>
+		</div>
+		</div>
 
 	<h3>One Year of Crashes</h3>
 	<p> The Boston Region saw 14,888 total injuries involving motorized vehicles in 2013. Each dot represents one crash. Large solid-filled dots represent 68 fatalities.</p>

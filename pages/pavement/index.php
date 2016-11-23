@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
+<link rel="icon" href="goo.gl/xQW9eP">
+
 <title>Interstate Pavement in the Boston MPO Region</title>
 <link rel="stylesheet" href="../../css/master.css"/>
 <link rel="stylesheet" href="app.css"/>
@@ -36,13 +38,13 @@
 	</div> 
 <div id="header" class="col-md-10 col-md-offset-1">
 
-	<h1>Pavement Condition</h1>
+	<h1>Pavement Conditions</h1>
 
 	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. Investments are made in roadway maintenance to extend pavement life, keeping rides smooth and users safe. Pavement condition is measured using the Present Serviceability Index (PSI), a measure of a road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
 	</p>
 
 	<h2>Interstate Pavement</h2>
-	<h3>Conditions in 2014</h3>
+	<h3>Pavement Conditions in 2014</h3>
 	<p>Hover over the bars below to see the pavement condition of the five interstate highways in the Boston Region as they cross the region from North to South or East to West.</p>
 
 	<div id="chart" class="col-md-12"></div>

@@ -154,20 +154,20 @@ button:active, button:hover, button:focus,  {
   color: #fee08b;
 }
 .yr2011 { 
-  color: #ffffbf;
-}
-.yr2012 { 
   color: #e6f598;
 }
-.yr2013 { 
+.yr2012 { 
   color: #abdda4;
 }
-.yr2014 { 
+.yr2013 { 
   color: #66c2a5;
+}
+.yr2014 { 
+  color: #3288bd;
 }
 
 .yr2015 { 
-  color: #3288bd;
+  color: #5e3fa2;
 }
 
 /*These elements are only visible to screen readers*/

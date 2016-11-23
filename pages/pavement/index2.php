@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
+<link rel="icon" href="goo.gl/xQW9eP">
+
 <title>Non-Interstate Pavement in the Boston MPO Region</title>
 
 <link rel="stylesheet" href="../../css/master.css"/>
@@ -40,9 +42,9 @@
 	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. Investments are made in roadway maintenance to extend pavement life, keeping rides smooth and users safe. Pavement condition is measured using the Present Serviceability Index (PSI), a measure of a road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
 	</p>
 
-	<h2> Non-Interstate System </h2>
+	<h2> Non-Interstate Pavement </h2>
 
-	<h3>Conditions in 2014</h3>
+	<h3>Pavement Conditions in 2014</h3>
 	<p> Scroll down to compare pavement conditions between municipalities. The first column presents the overall distribution of pavement segments by their PSI score, with the average value highlighted. The second and third columns display the percent of pavement and the total lane miles of pavement with acceptable PSI scores, respectively.</p>
 
 		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>

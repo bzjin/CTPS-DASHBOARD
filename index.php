@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
+<link rel="icon" href="goo.gl/xQW9eP">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="goo.gl/xQW9eP">
+
 <title>The State of Boston Region Transportation</title>
 
 <!-- Font Awesome -->

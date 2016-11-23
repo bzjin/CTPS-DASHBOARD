@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <head lang="en">
 <meta charset="utf-8">
+<link rel="icon" href="goo.gl/xQW9eP">
+
 <title>Congestion in the Boston MPO Region</title>
 <link rel="stylesheet" href="../../css/master.css"/>
 <link rel="stylesheet" href="app.css"/>
@@ -46,11 +48,11 @@
 	
 	<h1>Congestion</h1>	
 
-	<p> No one likes driving during rush-hour, waiting for a late bus, or getting stuck in a traffic jam. Individual incidents are frustrating. When congestion occurs regularly—at bottlenecks, work zones, crash sites, and during weather events—it can profoundly impact mobility, safety, air quality, and health. The Congestion Management Process (CMP) is used to monitor traffic congestion on approximately 970 expressway miles and 1200 arterials in eastern Massachusetts.</p>
+	<p> No one likes driving during rush-hour, waiting for a late bus, or getting stuck in a traffic jam. Individual incidents are frustrating. When congestion occurs regularly—at bottlenecks, work zones, crash sites, and during weather events—it can profoundly impact mobility, safety, air quality, and health. The Congestion Management Process (CMP) is used to monitor traffic congestion on approximately 970 expressway miles and 1200 arterial miles in eastern Massachusetts.</p>
 
 	<p>The Boston Region MPO monitors, analyzes, and develops strategies to manage congestion. One way to quantify congestion is to calculate the Speed Index, which is the ratio of observed speed to the posted speed limit on a roadway segment. Speed index is a better indication of congestion than average vehicle speeds, because speed index compares ideal conditions with actual conditions. The roadway speeds are provided by INRIX, a third party company who provides vehicle probe data. The congestion data that is on display on this dashboard was collected in 2012. </p>
 
-	<h3> Congestion During Peak Travel Periods </h3>
+	<h3> Congestion During Peak Travel Periods on Express Highways </h3>
 	<p> Speed Index is displayed for each route, by direction. The AM peak period is between 6 and 10 AM and the PM peak period is between 3 and 7 PM on expressways. Hover over the bars below to explore the degree that congestion slows travel on our region’s interstate highways during morning and evening rush hours. A value of 0.7 or lower is considered congested. </p>
 
 	<div class="col-md-6 col-md-offset-6" id="map"></div>

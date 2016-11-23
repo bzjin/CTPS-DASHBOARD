@@ -40,7 +40,8 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	  .html(function(d) {
 		var town = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 	    return "<p>" + town + "</p><b>2013 Statistics</b><br>Bike Injuries: " + findIndex(town, "bike_inj") + "<br>Bike Fatalities: " + findIndex(town, "bike_fat") + 
-	    "<br>Pedestrian Injuries: " + findIndex(town, "ped_inj") + "<br>Pedestrian Fatalities: " + findIndex(town, "ped_fat");
+	    "<br>Pedestrian Injuries: " + findIndex(town, "ped_inj") + "<br>Pedestrian Fatalities: " + findIndex(town, "ped_fat") + "<br><br> Total Bicycle Crashes: " + 
+	    findIndex(town, "bike_tot") + "<br> Total Pedestrian Crashes: " + findIndex(town, "ped_tot");
 	  })
 
 	var svgContainer = d3.select("#map").append("svg")
@@ -240,7 +241,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
       .text("KEY");
     //text and colors
     svgContainer.append("rect")
-      .style("fill", colorScale(5)).style("stroke", "none").style("opacity", .1)
+      .style("fill", colorScale(1)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)

@@ -42,7 +42,8 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	  .html(function(d) {
 		var town = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 	    return "<p>" + town + "</p><b>2013 Statistics</b><br>Motorized Injuries: " + findIndex(town, "mot_inj") + "<br>Motorized Fatalities: " + findIndex(town, "mot_fat") + 
-	    "<br>Truck Injuries: " + findIndex(town, "trk_inj") + "<br>Truck Fatalities: " + findIndex(town, "trk_fat");
+	    "<br>Truck Injuries: " + findIndex(town, "trk_inj") + "<br>Truck Fatalities: " + findIndex(town, "trk_fat") + "<br><br>Total Motorized Crashes: " + findIndex(town, "tot_inj") +
+		findIndex(town, "tot_fat");
 	  })
 
 	var svgContainer = d3.select("#map").append("svg")
@@ -54,7 +55,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	var findIndex = function(town, statistic) { 
 		for (var i = 0; i < crashdata.length; i++) { 
 			if (crashdata[i].year == 2013 && crashdata[i].town == town) {
-				return crashdata[i][statistic]; 
+				return +crashdata[i][statistic]; 
 			} 
 		}
 	}
@@ -243,7 +244,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
       .text("KEY");
     //text and colors
     svgContainer.append("rect")
-      .style("fill", colorScale(50)).style("stroke", "none").style("opacity", .1)
+      .style("fill", colorScale(20)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
