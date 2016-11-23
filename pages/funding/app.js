@@ -14,8 +14,8 @@ var geoPath = d3.geoPath().projection(projection);
 
 //Using the d3.queue.js library
 d3.queue()
-  .defer(d3.json, "../../json/town_census.topojson")
-  .defer(d3.json, "../../json/equity.json")
+  .defer(d3.json, "../../data/json/town_census.topojson")
+  .defer(d3.json, "../../data/json/equity.json")
 
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0],results[1]);
@@ -101,13 +101,13 @@ CTPS.demoApp.generateMap = function(mpoTowns, equity) {
         tip.show(d);
       })
       .on("mouseleave", function(d){
-        d3.selectAll("." + this.getAttribute("class")).filter(".bars").transition()
+        d3.selectAll("." + this.getAttribute("class")).filter(".bars")
           .style("stroke-width", 0)
-        d3.selectAll("." + this.getAttribute("class")).filter(".tipFunding").transition()
+        d3.selectAll("." + this.getAttribute("class")).filter(".tipFunding")
           .style("stroke-width", 0)
           .style("opacity", .2)
           //.style("stroke", function(d) { return colorScale(d.Total_FFY_2008_2013_TIPs);  })
-        d3.selectAll("." + this.getAttribute("class")).filter(".labels").transition()
+        d3.selectAll("." + this.getAttribute("class")).filter(".labels")
           .style("opacity", 0)
         tip.hide(d);
       })
@@ -184,8 +184,8 @@ CTPS.demoApp.generateStats = function(mpoTowns, equity){
 generateStats = function(attribute, divID) { 
   //Sort towns by ascending attribute order
     census.sort(function(a, b){
-        var nameA = a.properties[attribute];
-        var nameB = b.properties[attribute];
+        var nameA = +a.properties[attribute];
+        var nameB = +b.properties[attribute];
         if (nameA < nameB) { return -1}
         if (nameA > nameB) { return 1}
         return 0;
@@ -195,7 +195,7 @@ generateStats = function(attribute, divID) {
     maxmins = [];
       census.forEach(function(i){
         townOrder.push(i.properties.TOWN);
-        maxmins.push(i.properties[attribute]);
+        maxmins.push(+i.properties[attribute]);
     })
 
 
@@ -271,13 +271,13 @@ generateStats = function(attribute, divID) {
           })
           .on("mouseleave", function(d){
             var townClass = this.getAttribute("class").split(' ')[0];
-            d3.selectAll("." + townClass).filter(".bars").transition()
+            d3.selectAll("." + townClass).filter(".bars")
               .style("stroke-width", 0)
-            d3.selectAll("." + townClass).filter(".tipFunding").transition()
+            d3.selectAll("." + townClass).filter(".tipFunding")
               .style("stroke-width", 0)
               .style("opacity", .2)
               //.style("stroke", function(d) { return colorScale(d.Total_FFY_2008_2013_TIPs);  })
-            d3.selectAll("." + townClass).filter(".labels").transition()
+            d3.selectAll("." + townClass).filter(".labels")
               .style("opacity", 0)
             tip.hide(d);
           })

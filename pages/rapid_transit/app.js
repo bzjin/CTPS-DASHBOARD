@@ -10,203 +10,25 @@ var colorScale = d3.scaleLinear().domain([.5, 1, 1.25]).range(["#D73027", "#fee0
 
 //Using the d3.queue.js library
 d3.queue()
-	//.defer(d3.json, "../../JSON/boston_region_mpo_towns.topo.json")
-	//.defer(d3.json, "../../JSON/MBTA_NODE.geojson")
-	//.defer(d3.json, "../../JSON/red_line_boardings.json")
-	//.defer(d3.json, "../../JSON/green_line_boardings.json")
-	//.defer(d3.json, "../../JSON/blue_line_boardings.json")
-	//.defer(d3.json, "../../JSON/orange_line_boardings.json")
-	.defer(d3.csv, "../../JSON/bus_route_1.csv")
-	//.defer(d3.json, "../../JSON/mbta_bus_route_1.geojson")
-	//.defer(d3.json, "../../JSON/mbta_bus_route_1_stops.geojson")
-
-
-	//.defer(d3.json, "JSON/road_inv_mpo_nhs_noninterstate_2015.geojson")
+	.defer(d3.csv, "../../data/csv/bus_route_1.csv")
 	.awaitAll(function(error, results){ 
-
-		//CTPS.demoApp.generateMBTA(results[0],results[1], results[2], results[3], results[4], results[5]);
 		CTPS.demoApp.generateBusPolar(results[0]);
 		CTPS.demoApp.generateBusStops(results[0]);
-		//CTPS.demoApp.generateTimes(results[1]);
-		//CTPS.demoApp.generateTraveller(results[0], results[1]);
 	}); 
-	//CTPS.demoApp.generateViz);
-
-////////////////* GENERATE MAP *////////////////////
-CTPS.demoApp.generateMBTA = function(cities, mbta_nodes, red, green, blue, orange) {	
-// Show name of MAPC Sub Region
-// Define Zoom Behavior
-var projScale = 90000,
-	projXPos = -400,
-	projYPos = 2925;
-
-var projection = d3.geoConicConformal()
-.parallels([41 + 43 / 60, 42 + 41 / 60])
-.rotate([71 + 30 / 60, -41 ])
-.scale([projScale]) // N.B. The scale and translation vector were determined empirically.
-.translate([projXPos, projYPos]);
-
-var geoPath = d3.geoPath().projection(projection);
-var toParse = [red, green, blue, orange];
-var allLines = [];
-
-toParse.forEach(function(k){
-	k.forEach(function(i){
-		mbta_nodes.features.forEach(function(j){
-			if (i.station == j.properties.STATION) { 
-				i.coordinates = j.geometry.coordinates;
-				i.line = j.properties.LINE;
-			}
-		})
-		allLines.push(i);
-	})
-})
-
-// SVG Viewport
-var svgContainer = d3.select("#mapMBTA").append("svg")
-	.attr("width", "100%")
-	.attr("height", 500);
-
-var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([0, 150])
-  .html(function(d) {
-  	return null;
-  })
-
-svgContainer.call(tip); 
-console.log(cities.objects.collection.geometries)
-// Create Boston Region MPO map with SVG paths for individual towns.
-var mapcSVG = svgContainer.selectAll(".subregion")
-	.data(topojson.feature(cities, cities.objects.boston_region_mpo_towns).features)
-	.enter()
-	.append("path")
-		.attr("class", "subregion")
-		.attr("id", function(d, i) { return d.properties.BORDER_LINK_ID; })
-		.attr("d", function(d, i) {return geoPath(d); })
-		.style("fill", "#ddd")
-		.style("stroke", "#191b1d")
-		.style("stroke-width", "1px")
-		.style("opacity", .05);
-
-var nodesSVG = svgContainer.selectAll(".nodes")
-		.data(allLines)
-		.enter()
-		.append("circle")
-			.attr("class", function(d) { return "nodes"})
-			.attr("cx", function(d) { return projection(d.coordinates)[0]} )
-			.attr("cy", function(d) { return projection(d.coordinates)[1]} )
-			//.attr("r", function(d) { return Math.sqrt(d.boardings[0])/10})
-			.style("stroke", function(d){
-				if (d.line == "RED") { return "#ff6347"}
-				if (d.line == "BLUE") { return "#39B7CD"}
-				if (d.line == "GREEN") { return "#26a65b"}
-				if (d.line == "ORANGE") { return "#f89406"}
-			})
-			.style("stroke-width", 1)
-			.style("fill", "none")
-			.style("opacity", .8)//function(d) { return (d.properties.AM_SPD_IX-.5);})
-
-	var index = 0;
-
-for (var i = 0; i < 9; i++) { 
-	nodesSVG.transition()
-		.delay(i*1000)
-		.duration(1000)
-		.ease(d3.easeLinear)
-		.attr("r", function(d) { return d.boardings[i]/1000})
-}
-
-var stationNames = svgContainer.selectAll(".stationNames")
-		.data(allLines)
-		.enter()
-		.append("text")
-			.attr("class", function(d) { return "stationNames"})
-			.text(function(d) { return d.station; })
-			.attr("x", function(d) { 
-				if (d.line == "ORANGE") {
-					return projection(d.coordinates)[0] - 20;
-				} else {
-					return projection(d.coordinates)[0] + 20;
-				}})
-			.attr("y", function(d) { return projection(d.coordinates)[1] + 3} )
-			.style("text-anchor", function(d){
-				if (d.line == "ORANGE") {
-					return "end";
-				} else {
-					return "start";
-				}})
-			.style("fill", "#ddd")
-			.style("font-weight", 300)
-			.style("opacity", .2)
-			.style("font-size", 10)
-
-//line chart 
-var nested_stations = d3.nest()
-.key(function(d) { return d.station;})
-.entries(allLines);
-
-var mbtaGraph = d3.select("#graphMBTA").append("svg")
-.attr("width", "100%")
-.attr("height", 500);
-
-var xScale = d3.scaleLinear().domain([1999, 2010]).range([100, 450]);
-var yScale = d3.scaleLinear().domain([0, 25000]).range([450, 50]);
-var xAxis = d3.axisBottom(xScale).ticks(5).tickFormat(d3.format("d")); 
-var yAxis = d3.axisLeft(yScale).ticks(10);
-
-mbtaGraph.append("g").attr("class", "axis")
-	.attr("transform", "translate(0," + yScale(0) + ")")
-	.style("font-size", "10px")
-	.call(xAxis).selectAll("text").style("font-weight", 300);
-
-mbtaGraph.append("g").attr("class", "axis")
-	.attr("transform", "translate(100, 0)")
-	.style("font-size", "12px")
-	.call(yAxis).selectAll("text").style("font-weight", 300);
-
-var valueline = d3.line()
-.curve(d3.curveBasis)
-.x(function(d, i) { return xScale(i + 1999)})
-.y(function(d, i) { return yScale(d)});
-
-console.log(nested_stations);
-
-nested_stations.forEach(function(i){ 
-	mbtaGraph.append("path")
-	.attr("d", valueline(i.values[0].boardings))
-	.style("stroke-width", 1)
-	.style("fill", "none")
-	.style("stroke", function(){
-		if (i.values[0].line == "RED") { return "#ff6347"}
-		if (i.values[0].line == "BLUE") { return "#39B7CD"}
-		if (i.values[0].line == "GREEN") { return "#26a65b"}
-		if (i.values[0].line == "ORANGE") { return "#f89406"}
-	})
-})
-
-}
 
 CTPS.demoApp.generateBusPolar = function(route1) {	
 // Define Zoom Behavior
 var minmax = [];
-var parseTime = d3.timeFormat("%I:%M:%S %p");
+var parseTime = d3.timeParse("%I:%M:%S %p");
 
 //var start = new Date(); 
 route1.forEach(function(i){
-	i.Stime = parseTime.parse(i.Stime);
+	i.Stime = parseTime(i.Stime);
 	i.timeString = parseTime(new Date(i.Stime));
 	
 	minmax.push(i.Stime);
 	i.AvgEarliness = parseFloat(i.AvgEarliness); 
 })
-//var finish = new Date();
-//console.log(start, finish, finish - start);
-
-// SVG Viewport
-//var routeChart = d3.select("#busses").append("svg")
-	//.attr("width", "100%")
-	//.attr("height", 600);
 
 var colorKey = ["#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd"];
 var stopKey = ["Dudly", "Melwa", "Wasma", "masta", "hynes", "mit", "cntsq", "maput", "hhgat"];
@@ -238,11 +60,11 @@ var width = 1000,
 var r = d3.scaleLinear().domain([900, -1200]).range([0, radius]);
 var deg = d3.scaleLinear().domain([new Date("Mon Jan 01 1900 00:00:00 GMT-0500(EST)"), new Date("Mon Jan 01 1900 23:59:59 GMT-0500(EST)")]).range([0, 2 * Math.PI]);
 
-var line = d3.line.radial()
+var line = d3.radialLine()
     .radius(function(d) { return r(d.AvgEarliness); })
     .angle(function(d) { return deg(d.Stime); });
 
-var rushHour = d3.area.radial()
+var rushHour = d3.radialArea()
 .innerRadius(0)
 .outerRadius(radius)
 .startAngle(deg(Math.PI))
@@ -450,13 +272,6 @@ route1.forEach(function(i){
 	minmax.push(i.AvgRunning - i.ScheduledRunning);
 
 })
-//var finish = new Date();
-//console.log(start, finish, finish - start);
-
-// SVG Viewport
-//var routeChart = d3.select("#busses").append("svg")
-	//.attr("width", "100%")
-	//.attr("height", 600);
 
 var colorKey = ["#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd"];
 var stopKey = ["Dudly", "Melwa", "Wasma", "masta", "hynes", "mit", "cntsq", "maput", "hhgat"];
@@ -508,7 +323,7 @@ var outboundStops = d3.select("#outboundStops").append("svg")
     .attr("width", width)
     .attr("height", height)
 
-var xAxis = d3.svg.axis().scale(stopScaleNames).orient("bottom").ticks(10); 
+var xAxis = d3.axisBottom(stopScaleNames).ticks(10); 
 var yAxis = d3.axisLeft(yScale).ticks(10);
 
 inboundStops.append("g").attr("class", "axis")

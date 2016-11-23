@@ -15,6 +15,7 @@
 
 <!-- Tooltip -->
 <script src="../../libs/d3-tip.js"></script>
+<script src="../../libs/topojson.min.js"></script>
 <!-- Google Fonts -->
 <link href="../../libs/google-fonts.css" rel="stylesheet">
 <!-- Jquery -->
@@ -44,10 +45,9 @@ form {
 
 <body>
 
-<?php include '../../components/responsive-nav.php';?>
-	<div class="top-nav col-md-12">
-		<?php include '../../components/top-nav.php';?>
-	</div> 
+<div class="top-nav col-md-12">
+<?php include '../../components/top-nav.php';?>
+</div> 
 <div id="header" class="col-md-10 col-md-offset-1">
 	
 
@@ -58,22 +58,22 @@ form {
 
 <h3> Funding Received Over Time</h3>
 <p> Census data from 2010 </p>
-
+<div class = "col-md-12">
 <div class="col-md-4" id="map"></div>
 <div class="col-md-8" id="chartMinority"></div>
 <div class="col-md-8" id="chartIncome"></div>
 <div class="col-md-8" id="chartLEP"></div>
 <div class="col-md-8" id="chartFemale"></div>
 <div class="col-md-8" id="tipFunding"></div>
+</div>
 
-<div class = "col-md-12">
 <h3> How much funding is available per capita in each municipality? </h3>
 <p> Hover over the map below to explore which cities and towns have received TIP funding for transportation projects between 2008 and 2021. The bar charts on the right present demographic information of the municipalities, relating to their population's ability to access transportation.
 </p>
-</div>
-
+<div class="col-md-12">
 <div class="col-md-4" id="map2"></div>
 <div class="col-md-8" id="perPerson"></div>
+</div>
 
 	<div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
