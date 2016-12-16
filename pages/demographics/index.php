@@ -68,7 +68,7 @@ text {fill: #ddd; font-size: 1.0em;}
 	<div class="col-md-5" id="map_pop"></div>
 	<div class="col-md-7" id="demographics_pop"></div></div></div>
 
-<h3> Races in the Boston Region </h3>
+<h3> Race in the Boston Region </h3>
 <p>The map and chart below show the percent of the population who are of each race in each census tract as identified by the U.S. Census Bureau, including those who are two or more races. They may be of Hispanic or non-Hispanic ethnicity. 
 </p>
 	<div class="col-md-12">

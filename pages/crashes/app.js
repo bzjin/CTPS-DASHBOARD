@@ -8,7 +8,7 @@ var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
 	.scale([18000]) // N.B. The scale and translation vector were determined empirically.
-	.translate([40,770]);
+	.translate([40,800]);
 	
 var geoPath = d3.geoPath().projection(projection);	
 
@@ -65,9 +65,10 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.append("path")
 			.attr("class", function(d){ return d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})})
 			.attr("d", function(d, i) {return geoPath(d); })
-			.style("fill", function(d){ 
-				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-				return colorScale(findIndex(capTown, "bike_tot")+findIndex(capTown, "ped_tot")); 	
+			.style("fill", function(d){
+				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); 
+				var total = +findIndex(capTown, "bike_tot") + +findIndex(capTown, "ped_tot");
+				return colorScale(total); 	
 			})
 			.style("opacity", 1)
 			.style("stroke", "#191b1d")
@@ -232,9 +233,14 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 	 //Color key
     var xPos = 5;
-    var yPos = 30; 
+    var yPos = 60; 
     var height = 600; 
     //background
+    svgContainer.append("text")
+      .style("font-weight", 700).style("font-size", 18)
+      .attr("x", xPos).attr("y", yPos - 35)
+      .text("Total Bicycle and Pedestrian Crashes");
+
     svgContainer.append("text")
       .style("font-weight", 700)
       .attr("x", xPos).attr("y", yPos -7)

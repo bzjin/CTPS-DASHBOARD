@@ -432,48 +432,6 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 		//	.style("stroke", "#ddd")*/
 	})
 
-	//circles connect points
-
-	/*timeline.selectAll("circle")
-		.data(psitimeline)
-		.enter()
-		.append("circle")
-			.attr("class", function(d) { return d.FederalAidRouteNumber; } )
-			.attr("cx", function(d) { return xScale(d.psiyear); })
-			.attr("cy", function(d) { return yScale(d.psi); })
-			.attr("r", 2)
-			.style("fill", function(d) { 
-				if (d.FederalAidRouteNumber == "I-90") { return colors[2];}
-				if (d.FederalAidRouteNumber == "I-93") { return colors[1];}
-				if (d.FederalAidRouteNumber == "I-95") { return colors[0];}
-				if (d.FederalAidRouteNumber == "I290") { return colors[3];}
-				if (d.FederalAidRouteNumber == "I495") { return colors[4];}	
-			})
-			.style("opacity", 1)
-			.on("mouseenter", function(d) {
-				var thisreg = this.getAttribute("class");
-
-				timeline.selectAll("path")
-					.style("opacity", .05);
-
-				timeline.selectAll("circle")
-					.style("opacity", .05);
-
-				timeline.selectAll("." + thisreg)
-					.style("opacity", .5);
-			})
-			.on("mouseleave", function(d) {
-
-				var thisreg = this.getAttribute("class");
-
-				timeline.selectAll("path")
-					.style("opacity", .5);
-
-				timeline.selectAll("circle")
-					.style("opacity", .5);
-			})
-			//.style("stroke-width", .5)
-		//	.style("stroke", "#ddd")*/
 
 		//button activate code
 		d3.selectAll("button").on("click", function(){

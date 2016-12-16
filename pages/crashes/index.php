@@ -56,7 +56,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 		<div id="pedChart" class = "col-md-4 key"><h4>Pedestrian Injuries</h4></div>
 
 	<h3> One Year of Crashes</h3>
-	<p> During 2013, 36 people died and 576 were injured riding bicycles and 892 pedestrians were injured while walking on the Boston Region’s roads. Each dot represents an individual who died or suffered an injury. </p>
+	<p> During 2013, 2 people died and 576 were injured riding bicycles and 35 pedestrians died and 892 pedestrians were injured while walking on the Boston Region’s roads. Each dot represents an individual who died or suffered an injury. </p>
 		<div class="col-md-12 key">
 			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Bicycle Injuries
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Bicycle Fatalities

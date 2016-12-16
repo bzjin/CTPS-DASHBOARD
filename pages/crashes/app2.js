@@ -1,14 +1,14 @@
 //Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
-var f = d3.format(".2")
+var f = d3.format(",")
 var e = d3.format(".1f");
 
 var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
-	.scale([20000]) // N.B. The scale and translation vector were determined empirically.
-	.translate([65,830]);
+	.scale([18000]) // N.B. The scale and translation vector were determined empirically.
+	.translate([40,800]);
 	
 var geoPath = d3.geoPath().projection(projection);	
 
@@ -30,8 +30,8 @@ d3.queue()
 
 //Color Scale
 var colorScale = d3.scaleLinear()
-    .domain([0, 25, 50, 100, 200, 400, 800])
-    .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
+    .domain([0, 25, 50, 100, 200, 400, 2200, 4000])
+    .range(["#3f003f","#3f003f", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 ////////////////* GENERATE MAP *////////////////////
 CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {	
@@ -41,9 +41,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	  .offset([-10, 0])
 	  .html(function(d) {
 		var town = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-	    return "<p>" + town + "</p><b>2013 Statistics</b><br>Motorized Injuries: " + findIndex(town, "mot_inj") + "<br>Motorized Fatalities: " + findIndex(town, "mot_fat") + 
-	    "<br>Truck Injuries: " + findIndex(town, "trk_inj") + "<br>Truck Fatalities: " + findIndex(town, "trk_fat") + "<br><br>Total Motorized Crashes: " + findIndex(town, "tot_inj") +
-		findIndex(town, "tot_fat");
+	    var total = +findIndex(town, "mot_tot");
+	    return "<p>" + town + "</p><b>2013 Statistics</b><br>Motorized Injuries: " + f(findIndex(town, "mot_inj")) + "<br>Motorized Fatalities: " + findIndex(town, "mot_fat") + 
+	    "<br>Truck Injuries: " + findIndex(town, "trk_inj") + "<br>Truck Fatalities: " + findIndex(town, "trk_fat") + "<br><br>Total Motorized Crashes: " + f(total);
 	  })
 
 	var svgContainer = d3.select("#map").append("svg")
@@ -231,12 +231,18 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		})
 
 		
-	}
+	} 
 
 	 //Color key
     var xPos = 5;
-    var yPos = 30; 
+    var yPos = 60; 
     var height = 600; 
+    //background
+    svgContainer.append("text")
+      .style("font-weight", 700).style("font-size", 18)
+      .attr("x", xPos).attr("y", yPos - 35)
+      .text("Total Motorized Crashes");
+
     //background
     svgContainer.append("text")
       .style("font-weight", 700)
@@ -265,19 +271,19 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
       .attr("x", xPos + 25).attr("y", yPos + 37)
       .text("201-400 crashes");
     svgContainer.append("rect")
-      .style("fill", colorScale(450)).style("stroke", "none")
+      .style("fill", colorScale(410)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
-      .text("401-1200 crashes");
+      .text("401-1,200 crashes");
     svgContainer.append("rect")
-      .style("fill", colorScale(1200)).style("stroke", "none")
+      .style("fill", colorScale(1500)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .text(">1200 crashes");
+      .text(">1,200 crashes");
 
 }
 

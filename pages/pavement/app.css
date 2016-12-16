@@ -70,8 +70,11 @@ div h3 {
 }
 
 .timeline:hover, .timeline:active, .timeline:focus {
+    border: .5px solid white;
     font-weight: 700;
-    background-color: rgba(255, 255, 255, .1);
+    font-size: 16px;
+    color: white !important;
+    background-color: rgba(255, 255, 255, .2);
     outline:none;
 }
 

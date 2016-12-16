@@ -65,7 +65,7 @@ text {
 	<div class=" col-md-12">
 
 	<h3> Off-Road Bicycle Facilities </h3>
-	<h3> Chang in Existing Bicycle Facilities Over Time</h3>
+	<h3> Change in Existing Bicycle Facilities Over Time</h3>
 	<p> The map below illustrates the change in total shared-use path mileage between 2011 and 2016 for each municipality. The bar graph compares the two years’ total shared-use path mileage.
 	</p>
 	<div class="col-md-12">

@@ -162,8 +162,15 @@
 		</p>
 
 		<h2> Demographics</h2>
-		<p>
-			Demographic data was taken from the 2010 United States Census and the 2009-2014 American Community Survey. 
+		<p>All data are reported at the census tract level. Data that were available in the 2010 decennial census used this information; if they were not available, they were gathered from the 2009-2014 American Community Survey. Data sources for each demographic are as follows:
+			<ul><li>Over age 75: 2010 Decennial Census</li>
+			<li>Unemployment: 2009-2014 American Community Survey</li>
+			<li>Race/ethnicity: 2010 Decennial Census</li>
+			<li>Limited English Proficiency (LEP): 2009-2014 American Community Survey</li>
+			<li>Disability: 2009-2014 American Community Survey</li>
+			<li>Low-income: 2009-2014 American Community Survey</li>
+			<li>Female headed household with children: 2010 Decennial Census</li>
+			<li>Zero vehicle household: 2009-2014 American Community Survey</li></ul>
 		</p>
 
 		<h3> A Note on Spatial Data </h3>
