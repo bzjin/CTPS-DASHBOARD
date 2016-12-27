@@ -305,7 +305,7 @@ CTPS.demoApp.generateChart = function(interstateRoads, townregion, exits) {
 	chartContainer.append("text")
 		.style("font-weight", 700)
 		.attr("x", xPos).attr("y", yPos - 10)
-		.text("KEY");
+		.text("PSI key");
 
 	chartContainer.append("rect")
 		.style("fill", colorScale(1)).style("stroke", "none")

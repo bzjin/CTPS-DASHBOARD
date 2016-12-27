@@ -62,7 +62,7 @@ text {fill: #ddd; font-size: 1.0em;}
 	<button class='employed bigbutton col-md-4 I-93'> Unemployment </button>
 	<button class='lep bigbutton col-md-4 I-95'> Limited English Proficiency </button>
 	<button class='over75 bigbutton col-md-4 I290'> Over Age 75 </button>
-	<button class='disabled bigbutton col-md-4 I290'> With Disability </button>
+	<button class='disabled bigbutton col-md-4 I290'> Persons with a Disability </button>
 
 	<div class="col-md-12">
 	<div class="col-md-5" id="map_pop"></div>
@@ -90,8 +90,8 @@ text {fill: #ddd; font-size: 1.0em;}
 	<div class="col-md-5" id="map_hisp"></div>
 	<div class="col-md-7" id="demographics_hisp"></div></div>
 
-<h3> The Five Non-English Languages Most Commonly Spoken at Home </h3>
-<p>Click on the tabs to show the percent of the five non-English languages most commonly spoken at home in each census tract. Limited English Proficiency (LEP) includes those residents 5 years or older who report speaking English “less than very well.”</p>
+<h3> The Five Non-English Languages Most Commonly Spoken </h3>
+<p>Click on the tabs to show the percent of the five non-English languages most commonly spoken in the MPO region, by census tract. Limited English Proficiency (LEP) includes those residents 5 years or older who report speaking English “less than very well.”</p>
 	<div class="col-md-12">
 	<button class='spanish bigbutton col-md-2' autofocus> Spanish </button>
 	<button class='chinese bigbutton col-md-2'> Chinese </button>

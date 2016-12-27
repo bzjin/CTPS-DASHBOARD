@@ -14,7 +14,7 @@ var geoPath = d3.geoPath().projection(projection);
 
 //Using the d3.queue.js library
 d3.queue()
-  .defer(d3.json, "../../data/json/mpo_tracts_2012_with_2014_demographics_2.topojson")
+  .defer(d3.json, "../../data/json/demographics_households.json")
 
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0]); //Households map
@@ -120,7 +120,7 @@ CTPS.demoApp.generateMap = function(tracts) {
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 7)
-      .text(">10% households");
+      .text("<10% households");
     svgContainer.append("rect")
       .style("fill", keyColor).style("stroke", "none").style("opacity", .4)
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);

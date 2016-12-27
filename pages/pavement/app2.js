@@ -176,7 +176,7 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	timeline.append("text").style("font-size", 12)
 		.style("font-weight", 700)
 		.attr("x", xPos).attr("y", yPos -7)
-		.text("KEY");
+		.text("PSI Key");
 	//text and colors
 	timeline.append("rect")
 		.style("fill", "white").style("stroke", "none").style("opacity", .1)

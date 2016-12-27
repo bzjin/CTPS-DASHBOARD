@@ -172,11 +172,11 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 	.attr("height", 600)
 	.style("overflow", "visible")
 
-	var w = $("deck_timeline").width();
+	var w = $("#deck_timeline").width();
 
 	//Assign scales and axes 
-	xScale = d3.scaleLinear().domain([2007, 2016]).range([70, 400]);
-	xScaleLabels = d3.scaleLinear().domain([2007, 2016]).range([90, 380]);
+	xScale = d3.scaleLinear().domain([2007, 2016]).range([70, w - 10]);
+	xScaleLabels = d3.scaleLinear().domain([2007, 2016]).range([90, w - 30]);
 	yScale = d3.scaleLinear().domain([0, 100]).range([450, 50]);
 
 	var xAxis = d3.axisBottom(xScale).tickSize(0,0,0)
@@ -288,8 +288,15 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 
 	timeline.append("text")
 			.attr("x", xPos + 150)
-			.attr("y", 595)
-			.text("% structurally deficient bridge deck area")
+			.attr("y", 590)
+			.text("% structurally deficient")
+			.style("font-weight", 300)
+			.style("font-size", 12)
+
+	timeline.append("text")
+			.attr("x", xPos + 150)
+			.attr("y", 603)
+			.text("bridge deck area")
 			.style("font-weight", 300)
 			.style("font-size", 12)
 
@@ -303,8 +310,15 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 
 	timeline.append("text")
 			.attr("x", xPos + 150)
-			.attr("y", 560)
-			.text("% non-structurally deficient bridge deck area")
+			.attr("y", 550)
+			.text("% non-structurally deficient")
+			.style("font-weight", 300)
+			.style("font-size", 12)
+
+	timeline.append("text")
+			.attr("x", xPos + 150)
+			.attr("y", 563)
+			.text("bridge deck area")
 			.style("font-weight", 300)
 			.style("font-size", 12)
 

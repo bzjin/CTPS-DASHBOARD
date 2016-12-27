@@ -23,9 +23,9 @@ d3.queue()
 	}); 
 
 //Color Scale
-var colorScale = d3.scaleLinear()
-    .domain([0, 5, 10, 20, 40, 240, 900])
-    .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
+var colorScale = d3.scaleThreshold()
+    .domain([0, 5, 10, 50, 200])
+    .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 //var colorScale = d3.scaleLinear().domain([0, 20, 100, 200]).range(["#ffffcc", "#f9bf3b","#ff6347", "#ff6347"]);
 
@@ -254,14 +254,14 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
       .attr("x", xPos + 25).attr("y", yPos + 7)
       .text("<5 crashes");
     svgContainer.append("rect")
-      .style("fill", colorScale(10)).style("stroke", "none")
+      .style("fill", colorScale(7)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
       .text("5-10 crashes");
     svgContainer.append("rect")
-      .style("fill", colorScale(50)).style("stroke", "none")
+      .style("fill", colorScale(20)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)

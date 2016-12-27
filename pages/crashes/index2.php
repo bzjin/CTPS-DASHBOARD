@@ -50,7 +50,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 
 	<h2> Injuries Involving Motorized Vehicles </h2> 
 	<h3>Trends Over Time</h3>
-		<p> Click on each city or town and see its injury count over time. Hover over each town to see its 2013 statistics on motorized injuries and fatalities. Total motorized crashes (including trucks) in 2013 in each city or town are also included as a reference. </p> 
+		<p> Click on each city or town and see its injury count over time. Hover over each town to see its 2013 statistics on motorized injuries and fatalities. Total motorized crashes (including trucks, bicycle, and pedestrian-involved crashes) in 2013 in each city or town are also included as a reference. </p> 
 		<div class="col-md-12">
 		<div id="map" class="col-md-4"></div>
 		<div id="motChart" class="col-md-4 key">

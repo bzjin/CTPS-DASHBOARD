@@ -14,7 +14,7 @@ var geoPath = d3.geoPath().projection(projection);
 
 //Using the d3.queue.js library
 d3.queue()
-  .defer(d3.json, "../../data/json/demographics_population.topojson")
+  .defer(d3.json, "../../data/json/demographics_population.json")
   .awaitAll(function(error, results){ 
     CTPS.demoApp.generateMap(results[0]); //Population map
     CTPS.demoApp.generateStats(results[0]);

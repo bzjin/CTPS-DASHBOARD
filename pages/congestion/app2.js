@@ -263,7 +263,7 @@ CTPS.demoApp.generateMap = function(cities, arterials, route_ids) {
 		svgContainer.append("text")
 			.style("font-weight", 700)
 			.attr("x", xPos).attr("y", yPos -7)
-			.text("KEY");
+			.text("Speed Index Key");
 		//text and colors
 		svgContainer.append("rect")
 			.style("fill", colorScale(.25)).style("stroke", "none")

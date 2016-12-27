@@ -121,3 +121,11 @@ button {
 .mapsegment {
   cursor: pointer; 
 }
+
+@media (max-width: 992px) {
+/* Styling for desktop (large) screens */
+#map { 
+  position: relative;
+  height: 500px;
+}
+  }

@@ -107,9 +107,9 @@
 			<div class="col-md-12 nav_metric">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Crashes </div>
 			<div class="col-md-6">
-				<p> Motorized injuries/deaths <br><b>14888/68</b></p></div>
+				<p> Motorized injuries/deaths <br><b>14,888/68</b></p></div>
 			<div class="col-md-6">
-				<p> Non-motorized injuries/deaths<br><b>1470/36</b></p></div></a>
+				<p> Non-motorized injuries/deaths<br><b>1,470/36</b></p></div></a>
 		</div>
 		<div class="page_link"><a href="pages/pavement/index.php" title="Go to pavement condition page" id="pavement">
 			<div class="col-md-12 nav_metric">
@@ -161,7 +161,7 @@
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Demographics </div>
 			<div class="col-md-6">
 				<p><b class="demo">27.8%</b> minority population<br>
-				<b class="demo">$70,829</b> median household income<br></p></div>
+				<b class="demo">$76,040</b> median household income<br></p></div>
 			<div class="col-md-6">
 				<p><b class="demo">1.49</b> average vehicles per household<br>
 				<b class="demo">6.8%</b> unemployment rate</p></div></a>
@@ -175,7 +175,7 @@
 				<p class="meter"> <span style="width: 42.7%"></span></p></div>
 			<div class="col-md-6">
 				<p>Sidewalk for every centerline mile<br>
-				<b>3694 feet</b></p></div></a>
+				<b>3,694 feet</b></p></div></a>
 		</div>
 		<div class="page_link"><a href="pages/bike_facilities/index.php" title="Go to bike facilities page" id="bikes">
 			<div class="col-md-12 nav_metric">

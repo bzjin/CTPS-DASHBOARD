@@ -32,8 +32,8 @@ CTPS.demoApp.generateMap = function(cities, congestion) {
 	var projection = d3.geoConicConformal()
 	.parallels([41 + 43 / 60, 42 + 41 / 60])
     .rotate([71 + 30 / 60, -41 ])
-	.scale([22000]) // N.B. The scale and translation vector were determined empirically.
-	.translate([120, 950]);
+	.scale([28000]) // N.B. The scale and translation vector were determined empirically.
+	.translate([120, 1130]);
 	
 	var geoPath = d3.geoPath().projection(projection);
 
@@ -424,7 +424,7 @@ pmchartContainer.selectAll(".labels")
 		twoCharts.append("text")
 			.style("font-weight", 700)
 			.attr("x", xPos).attr("y", yPos -7)
-			.text("KEY");
+			.text("Speed Index Key");
 		//text and colors
 		twoCharts.append("rect")
 			.style("fill", colorScale(.25)).style("stroke", "none")

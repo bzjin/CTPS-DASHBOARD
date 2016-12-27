@@ -59,20 +59,6 @@
 
 	<div class="row col-md-12" id="speedindex"> </div>
 	
-	<!--<div class="col-md-12" id="timeVsSpeed">
-		<h3> Travel Time Index vs. Speed Index </h3> 
-		<div id="cumulativetime"> </div>
-	</div>
-
-	<div class="col-md-12">
-		<h3> Free Flow v. Congested Travel Time </h3> 
-		<button id="congAnim"> Start Animation </button>
-		<div class="col-md-12">
-			<div class="col-md-4" id="freeFlow"> Driving at Speed Limit </div>
-			<div class="col-md-4" id="amCong"> Driving in AM Congestion</div>
-			<div class="col-md-4" id="pmCong"> Driving in PM Congestion </div>
-		</div>
-	</div>-->
 <div class="footer col-md-12">
 		<?php include '../../components/footer.php';?>
 	</div>

@@ -29,9 +29,9 @@ d3.queue()
 	});
 
 //Color Scale
-var colorScale = d3.scaleLinear()
-    .domain([0, 25, 50, 100, 200, 400, 2200, 4000])
-    .range(["#3f003f","#3f003f", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
+var colorScale = d3.scaleThreshold()
+    .domain([0, 20, 100, 200, 1000])
+    .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 ////////////////* GENERATE MAP *////////////////////
 CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {	
@@ -250,40 +250,40 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
       .text("KEY");
     //text and colors
     svgContainer.append("rect")
-      .style("fill", colorScale(20)).style("stroke", "none")
+      .style("fill", colorScale(5)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 7)
-      .text("<50 crashes");
+      .text("<20 crashes");
     svgContainer.append("rect")
-      .style("fill", colorScale(120)).style("stroke", "none")
+      .style("fill", colorScale(50)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
-      .text("51-200 crashes");
+      .text("20-100 crashes");
     svgContainer.append("rect")
-      .style("fill", colorScale(250)).style("stroke", "none")
+      .style("fill", colorScale(120)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
-      .text("201-400 crashes");
+      .text("101-400 crashes");
     svgContainer.append("rect")
-      .style("fill", colorScale(410)).style("stroke", "none")
+      .style("fill", colorScale(350)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
-      .text("401-1,200 crashes");
+      .text("401-1,000 crashes");
     svgContainer.append("rect")
       .style("fill", colorScale(1500)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .text(">1,200 crashes");
+      .text(">1,001 crashes");
 
 }
 

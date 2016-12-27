@@ -1,7 +1,7 @@
 //Code written by Beatrice Jin, 2016. Contact at beatricezjin@gmail.com.
 var CTPS = {};
 CTPS.demoApp = {};
-var f = d3.format(".2")
+var f = d3.format(",")
 var e = d3.format(".1f");
 
 //Define Color Scale
@@ -71,7 +71,7 @@ var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([0, 10])
     .html(function(d) {
-      return d.town + "<br>" + d.year + "<br>Sidewalk Miles: " + e(+d.sidewalk_miles) + "<br>Centerline Miles: " + e(+d.center_line_miles);
+      return d.town + "<br>" + d.year + "<br>Sidewalk Miles: " + f(e(+d.sidewalk_miles)) + "<br>Centerline Miles: " + f(e(+d.center_line_miles));
     })
 
 timeline.call(tip); 

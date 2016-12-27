@@ -14,19 +14,19 @@ var projection = d3.geoConicConformal()
 var geoPath = d3.geoPath().projection(projection);
 
 //Color Scale
-var colorScale = d3.scaleLinear()
-    .domain([0, 25, 50, 100, 250, 500, 1000])
-    .range(["#9e0142", "#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
+var colorScale = d3.scaleThreshold()
+    .domain([0, 25, 50, 100, 250, 500])
+    .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 //Color Scale for bar chart 
-var colorScaleBars = d3.scaleLinear()
-    .domain([0, .01, .02, .05, .1, .2])
-    .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse())
+var colorScaleBars = d3.scaleThreshold()
+    .domain([0, .01, .02, .05, .1])
+    .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 //Color Scale for bar chart 
-var colorScaleBars2 = d3.scaleLinear()
-    .domain([0, 1, 2, 5, 10, 60])
-    .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse())
+var colorScaleBars2 = d3.scaleThreshold()
+    .domain([0, 1, 2, 5, 10])
+    .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 //Using the d3.queue.js library
 d3.queue()
@@ -136,33 +136,40 @@ CTPS.demoApp.generateMap = function(mpoTowns, bike2011, bike2016) {
       .attr("x", xPos + 25).attr("y", yPos + 7)
       .text("No bike facilities");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars(.02)).style("stroke", "none")
+      .style("fill", colorScaleBars(.005)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
-      .text("0-5%");
+      .text("0-1%");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars(.05)).style("stroke", "none")
+      .style("fill", colorScaleBars(.015)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
-      .text("5-15%");
+      .text("1-2");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars(.1)).style("stroke", "none")
+      .style("fill", colorScaleBars(.03)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
-      .text("10-20%");
+      .text("2-5%");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars(.2)).style("stroke", "none")
+      .style("fill", colorScaleBars(.07)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .text(">20%"); 
+      .text("5-10%"); 
+    svgContainer.append("rect")
+      .style("fill", colorScaleBars(.2)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 75).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 82)
+      .text(">10%"); 
 
 }
 
@@ -353,33 +360,40 @@ CTPS.demoApp.generateMap2 = function(mpoTowns, bikeData) {
       .attr("x", xPos + 25).attr("y", yPos + 7)
       .text("No bike facilities");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars2(1)).style("stroke", "none")
+      .style("fill", colorScaleBars2(.5)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
-      .text("1-2 Miles");
+      .text("0-1 Miles");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars2(2)).style("stroke", "none")
+      .style("fill", colorScaleBars2(1.5)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
-      .text("2-5 Miles");
+      .text("1-2 Miles");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars2(5)).style("stroke", "none")
+      .style("fill", colorScaleBars2(2.5)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
-      .text("5-10 Miles");
+      .text("2-5 Miles");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars2(10)).style("stroke", "none")
+      .style("fill", colorScaleBars2(7)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .text("More than 10 Miles"); 
+      .text("5-10 Miles");
+    svgContainer.append("rect")
+      .style("fill", colorScaleBars2(12)).style("stroke", "none")
+      .attr("x", xPos).attr("y", yPos + 75).attr("height", "7px").attr("width", height/35);
+    svgContainer.append("text")
+      .style("font-weight", 300)
+      .attr("x", xPos + 25).attr("y", yPos + 82)
+      .text("More than 10 Miles");  
 
 }
 
