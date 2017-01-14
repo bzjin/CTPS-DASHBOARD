@@ -30,7 +30,7 @@ d3.queue()
 
 //Color Scale
 var colorScale = d3.scaleThreshold()
-    .domain([0, 20, 100, 200, 1000])
+    .domain([0, 20, 100, 400, 1000])
     .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 ////////////////* GENERATE MAP *////////////////////
@@ -68,7 +68,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 			.attr("d", function(d, i) {return geoPath(d); })
 			.style("fill", function(d){ 
 				var capTown = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-				return colorScale(findIndex(capTown, "mot_inj")); 	
+				return colorScale(findIndex(capTown, "mot_tot")); 	
 			})
 			.style("opacity", 1)
 			.style("stroke", "#191b1d")
@@ -271,7 +271,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
       .attr("x", xPos + 25).attr("y", yPos + 37)
       .text("101-400 crashes");
     svgContainer.append("rect")
-      .style("fill", colorScale(350)).style("stroke", "none")
+      .style("fill", colorScale(550)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
