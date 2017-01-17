@@ -39,7 +39,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	  .offset([-10, 0])
 	  .html(function(d) {
 		var town = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-	    return "<p>" + town + "</p><b>2013 Statistics</b><br>Bike Injuries: " + findIndex(town, "bike_inj") + "<br>Bike Fatalities: " + findIndex(town, "bike_fat") + 
+	    return "<p>" + town + "</p><b>2014 Statistics</b><br>Bike Injuries: " + findIndex(town, "bike_inj") + "<br>Bike Fatalities: " + findIndex(town, "bike_fat") + 
 	    "<br>Pedestrian Injuries: " + findIndex(town, "ped_inj") + "<br>Pedestrian Fatalities: " + findIndex(town, "ped_fat") + "<br><br> Total Bicycle Crashes: " + 
 	    findIndex(town, "bike_tot") + "<br> Total Pedestrian Crashes: " + findIndex(town, "ped_tot");
 	  })
@@ -52,7 +52,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 	var findIndex = function(town, statistic) { 
 		for (var i = 0; i < crashdata.length; i++) { 
-			if (crashdata[i].year == 2013 && crashdata[i].town == town) {
+			if (crashdata[i].year == 2014 && crashdata[i].town == town) {
 				return crashdata[i][statistic]; 
 			} 
 		}
@@ -77,10 +77,10 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 				var thisreg = this.getAttribute("class");
 
 				svgContainer.selectAll("path")
-					.style("opacity", 1)
+					.style("stroke", "#191b1d")
 
 				d3.selectAll("." + thisreg)
-					.style("opacity", .5)
+					.style("stroke", "white")
 
 				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[0]]).range([400, 20]);
 				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(function(e){
@@ -108,11 +108,11 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
                 circleMaker(thisreg);
 	        }) 
 		.on("mouseenter", function(d) {
-			d3.select(this).style("stroke", "white").style("cursor", "pointer");
+			d3.select(this).style("opacity", .5).style("cursor", "pointer");
 			tip.show(d); 
 		})
 		.on("mouseleave", function(d) { 
-			d3.select(this).style("stroke", "#191b1d");
+			d3.select(this).style("opacity", 1);
 			tip.hide(d);
 		})
 
@@ -149,17 +149,17 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.attr("x", -270)
 		.attr("y", 10)
 		.style("font-weight", 300)
-		.text("Number of Injuries")
+		.text("Bicycle Injuries Over Time")
 
 	chartContainer2.append("text")
 		.attr("transform", "rotate(-90)")
 		.attr("x", -270)
 		.attr("y", 10)
 		.style("font-weight", 300)
-		.text("Number of Injuries")
+		.text("Pedestrian Injuries Over Time")
 
 //Assign scales and axes 
-	var xScale = d3.scaleLinear().domain([2004, 2013]).range([50, 300]);
+	var xScale = d3.scaleLinear().domain([2005, 2014]).range([50, 300]);
 	var yScale = d3.scaleLinear().domain([0, findTownMax("Total")[0]]).range([400, 20]);
 
 	var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")); 
@@ -239,7 +239,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
     svgContainer.append("text")
       .style("font-weight", 700).style("font-size", 18)
       .attr("x", xPos).attr("y", yPos - 35)
-      .text("Total Bicycle and Pedestrian Crashes");
+      .text("Total Bicycle and Pedestrian Crashes - 2014");
 
     svgContainer.append("text")
       .style("font-weight", 700)

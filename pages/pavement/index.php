@@ -45,7 +45,7 @@
 
 	<h2>Interstate Pavement</h2>
 	<h3>Pavement Conditions in 2014</h3>
-	<p>Hover over the bars below to see the pavement condition of the five interstate highways in the Boston Region as they cross the region from North to South or East to West.</p>
+	<p>Hover over the bars below to see the pavement condition in 2014 of the five interstate highways in the Boston Region as they cross the region from North to South or East to West.</p>
 
 	<div id="chart" class="col-md-12"></div>
 

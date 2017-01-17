@@ -62,7 +62,7 @@
 		<button class='yr2014 yrpicker col-md-1'> 2014</button>
 		<button class='yr2015 yrpicker col-md-1'> 2015</button>
 
-		<!--<div class="col-md-3" id="mapRoute1"></div>-->
+	<div class="col-md-12" id="key"></div>
 	<div class="col-md-12" id="sidewalks"></div>
 
 	<div class="footer col-md-12">

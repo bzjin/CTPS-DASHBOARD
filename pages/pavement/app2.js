@@ -420,6 +420,10 @@ CTPS.demoApp.generateCities = function(avgpsi) {
 	var yPos = 100; 
 	var height = 600; 
 
+	cityContainer.append("text")
+		.style("font-weight", 700)
+		.attr("x", xPos).attr("y", yPos - 7)
+		.text("PSI Key");
 	//text and colors
 	cityContainer.append("rect")
 		.style("fill", colorScale(1)).style("stroke", "none")

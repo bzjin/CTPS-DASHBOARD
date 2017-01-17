@@ -26,15 +26,7 @@
           </ul>
         </li>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Pavement <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="../pavement/index.php">Interstate Pavement</a></li>
-            <li><a href="../pavement/index2.php">Non-Interstate Pavement</a></li>
-          </ul>
-        </li>
-
-		<li class="dropdown">
+		  <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Congestion <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="../congestion/index.php">Expressway Congestion</a></li>
@@ -42,16 +34,27 @@
           </ul>
         </li>
 
-        <li><a href="../bridges/index.php">Bridges</a></li>
-        <li><a href="../sidewalks/index.php">Sidewalks</a></li>
-    <li class="dropdown">
+      <li><a href="../bridges/index.php">Bridges</a></li>
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Pavement <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="../pavement/index.php">Interstate Pavement</a></li>
+          <li><a href="../pavement/index2.php">Non-Interstate Pavement</a></li>
+        </ul>
+      </li>
+
+      <li><a href="../sidewalks/index.php">Sidewalks</a></li>
+    
+      <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Bike Facilities <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="../bike_facilities/index.php">On-Road Bike Facilities</a></li>
             <li><a href="../bike_facilities/index2.php">Off-Road Bike Facilities</a></li>
           </ul>
         </li>
-		<li class="dropdown">
+		  
+      <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Demographics <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="../demographics/index.php">Population Statistics</a></li>

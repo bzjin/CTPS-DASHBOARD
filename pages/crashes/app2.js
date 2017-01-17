@@ -42,7 +42,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	  .html(function(d) {
 		var town = d.properties.TOWN.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 	    var total = +findIndex(town, "mot_tot");
-	    return "<p>" + town + "</p><b>2013 Statistics</b><br>Motorized Injuries: " + f(findIndex(town, "mot_inj")) + "<br>Motorized Fatalities: " + findIndex(town, "mot_fat") + 
+	    return "<p>" + town + "</p><b>2014 Statistics</b><br>Motorized Injuries: " + f(findIndex(town, "mot_inj")) + "<br>Motorized Fatalities: " + findIndex(town, "mot_fat") + 
 	    "<br>Truck Injuries: " + findIndex(town, "trk_inj") + "<br>Truck Fatalities: " + findIndex(town, "trk_fat") + "<br><br>Total Motorized Crashes: " + f(total);
 	  })
 
@@ -54,7 +54,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 	var findIndex = function(town, statistic) { 
 		for (var i = 0; i < crashdata.length; i++) { 
-			if (crashdata[i].year == 2013 && crashdata[i].town == town) {
+			if (crashdata[i].year == 2014 && crashdata[i].town == town) {
 				return +crashdata[i][statistic]; 
 			} 
 		}
@@ -76,10 +76,10 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.on("click", function() {
 				var thisreg = this.getAttribute("class");
 				svgContainer.selectAll("path")
-					.style("opacity", 1)
+					.style("stroke", "#191b1d")
 
 				d3.selectAll("." + thisreg)
-					.style("opacity", .5)
+					.style("stroke", "white")
 
 				var yScale = d3.scaleLinear().domain([0, findTownMax(thisreg)[0]]).range([400, 20]);
 				var yAxis = d3.axisLeft(yScale).tickSize(-250, 0, 0).tickFormat(function(e){
@@ -107,10 +107,10 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 	        }) 
 		.on("mouseenter", function(d) { 
 			tip.show(d); 
-			d3.select(this).style("stroke", "white").style("cursor", "pointer");
+			d3.select(this).style("opacity", .5).style("cursor", "pointer");
 		})
 		.on("mouseleave", function(d) { 
-			d3.select(this).style("stroke", "#191b1d");
+			d3.select(this).style("opacity", 1);
 			tip.hide(d);
 		})
 	
@@ -149,17 +149,17 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 		.attr("x", -270)
 		.attr("y", 10)
 		.style("font-weight", 300)
-		.text("Number of Injuries")
+		.text("Injuries Involving Motorized Vehicles Over Time")
 
 	chartContainer2.append("text")
 		.attr("transform", "rotate(-90)")
 		.attr("x", -270)
 		.attr("y", 10)
 		.style("font-weight", 300)
-		.text("Number of Injuries")
+		.text("Injuries Involving Trucks Over Time")
 
 //Assign scales and axes 
-	var xScale = d3.scaleLinear().domain([2004, 2013]).range([60, 300]);
+	var xScale = d3.scaleLinear().domain([2005, 2014]).range([60, 300]);
 	var yScale = d3.scaleLinear().domain([0, findTownMax("Total")[0]]).range([400, 20]);
 
 	var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")); 
@@ -241,7 +241,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
     svgContainer.append("text")
       .style("font-weight", 700).style("font-size", 18)
       .attr("x", xPos).attr("y", yPos - 35)
-      .text("Total Motorized Crashes");
+      .text("Total Motorized Crashes - 2014");
 
     //background
     svgContainer.append("text")
@@ -318,7 +318,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 		.call(yAxis).selectAll("text").remove();
 
 	crashdata.forEach(function(d){
-		if (d.year == 2013 && d.town == "Total") { 
+		if (d.year == 2014 && d.town == "Total") { 
 			var x = 1; 
 			var y = 130; 
 			
@@ -363,7 +363,7 @@ CTPS.demoApp.generateTruck = function(crashdata) {
 				.attr("height", height)
 				.attr("width", width);
 
-	var xScale = d3.scaleLinear().domain([2004, 2013]).range([0 + padding, width - (2.5 * padding)]);
+	var xScale = d3.scaleLinear().domain([2005, 2014]).range([0 + padding, width - (2.5 * padding)]);
 	var yScale = d3.scaleLinear().domain([90, 0]).range([height-60, -10]);
 
 	var xAxis = d3.axisBottom(xScale).ticks(10).tickFormat(d3.format("d")); 
@@ -448,7 +448,7 @@ CTPS.demoApp.generateAccessibleTable = function(crashjson){
 
 	var options = {
 		"divId" : "crashTableDiv",
-		"caption": "Motorized Crash Data over Time: Motorized Vehicles and Truck Injuries and Fatalities from 2004 to 2013",
+		"caption": "Motorized Crash Data over Time: Motorized Vehicles and Truck Injuries and Fatalities from 2005 to 2014",
 	};
 
 	$("#crashTable").accessibleGrid(colDesc, options, crashjson);

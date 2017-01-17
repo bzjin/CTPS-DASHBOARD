@@ -21,6 +21,10 @@ var timeline = d3.select("#sidewalks").append("svg")
     .attr("width", "100%")
     .attr("height", 1400)
 
+var key = d3.select("#key").append("svg")
+    .attr("width", "100%")
+    .attr("height", 80)
+
 allData.sort(function(a, b){
   var nameA = a.town;
   var nameB = b.town;
@@ -252,54 +256,56 @@ function dataVizAll() {
   })
 
   //Color key
-    var xPos = 950;
-    var yPos = 120; 
+    var xPos = 50;
+    var yPos = 50; 
     var height = 600; 
     //background
-    timeline.append("text")
+    key.append("text")
       .style("font-weight", 700)
-      .attr("x", xPos + 20).attr("y", yPos - 40)
+      .attr("x", xPos - 10).attr("y", yPos - 20)
       .html("KEY").style("text-anchor","middle");
     //text and colors
-    timeline.append("circle")
+    key.append("circle")
       .attr("class", "key")
       .style("fill", "none").style("stroke", "#fff")
-      .attr("cx", xPos + 60).attr("cy", yPos).attr("r", 30)
-    timeline.append("text")
-      .style("font-weight", 300).style("text-anchor", "end")
-      .attr("x", xPos + 20).attr("y", yPos + 7)
+      .attr("cx", xPos + 600).attr("cy", yPos).attr("r", 30)
+    key.append("text")
+      .style("font-weight", 300).style("text-anchor", "start")
+      .attr("x", xPos + 500).attr("y", yPos + 4)
       .style("font-size", 12).html("900 Miles");
-    timeline.append("circle")
+    
+    key.append("circle")
       .attr("class", "key")
       .style("fill", "none").style("stroke", "#fff")
-      .attr("cx", xPos + 60).attr("cy", yPos + 60).attr("r", 20)
-    timeline.append("text")
-      .style("font-weight", 300).style("text-anchor", "end")
-      .attr("x", xPos + 30).attr("y", yPos + 67)
+      .attr("cx", xPos + 455).attr("cy", yPos).attr("r", 20)
+    key.append("text")
+      .style("font-weight", 300).style("text-anchor", "start")
+      .attr("x", xPos + 370).attr("y", yPos + 4)
       .style("font-size", 12).html("400 Miles");
-    timeline.append("circle")
+    key.append("circle")
       .attr("class", "key")
       .style("fill", "none").style("stroke", "#fff")
-      .attr("cx", xPos + 60).attr("cy", yPos + 100).attr("r", 10)
-    timeline.append("text")
-      .style("font-weight", 300).style("text-anchor", "end")
-      .attr("x", xPos + 40).attr("y", yPos + 107)
+      .attr("cx", xPos + 335).attr("cy", yPos).attr("r", 10)
+    key.append("text")
+      .style("font-weight", 300).style("text-anchor", "start")
+      .attr("x", xPos + 260).attr("y", yPos + 4)
       .style("font-size", 12).html("100 Miles");
-    timeline.append("circle")
+    
+    key.append("circle")
       .attr("class", "key")
       .style("fill", "none").style("stroke", "#fff")
-      .attr("cx", xPos + 60).attr("cy", yPos + 130).attr("r", 5)
-    timeline.append("text")
-      .style("font-weight", 300).style("text-anchor", "end")
-      .attr("x", xPos + 40).attr("y", yPos + 133)
+      .attr("cx", xPos + 225).attr("cy", yPos).attr("r", 5)
+    key.append("text")
+      .style("font-weight", 300).style("text-anchor", "start")
+      .attr("x", xPos + 120).attr("y", yPos + 4)
       .style("font-size", 12).html("Centerline Miles");
-    timeline.append("circle")
+    key.append("circle")
       .attr("class", "key")
       .style("stroke", "none").style("fill", "#fff")
-      .attr("cx", xPos + 60).attr("cy", yPos + 160).attr("r", 5)
-    timeline.append("text")
-      .style("font-weight", 300).style("text-anchor", "end")
-      .attr("x", xPos + 40).attr("y", yPos + 163)
+      .attr("cx", xPos + 95).attr("cy", yPos).attr("r", 5)
+    key.append("text")
+      .style("font-weight", 300).style("text-anchor", "start")
+      .attr("x", xPos).attr("y", yPos + 4)
       .style("font-size", 12).html("Sidewalk Miles");
 }
 

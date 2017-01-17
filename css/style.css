@@ -100,6 +100,18 @@ div {
   .navbar-collapse { 
     width: 100vw;
   }
+
+  .footer { 
+    position: absolute;
+    bottom: 0px;
+    text-align: left;
+    left: 10px;
+  }
+
+  .footer p { 
+    font-size: 10px;
+   }
+
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
@@ -128,6 +140,28 @@ div {
 
   .page_link i{ 
     display: none;
+  }
+
+  /* All */
+  .footer { 
+    position: relative;
+    bottom: 0px;
+    text-align: left;
+    left: 10px;
+  }
+
+  .footer p { 
+    font-size: 10px;
+   }
+
+  .nav_metric { 
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 5px;
+    text-transform: uppercase; 
+    margin-bottom: 3px;
   }
   
 }
@@ -180,9 +214,7 @@ div {
     text-decoration: none;
   }
 
-}
-
-/* All */
+  /* All */
 .footer { 
   position: absolute;
   bottom: 0px;
@@ -193,6 +225,10 @@ div {
 .footer p { 
   font-size: 10px;
  }
+
+}
+
+
 
 .fa { 
   color: #ddd;
