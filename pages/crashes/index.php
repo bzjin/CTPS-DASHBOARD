@@ -52,13 +52,13 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	<h3>Trends Over Time</h3>
 		<p> Click on the map to discover the number of injuries involving bicycles and pedestrians in each city or town over the last ten years. Hover over each town to see its 2014 statistics on total crashes, injuries, and fatalities. </p> 
 		<div id="map" class="col-md-4"></div>
-		<div id="bikeChart" class="col-md-4 key"><h4>Bicycle Injuries</h4></div>
-		<div id="pedChart" class = "col-md-4 key"><h4>Pedestrian Injuries</h4></div>
+		<div id="bikeChart" class="col-md-4 key"><h4>Bicycle Injuries Over Time</h4></div>
+		<div id="pedChart" class = "col-md-4 key"><h4>Pedestrian Injuries Over Time</h4></div>
 
 	<h3> One Year of Crashes</h3>
 	<p> During 2013, 5 people died and 604 were injured riding bicycles and 30 pedestrians died and 1,046 pedestrians were injured while walking on the Boston Region’s roads. Each dot represents an individual who died or suffered an injury. </p>
 		<div class="col-md-12 key">
-			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Bicycle Injuries
+			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i> Bicycle Injuries
 			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Bicycle Fatalities
 			<i class="fa fa-circle-o pedes" aria-hidden="true"></i>  Pedestrian Injuries
 			<i class="fa fa-circle pedes" aria-hidden="true"></i> Pedestrian Fatalities</p>

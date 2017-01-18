@@ -233,13 +233,18 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 
 	 //Color key
     var xPos = 5;
-    var yPos = 60; 
+    var yPos = 80; 
     var height = 600; 
     //background
     svgContainer.append("text")
       .style("font-weight", 700).style("font-size", 18)
+      .attr("x", xPos).attr("y", yPos - 55)
+      .text("Total Bicycle and Pedestrian");
+	svgContainer.append("text")
+      .style("font-weight", 700).style("font-size", 18)
       .attr("x", xPos).attr("y", yPos - 35)
-      .text("Total Bicycle and Pedestrian Crashes - 2014");
+      .text("Crashes - 2014");
+
 
     svgContainer.append("text")
       .style("font-weight", 700)
@@ -329,7 +334,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 				}});
 
 		town.values.forEach(function(d){
-			if (d.year == 2013 && d.town != "Total") { 
+			if (d.year == 2014 && d.town != "Total") { 
 				var x = 1; 
 				var y = yMax - 1; 
 				for(var i = 1; i < +d.bike_inj+1; i++) { 

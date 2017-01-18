@@ -146,17 +146,17 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
 //Label axes
 	chartContainer.append("text")
 		.attr("transform", "rotate(-90)")
-		.attr("x", -270)
+		.attr("x", -300)
 		.attr("y", 10)
-		.style("font-weight", 300)
-		.text("Injuries Involving Motorized Vehicles Over Time")
+		.style("font-weight", 400)
+		.text("Injuries Involving Motorized Vehicles")
 
 	chartContainer2.append("text")
 		.attr("transform", "rotate(-90)")
 		.attr("x", -270)
 		.attr("y", 10)
 		.style("font-weight", 300)
-		.text("Injuries Involving Trucks Over Time")
+		.text("Injuries Involving Trucks")
 
 //Assign scales and axes 
 	var xScale = d3.scaleLinear().domain([2005, 2014]).range([60, 300]);

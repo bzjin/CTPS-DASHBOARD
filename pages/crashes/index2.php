@@ -54,10 +54,10 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 		<div class="col-md-12">
 		<div id="map" class="col-md-4"></div>
 		<div id="motChart" class="col-md-4 key">
-		<h4>Injuries Involving Motorized Vehicles</h4>
+		<h4>Injuries Involving Motorized Vehicles Over Time</h4>
 		</div>
 		<div id="truckChart" class = "col-md-4 key">
-		<h4>Injuries Involving Trucks</h4>
+		<h4>Injuries Involving Trucks <br>Over Time</h4>
 		</div>
 		</div>
 
