@@ -1,3 +1,5 @@
+var fs = require("fs");
+var d3 = require("./d3.v4.min.js"); // d3.js version 4
  
 // AN EXPLANATION : The following function prunes each of bridge data sets into one collection of bridge condition data over time. 
 // It was necessary to invidividually pull attributes out of each dataset because of inconsistent naming of the attributes. 
@@ -10,7 +12,20 @@
 //                     by the outputFileName parameter.
 //
 // -- Beatrice Jin (primary author) && Ben Krepp (conversion to run under node.js)
+//
+// Modified  01/23/2017 to include 'Field_104', i.e., indication that bridge is/isn't on the NHS.
+//
+// Usage:
+// 1. cd into directory containing the CSV files to process
+// 2. Launch node.js console command window
+// 3. In node.js command window:
+// 4. var p = require("./process_bridge_data_node.js");
+// 5. p.generate_bridge_timeline("output_file_name.json");
+// 6. Convert output JSON file to CSV format, using an on-line tool,
+//    e.g., http://www.convert.com/json-to-csv.htm
  
+ exports.generate_bridge_timeline = function(outputFileName) {
+	 
     // Variable used to accumulate the JSON to be written out.
     var pushed = [];
      
@@ -69,12 +84,13 @@
             pushed.push({
                 "bridgeId" : i.Allbridges_2007Aug_BIN,
                 "healthIndex" : i.Allbridges_2007Aug_Health_Index,
-                "overFeature" : i.Allbridges_2007Aug_Item___7.replace(/ +(?= )/g, ' '), 
-                "underFeature" : i.Allbridges_2007Aug_Item___6A.replace(/ +(?= )/g, ' '),
+                "overFeature" : i.Allbridges_2007Aug_Item_7.replace(/ +(?= )/g, ' '), 
+                "underFeature" : i.Allbridges_2007Aug_Item_6A.replace(/ +(?= )/g, ' '),
                 // "adt" : i.Allbridges_2007Aug_Item_29,
                 "year" : 2007,
                 "structDef" : i.Allbridges_2007Aug_Struct_Def,
                 "deckArea" : deckArea,
+				"nhs" : i.Allbridges_2007Aug_Item_104,
                 "town": i.Allbridges_2007Aug_Town_Name
             });
         });
@@ -96,6 +112,7 @@
                 "year" : 2008,
                 "structDef" : i.AllBridges_2008April_Struct_Def,
                 "deckArea" : deckArea,
+				"nhs" : i.AllBridges_2008April_Item_104,
                 "town": i.AllBridges_2008April_Town_Name
             });
         });
@@ -117,6 +134,7 @@
                 "year" : 2009,
                 "structDef" : i.AllBridges_2009April_Struct_Def,
                 "deckArea" : deckArea,
+				"nhs" : i.AllBridges_2009April_Item_104,
                 "town": i.AllBridges_2009April_Town_Name
             });
         });
@@ -132,12 +150,13 @@
             pushed.push({
                 "bridgeId" : i.AllBridges_2010May_BIN,
                 "healthIndex" : i.AllBridges_2010May_Health_Index,
-                "overFeature" : i.AllBridges_2010May_Item___7.replace(/ +(?= )/g, ' '), 
-                "underFeature" : i.AllBridges_2010May_Item___6A.replace(/ +(?= )/g, ' '),
+                "overFeature" : i.AllBridges_2010May_Item_7.replace(/ +(?= )/g, ' '), 
+                "underFeature" : i.AllBridges_2010May_Item_6A.replace(/ +(?= )/g, ' '),
                 // "adt" : i.AllBridges_2010May_Item_29,
                 "year" : 2010,
                 "structDef" : i.AllBridges_2010May_Struct_Def,
                 "deckArea" : deckArea,
+				"nhs" : i.AllBridges_2010May_Item_104,
                 "town": i.AllBridges_2010May_Town_Name
             });
         });
@@ -159,6 +178,7 @@
                 "year" : 2011,
                 "structDef" : i.AllBridges_2011April_Struct_Def,
                 "deckArea" : deckArea,
+				"nhs" : i.AllBridges_2011April_Item_104,
                 "town": i.AllBridges_2011April_Town_Name
             });
         });
@@ -174,12 +194,13 @@
             pushed.push({
                 "bridgeId" : i.AllBridges_2012April_BIN,
                 "healthIndex" : i.AllBridges_2012April_Health_Index,
-                "overFeature" : i.AllBridges_2012April_Item___7.replace(/ +(?= )/g, ' '), 
-                "underFeature" : i.AllBridges_2012April_Item___6A.replace(/ +(?= )/g, ' '),
+                "overFeature" : i.AllBridges_2012April_Item_7.replace(/ +(?= )/g, ' '), 
+                "underFeature" : i.AllBridges_2012April_Item_6A.replace(/ +(?= )/g, ' '),
                 // "adt" : i.AllBridges_2012April_Item_29,
                 "year" : 2012,
                 "structDef" : i.AllBridges_2012April_Struct_Def,
                 "deckArea" : deckArea,
+				"nhs" : i.AllBridges_2012April_Item_104,
                 "town": i.AllBridges_2012April_Town_Name
             });
         });
@@ -201,6 +222,7 @@
                 "year" : 2013,
                 "structDef" : i.AllBridges_2013April_Struct_Def,
                 "deckArea" : deckArea,
+				"nhs" : i.AllBridges_2013April_Item_104,
                 "town": i.AllBridges_2013April_Town_Name
             });
         });
@@ -222,6 +244,7 @@
                 "year" : 2014,
                 "structDef" : i.AllBridges_2014April_Struct_Def,
                 "deckArea" : deckArea,
+				"nhs" : i.AllBridges_2014April_Item_104,
                 "town": i.AllBridges_2014April_Town_Name
             });
         });
@@ -243,6 +266,7 @@
                 "year" : 2015,
                 "structDef" : i.AllBridges_2015April_Struct_Def,
                 "deckArea" : deckArea,
+				"nhs" : i.AllBridges_2015April_Item_104,
                 "town": i.AllBridges_2015April_Town_Name
             });
         }); 
@@ -264,6 +288,7 @@
                 "year" : 2016,
                 "structDef" : i.AllBridges_2016April_Struct_Def,    
                 "deckArea" : deckArea,
+				"nhs" : i.AllBridges_2016April_Item_104,
                 "town": i.AllBridges_2016April_Town_Name
             });
         }); 
@@ -273,7 +298,7 @@
     console.log("Starting processing.");
     var results = [];
     [ "bridge_condition_2007.csv", "bridge_condition_2008.csv", "bridge_condition_2009.csv", 
-      "bridge_condition_2010.csv", "bridge_condition_2011`.csv", "bridge_condition_2012.csv",
+      "bridge_condition_2010.csv", "bridge_condition_2011.csv", "bridge_condition_2012.csv",
       "bridge_condition_2013.csv", "bridge_condition_2014.csv", "bridge_condition_2015.csv",
       "bridge_condition_2016.csv"
     ].forEach(function(csvFileName) {
@@ -282,10 +307,11 @@
         var data = d3.csvParse(textContents);
         results.push(data);
     });
-    console.log("Length of results array is: " + results.length);
-    // Generate the JSON for bridge data from the "results" array, accumulating it in the "pushed" array ...
-    generateBridgeAverages(results[0], results[1], results[2], results[3], results[4], results[5], results[6], results[7], results[8], results[9]);
-    // ... and write it out.
-    var outstr = JSON.stringify(pushed);
-    //fs.writeFile(outputFileName, outstr, function(err) { if (err) return console.log(err); });
-    console.log(pushed);
+	console.log("Length of results array is: " + results.length);
+	// Generate the JSON for bridge data from the "results" array, accumulating it in the "pushed" array ...
+	generateBridgeAverages(results[0], results[1], results[2], results[3], results[4], results[5], results[6], results[7], results[8], results[9]);
+	// ... and write it out.
+	var outstr = JSON.stringify(pushed);
+	fs.writeFile("./" + outputFileName, outstr, function(err) { if (err) return console.log(err); });
+	console.log("Processing complete. Output in " + outputFileName);
+}
