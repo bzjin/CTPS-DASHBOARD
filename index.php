@@ -110,9 +110,9 @@
 			<div class="col-md-12 col-sm-12 nav_metric">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Crashes </div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2014">
-				<p> Motorized injuries/deaths <br><b>15,241/89</b></p></div>
+				<p> Motorized injuries/deaths <br><b>16,869/124</b></p></div>
 			<div class="col-md-6">
-				<p> Non-motorized injuries/deaths<br><b>1,628/35</b></p></div></a>
+				<p> Non-motorized injuries/deaths<br><b>1,660/35</b></p></div></a>
 		</div>
 
 		<div class="page_link"><a href="pages/congestion/index.php" title="Go to congestion page" id="congestion" >
@@ -121,12 +121,12 @@
 
 				<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2012; metric used - AM Speed Index">				
 				<p>Congested express highways</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="10.36%"> <span style="width: 10.36%"></span></p>	
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="10%"> <span style="width: 10%"></span></p>	
 				</div>		
 
 				<div class="col-md-6">
 				<p>Congested arterial routes</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="15.02%"> <span style="width: 15.02%"></span></p>
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="15%"> <span style="width: 15%"></span></p>
 			</div></a>		
 		</div>
 
@@ -135,7 +135,7 @@
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2016">
 				<p>Structurally deficient bridges</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="10.2%"> <span style="width: 10.2%"></span></p></div>
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="10%"> <span style="width: 10%"></span></p></div>
 			<div class="col-md-6">
 				<p>Change since 2015<br><b>+0.6%</b></p></div></a>
 		</div>
@@ -145,10 +145,10 @@
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2014">
 				<p>Interstates in fair or better condition</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="94.00%"> <span style="width: 94.00%"></span></p></div>
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="94%"> <span style="width: 94%"></span></p></div>
 			<div class="col-md-6">
 				<p>Non-interstates in fair or better condition</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="89.82%"> <span style="width: 89.82%"></span></p></div></a>
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="90%"> <span style="width: 90%"></span></p></div></a>
 		</div>
 
 		<div class="page_link"><a href="pages/sidewalks/index.php" title="Go to sidewalks page" id="sidewalks">
@@ -156,7 +156,7 @@
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2015">
 				<p>Sidewalk to roadway ratio</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="52.48 sidewalk miles for 100 miles of centerline miles"> <span style="width: 52.48%"></span></p></div>
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="52 sidewalk miles for 100 miles of centerline miles"> <span style="width: 52%"></span></p></div>
 			<div class="col-md-6">
 				<p>Miles of sidewalk<br>
 				<b>5,682 miles</b></p></div></a>
@@ -166,10 +166,10 @@
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Bike Facilities</div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2016">
 				<p>Roadway miles with on-road bicycle facilities<br>
-				<b>347.02 miles</b></p></div>
+				<b>347 miles</b></p></div>
 			<div class="col-md-6">
 				<p>Existing miles of off-road bicycle facilities<br>
-				<b>424.30 miles</b></p></div> </a>
+				<b>424 miles</b></p></div> </a>
 		</div>
 		
 		<div class="page_link"><a href="pages/demographics/index.php" title="Go to demographics page" id="demographics">

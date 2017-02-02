@@ -66,7 +66,7 @@ text {
 
 	<h3> On-Road Bicycle Facilities </h3>
 	<h3> Existing Bicycle Facilities in 2016</h3>
-	<p> The map of Boston Region municipalities below depicts “Bicycle Facilities per Centerline Mile” of roadway in 2016, which is the percent of road miles that include bicycle facilities. On-road bicycle facilities include designated bicycle lanes, cycle tracks, marked shared lines, and paved shoulders at least four feet wide. Hover over the map to show the total miles of on-road bicycle facilities in each Boston Region MPO municipality in 2011 and 2016. The bar graph compares the two years’ total bicycle mileage.
+	<p> The map of Boston Region municipalities below depicts “Bicycle Facilities per Centerline Mile” of roadway in 2016, which is the percent of road miles that include bicycle facilities. On-road bicycle facilities include designated bicycle lanes, cycle tracks, marked shared lines, and paved shoulders at least four feet wide. Hover over the map to show the total miles of on-road bicycle facilities in each Boston Region MPO municipality in 2011 and 2016. Total centerline miles in 2016 in each city or town are also included as a reference. The bar graph compares the two years’ total bicycle mileage.
 	</p>
 	<div class="col-md-12">
 		<div class="col-md-4" id="map"></div>

@@ -53,7 +53,7 @@
 	<div id="citygradients" class="col-md-12"></div>
 
 	<h3> Trends Over Time </h3>
-	<p> Select a city or town from the map to see how the pavement conditions on the National Highway System and all MassDOT-owned non-National Highway System roads within the municipality have changed over time. Each line charts the PSI value of a segment of a non-interstate road over the past decade.</p>
+	<p> Select a city or town from the list to see how the pavement conditions on the National Highway System and all MassDOT-owned non-National Highway System roads within the municipality have changed over time. Each line charts the PSI value of a segment of a non-interstate road over the past decade.</p>
 	
 	<div class="col-md-12">
 	<button class='ALL townpicker' autofocus><i class="fa fa-map-marker" aria-hidden="true"></i> All</button>

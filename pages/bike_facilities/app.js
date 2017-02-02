@@ -58,7 +58,9 @@ CTPS.demoApp.generateMap = function(mpoTowns, bike2011, bike2016) {
       var existing2011 = findIndex2011(capTown, "on_road_miles");
       if (isNaN(existing2011)) { existing2011 = 0; }
       var existing2016 = findIndex2016(d.properties.TOWN, "existing_miles");
-      return "<p>" + capTown + "</p>" + e(existing2011) + " Existing Miles in 2011 <br>" + e(existing2016) + " Existing Miles in 2016";
+      if (isNaN(existing2016)) { existing2016 = 0; }
+      var centerline = parseInt(findIndex2016(d.properties.TOWN, "existing_miles")/findIndex2016(d.properties.TOWN, "existing_percent"));      
+      return "<p>" + capTown + "</p>" + e(existing2011) + " Existing Miles in 2011 <br>" + e(existing2016) + " Existing Miles in 2016" + "<br><br> Centerline Miles: " + centerline;
     })
 
   var svgContainer = d3.select("#map").append("svg")
