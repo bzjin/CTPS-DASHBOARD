@@ -59,7 +59,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bike2011, bike2016) {
       if (isNaN(existing2011)) { existing2011 = 0; }
       var existing2016 = findIndex2016(d.properties.TOWN, "existing_miles");
       if (isNaN(existing2016)) { existing2016 = 0; }
-      var centerline = parseInt(findIndex2016(d.properties.TOWN, "existing_miles")/findIndex2016(d.properties.TOWN, "existing_percent"));      
+      var centerline = parseInt(findIndex2016(d.properties.TOWN, "centerline_miles"));      
       return "<p>" + capTown + "</p>" + e(existing2011) + " Existing Miles in 2011 <br>" + e(existing2016) + " Existing Miles in 2016" + "<br><br> Centerline Miles: " + centerline;
     })
 

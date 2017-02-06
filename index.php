@@ -176,10 +176,10 @@
 			<div class="col-md-12 col-sm-12 nav_metric">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Demographics </div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Minority data from 2010; median household income data, vehicles per household data, unemployment data from 2009-2014 ACS">
-				<p><b class="demo">27.77%</b> minority population<br>
+				<p><b class="demo">27.8%</b> minority population<br>
 				<b class="demo">$70,829</b> median household income<br></p></div>
 			<div class="col-md-6">
-				<p><b class="demo">1.49</b> average vehicles per household<br>
+				<p><b class="demo">1.5</b> average vehicles per household<br>
 				<b class="demo">6.8%</b> unemployment rate</p></div></a>
 		</div>
 
