@@ -29,7 +29,7 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 
 	var cleanedbridges = []; 
 	bridges.forEach(function(i){
-		if (i.healthIndex != -1) {
+		if (i.healthIndex != -1 && i.nhs == "TRUE") {
 			cleanedbridges.push ({
 				"bridgeId" : i.bridgeId,
 				"healthIndex" : +i.healthIndex * 100,
@@ -85,6 +85,8 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 			})
 			//placeholders: 
 		})
+
+		console.log(structdefs);
 
 		var m = 200; 
 		if (d3.max(structdefs, function(d) { return d.year}) != 2016 ) { 
@@ -163,6 +165,8 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 		return 0; 
 	})
 
+	console.log(allBridges);
+	
 	nested_ind_bridge = d3.nest()
 	.key(function(i) { return i.bridgeId;})
 	.entries(cleanedbridges);
@@ -175,8 +179,8 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 	var w = $("#deck_timeline").width();
 
 	//Assign scales and axes 
-	xScale = d3.scaleLinear().domain([2007, 2016]).range([70, w - 10]);
-	xScaleLabels = d3.scaleLinear().domain([2007, 2016]).range([90, w - 30]);
+	xScale = d3.scaleLinear().domain([2007, 2016]).range([70, 400]);
+	xScaleLabels = d3.scaleLinear().domain([2007, 2016]).range([90, 380]);
 	yScale = d3.scaleLinear().domain([0, 100]).range([450, 50]);
 
 	var xAxis = d3.axisBottom(xScale).tickSize(0,0,0)
@@ -375,23 +379,22 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 	var timeline2 = d3.select("#timeline2_area").append("svg")
 	.attr("width", "100%")
 	.attr("height", 600)
-	.style("overflow", "visible");
+	.style("overflow", "visible")
 
-	var xScaleT = d3.scaleLinear().domain([2007, 2016]).range([20, 500]);
+	var xScaleT = d3.scaleLinear().domain([2007, 2016]).range([50, 550]);
+	var xScaleShow = d3.scaleLinear().domain([2007, 2016]).range([50, 600]);
 	var yScaleT = d3.scaleLinear().domain([0, 100]).range([450, 50]);
 
-	var xAxisT = d3.axisBottom(xScaleT).tickFormat(d3.format("d"));//.tickSize(-400, 0, 0)
+	var xAxisT = d3.axisBottom(xScaleShow).tickFormat(d3.format("d"));//.tickSize(-400, 0, 0)
 	var yAxisT = d3.axisLeft(yScaleT);//.tickSize(-600, 0, 0);
 
 	timeline2.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
 		.call(xAxisT)
 		.selectAll("text")
-		.style("text-anchor", "middle")
-		.attr("transform", "translate(27, 0)");
 	
 	timeline2.append("g").attr("class", "axis")
-		.attr("transform", "translate(20, 0)")
+		.attr("transform", "translate(50, 0)")
 		.call(yAxisT)
 		.selectAll("text")
 		.attr("transform", "translate(-5, 0)");

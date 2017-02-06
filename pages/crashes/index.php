@@ -50,7 +50,7 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 
 	<h2> Injuries to People Riding Bicycles and Walking </h2>
 	<h3>Trends Over Time</h3>
-		<p> Click on the map and discover the number of injuries involving bicycles and pedestrians in each city or town over the last ten years will appear in the charts to the right. Hover over each town to see its 2014 statistics on total crashes, injuries, and fatalities. </p> 
+		<p> Click on the map and the number of crashes and injuries involving bicycles and pedestrians in each city or town over the last ten years will appear in the charts to the right. Hover over each town to see its 2014 statistics on total crashes, injuries, and fatalities. </p> 
 		<div id="map" class="col-md-4"></div>
 		<div id="bikeChart" class="col-md-4 key"><h4>Bicycle Injuries Over Time</h4></div>
 		<div id="pedChart" class = "col-md-4 key"><h4>Pedestrian Injuries Over Time</h4></div>

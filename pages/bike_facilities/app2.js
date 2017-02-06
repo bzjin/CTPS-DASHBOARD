@@ -20,7 +20,7 @@ var colorScale = d3.scaleThreshold()
 
 //Color Scale for bar chart 
 var colorScaleBars = d3.scaleThreshold()
-    .domain([0, .01, .02, .05, .1])
+    .domain([0, 1, 2, 5, 10])
     .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf"].reverse());
 
 //Color Scale for bar chart 
@@ -60,7 +60,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, bike2011, bike2016) {
       var existing2016 = findIndex2016(d.properties.TOWN, "existing_miles");
       if (isNaN(existing2016)) { existing2016 = 0; }
       var centerline = parseInt(findIndex2016(d.properties.TOWN, "existing_miles")/findIndex2016(d.properties.TOWN, "existing_percent"));      
-      return "<p>" + capTown + "</p>" + e(existing2011) + " Existing Miles in 2011 <br>" + e(existing2016) + " Existing Miles in 2016" + "<br><br> Centerline Miles: " + centerline;
+      return "<p>" + capTown + "</p>" + e(existing2011) + " Existing Miles in 2011 <br>" + e(existing2016) + " Existing Miles in 2016";
     })
 
   var svgContainer = d3.select("#map").append("svg")
@@ -138,40 +138,40 @@ CTPS.demoApp.generateMap = function(mpoTowns, bike2011, bike2016) {
       .attr("x", xPos + 25).attr("y", yPos + 7)
       .text("No bike facilities");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars(.005)).style("stroke", "none")
+      .style("fill", colorScaleBars(.5)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 15).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 22)
-      .text("0-1%");
+      .text("0-1 Miles");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars(.015)).style("stroke", "none")
+      .style("fill", colorScaleBars(1.5)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 30).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 37)
-      .text("1-2");
+      .text("1-2 Miles");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars(.03)).style("stroke", "none")
+      .style("fill", colorScaleBars(3)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 45).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 52)
-      .text("2-5%");
+      .text("2-5 Miles");
     svgContainer.append("rect")
-      .style("fill", colorScaleBars(.07)).style("stroke", "none")
+      .style("fill", colorScaleBars(7)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 60).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 67)
-      .text("5-10%"); 
+      .text("5-10 Miles"); 
     svgContainer.append("rect")
-      .style("fill", colorScaleBars(.2)).style("stroke", "none")
+      .style("fill", colorScaleBars(20)).style("stroke", "none")
       .attr("x", xPos).attr("y", yPos + 75).attr("height", "7px").attr("width", height/35);
     svgContainer.append("text")
       .style("font-weight", 300)
       .attr("x", xPos + 25).attr("y", yPos + 82)
-      .text(">10%"); 
+      .text("More than 10 Miles"); 
 
 }
 

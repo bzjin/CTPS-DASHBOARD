@@ -64,10 +64,9 @@ text {
 	</div>
 	<div class=" col-md-12">
 
+	<h3> Off-Road Bicycle Facilities</h3>
 	<h3> Existing Bicycle Facilities in 2016</h3>
-	<h3> Change in Existing Bicycle Facilities Over Time</h3>
-	<p> The map below illustrates the existing off-road bicycle facilities (shared-use path) mileage in 2016 for each municipality. Hover over the map to show the total miles of off-road bicycle mileage in each Boston Region MPO municipality in 2011 and 2016.
-    The bar graph compares the two years’ total off-road bicycle mileage.
+	<p> The map below illustrates the existing off-road bicycle facilities (shared-use path) mileage in 2016 for each municipality. Hover over the map to show the total miles of off-road bicycle mileage in each Boston Region MPO municipality in 2011 and 2016.The bar graph compares the two years’ total off-road bicycle mileage.
 	</p>
 	<div class="col-md-12">
 	<div class="col-md-4" id="map"></div>
