@@ -49,7 +49,7 @@
 
 	<div id="chart" class="col-md-12"></div>
 
-	<h3>Trends Over Time</h3>
+	<h3>Trends</h3>
 	<p> Select an interstate below to learn how its pavement condition has changed over time. Each vertical line charts the PSI value of a segment of that interstate over the past decade.</p>
 	<p> Click to see only one interstate at a time. </p>
 	<div class="col-md-12">

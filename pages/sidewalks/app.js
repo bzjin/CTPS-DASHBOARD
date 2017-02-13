@@ -44,8 +44,8 @@ allData.forEach(function(i){
 })
 
 var colorToYear = d3.scaleLinear()
-                  .domain([2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015])
-                  .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
+                  .domain([2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014])
+                  .range(["#9e0142","#d53e4f","#f46d43","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
 
 xScaleRatio = d3.scaleLinear().domain([0, 1]).range([80, 1080]);
 yScale = d3.scalePoint().domain(towns).range([50, 1350]);

@@ -54,7 +54,7 @@ text {fill: #ddd; font-size: 1.0em;}
 <p>Just as demographic characteristics of individuals vary across the Boston metropolitan region, so do the characteristics of households, from income to household composition to vehicle access. The Boston Region MPO has identified household characteristics that strongly contribute to the transportation resources to which households have access. Understanding these characteristics helps staff at the MPO understand household travel patterns and the transportation needs of residents.
 </p>
 
-<h3> A Closer Look at Boston Households </h3>
+<h3> A Closer Look at Households in the Boston Region</h3>
 <p>Click on the tabs to show the percent of the household characteristics in each census tract. Low-income includes those households whose annual income is equal to or less than $45,624. Female headed households with children include those households with children that are headed by a female and no spouse is present. Finally, zero vehicle households include those in which no automobiles are owned or leased for personal use.</p>
 
 	<button class='lowIncome bigbutton col-md-4 I-93' autofocus> Low Income </button>

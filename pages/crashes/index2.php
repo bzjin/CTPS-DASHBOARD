@@ -49,15 +49,15 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	<p>The ability to move around is crucial to every aspect of our existence. The MPO’s goal is to keep you safe everywhere and every way that you move. <b>That being said, highway crashes claimed the lives of 124 people in the Boston region in 2014.</b> We are human and make mistakes. For this reason, we must design transportation improvements that keep us moving <em>and</em> protect us at every turn. In situations where a person might fail, the roadway system should not. For this reason, we track <b>injuries</b> and <b>fatalities</b> from crashes throughout the region to monitor the safety of the Boston region’s transportation network.</p>
 
 	<h2> Injuries Involving Motorized Vehicles </h2> 
-	<h3>Trends Over Time</h3>
+	<h3>Trends</h3>
 		<p> Click on each city or town and the injury count over time will appear in the charts to the right. Hover over each town to see its 2014 statistics on motorized injuries and fatalities. Total motorized crashes (including trucks, bicycle, and pedestrian-involved crashes) in 2014 in each city or town are also included as a reference. </p> 
 		<div class="col-md-12">
 		<div id="map" class="col-md-4"></div>
 		<div id="motChart" class="col-md-4 key">
-		<h4>Injuries Involving Motorized Vehicles Over Time</h4>
+		<h4>Injuries Involving Motorized Vehicles</h4>
 		</div>
 		<div id="truckChart" class = "col-md-4 key">
-		<h4>Injuries Involving Trucks <br>Over Time</h4>
+		<h4>Injuries Involving Trucks</h4>
 		</div>
 		</div>
 

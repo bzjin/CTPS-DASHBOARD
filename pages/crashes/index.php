@@ -48,12 +48,12 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 
 	<p>The ability to move around is crucial to every aspect of our existence. The MPO’s goal is to keep you safe everywhere and every way that you move. <b>That being said, highway crashes claimed the lives of 124 people in the Boston region in 2014.</b> We are human and make mistakes. For this reason, we must design transportation improvements that keep us moving <em>and</em> protect us at every turn. In situations where a person might fail, the roadway system should not. For this reason, we track <b>injuries</b> and <b>fatalities</b> from crashes throughout the region to monitor the safety of the Boston region’s transportation network.</p>
 
-	<h2> Injuries to People Riding Bicycles and Walking </h2>
-	<h3>Trends Over Time</h3>
+	<h2> Injuries to Bicyclists and Pedestrians</h2>
+	<h3>Trends</h3>
 		<p> Click on the map and the number of crashes and injuries involving bicycles and pedestrians in each city or town over the last ten years will appear in the charts to the right. Hover over each town to see its 2014 statistics on total crashes, injuries, and fatalities. </p> 
 		<div id="map" class="col-md-4"></div>
-		<div id="bikeChart" class="col-md-4 key"><h4>Bicycle Injuries Over Time</h4></div>
-		<div id="pedChart" class = "col-md-4 key"><h4>Pedestrian Injuries Over Time</h4></div>
+		<div id="bikeChart" class="col-md-4 key"><h4>Bicyclist Injuries </h4></div>
+		<div id="pedChart" class = "col-md-4 key"><h4>Pedestrian Injuries</h4></div>
 
 	<h3> One Year of Crashes</h3>
 	<p> During 2014, 5 people died and 604 were injured riding bicycles and 30 pedestrians died and 1,046 pedestrians were injured while walking on the Boston Region’s roads. Each dot represents an individual who died or suffered an injury. </p>

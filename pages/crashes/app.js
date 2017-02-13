@@ -239,7 +239,7 @@ CTPS.demoApp.generateMap = function(mpoTowns, crashdata) {
     svgContainer.append("text")
       .style("font-weight", 700).style("font-size", 18)
       .attr("x", xPos).attr("y", yPos - 55)
-      .text("Total Bicycle and Pedestrian");
+      .text("Total Bicyclist and Pedestrian");
 	svgContainer.append("text")
       .style("font-weight", 700).style("font-size", 18)
       .attr("x", xPos).attr("y", yPos - 35)

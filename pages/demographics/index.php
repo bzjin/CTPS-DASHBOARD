@@ -90,7 +90,7 @@ text {fill: #ddd; font-size: 1.0em;}
 	<div class="col-md-5" id="map_hisp"></div>
 	<div class="col-md-7" id="demographics_hisp"></div></div>
 
-<h3> The Five Non-English Languages Most Commonly Spoken </h3>
+<h3> Most Commonly Spoken Non-English Languages</h3>
 <p>Click on the tabs to show the percent of the five non-English languages most commonly spoken in the MPO region, by census tract. Limited English Proficiency (LEP) includes those residents 5 years or older who report speaking English “less than very well.”</p>
 	<div class="col-md-12">
 	<button class='spanish bigbutton col-md-2' autofocus> Spanish </button>

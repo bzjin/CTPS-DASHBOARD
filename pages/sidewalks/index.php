@@ -51,7 +51,6 @@
 		<button class="bigbutton col-md-6" id="alphabetize" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button> 
 		<button class="bigbutton col-md-6" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Sidewalk Miles to Centerline Miles Ratio</button>
 		<button class='allyrs yrpicker col-md-1' autofocus> All</button>
-		<button class='yr2006 yrpicker col-md-1'> 2006</button>
 		<button class='yr2007 yrpicker col-md-1'> 2007</button>
 		<button class='yr2008 yrpicker col-md-1'> 2008</button>
 		<button class='yr2009 yrpicker col-md-1'> 2009</button>
@@ -60,7 +59,6 @@
 		<button class='yr2012 yrpicker col-md-1'> 2012</button>
 		<button class='yr2013 yrpicker col-md-1'> 2013</button>
 		<button class='yr2014 yrpicker col-md-1'> 2014</button>
-		<button class='yr2015 yrpicker col-md-1'> 2015</button>
 
 	<div class="col-md-12" id="key"></div>
 	<div class="col-md-12" id="sidewalks"></div>

@@ -71,7 +71,7 @@
         <li><a href="pages/bridges/index.php">Bridges</a></li>
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Pavement <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Pavement Condition <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="pages/pavement/index.php">Interstate Pavement</a></li>
             <li><a href="pages/pavement/index2.php">Non-Interstate Pavement</a></li>
@@ -142,7 +142,7 @@
 
 		<div class="page_link"><a href="pages/pavement/index.php" title="Go to pavement condition page" id="pavement">
 			<div class="col-md-12 col-sm-12 nav_metric">
-				<i class="fa fa-circle-o" aria-hidden="true"></i> Pavement</div>
+				<i class="fa fa-circle-o" aria-hidden="true"></i> Pavement Condition</div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2014">
 				<p>Interstates in fair or better condition</p>
 				<p class="meter" data-toggle="tooltip" data-placement="top" title="94%"> <span style="width: 94%"></span></p></div>
@@ -177,7 +177,7 @@
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Demographics </div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Minority data from 2010; median household income data, vehicles per household data, unemployment data from 2009-2014 ACS">
 				<p><b class="demo">27.8%</b> minority population<br>
-				<b class="demo">$70,829</b> median household income<br></p></div>
+				<b class="demo">$76,040</b> median household income<br></p></div>
 			<div class="col-md-6">
 				<p><b class="demo">1.5</b> average vehicles per household<br>
 				<b class="demo">6.8%</b> unemployment rate</p></div></a>

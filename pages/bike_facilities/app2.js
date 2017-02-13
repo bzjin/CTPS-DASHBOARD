@@ -423,6 +423,10 @@ function plot2() {
               .domain([0, 1])
               .range([100, 300]);
 
+  var offroadLabels = d3.scaleLinear()
+              .domain([0, 100])
+              .range([100, 300])
+
   var offroadMiles = d3.scaleLinear()
               .domain([0, 100])
               .range([350, 650]);
@@ -431,7 +435,7 @@ function plot2() {
           .domain(towns)
           .range([100, 1050]);
   
-  var xAxisP = d3.axisTop(offroadPercent).ticks(5); 
+  var xAxisP = d3.axisTop(offroadLabels).ticks(5); 
   var xAxisM = d3.axisTop(offroadMiles).ticks(5).tickFormat(d3.format("d"));
   var yAxis = d3.axisLeft(yScale);
 

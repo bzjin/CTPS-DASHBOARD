@@ -373,7 +373,7 @@ CTPS.demoApp.generateTimeline = function(psitimeline) {
 	timeline.call(tip2); 
 
 	//Assign scales and axes 
-	xScale = d3.scaleLinear().domain([2007, 2015]).range([50, 1000]);
+	xScale = d3.scaleLinear().domain([2007, 2014]).range([50, 1000]);
 	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
 	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(function(e){
