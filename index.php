@@ -80,7 +80,7 @@
 
         <li><a href="pages/sidewalks/index.php">Sidewalks</a></li>
 
-        <li><a href="pages/bike_facilities/index.php">Bike Facilities</a></li>
+        <li><a href="pages/bike_facilities/index.php">Bicycle Facilities</a></li>
 
 		<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Demographics <span class="caret"></span></a>
@@ -161,9 +161,9 @@
 				<p>Miles of sidewalk<br>
 				<b>5,682 miles</b></p></div></a>
 		</div>
-		<div class="page_link"><a href="pages/bike_facilities/index.php" title="Go to bike facilities page" id="bikes">
+		<div class="page_link"><a href="pages/bike_facilities/index.php" title="Go to bicycle facilities page" id="bikes">
 			<div class="col-md-12 col-sm-12 nav_metric">
-				<i class="fa fa-circle-o" aria-hidden="true"></i> Bike Facilities</div>
+				<i class="fa fa-circle-o" aria-hidden="true"></i> Bicycle Facilities</div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2016">
 				<p>Roadway miles with on-road bicycle facilities<br>
 				<b>347 miles</b></p></div>

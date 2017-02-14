@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <link rel="icon" href="goo.gl/xQW9eP">
 
-<title>Bike Facilities in the Boston MPO Region</title>
+<title>Bicycle Facilities in the Boston MPO Region</title>
 <link rel="stylesheet" href="../../css/master.css"/>
 <link rel="stylesheet" href="app.css"/>
 
@@ -54,31 +54,32 @@ text {
 <div id="header" class="col-md-10 col-md-offset-1">
 	<div class=" col-md-12">
 
-	<h1>Bike Facilities</h1>
-	<p>People bike for fun, exercise, and transportation. Cyclists include children on their way to school, commuters heading to work, athletes training, and seniors out for a relaxing ride. Bicycling is an active travel mode that can factor into a healthy lifestyle and it is an economical transportation option because bicycles burn calories instead of pricey fossil fuels. Bicycling as a travel mode is easily combined with walking and transit, which provides cyclists with more choice in how they move about their lives.</p>
+	<h1>Bicycle Facilities</h1>
+	<p>People bike for fun, exercise, and transportation. Cyclists include children on their way to school, commuters heading to work, athletes training, and seniors out for a relaxing ride. Bicycling is an active travel mode that can factor into a healthy lifestyle and it is an economical transportation option because bicycles burn calories instead of pricey fossil fuels. Bicycling as a travel mode is easily combined with walking and transit, providing more choices for getting around.</p>
 
-	<p>People who bike are vulnerable users of the transportation system, accounting for a growing share of crashes and a disproportionate share of injuries in the region. The majority of the Boston region still lacks adequate bicycle infrastructure, limiting the likelihood that people choose cycling as a transportation option.</p>
+	<p>People who bike are vulnerable users of the transportation system, accounting for a growing share of crashes and a disproportionate share of injuries in the region. The majority of the Boston region still lacks adequate bicycle infrastructure, reducing the likelihood that people will choose cycling as a transportation option. </p>
 
-	<p>The Boston Region MPO monitors the bicycle network available throughout the region. Bicycle facilities include off-road trails that are often shared with pedestrians, as well as on-road lanes and cycle tracks where people ride alongside motorized vehicles. The MPO measures the total miles of facilities available to cyclists. The on- and off-road bicycle facilities in the region combine to create the Boston Region Bicycle Network. Understanding this network and where it needs to grow is an important part of planning for bicycle transportation in and around Boston today and in the future.</p>
+	<p>Understanding the existing network and how it can be expanded is an important part of planning for bicycle transportation in and around Boston. For this reason, the Boston Region MPO monitors the bicycle network in the region by measuring the total miles of bicycle facilities on this network. Bicycle facilities include off-road trails that are often shared with pedestrians, as well as on-road lanes and cycle tracks where people ride alongside motorized vehicles. Combined, these on- and off-road bicycle facilities are referred to as the Boston Region Bicycle Network. </p>
 
 	</div>
 	<div class=" col-md-12">
 
 	<h3> On-Road Bicycle Facilities </h3>
 	<h3> Existing Bicycle Facilities in 2016</h3>
-	<p> The map of Boston Region municipalities below depicts “Bicycle Facilities per Centerline Mile” of roadway in 2016, which is the percent of road miles that include bicycle facilities. On-road bicycle facilities include designated bicycle lanes, cycle tracks, marked shared lines, and paved shoulders at least four feet wide. Hover over the map to show the total miles of on-road bicycle facilities in each Boston Region MPO municipality in 2011 and 2016. Total centerline miles in 2016 in each city or town are also included as a reference. The bar graph compares the two years’ total bicycle mileage.
-	</p>
+	<p> The map of Boston region municipalities below depicts “bicycle facilities per centerline mile” of roadway in 2016, which is the percent of road miles that contain bicycle facilities. On-road bicycle facilities include designated bicycle lanes, cycle tracks, shared-lane markings (or sharrows), and paved shoulders at least four feet wide. Hover over a city or town on the map to view the total miles of on-road bicycle facilities that were in that municipality in 2016. Total centerline miles, as of 2016, are also provided as a reference. The bar graph also depicts the miles of on-road bicycle facilities in each municipality and a comparison of the 2011 and 2016 data.</p>
+	
 	<div class="col-md-12">
-		<div class="col-md-4" id="map"></div>
+		<div class="col-md-4" id="map"><h4>Bicycle Facilities per Centerline Mile - 2016</h4></div>
 		<div class="col-md-8" id="facilities"></div>
 	</div>
 
 	<h3> Current and Future State of On-Road Bicycle Facilities </h3>
-	<p>The map of Boston Region municipalities below documents the status of on-road bicycle facilities in each municipality as of 2016. Facility mileage is broken down into three categories: 1) existing, 2) under construction or in design, or 3) envisioned or planned. To the right of this map, the first bar graph illustrates the percentage of each municipality’s total centerline miles that include each bicycle facility status. The second bar graph illustrates the total miles of each bicycle facility status in each municipality.</p>
+	<p>The map of Boston region municipalities below documents the status of on-road bicycle facilities in each municipality as of 2016. Mileage is given for three bicycle facility categories: 1) existing, 2) under construction or in design, or 3) envisioned or planned. To the right of this map, the middle bar graph illustrates the percentage of on-road bicycle facilities in every Boston region municipality that is made up of each bicycle facility category. The bar graph to the far right depicts the total on-road mileage of each bicycle facility category in every municipality.</p>
+
 	<button class="bigbutton col-md-4" id="alphabetize2" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
-	<button class="bigbutton col-md-4" id="byPercent" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Percent Existing Off-Road Miles </button>
-	<button class="bigbutton col-md-4" id="byCount" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Number Existing Off-Road Miles </button>
-	<div class="col-md-4" id="map2"><h4>Bicycle Facilities per Centerline Mile - 2016</h4></div>
+	<button class="bigbutton col-md-4" id="byPercent" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Percent Existing On-Road Miles </button>
+	<button class="bigbutton col-md-4" id="byCount" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Number Existing On-Road Miles </button>
+	<div class="col-md-4" id="map2"></div>
 	<div class="col-md-8" id="facilities2"></div>
 	</div>
 	<div class="footer col-md-12">

@@ -51,11 +51,10 @@ text {fill: #ddd; font-size: 1.0em;}
 	<p> The following information is readable only to screen readers: Data for demographics is available on the CTPS Data 
 	Catalogue. You can download the spreadsheet after following this link: <a href="http://www.ctps.org/datacatalog_share/content/boston-region-mpo-2010-census-demographic-profile"> Demographics Spreadsheet </a> </p>
 </div>
-<p>Just as demographic characteristics of individuals vary across the Boston metropolitan region, so do the characteristics of households, from income to household composition to vehicle access. The Boston Region MPO has identified household characteristics that strongly contribute to the transportation resources to which households have access. Understanding these characteristics helps staff at the MPO understand household travel patterns and the transportation needs of residents.
-</p>
+<p>The Boston Region MPO has identified household characteristics that strongly influence the transportation resources to which household members have access. Understanding these characteristics helps us discern travel patterns and the transportation needs of residents.</p>
 
 <h3> A Closer Look at Households in the Boston Region</h3>
-<p>Click on the tabs to show the percent of the household characteristics in each census tract. Low-income includes those households whose annual income is equal to or less than $45,624. Female headed households with children include those households with children that are headed by a female and no spouse is present. Finally, zero vehicle households include those in which no automobiles are owned or leased for personal use.</p>
+<p>Click on the tabs below to view, by census tract, the percent of households that represent low-income residents, female-headed families, and residents who do not own a vehicle. Low-income households include those whose annual income is $45,624 or less (60 percent of the median household income). Female-headed households are those headed by a woman with children and no spouse present. Zero-vehicle households are those in which the household members do not own or lease an automobile for personal use.</p>
 
 	<button class='lowIncome bigbutton col-md-4 I-93' autofocus> Low Income </button>
 	<button class='singleFemale bigbutton col-md-4 I-95'>  Female Headed Households with Children </button>

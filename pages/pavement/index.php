@@ -40,17 +40,16 @@
 
 	<h1>Pavement Conditions</h1>
 
-	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. Investments are made in roadway maintenance to extend pavement life, keeping rides smooth and users safe. Pavement condition is measured using the Present Serviceability Index (PSI), a measure of a road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
-	</p>
+	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. Investments are made in roadway maintenance to extend pavement life and keep rides smooth. Pavement condition is measured using the present serviceability index (PSI), a measure of a road’s roughness that accounts for patch work, rutting, and cracking. PSI scores range from zero (impassable) to five (perfectly smooth). Engineers consider a score of two or three as the minimum acceptable PSI.</p>
 
 	<h2>Interstate Pavement</h2>
 	<h3>Pavement Conditions in 2014</h3>
-	<p>Hover over the bars below to see the pavement condition in 2014 of the five interstate highways in the Boston Region as they cross the region from North to South or East to West.</p>
+	<p>Hover over the bars below to see the pavement condition of the five interstate highways in the Boston region, as of 2014. Conditions are displayed going northbound and southbound, or eastbound and westbound, as appropriate for each highway.  </p>
 
 	<div id="chart" class="col-md-12"></div>
 
 	<h3>Trends</h3>
-	<p> Select an interstate below to learn how its pavement condition has changed over time. Each vertical line charts the PSI value of a segment of that interstate over the past decade.</p>
+	<p> Select an interstate highway below to learn how its pavement condition has changed over time. Each vertical line charts the PSI value of a segment of that interstate highway over the past decade.</p>
 	<p> Click to see only one interstate at a time. </p>
 	<div class="col-md-12">
 		<button class = "all bigbutton timeline col-md-2" autofocus>All</button>

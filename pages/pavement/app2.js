@@ -50,7 +50,9 @@ CTPS.demoApp.generateCityTimeline = function(cityavg_time) {
 	xScale = d3.scaleLinear().domain([2007, 2014]).range([50, 1000]);
 	yScale = d3.scaleLinear().domain([0, 5]).range([450, 50]);
 
-	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(d3.format("d"));
+	var xAxis = d3.axisBottom(xScale).tickSize(-400, 0, 0).tickFormat(function(e){
+			        if(Math.floor(e) != e)
+			        { return; } else { return e; }});
 	var yAxis = d3.axisLeft(yScale).tickSize(-950, 0, 0).tickFormat(function(e){
 			        if(Math.floor(e) != e)
 			        { return; } else { return e; }});

@@ -40,25 +40,15 @@
 		<h1>About</h1>
 
 		<h2> Introduction </h2>
-		<p>
-		The Federal Government is requiring every MPO in the United States to define performance metrics and goals for their transportation system, 
-		and to track progress with respect to those goals over time. 
-		This dashboard was developed to meet those requirements, and to share this information with the general public. Through data visualization, the Boston MPO hopes to show an accurate, navigable, and interactive picture of the state of the region’s transportation system.
-		</p>
+		<p>The federal government is requiring all metropolitan planning organizations (MPOs) in the United States to define performance metrics and goals for their transportation systems, and to track progress with respect to those goals over time. This dashboard was developed to meet those requirements, and to share the information used for performance measurement with the general public. Through data visualization, the Boston Region MPO hopes to show an accurate, navigable, and interactive picture of the state of the Boston region’s transportation system.</p>
 
-		<p> 
-		The raw data on the region’s transportation system, collected over more than a decade, has been curated into forms suitable for visual display in this dashboard. The following text describes the sources of data for this dashboard, and the processing done to convert the raw data for use in the dashboard.
-		</p>
+		<p> The raw data on the region’s transportation system, collected over more than a decade, has been curated into forms suitable for visual display in this dashboard. The following text describes the sources of data displayed on this dashboard, and the processing used to convert the raw data for visualization.</p>
 
 		<h2> Crashes </h2>
-		<p> 
-		Crash data was obtained from the Massachusetts Registry of Motor Vehicles (RMV) Crash Data System (CDS.) The RMV collects crash data from the Massachusetts State Police, the police departments of individual cities and towns, and from motor vehicle operators. The completeness of crash data submitted by the police departments of individual cities and towns varies from municipality to municipality. Crash data shown in this dashboard includes 2004 through 2013.
-		</p>
+		<p> Crash data was obtained from the Crash Data System (CDS) of the Massachusetts Registry of Motor Vehicles (RMV). The RMV collects crash data from the Massachusetts State Police, the police departments of individual cities and towns, and from motor vehicle operators. The completeness of crash data submitted by the police departments of individual cities and towns varies. Crash data shown in this dashboard is from the years 2005 through 2014.</p>
 
 		<h2> Pavement </h2>
-		<p> 
-		Data was extracted from the Massachusetts Road Inventory produced by the Massachusetts Department of Transportation (MassDOT), for the years 2007 through 2015. The following processing was performed on each year's Road Inventory:
-		</p>
+		<p> Pavement condition data for the years 2007 through 2014 was extracted from the Massachusetts Road Inventory, a dataset produced by the Massachusetts Department of Transportation (MassDOT). The following processing was performed on each year's Road Inventory file:</p>
 			<ol>
 				<li> Select information from the Road Inventory within the Boston Region MPO boundary.</li>
 				<li> For Interstate routes:
@@ -93,7 +83,7 @@
 
 
 		<h2> Bridges </h2>
-		<p> Bridge data was obtained from the Bridge Division of the Massachusetts Department of Transportation's Highway Division Bridge Section for the years 2007 through 2016. The data record for each bridge indicates if the bridge is structurally deficient (one or more major bridge component requires attention and deterioration has reduced the load-carrying capacity of the bridge), is functionally obsolete (does not meet current traffic demands or highway standards), and includes a &#34;health index&#34; (the ratio of each bridge element to perfect condition) calcuated by MassDOT. </p>
+		<p> Bridge data was obtained from the Bridge Section of the MassDOT's Highway Division for the years 2007 through 2016. The data record for each bridge indicates if the bridge is structurally deficient (one major bridge component or more requires attention and deterioration has reduced the load-carrying capacity of the bridge) and/or functionally obsolete (the bridge does not meet current traffic demands or highway standards).The record also includes a "health index" (the ratio of each bridge element to perfect condition), which is calculated by MassDOT. </p>
 		<p>Bridge deck area is calculated by MassDOT as follows:</p>
 			<ol>
 				<li>If the bridge is not a culvert, the deck area is equal to the structure length multiplied by the bridge deck width out-to-out.</li>
@@ -103,11 +93,10 @@
 		</p>
 
 		<h2> Congestion </h2>
-		<p> Congestion data was extracted from the 2012 Congestion Management Program (CMP) project, which can be found at the CTPS data catalogue. The data from the Boston Region MPO region was selected and exported in GeoJSON format.
-		</p>
+		<p> Congestion data was extracted directly from the 2012 Congestion Management Program (CMP) project, which can be found in the Central Transportation Planning Staff’s data catalogue on the Boston Region MPO’s website, www.bostonmpo.org/datacatalog. The data from the Boston Region MPO area was selected and exported in GeoJSON format.</p>
 
 		<h2> Sidewalks </h2>
-		<p> Data was extracted from the Massachusetts Road Inventory produced by the Massachusetts Department of Transportation (MassDOT), for the years 2007 through 2015. The following processing was performed on each year's Road Inventory:		
+		<p>Sidewalk coverage data for the years 2007 through 2014 was extracted from the Massachusetts Road Inventory. The following processing was performed on each year's Road Inventory:	
 			<ol>
 				<li> Clip the Road Inventory to the MPO boundary. </li>
 				<li> Calculate the number of centerline miles for each segment: the value of the Shape_LENGTH field divided by 1609.344 (number of meters per mile.) </li>
@@ -120,9 +109,7 @@
 		</p>
 
 		<h2> Bicycle Facilities </h2>
-		<p>
-			The 2011 bicycle facility data was taken from the 2011 MassDOT Road Inventory and 2011 MassDOT Bicycle Accommodation Inventory.
-		</p>
+		<p>The 2011 bicycle facility data is from the 2011 MassDOT Road Inventory and 2011 MassDOT Bicycle Accommodation Inventory. The 2016 bicycle facility data is from the Metropolitan Area Planning Council's Bicycle and Pedestrian Mapping Index, which is current as of October 2016. This data was processed as follows:</p>
 		<p>
 			The 2016 bicycle facility data was taken from the Metropolitan Area Planning Council's Bicycle and Pedestrian Mapping Index, as of October 2016.
 			This data was processed as follows:
@@ -147,15 +134,15 @@
 		</p>
 
 		<h2> Demographics</h2>
-		<p>All data are reported at the census tract level. Data that were available in the 2010 decennial census used this information; if they were not available, they were gathered from the 2009-2014 American Community Survey. Data sources for each demographic are as follows:</p>
+		<p>All demographic data are reported at the US Census Bureau tract level. Data used in the dashboard were obtained from the 2010 decennial census when available. Data that were not available from that source were gathered from the 2010-14 American Community Survey. Data sources for each demographic are as follows:</p>
 			<ul><li>Over age 75: 2010 Decennial Census</li>
-			<li>Unemployment: 2009-2014 American Community Survey</li>
+			<li>Unemployment: 2010-2014 American Community Survey</li>
 			<li>Race/ethnicity: 2010 Decennial Census</li>
-			<li>Limited English Proficiency (LEP): 2009-2014 American Community Survey</li>
-			<li>Disability: 2009-2014 American Community Survey</li>
-			<li>Low-income: 2009-2014 American Community Survey</li>
+			<li>Limited English Proficiency (LEP): 2010-2014 American Community Survey</li>
+			<li>Disability: 2010-2014 American Community Survey</li>
+			<li>Low-income: 2010-2014 American Community Survey</li>
 			<li>Female headed household with children: 2010 Decennial Census</li>
-			<li>Zero vehicle household: 2009-2014 American Community Survey</li></ul>
+			<li>Zero vehicle household: 2010-2014 American Community Survey</li></ul>
 		<p>Note that data from the American Community Survey are population estimates only, while data from the U.S. Census are actual population counts.</p>
 
 		<h3> A Note on Spatial Data </h3>

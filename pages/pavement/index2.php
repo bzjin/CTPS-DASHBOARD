@@ -39,13 +39,12 @@
 
 	<h1>Pavement Condition</h1>
 
-	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. Investments are made in roadway maintenance to extend pavement life, keeping rides smooth and users safe. Pavement condition is measured using the Present Serviceability Index (PSI), a measure of a road segment’s roughness, including patch work, rutting, and cracking. PSI scores range from 0 (impassable) to 5 (perfectly smooth). Engineers consider a score of 2 or 3 as the minimum acceptable PSI. 
-	</p>
+	<p>Freshly paved roads feel great under any set of wheels: automobile, motorcycle, bus, bicycle, scooter, or skateboard. Unfortunately, our roads steadily deteriorate with time, use, and New England weather. Investments are made in roadway maintenance to extend pavement life and keep rides smooth. Pavement condition is measured using the present serviceability index (PSI), a measure of a road’s roughness that accounts for patch work, rutting, and cracking. PSI scores range from zero (impassable) to five (perfectly smooth). Engineers consider a score of two or three as the minimum acceptable PSI.</p>
 
 	<h2> Non-Interstate Pavement </h2>
 
 	<h3>Pavement Conditions in 2014</h3>
-	<p> Scroll down to compare pavement conditions between municipalities. The first column presents the overall distribution of pavement segments on the National Highway System and all MassDOT-owned non-National Highway System roads by their PSI score, with the average value highlighted. The second and third columns display the percent of pavement and the total lane miles of pavement on these roadways with acceptable PSI scores, respectively.</p>
+	<p> Scroll down to compare pavement conditions on non-interstate roadways in the region’s cities and towns. The first column presents the overall distribution of pavement segments on the National Highway System and all MassDOT-owned non-National Highway System roads by their PSI score, with the average value highlighted. The second and third columns display the percent of pavement and the total lane miles of pavement on these roadways with acceptable PSI scores, respectively.</p>
 
 		<button class="bigbutton col-md-5" id="alphabetize" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
 		<button class="bigbutton col-md-5" id="byAverages" alt="Sort towns by ascending average PSI">Sort by Average PSI</button>
@@ -53,7 +52,7 @@
 	<div id="citygradients" class="col-md-12"></div>
 
 	<h3> Trends</h3>
-	<p> Select a city or town from the list to see how the pavement conditions on the National Highway System and all MassDOT-owned non-National Highway System roads within the municipality have changed over time. Each line charts the PSI value of a segment of a non-interstate road over the past decade.</p>
+	<p> Select a city or town from the list to see how the pavement conditions on non-interstate roadways on the National Highway System and all MassDOT-owned non-National Highway System roads within the municipality have changed over time. Each line charts the PSI value of a segment of a non-interstate road over the past decade.</p>
 	
 	<div class="col-md-12">
 	<button class='ALL townpicker' autofocus><i class="fa fa-map-marker" aria-hidden="true"></i> All</button>

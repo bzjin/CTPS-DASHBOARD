@@ -18,7 +18,7 @@
 		<li><a href="../../pages/bridges/index.php" title="Go to bridge condition page">Bridges</a></li>
 		<li><a href="../../pages/congestion/index.php" title="Go to congestion page">Congestion</a></li>
 		<li><a href="../../pages/sidewalks/index.php" title="Go to sidewalk coverage page">Sidewalks</a></li>
-		<li><a href="../../pages/bike_facilities/index.php" title="Go to bike facilities page">Bike Facilities</a></li>
+		<li><a href="../../pages/bike_facilities/index.php" title="Go to bicycle facilities page">Bicycle Facilities</a></li>
 		<li><a href="../../pages/demographics/index.php" title="Go to demographics page">Demographics</a></li>
 		<li><a href="../../pages/about/index.php" title="Go to about page">About</a></li>
       </ul>
