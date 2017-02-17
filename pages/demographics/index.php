@@ -88,7 +88,7 @@ text {fill: #ddd; font-size: 1.0em;}
 	<div class="col-md-7" id="demographics_hisp"></div></div>
 
 <h3> Most Commonly Spoken Non-English Languages</h3>
-<p>Click on the tabs below to show the percent of the five non-English languages most commonly spoken in the Boston region, by census tract. Limited English Proficiency (LEP) populations refers to those residents five years or older who report speaking English “less than very well.”</p>
+<p>Click on the tabs below to show the percent of the five non-English languages most commonly spoken in the Boston region, by census tract. Limited English Proficiency (LEP) refers to those residents five years or older who report speaking English “less than very well.”</p>
 	<div class="col-md-12">
 	<button class='spanish bigbutton col-md-2' autofocus> Spanish </button>
 	<button class='chinese bigbutton col-md-2'> Chinese </button>
@@ -101,7 +101,7 @@ text {fill: #ddd; font-size: 1.0em;}
 	<div class="col-md-7" id="demographics_lep"></div></div>
 
 <h3> Disabilities Breakdown </h3>
-<p>Click on the tabs below to show the percent of persons who have a disability in each census tract. Persons with disabilities include those residents who report having one or more physical or cognitive disability. Note that disability data is subject to significant uncertainty, and should be used with caution. The presence of a disability may be under-reported.</p>
+<p>Click on the tabs below to show the percent of persons who have a disability in each census tract. Persons with disabilities include those residents who report having one or more physical or cognitive disability. Note that disability data is subject to significant uncertainty, and should be used with caution. The number of people with disabilities may be under-reported.</p>
 	<div class="col-md-12">
 	<button class='hearing bigbutton col-md-2' autofocus> Hearing Disability </button>
 	<button class='vision bigbutton col-md-2'> Vision Disability </button>

@@ -72,7 +72,7 @@ text {
 	<div class="col-md-8" id="facilities"></div></div>
 
 	<h3> Current and Future State of Off-Road Bicycle Facilities </h3>
-	<p>The map of the Boston region documents the status of off-road bicycle facilities (shared-use paths) in each municipality as of 2016. Mileage is given for three bicycle facility categories: 1) existing, 2) under construction or in design, or 3) envisioned or planned. To the right of this map, the middle bar graph illustrates the percentage of off-road bicycle facilities in every Boston region municipality that is made up of each bicycle facility category. The bar graph to the far right depicts the total off-road mileage of each bicycle facility category in every municipality.</p>
+	<p>The map of the Boston region municipalities below documents the status of off-road bicycle facilities (shared-use paths) in each municipality as of 2016. Mileage is given for three bicycle facility categories: 1) existing, 2) under construction or in design, and 3) envisioned or planned. To the right of this map, the middle bar graph illustrates the percentage of off-road bicycle facilities in every Boston region municipality that is made up of each bicycle facility category. The bar graph to the far right depicts the total off-road mileage of each bicycle facility category in every municipality.</p>
 	
 	<button class="bigbutton col-md-4" id="alphabetize2" alt="Sort towns by alphabetical order" autofocus>Sort by Alphabetical Order</button>
 	<button class="bigbutton col-md-4" id="byPercent" alt="Sort towns by ascending ratio off-road miles to sqaure miles">Sort by Percent Existing Off-Road Miles </button>

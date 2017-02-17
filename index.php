@@ -175,7 +175,7 @@
 		<div class="page_link"><a href="pages/demographics/index.php" title="Go to demographics page" id="demographics">
 			<div class="col-md-12 col-sm-12 nav_metric">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Demographics </div>
-			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Minority data from 2010; median household income data, vehicles per household data, unemployment data from 2009-2014 ACS">
+			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Minority data from 2010; median household income data, vehicles per household data, unemployment data from 2010-2014 ACS">
 				<p><b class="demo">27.8%</b> minority population<br>
 				<b class="demo">$76,040</b> median household income<br></p></div>
 			<div class="col-md-6">

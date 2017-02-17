@@ -64,16 +64,16 @@ text {fill: #ddd; font-family: "Raleway";}</style>
 	<h3>One Year of Crashes</h3>
 	<p> Crashes involving motorized vehicles caused a total of 16,869 injuries and 124 fatalities in the Boston region in 2014. Each dot below represents one injury and each solid dot represents one fatality as a result of a motorized crash. </p>
 		<div class="col-md-12 key">
-			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Vehicle Injuries
-			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Vehicle Fatalities </p>
+			<p><i class="fa fa-circle-o bicycle" aria-hidden="true"></i>  Injuries resulting from a crash involving a motorized vehicle
+			<i class="fa fa-circle bicycle" aria-hidden="true"></i> Fatalities resulting from a crash involving a motorized vehicle </p>
 		</div>
 	<div class="col-md-12 screenshot"><img src="crashes_screenshot-min.png"></div>
 
 	<h3>Truck Crashes</h3>
-	<p> Crashes involving trucks are proportionally more severe than crashes involving smaller and lighter vehicles. Reducing crashes that involve trucks are a state priority.Each dot below represents one injury and each solid dot represents a one fatality as a result of a crash involving a truck.</p>
+	<p> Crashes involving trucks are proportionally more severe than crashes involving smaller and lighter vehicles. Reducing crashes that involve trucks is a state priority. Each dot below represents one injury and each solid dot represents a one fatality as a result of a crash involving a truck.</p>
 	<div class="col-md-12 key">
-			<p><i class="fa fa-circle-o yellow" aria-hidden="true"></i>  Injuries Involving Trucks
-			<i class="fa fa-circle yellow" aria-hidden="true"></i> Fatalities Involving Trucks</p>
+			<p><i class="fa fa-circle-o yellow" aria-hidden="true"></i>  Injuries resulting from a crash involving a truck
+			<i class="fa fa-circle yellow" aria-hidden="true"></i> Fatalities resultinig from a crash involving a truck  </p>
 	</div>
 	<div class="col-md-12" id="trucks"></div>
 
