@@ -179,19 +179,27 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 	var w = $("#deck_timeline").width();
 
 	//Assign scales and axes 
-	xScale = d3.scaleLinear().domain([2007, 2016]).range([70, 400]);
-	xScaleLabels = d3.scaleLinear().domain([2007, 2016]).range([90, 380]);
+	xScale = d3.scaleLinear().domain([2007, 2016]).range([60, 400]);
+	xScaleLabels = d3.scaleLinear().domain([2007, 2016]).range([80, 380]);
 	yScale = d3.scaleLinear().domain([0, 100]).range([450, 50]);
+	yScaleHD = d3.scaleLinear().domain([0, 1]).range([450, 50]);
 
 	var xAxis = d3.axisBottom(xScale).tickSize(0,0,0)
 	var xAxisLabels = d3.axisBottom(xScaleLabels).tickFormat(d3.format("d"));
 	var yAxis = d3.axisLeft(yScale);
+	var yAxisHD = d3.axisRight(yScaleHD);
 
 	timeline.append("text")
 		.attr("x", -350)
 		.attr("y", 20)
 		.attr("transform", "rotate(-90)")
-		.text("% Bridges, Average Health Index")
+		.text("Percent of Bridge Deck Area")
+
+    timeline.append("text")
+		.attr("x", 180)
+		.attr("y", -440)
+		.attr("transform", "rotate(-270)")
+		.text("Average Health Index")
 
 	timeline.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -205,10 +213,16 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 		.selectAll("text").remove();
 	
 	timeline.append("g").attr("class", "axis")
-		.attr("transform", "translate(70, 0)")
+		.attr("transform", "translate(60, 0)")
 		.call(yAxis)
 		.selectAll("text")
 		.attr("transform", "translate(-5, 0)");
+
+	timeline.append("g").attr("class", "axis")
+		.attr("transform", "translate(400, 0)")
+		.call(yAxisHD)
+		.selectAll("text")
+		.attr("transform", "translate(5, 0)");
 
 	//Line for average health index
 	var valueline = d3.line()
@@ -384,9 +398,11 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 	var xScaleT = d3.scaleLinear().domain([2007, 2016]).range([50, 550]);
 	var xScaleShow = d3.scaleLinear().domain([2007, 2016]).range([50, 600]);
 	var yScaleT = d3.scaleLinear().domain([0, 100]).range([450, 50]);
+	var yScaleHD2 = d3.scaleLinear().domain([0, 1]).range([450, 50]);
 
 	var xAxisT = d3.axisBottom(xScaleShow).tickFormat(d3.format("d"));//.tickSize(-400, 0, 0)
 	var yAxisT = d3.axisLeft(yScaleT);//.tickSize(-600, 0, 0);
+	var yAxisHD2 = d3.axisLeft(yScaleHD2);
 
 	timeline2.append("g").attr("class", "axis")
 		.attr("transform", "translate(0, 450)")
@@ -395,7 +411,7 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 	
 	timeline2.append("g").attr("class", "axis")
 		.attr("transform", "translate(50, 0)")
-		.call(yAxisT)
+		.call(yAxisHD2)
 		.selectAll("text")
 		.attr("transform", "translate(-5, 0)");
 
@@ -428,6 +444,12 @@ CTPS.demoApp.generateBridgeDeckArea = function(bridges) {
 				.style("opacity", 1)	
 		})
 	}
+
+	timeline2.append("text")
+		.attr("x", -320)
+		.attr("y", 10)
+		.attr("transform", "rotate(-90)")
+		.text("Bridge Health Index")
 
 	var xPos = 20; 
 	//Key

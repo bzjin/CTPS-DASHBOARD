@@ -15,9 +15,9 @@ var geoPath = d3.geoPath().projection(projection);
 //Using the d3.queue.js library
 d3.queue()
 	.defer(d3.json, "../../data/json/boston_region_mpo_towns.topo.json")
-	.defer(d3.csv, "../../data/csv/motorized_crashes.csv")
+	.defer(d3.csv, "../../data/csv/motorized_crashes_fixed.csv")
 	.awaitAll(function(error, results){ 
-		CTPS.demoApp.generateMap(results[0],results[1]);
+		CTPS.demoApp.generateMap(results[0],results[1]);		
 	}); 
 
 d3.queue()
@@ -291,7 +291,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 
 	var height = 900;
 	var width = 1100;
-	var padding = 10;
+	var padding = 5;
 
 	var nested_crashes = d3.nest()
 		.key(function(d) { return d.town})
@@ -301,7 +301,7 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 				.attr("height", height)
 				.attr("width", width);
 
-	var xScale = d3.scaleLinear().domain([0, 141]).range([0 + padding, width-padding]);
+	var xScale = d3.scaleLinear().domain([0, 161]).range([0 + padding, width-padding]);
 	var yScale = d3.scaleLinear().domain([0, 131]).range([height, 10]);
 
 	var xAxis = d3.axisBottom(xScale).tickSize(0);
@@ -326,19 +326,19 @@ CTPS.demoApp.generatePlot = function (crashdata) {
 				svg.append("circle")  
 					.attr("cx", xScale(x))
 					.attr("cy", yScale(y))
-					.attr("r", 2.5)
+					.attr("r", 2.3)
 					.attr("fill", "#e7298a")
-				if (x == 140) { x = 1; y--; } else { x++; }
+				if (x == 160) { x = 1; y--; } else { x++; }
 			}
 			for(var i = 1; i < +d.mot_inj+1; i++) { 
 				svg.append("circle")  
 					.attr("cx", xScale(x))
 					.attr("cy", yScale(y))
-					.attr("r", 2.5)
+					.attr("r", 2.3)
 					.attr("stroke-width", .5)
 					.attr("stroke", "#e7298a")
 					.attr("fill", "none")
-				if (x == 140) { x = 1; y--; } else { x++; }
+				if (x == 160) { x = 1; y--; } else { x++; }
 			}
 		}
 	});	
