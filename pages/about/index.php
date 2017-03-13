@@ -45,7 +45,7 @@
 		<p> The raw data on the region’s transportation system, collected over more than a decade, has been curated into forms suitable for visual display in this dashboard. The following text describes the sources of data displayed on this dashboard, and the processing used to convert the raw data for visualization.</p>
 
 		<h2> Crashes </h2>
-		<p> Crash data was obtained from the Crash Data System (CDS) of the Massachusetts Registry of Motor Vehicles (RMV). The RMV collects crash data from the Massachusetts State Police, the police departments of individual cities and towns, and motor vehicle operators. The completeness of crash data submitted by the police departments of individual cities and towns varies. Crash data shown in this dashboard is from the years 2005 through 2014.</p>
+		<p> Crash data was obtained from the Crash Data System (CDS) of the Massachusetts Registry of Motor Vehicles (RMV). The RMV collects crash data from the Massachusetts State Police, the police departments of individual cities and towns, and motor vehicle operators. The completeness and accuracy of crash data submitted by the police departments of individual cities and towns varies. Crash data shown in this dashboard is from the years 2005 through 2014.</p>
 
 		<h2> Pavement </h2>
 		<p> Pavement condition data for the years 2007 through 2014 was extracted from the Massachusetts Road Inventory, a dataset produced by the Massachusetts Department of Transportation (MassDOT). The following processing was performed on each year's Road Inventory file:</p>
