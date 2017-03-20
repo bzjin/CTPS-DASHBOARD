@@ -121,12 +121,53 @@
 
 				<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2012; metric used - AM Speed Index">				
 				<p>Congested express highways</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="10%"> <span style="width: 10%"></span></p>	
+
+				 <!-- Progress bar WITHOUT targets -->
+				 <p class="meter" data-toggle="tooltip" data-placement="top" title="10%"> <span style="width: 10%"></span><b style="left:9%" data-toggle="tooltip" data-placement="top" title="2-year goal: 9%"></b></p>	
+				 <!--End of progress bar WITHOUT targets -->
+
+				 <!-- Progress bar WITH targets 
+				  <div class="progress">
+				  		Current state: Classed "progress-bar-success", which returns a GREEN bar with width up to 100%. Title shows on hover. 
+ 				    	<div class="progress-bar progress-bar-success" style="width: 10%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2014 Data: 10% uncongested expressways">
+ 					        	<span class="sr-only">2014 Data: 10% uncongested miles</span>
+ 					   		</div>
+ 						 Warning metric: Classed "progress-bar-warning", which returns a YELLOW bar with width up to 100%, positioned relatively to the GREEN bar. Title shows on hover. 
+ 						    <div class="progress-bar progress-bar-warning" style="width: 5%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2017 Target: 10% uncongested expressways">
+ 						        <span class="sr-only"> 2017 Target: +5% uncongested miles</span>
+ 						    </div>
+ 						Target metric: Classed "progress-bar-danger", which returns a RED bar with width up to 100%, positioned relatively to the YELLOW and GREEN bar. Title shows on hover.   
+ 						    <div class="progress-bar progress-bar-danger" style="width: 5%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2020 Target: 10% uncongested expressways">
+ 					        <span class="sr-only">2020 Target: +5% uncongested miles</span>
+					    </div>
+					</div>
+				  End of progress bar WITH targets -->
+
 				</div>		
 
 				<div class="col-md-6">
+				
 				<p>Congested arterial routes</p>
+				<!--
 				<p class="meter" data-toggle="tooltip" data-placement="top" title="15%"> <span style="width: 15%"></span></p>
+				-->
+
+				<!-- Progress bar WITH targets -->
+				  <div class="progress">
+				  		<!-- Current state: Classed "progress-bar-success", which returns a GREEN bar with width up to 100%. Title shows on hover. -->
+ 				    	<div class="progress-bar progress-bar-success" style="width: 15%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2014 Data: 10% uncongested expressways">
+ 					        	<span class="sr-only">2014 Data: 15% uncongested miles</span>
+ 					   		</div>
+ 						<!-- Warning metric: Classed "progress-bar-warning", which returns a YELLOW bar with width up to 100%, positioned relatively to the GREEN bar. Title shows on hover. -->
+ 						    <div class="progress-bar progress-bar-warning" style="width: 5%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2017 Target: 10% uncongested expressways">
+ 						        <span class="sr-only"> 2017 Target: +5% uncongested miles</span>
+ 						    </div>
+ 						<!-- Target metric: Classed "progress-bar-danger", which returns a RED bar with width up to 100%, positioned relatively to the YELLOW and GREEN bar. Title shows on hover. -->	  
+ 						    <div class="progress-bar progress-bar-danger" style="width: 5%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2020 Target: 10% uncongested expressways">
+ 					        <span class="sr-only">2020 Target: +5% uncongested miles</span>
+					    </div>
+					</div>
+				 <!-- End of progress bar WITH targets -->
 			</div></a>		
 		</div>
 
@@ -135,7 +176,27 @@
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Bridges</div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2016">
 				<p>Structurally deficient bridges</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="10%"> <span style="width: 10%"></span></p></div>
+				<!--
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="10%"> <span style="width: 10%"></span>
+				-->
+
+				<!-- Progress bar WITH targets -->
+				  <div class="progress">
+				  		<!-- Current state: Classed "progress-bar-success", which returns a GREEN bar with width up to 100%. Title shows on hover. -->
+ 				    	<div class="progress-bar progress-bar-success" style="width: 10%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2014 Data: 10% structurally deficient bridges">
+ 					        	<span class="sr-only">2016 Data: 10% structurally deficient bridges</span>
+ 					   		</div>
+ 						<!-- Warning metric: Classed "progress-bar-warning", which returns a YELLOW bar with width up to 100%, positioned relatively to the GREEN bar. Title shows on hover. -->
+ 						    <div class="progress-bar progress-bar-warning" style="width: 5%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2017 Target: 11% structurally deficient bridges">
+ 						        <span class="sr-only"> 2017 Target: +1% structurally deficient bridges</span>
+ 						    </div>
+ 						<!-- Target metric: Classed "progress-bar-danger", which returns a RED bar with width up to 100%, positioned relatively to the YELLOW and GREEN bar. Title shows on hover. -->	  
+ 						    <div class="progress-bar progress-bar-danger" style="width: 5%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2020 Target: 12% structurally deficient bridges">
+ 					        <span class="sr-only">2020 Target: +1% structurall deficient bridges</span>
+					    </div>
+					</div>
+				 <!-- End of progress bar WITH targets -->
+				</p></div>
 			<div class="col-md-6">
 				<p>Change since 2015<br><b>+0.6%</b></p></div></a>
 		</div>
@@ -145,18 +206,76 @@
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Pavement Condition</div>
 			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2014">
 				<p>Interstates in fair or better condition</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="94%"> <span style="width: 94%"></span></p></div>
+				<!--
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="94%"> <span style="width: 94%"></span>
+				-->
+				<!-- Progress bar WITH targets -->
+				  <div class="progress">
+				  		<!-- Current state: Classed "progress-bar-success", which returns a GREEN bar with width up to 100%. Title shows on hover. -->
+ 				    	<div class="progress-bar progress-bar-success" style="width: 94%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2014 Data: 94% pavement in fair or better condition">
+ 					        	<span class="sr-only">2014 Data: 94% pavement in fair or better condition</span>
+ 					   		</div>
+ 						<!-- Warning metric: Classed "progress-bar-warning", which returns a YELLOW bar with width up to 100%, positioned relatively to the GREEN bar. Title shows on hover. -->
+ 						    <div class="progress-bar progress-bar-warning" style="width: 2%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2017 Target: 96% pavement in fair or better condition">
+ 						        <span class="sr-only"> 2017 Target: +2% pavement in fair or better condition</span>
+ 						    </div>
+ 						<!-- Target metric: Classed "progress-bar-danger", which returns a RED bar with width up to 100%, positioned relatively to the YELLOW and GREEN bar. Title shows on hover. -->	  
+ 						    <div class="progress-bar progress-bar-danger" style="width: 1%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2020 Target: 97% pavement in fair or better condition">
+ 					        <span class="sr-only">2020 Target: +1% pavement in fair or better condition</span>
+					    </div>
+					</div>
+				 <!-- End of progress bar WITH targets -->
+				</p></div>
+
 			<div class="col-md-6">
 				<p>Non-interstates in fair or better condition</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="90%"> <span style="width: 90%"></span></p></div></a>
+				<!--
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="90%"> <span style="width: 90%"></span>
+				-->
+				<!-- Progress bar WITH targets -->
+				  <div class="progress">
+				  		<!-- Current state: Classed "progress-bar-success", which returns a GREEN bar with width up to 100%. Title shows on hover. -->
+ 				    	<div class="progress-bar progress-bar-success" style="width: 90%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2014 Data: 90% pavement in fair or better condition">
+ 					        	<span class="sr-only">2014 Data: 90% pavement in fair or better condition</span>
+ 					   		</div>
+ 						<!-- Warning metric: Classed "progress-bar-warning", which returns a YELLOW bar with width up to 100%, positioned relatively to the GREEN bar. Title shows on hover. -->
+ 						    <div class="progress-bar progress-bar-warning" style="width: 2%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2017 Target: 92% pavement in fair or better condition">
+ 						        <span class="sr-only"> 2017 Target: +2% pavement in fair or better condition</span>
+ 						    </div>
+ 						<!-- Target metric: Classed "progress-bar-danger", which returns a RED bar with width up to 100%, positioned relatively to the YELLOW and GREEN bar. Title shows on hover. -->	  
+ 						    <div class="progress-bar progress-bar-danger" style="width: 1%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2020 Target: 91% pavement in fair or better condition">
+ 					        <span class="sr-only">2020 Target: +1% pavement in fair or better condition</span>
+					    </div>
+					</div>
+				 <!-- End of progress bar WITH targets -->
+				 </p></div></a>
 		</div>
 
 		<div class="page_link"><a href="pages/sidewalks/index.php" title="Go to sidewalks page" id="sidewalks">
 			<div class="col-md-12 col-sm-12 nav_metric">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> Sidewalks</div>
-			<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2015">
+				<div class="col-md-6" data-toggle="tooltip" data-placement="left" title="Year of data: 2015">
 				<p>Sidewalk to roadway ratio</p>
-				<p class="meter" data-toggle="tooltip" data-placement="top" title="52 sidewalk miles for 100 miles of centerline miles"> <span style="width: 52%"></span></p></div>
+				<!--
+				<p class="meter" data-toggle="tooltip" data-placement="top" title="52 sidewalk miles for 100 miles of centerline miles"> <span style="width: 52%"></span>
+				-->
+				<!-- Progress bar WITH targets -->
+				  <div class="progress">
+				  		<!-- Current state: Classed "progress-bar-success", which returns a GREEN bar with width up to 100%. Title shows on hover. -->
+ 				    	<div class="progress-bar progress-bar-success" style="width: 52%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2015 Data: 52 sidewalk miles for 100 miles of centerline miles">
+ 					        	<span class="sr-only">2015 Data: 52 sidewalk miles for 100 miles of centerline miles</span>
+ 					   		</div>
+ 						<!-- Warning metric: Classed "progress-bar-warning", which returns a YELLOW bar with width up to 100%, positioned relatively to the GREEN bar. Title shows on hover. -->
+ 						    <div class="progress-bar progress-bar-warning" style="width: 2%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2017 Target: 54 sidewalk miles for 100 miles of centerline miles">
+ 						        <span class="sr-only"> 2017 Target: +2 sidewalk miles for 100 miles of centerline miles</span>
+ 						    </div>
+ 						<!-- Target metric: Classed "progress-bar-danger", which returns a RED bar with width up to 100%, positioned relatively to the YELLOW and GREEN bar. Title shows on hover. -->	  
+ 						    <div class="progress-bar progress-bar-danger" style="width: 2%" tabindex="0" data-container="body" data-toggle="tooltip" data-placement="bottom" title="2020 Target: 56 sidewalk miles for 100 miles of centerline miles">
+ 					        <span class="sr-only">2020 Target: +2 sidewalk miles for 100 miles of centerline miles</span>
+					    </div>
+					</div>
+				 <!-- End of progress bar WITH targets -->
+				</p></div>
 			<div class="col-md-6">
 				<p>Miles of sidewalk<br>
 				<b>5,682 miles</b></p></div></a>

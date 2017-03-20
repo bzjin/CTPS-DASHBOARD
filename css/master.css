@@ -221,4 +221,7 @@ button.navbar-toggle {
   overflow: visible;
  }
 
+.progress { 
+  background-color: #555 !important;
+}
 

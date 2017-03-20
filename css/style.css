@@ -263,3 +263,16 @@ div {
   position: relative;
   overflow: hidden;
 }
+
+.progress { 
+  background-color: #555 !important;
+}
+
+.meter b {
+    height: 16px;
+    width: 2px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    background-color: white;
+}
