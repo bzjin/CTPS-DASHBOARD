@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="goo.gl/xQW9eP">
 
-<title>The State of Boston Region Transportation</title>
+<title>Performance Dashboard Transportation in the Boston Region</title>
 
 <!-- Font Awesome -->
 <script src="libs/font-awesome.js"></script>
@@ -98,7 +98,6 @@
 
 <div id="header" class="col-md-4">
 	<h3>Performance Dashboard</h3>
-	<h2>The State of </h2>
 	<h2>Transportation in the </h2>
 	<h1>Boston </h1>
 	<h1>Region </h1>

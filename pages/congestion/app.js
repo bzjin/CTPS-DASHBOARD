@@ -292,10 +292,10 @@ pmchartContainer.selectAll(".labels")
 		.attr("class", "labels")
 			.attr("x", 35)
 			.attr("y", function(d) { 
-				if (d.values[0].properties.DIRECTION == "Eastbound" || d.values[0].properties.DIRECTION == "Northbound") { 
-					return yScale(d.values[0].properties.ROUTE_NUM) - 8;
-				} else if (d.values[0].properties.DIRECTION == "Westbound" || d.values[0].properties.DIRECTION == "Southbound"){
+				if (d.values[0].properties.DIRECTION == "Eastbound" || d.values[0].properties.DIRECTION == "Southbound") { 
 					return yScale(d.values[0].properties.ROUTE_NUM) + 10;
+				} else if (d.values[0].properties.DIRECTION == "Westbound" || d.values[0].properties.DIRECTION == "Northbound"){
+					return yScale(d.values[0].properties.ROUTE_NUM) - 8;
 				} else {
 					return -200;
 				}})
